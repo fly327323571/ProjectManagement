@@ -14,7 +14,7 @@
        		 classpath:/applicationContext*.xml  
     	</param-value>  
 	</context-param>
-   
+ 
    <filter>
 		<filter-name>Set Character Encoding</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -32,7 +32,9 @@
 		<filter-name>Set Character Encoding</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
 	<filter>
+	  
 		<filter-name>openSessionInViewFilter</filter-name>
 		<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
 		<async-supported>true</async-supported>

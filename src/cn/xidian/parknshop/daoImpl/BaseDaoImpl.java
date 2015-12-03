@@ -11,7 +11,7 @@ import cn.xidian.parknshop.dao.BaseDao;
 @Repository("baseDao")
 public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 
-	@Resource  
+	@Resource
 	public void setSuperSessionFactory(SessionFactory sessionFactory) {
 		this.setSessionFactory(sessionFactory);
 	}
