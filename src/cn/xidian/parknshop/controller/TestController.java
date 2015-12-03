@@ -18,14 +18,9 @@ public class TestController {
 	private TestService testService;
 	
 	@RequestMapping("/user/test")
-	public String add(String name,HttpServletRequest request,Model model){
-//		try {
-//			request.setCharacterEncoding("UTF-8");
-//		} catch (UnsupportedEncodingException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		String name2 =request.getParameter("name");
+	public String add(String name,Model model){
+
+//		String name2 =request.getParameter("name");
 		TestBean obj=new TestBean();
 		obj.setUserName(name);
 		model.addAttribute("name", name);
