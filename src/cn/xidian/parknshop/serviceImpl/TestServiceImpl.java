@@ -2,7 +2,6 @@ package cn.xidian.parknshop.serviceImpl;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import cn.xidian.parknshop.beans.TestBean;

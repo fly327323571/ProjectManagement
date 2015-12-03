@@ -1,9 +1,8 @@
 package cn.xidian.parknshop.controller;
 
-import java.io.UnsupportedEncodingException;
+
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
