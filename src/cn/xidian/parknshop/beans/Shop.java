@@ -1,10 +1,13 @@
 package cn.xidian.parknshop.beans;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,23 +16,34 @@ public class Shop {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "shop_id", unique = true, nullable = false)
-	private long shopId;
-	@Column(name = "shop_name",nullable=false)
+	private int shopId;
+	
+	@Column(name = "shop_name",nullable=false,length=100)
 	private String shopName;
-	@Column(name = "shop_icon")
+	
+	@Column(name = "shop_icon",length=100)
 	private String shopIcon;
-	@Column(name = "owner_id")
-	private long ownerId;
-	@Column(name = "owner_telephone")
+	
+	@Column(name = "owner_id",length=20)
+	private int ownerId;
+	
+	@Column(name = "owner_telephone",length=20)
 	private String ownerTel;
-	@Column(name = "shop_address")
+	
+	@Column(name = "shop_address",length=100)
 	private String shopAddr;
-	@Column(name = "shop_description")
+	
+	@Column(name = "shop_description",length=500)
 	private String shopDesc;
-	public long getShopId() {
+	
+	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn(name="user_id")
+	private User shopOwner;
+	
+	public int getShopId() {
 		return shopId;
 	}
-	public void setShopId(long shopId) {
+	public void setShopId(int shopId) {
 		this.shopId = shopId;
 	}
 	public String getShopName() {
@@ -44,10 +58,10 @@ public class Shop {
 	public void setShopIcon(String shopIcon) {
 		this.shopIcon = shopIcon;
 	}
-	public long getOwnerId() {
+	public int getOwnerId() {
 		return ownerId;
 	}
-	public void setOwnerId(long ownerId) {
+	public void setOwnerId(int ownerId) {
 		this.ownerId = ownerId;
 	}
 	public String getOwnerTel() {
@@ -67,5 +81,11 @@ public class Shop {
 	}
 	public void setShopDesc(String shopDesc) {
 		this.shopDesc = shopDesc;
+	}
+	public User getShopOwner() {
+		return shopOwner;
+	}
+	public void setShopOwner(User shopOwner) {
+		this.shopOwner = shopOwner;
 	}
 }
