@@ -33,11 +33,11 @@ public class User {
 	@Column(name="person_id",length=100)
 	private String cardId;
 	
-	@Column(name="power",nullable=false)
+	@Column(name="power")
 	private int IsSeller;
 	
-	@Column(name="check",nullable=false)
-	private int check;
+	@Column(name="check_register_success")
+	private int checkRegSuccess;
 	
 	@Column(name="password",nullable=false,length=100)
 	private String password;
@@ -96,13 +96,7 @@ public class User {
 		IsSeller = isSeller;
 	}
 
-	public int getCheck() {
-		return check;
-	}
 
-	public void setCheck(int check) {
-		this.check = check;
-	}
 
 	public String getPassword() {
 		return password;
@@ -118,6 +112,14 @@ public class User {
 
 	public void setRegisterTime(Date registerTime) {
 		this.registerTime = registerTime;
+	}
+
+	public int getCheckRegSuccess() {
+		return checkRegSuccess;
+	}
+
+	public void setCheckRegSuccess(int checkRegSuccess) {
+		this.checkRegSuccess = checkRegSuccess;
 	}
 }
 
