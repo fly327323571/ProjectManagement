@@ -16,7 +16,7 @@ public class TestServiceImpl implements TestService {
 	@Override
 	public void addTestBean(TestBean obj) {
 		// TODO Auto-generated method stub
-		baseDao.saveObj(obj);
+		baseDao.create(obj);
 	}
 
 	public BaseDao<TestBean> getBaseDao() {
