@@ -24,8 +24,6 @@ public class Shop {
 	@Column(name = "shop_icon",length=100)
 	private String shopIcon;
 	
-	@Column(name = "owner_id",length=20)
-	private int ownerId;
 	
 	@Column(name = "owner_telephone",length=20)
 	private String ownerTel;
@@ -37,7 +35,7 @@ public class Shop {
 	private String shopDesc;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="owner_id")
+	@JoinColumn(name="user_id")
 	private User shopOwner;
 	
 	public int getShopId() {
@@ -58,12 +56,7 @@ public class Shop {
 	public void setShopIcon(String shopIcon) {
 		this.shopIcon = shopIcon;
 	}
-	public int getOwnerId() {
-		return ownerId;
-	}
-	public void setOwnerId(int ownerId) {
-		this.ownerId = ownerId;
-	}
+	
 	public String getOwnerTel() {
 		return ownerTel;
 	}

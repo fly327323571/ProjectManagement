@@ -10,9 +10,6 @@ public class Commodity {
 	@Column(name="commodity_id")
 	private int commodityId;
 	
-	@Column(name="shop_id",nullable=false)
-	private int shopId;
-	
 	@Column(name="commodity_name",nullable=false)
 	private String commodityName;
 	
@@ -41,14 +38,6 @@ public class Commodity {
 
 	public void setCommodityId(int commodityId) {
 		this.commodityId = commodityId;
-	}
-
-	public int getShopId() {
-		return shopId;
-	}
-
-	public void setShopId(int shopId) {
-		this.shopId = shopId;
 	}
 
 	public String getCommodityName() {
