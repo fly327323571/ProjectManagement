@@ -37,7 +37,7 @@ public class Shop {
 	private String shopDesc;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="user_id")
+	@JoinColumn(name="owner_id")
 	private User shopOwner;
 	
 	public int getShopId() {

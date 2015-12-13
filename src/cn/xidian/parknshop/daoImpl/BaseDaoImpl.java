@@ -21,5 +21,11 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 		super.getSessionFactory().getCurrentSession().save(obj);
 		super.getSessionFactory().getCurrentSession().flush();
 	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public T findObjById(int id, Class<T> type) {
+		// TODO Auto-generated method stub
+		return (T) super.getSessionFactory().getCurrentSession().get(type,id);
+	}
 
 }

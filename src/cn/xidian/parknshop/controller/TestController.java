@@ -24,6 +24,7 @@ public class TestController {
 		obj.setUserName(name);
 		model.addAttribute("name", name);
 		testService.addTestBean(obj);
+		System.out.println(testService.findBean(1).getUserName());
 		return "showResult";
 	}
 

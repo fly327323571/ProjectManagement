@@ -27,4 +27,10 @@ public class TestServiceImpl implements TestService {
 		this.baseDao = baseDao;
 	}
 
+	@Override
+	public TestBean findBean(int id) {
+		// TODO Auto-generated method stub
+		return baseDao.findObjById(id, TestBean.class);
+	}
+
 }
