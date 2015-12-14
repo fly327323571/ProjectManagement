@@ -24,7 +24,6 @@ public class Shop {
 	@Column(name = "shop_icon",length=100)
 	private String shopIcon;
 	
-	
 	@Column(name = "owner_telephone",length=20)
 	private String ownerTel;
 	
@@ -33,6 +32,9 @@ public class Shop {
 	
 	@Column(name = "shop_description",length=500)
 	private String shopDesc;
+	
+	@Column(name="status",length=2)
+	private int status=0;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name="user_id")
@@ -80,5 +82,11 @@ public class Shop {
 	}
 	public void setShopOwner(User shopOwner) {
 		this.shopOwner = shopOwner;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
 	}
 }

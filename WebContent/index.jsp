@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/ParknShop/user/test" method="post">
+<form action="user/test" method="post">
 	<input type="text" name="name" id="name">
 	<input type="submit" name="sb" value="Submit">
 </form>

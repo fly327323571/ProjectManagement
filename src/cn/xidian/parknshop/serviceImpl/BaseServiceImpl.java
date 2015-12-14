@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import cn.xidian.parknshop.dao.BaseDao;
 import cn.xidian.parknshop.service.BaseService;
 
+@Service("baseService")
 public class BaseServiceImpl<T> implements BaseService<T> {
 
 	@Resource
