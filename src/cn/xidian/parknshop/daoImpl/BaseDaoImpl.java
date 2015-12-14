@@ -50,7 +50,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	@Override
 	public int getTotalCount(Class<T> type) {
 		// TODO Auto-generated method stub
-		return (int) super.getSessionFactory().getCurrentSession().createQuery("select count(1) as num from"+
+		return (int) super.getSessionFactory().getCurrentSession().createQuery("select count(1) as num from "+
 				type.getName()+"").uniqueResult();
 	}
 
@@ -58,7 +58,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	@Override
 	public List<T> getPage(Class<T> type, int PageNo,int PageSize,int StartNo) {
 		// TODO Auto-generated method stub
-		Query query=super.getSessionFactory().getCurrentSession().createQuery("from"+type.getName()+"");
+		Query query=super.getSessionFactory().getCurrentSession().createQuery("from "+type.getName()+"");
 		query.setMaxResults(PageSize);
 		query.setFirstResult(StartNo+PageNo*PageSize);
 		return (List<T>)query.list();
@@ -68,7 +68,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 	@Override
 	public List<T> getAll(Class<T> type) {
 		// TODO Auto-generated method stub
-		return super.getSessionFactory().getCurrentSession().createQuery("from"+type.getName()+"").list();
+		return super.getSessionFactory().getCurrentSession().createQuery("from "+type.getName()+"").list();
 	}
 	
 }

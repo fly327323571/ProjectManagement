@@ -14,7 +14,7 @@ public interface BaseDao<T> {
 	
 	int getTotalCount(Class<T> type);
 	
-	List<T>getPage(Class<T> type,int PageNo,int PageSize,int StartNo);
+	List<T> getPage(Class<T> type,int PageNo,int PageSize,int StartNo);
 	
 	List<T> getAll(Class<T> type);
 
