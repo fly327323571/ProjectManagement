@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="user/test" method="post">
-	<input type="text" name="name" id="name">
+<form action="user/complaint" method="post">
+	<input type="text" name="state" id="state"><br>
+	<input type="text" name="reason" id="reason"><br>
+	<input type="text" name="handleResult" id="handleResult"><br>
 	<input type="submit" name="sb" value="Submit">
 </form>
 </body>
