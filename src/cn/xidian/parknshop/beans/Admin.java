@@ -3,7 +3,7 @@ package cn.xidian.parknshop.beans;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Admin")
+@Table(name="tb_Admin")
 public class Admin {
 
 	@Id

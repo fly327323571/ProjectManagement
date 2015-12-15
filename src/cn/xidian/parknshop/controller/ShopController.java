@@ -10,7 +10,7 @@ import cn.xidian.parknshop.beans.User;
 import cn.xidian.parknshop.service.BaseService;
 
 @Controller
-public class ApplyShopController {
+public class ShopController {
 
 	@Resource(name="baseService")
 	private BaseService<Shop> shopService;

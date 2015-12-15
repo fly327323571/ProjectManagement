@@ -3,7 +3,7 @@ package cn.xidian.parknshop.beans;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Commodity")
+@Table(name="tb_Commodity")
 public class Commodity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
