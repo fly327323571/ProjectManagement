@@ -1,0 +1,155 @@
+.container {
+	margin-top: 20px;
+}
+
+.status-style {
+	float: left;
+	height: 34px;
+	line-height: 34px;
+	margin: 8px 0 8px 50px;
+}
+
+.mark_OK {
+	position: absolute;
+	right: 54px;
+	top: 11px;
+	color: green;
+}
+
+.mark_ERROR {
+	position: absolute;
+	right: 54px;
+	top: 11px;
+	color: red;
+}
+
+#logo {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	font-family: Arial;
+	font-size: 118px;
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
+	opacity: 0;
+	height: 100%;
+}
+
+.choose {
+	cursor: pointer;
+}
+
+#uploading {
+	position: absolute;
+	top: 8px;
+	right: -64px;
+	background-image: url(../../images/loading.gif);
+	width: 16px;
+	height: 16px;
+}
+
+#status_span {
+	color: #777;
+	font-size: 18px;
+}
+
+.add_product {
+	float: left;
+	line-height: 34px;
+	margin: 8px 0 8px 80px;
+}
+
+.navbar-style {
+	height: 50px;
+}
+
+.btn-style {
+	background-color: #FF5400;
+	color: #ffffff;
+}
+
+.topShop-navbar-left {
+	float: left;
+	font-size: 18px;
+	line-height: 50px;
+	margin: 0px 8px;
+}
+
+.t_Shop {
+	color: #808080;
+	vertical-align: middle !important;
+}
+
+.t_Title {
+	color: #808080;
+	vertical-align: middle !important;
+}
+
+.t_Link {
+	color: #808080;
+	vertical-align: middle !important;
+}
+
+.t_Show_Time {
+	color: #808080;
+	vertical-align: middle !important;
+}
+
+.t_Pay_Money {
+	color: #808080;
+	vertical-align: middle !important;
+}
+
+.t_Operation {
+	vertical-align: middle !important;
+}
+
+#topProduct-list {
+	
+}
+
+.topShop-navbar-right {
+	height: 50px;
+	line-height: 50px;
+	float: left;
+}
+
+.topShop-navbar-right li {
+	display: block;
+	float: left;
+	height: 50px;
+	width: auto;
+	padding: 0px 15px;
+}
+
+.topShop-navbar-right li a {
+	font-size: 14px;
+	color: #777;
+}
+
+.topShop-navbar-right li:hover {
+	background: #FF9933;
+	color: #000000;
+}
+
+.topShop-navbar-right li a:hover {
+	text-decoration: none;
+}
+
+.nav-active {
+	background: #FF5400;
+}
+
+.detail-color {
+	color: #FF5400;
+}
+
+.detail-color:hover {
+	color: #000000;
+	text-decoration: none;
+}
+
+.table-style tbody tr td {
+	vertical-align: middle !important;
+}

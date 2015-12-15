@@ -1,0 +1,148 @@
+@CHARSET "UTF-8";
+.main
+{
+	width: 80%;
+	margin: 60px auto;
+	background-color:white;
+	height:435px;
+}
+.btt
+{
+	background-image:url('buy31-35img/love_044.png');
+	visited:background-image:url('buy31-35img/love_039.png');
+	border:0px;
+	width:40px;
+	height:40px;
+}
+.conform-main
+{
+	width: 90%;
+	margin: 20px auto;
+}
+.tittle
+{
+	font-size:34px;
+    color:#4CADA6;
+  	text-shadow:2px 2px #5ACCC4;
+  	border-bottom: dotted 4px #4CADA6;
+  	padding:20px 0;
+}
+.conform-main h4{
+	color:#4CADA6;
+	padding:20px 0;
+}
+.address-frame
+{
+	margin:0;
+	height:200px;
+}
+.address-frame li
+{
+	display:inline-block;
+	margin:0 10px;
+	height:200px;
+	width:30%;
+	background-color:rgba(133,133,133,0.2);
+	padding:30px 20px;
+	
+}
+/* .address-frame a:hover{
+	text-decoration: none;
+	
+} */
+.address-frame li span{
+	display:block;
+	margin:10px 0;
+	color:black;
+}
+.small-img
+{
+	width:100px;
+	height:140px;
+}
+td th
+{
+	width:120px;
+	height:150px;
+	align:center;
+    valign:center;
+}
+.view
+{
+	float: left;
+	width: 30%;
+	height: 435px;
+	margin: 0px 70px 0px 20px;
+}
+.input-w
+{
+	width:50px;
+	text-align:center;
+}
+.product-view
+{
+	float: left;
+	padding-left: 15px;
+	width: 50%;
+	height: 435px;
+	margin: 0px auto;	
+}
+.pro-title
+{
+	height: 50px;
+	border-bottom: dashed 1px #999
+}
+.space
+{
+	float: left;
+	width: 20%;
+	height :450px;
+	margin: 0px auto;	
+}
+p
+{
+	valign:center;
+	height:40px;
+}
+.favorite
+{
+	width: 90%;
+	margin: 0px auto;
+	background-color:white;	
+}
+.sec
+{
+	border:rgb(221,221,221) solid thin;
+	width:20%;
+	height:325px;
+	margin: 0px 2px 2px 2px;
+	float:left;
+}
+.sucess
+{
+	width: 80%;
+	margin: 5px auto;
+	height:435px;	
+}
+.bbb
+{
+	width: 80%;
+	margin: 5px auto;
+	height:320px;	
+	border: dashed 1px #999;
+	background-color:rgb(175,193,211)
+}
+.fff
+{
+	background-color:rgb(253,238,233);
+	width: 80%;
+	margin: 5px auto;
+	height:320px;	
+	border: dashed 1px #999;	
+}
+.ccc
+{
+	width: 80%;
+	margin: 5px auto;		
+}
+

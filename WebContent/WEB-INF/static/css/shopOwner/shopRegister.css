@@ -1,0 +1,107 @@
+form {
+	width: 70%;
+	margin: 10px auto;
+	background-color: #F5F5F5;
+	padding: 100px 50px;
+}
+
+form label {
+	color: #FF5400;
+}
+
+.category>option:FIRST-CHILD {
+	display: none;
+}
+
+.category {
+	width: 322px;
+}
+
+form .form-group button { /* width:263px; */
+	background-color: #FF5400;
+	color: #ffffff;
+}
+
+form .form-group:last-child {
+	text-align: center;
+	margin: 40px 0;
+}
+
+form .upload {
+	position: relative;
+	ovweflow: hidden;
+}
+
+form .upload input {
+	position: absolute;
+	top: 0px;
+}
+
+form .upload input[type="file"] {
+	opacity: 0;
+	filter: alpha(opacity :   0);
+	z-index: 999;
+	position: absolute;
+	top: 0px;
+}
+
+form .upload input[type="button"] {
+	background-color: #FF5400;
+	color: white;
+}
+
+form .upload #fileText {
+	margin-left: 86px;
+	line-height: 34px;
+	border: 0;
+	background: #F5F5F5;
+}
+
+.mark_OK {
+	position: absolute;
+	right: 54px;
+	top: 11px;
+	color: green;
+}
+
+.mark_ERROR {
+	position: absolute;
+	right: 54px;
+	top: 11px;
+	color: red;
+}
+
+#logo {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	font-family: Arial;
+	font-size: 118px;
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
+	opacity: 0;
+	height: 100%;
+}
+
+#uploading {
+	position: absolute;
+	top: 8px;
+	right: -64px;
+	background-image: url(../../images/loading.gif);
+	width: 16px;
+	height: 16px;
+}
+
+#register {
+	width: 263px;
+	background-color: #FF5400;
+	color: #ffffff;
+}
+
+#_shopImage{
+	border: 1px solid #ccc;
+	position: absolute;
+	top: 30px;
+	right: 204px;
+}

@@ -1,0 +1,275 @@
+body { /* overflow: hidden; */
+	
+}
+
+header {
+	position: relative;
+	width: 95%;
+	margin: 30px auto;
+}
+
+header .logo {
+	color: #FF5400;
+	text-shadow: 0 0 3px #FF4400, 3px 3px 3px #EEA60C;
+	font-size: 44px;
+	font-weight: bolder;
+	font-style: italic;
+	display: inline-block;
+	vertical-align: bottom;
+	line-height: 0.8;
+}
+
+header .search-box {
+	display: inline-block;
+	margin-left: 150px;
+	vertical-align: text-top;
+}
+
+header .search-box input[type='search'] {
+	width: 450px;
+	height: 38px;
+	border: 2px solid #FF5400;
+	float: left;
+	font-size: 16px;
+}
+
+header .search-box button {
+	width: 80px;
+	height: 38px;
+	background-color: #FF5400;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+	line-height: 38px;
+	border: 0;
+	margin: 0;
+}
+/* 下边的商品店铺广告 */
+.list {
+	width: 100%;
+	display: -webkit-box;
+	display: -o-box;
+	display: -moz-box;
+	display: box;
+}
+
+.list .left {
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	-o-box-flex: 1;
+	box-flex: 1;
+}
+/* .list .right{
+			width:350px;
+		}
+		 */
+.left .pdt-list {
+	-webkit-column-count: 4;
+	-webkit-column-width: 250px;
+	-moz-column-width: 320px;
+	-o-colum-width: 320px;
+	-webkit-column-gap: 4px;
+	-moz-column-gap: 4px;
+	-o-column-gap: 4px;
+	padding: 0 40px;
+}
+
+.left .pdt-list>div {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background: #FF5400;
+	display: inline-block;
+	width: 250px;
+	margin: 20px 25px;
+}
+
+.left .pdt-list>div:hover {
+	transform: scale(1.2);
+}
+
+.left .pdt-list>div img {
+	width: 250px;
+}
+
+.left .pdt-list>div div {
+	padding: 10px 20px;
+}
+
+.left .pdt-list>div .pdt-price {
+	margin-left: 150px;
+	font-size: 24px;
+	font-weight: bold;
+	color: white;
+}
+
+.left div:FIRST-CHILD {
+	margin: 20px auto;
+	text-align: center;
+}
+
+#pagination .jPag-control-back{
+	margin : auto;
+}
+
+.pdt-logo {
+	text-align: center;
+	margin: 0px 10px;
+	font-size: 34px;
+	font-weight: bold;
+	text-shadow: 0 0 6px rgba(133, 133, 133, 1);
+	border: 1px solid rgba(133, 133, 133, 1);
+}
+
+.pdt-logo:nth-child(1) {
+	height: 110px;
+	line-height: 110px;
+	width: 110px;
+	border-radius: 55px;
+	color: #65DB2D;
+	box-shadow: 1px 1px 15px 16px #65DB2D inset;
+}
+
+.pdt-logo:nth-child(2) {
+	height: 86px;
+	line-height: 86px;
+	width: 86px;
+	border-radius: 43px;
+	color: #F0E70E;
+	box-shadow: 1px 1px 15px 16px #F0E70E inset;
+}
+
+.pdt-logo:nth-child(3) {
+	height: 82px;
+	line-height: 82px;
+	width: 82px;
+	border-radius: 41px;
+	color: #F00EDE;
+	box-shadow: 1px 1px 15px 16px #F00EDE inset;
+}
+
+.pdt-logo:nth-child(4) {
+	height: 70px;
+	line-height: 70px;
+	width: 70px;
+	border-radius: 35px;
+	color: #97E0EE;
+	box-shadow: 1px 1px 15px 16px #97E0EE inset;
+}
+
+.pdt-logo:nth-child(5) {
+	height: 82px;
+	line-height: 82px;
+	width: 82px;
+	border-radius: 41px;
+	color: #EE97BD;
+	box-shadow: 1px 1px 15px 16px #EE97BD inset;
+}
+
+.pdt-logo:nth-child(6) {
+	height: 86px;
+	line-height: 86px;
+	width: 86px;
+	border-radius: 43px;
+	color: #9EEE97;
+	box-shadow: 1px 1px 15px 16px #9EEE97 inset;
+}
+
+.pdt-logo:nth-child(7) {
+	height: 110px;
+	line-height: 110px;
+	width: 110px;
+	border-radius: 55px;
+	color: #FF5400;
+	box-shadow: 1px 1px 15px 16px #FF5400 inset;
+}
+
+.content {
+	height: 700px;
+	width: 1350px;
+	margin: 10px 20px;
+}
+
+.slide .carousel-control { /* font-size: 94px; */
+	
+}
+
+.slide .arrow {
+	position: absolute;
+	top: 280px;
+	left: 50px;
+}
+
+.carousel-inner {
+	width: 100%;
+	height: 550px;
+}
+
+.link-shop {
+	clear: left;
+	margin: 10px 30px;
+}
+
+.link-shop .ls-logo {
+	font-weight: bold;
+	font-size: 44px;
+	text-shadow: 0 0 6px #FF5400;
+	border: 1px solid #FF5400;
+	box-shadow: 1px 1px 10px 11px #FF5400 inset;
+}
+
+.link-shop ul {
+	margin: 0 100px;
+}
+
+.link-shop li {
+	list-style: none;
+	float: left;
+	margin: 20px;
+	/* border-radius:60px; */
+}
+
+.link-shop li img {
+	width: 200px;
+	height: 100px;
+}
+/* 右边的导航条 */
+.easy-nav {
+	width: 50px;
+	height: 700px;
+	position: fixed;
+	right: 0px;
+	background-color: rgba(0, 0, 0, 0.8);
+	display: none;
+	z-index: 2;
+}
+
+.easy-nav ul {
+	margin: 150px auto;
+}
+
+.easy-nav li {
+	list-style: none;
+	margin: 50px 0;
+	border-bottom: 2px solid white;
+	text-align: center;
+	color: white;
+}
+
+.easy-nav li:nth-child(5) {
+	border-bottom: 0;
+}
+
+.easy-nav li span {
+	color: white;
+	font-size: 24px;
+	display: block;
+}
+
+.easy-nav li span:hover {
+	color: #FF5400;
+}
+
+.easy-nav li a {
+	color: white;
+}

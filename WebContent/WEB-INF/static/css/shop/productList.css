@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+img.product_img{
+	width:80px;
+	height:80px;
+}
+.btn_color{
+background-color:#ff5400;
+color:#ffffff;
+}
+.title_color{
+color:#ff5400;
+text-shadow:1px 1px #ff5400;
+}
+.main_color{
+color:#ff5400;
+}
+.sec_color{
+color:#eea60c;
+}
+.page{
+	overflow:hidden;
+}
+.nav .nav_option:hover{
+background-color:#E7E7E7;
+}
+
+#search_by li{
+	cursor:pointer;
+}
+
+#productList td{
+	vertical-align:middle;
+}

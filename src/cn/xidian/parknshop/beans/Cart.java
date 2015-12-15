@@ -1,30 +1,34 @@
 package cn.xidian.parknshop.beans;
 
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
-@Table(name="Cart")
+@Table(name="tb_cart")
 public class Cart {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="cart_id")
-	private int cartId;
+	@Column(name="Id")
+	private int Id;
 	
 	@OneToOne
-	@JoinColumn(name="owner_id")
+	@JoinColumn(name="username",referencedColumnName="username",insertable=true,updatable=true)
 	private User owner;
 	
-	@Column(name="status")
-	private int status=0;
+	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn(name="commodity_no",referencedColumnName="commodity_no",insertable=true,updatable=true)
+	private Commodity commodity;
 
-	public int getCartId() {
-		return cartId;
-	}
-
-	public void setCartId(int cartId) {
-		this.cartId = cartId;
-	}
+	@Column(name="commodity_count")
+	private int commodityNum;
+	
+	@Column(name="sum_price")
+	private double price;
+	
+	@Temporal(TemporalType.DATE) 
+	private Date addTime;
 
 	public User getOwner() {
 		return owner;
@@ -34,12 +38,29 @@ public class Cart {
 		this.owner = owner;
 	}
 
-	public int getStatus() {
-		return status;
+	public Commodity getCommodity() {
+		return commodity;
 	}
 
-	public void setStatus(int status) {
-		this.status = status;
+	public void setCommodity(Commodity commodity) {
+		this.commodity = commodity;
 	}
-	
+
+	public int getCommodityNum() {
+		return commodityNum;
+	}
+
+	public void setCommodityNum(int commodityNum) {
+		this.commodityNum = commodityNum;
+	}
+
+	public Date getAddTime() {
+		return addTime;
+	}
+
+	public void setAddTime(Date addTime) {
+		this.addTime = addTime;
+	}
+
+
 }

@@ -1,0 +1,57 @@
+.status-style {
+	float: left;
+	height: 34px;
+	line-height: 34px;
+	margin: 8px 0 8px 100px;
+}
+
+#status_span {
+	color: #777;
+	font-size: 18px;
+}
+
+#status_choice li {
+	cursor: pointer;
+}
+
+.bs-callout {
+	padding: 20px;
+	margin: 20px 0;
+	border: 1px solid #eee;
+	border-left-width: 5px;
+	border-radius: 3px;
+}
+
+.bs-callout-warning {
+	border-left-color: #f0ad4e;
+}
+
+.bs-callout-info {
+	border-left-color: #5bc0de;
+}
+
+#category {
+	display: block;
+	overflow: hidden;
+	width: 100px;
+	float: left;
+}
+
+.caret_style {
+	margin-top: 9px;
+}
+
+.dialog-block-title {
+	text-align: left;
+	font-weight: bold;
+	font-size: 16px;
+	height: 37px;
+}
+
+.dialog-block {
+	padding: 0px 14px;
+}
+
+.dialog-ok {
+	padding: 7px 30px;
+}

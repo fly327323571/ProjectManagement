@@ -1,0 +1,96 @@
+.container {
+	width: 80%;
+	margin: 20px auto;
+}
+
+.btn_color {
+	background-color: #4cada6;
+	color: #ffffff;
+}
+
+.title_color {
+	color: #FF5400;
+}
+
+.main_color {
+	color: #FF5400;
+}
+
+.sec_color {
+	color: #eea60c;
+}
+
+.panel_btn {
+	color: #ffffff;
+	text-shadow: 1px 1px #eea60c;
+}
+
+.star {
+	color: #eea60c;
+	font-size: 22px;
+}
+
+.btn-style {
+	background-color: #FF5400;
+	color: #ffffff;
+}
+
+.nav-active {
+	background: #FF5400;
+}
+
+.detail-color {
+	color: #FF5400;
+}
+
+.detail-color:hover {
+	color: #000000;
+	text-decoration: none;
+}
+
+.table-style tbody tr td {
+	vertical-align: middle !important;
+}
+
+.navbar-style {
+	height: 50px;
+}
+
+.saleHistory-navbar-left {
+	float: left;
+	font-size: 18px;
+	line-height: 50px;
+	margin: 0px 8px;
+}
+
+.saleHistory-navbar-right {
+	height: 50px;
+	line-height: 50px;
+	float: left;
+}
+
+.saleHistory-navbar-right li {
+	display: block;
+	float: left;
+	height: 50px;
+	width: auto;
+	padding: 0px 15px;
+}
+
+.saleHistory-navbar-right li a {
+	font-size: 14px;
+	color: #777;
+}
+
+.saleHistory-navbar-right li:hover {
+	background: #FF9933;
+	color: #000000;
+}
+
+.saleHistory-navbar-right li a:hover {
+	text-decoration: none;
+}
+
+.pagination-active {
+	background: #FF5400 !important;
+}

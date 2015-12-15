@@ -1,0 +1,36 @@
+.ownerManage-main-contain {
+	margin: 20px auto;
+	width: 80%;
+	height: 550px;
+}
+
+.ownerManage-title {
+	width: 100%;
+	height: 50px;
+}
+
+.ownerManage-time {
+	width: 30%;
+	float: left;
+}
+
+.ownerManage-time div {
+	width: 40%;
+	float: left;
+	margin: 0px 10px;
+}
+
+.ownerManage-id-name {
+	float: left;
+	width: 30%;
+	margin: 0px 10px;
+}
+
+.ownerManage-list-type {
+	margin-right: 5%;
+	float: right;
+}
+
+.ownerManage-main {
+	width: 100%;
+}

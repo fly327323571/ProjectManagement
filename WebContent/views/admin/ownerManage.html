@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <base href="../../../">
+    
+    <title>ParknShop--Owner Manage</title>
+    
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+	
+	<script src="static/js/common/jquery-1.11.1.js"></script>
+    <script src="static/js/common/bootstrap.min.js"></script>
+	<link href="static/css/common/bootstrap.min.css" rel="stylesheet">
+	<link href="static/css/user/headTail.css" rel="stylesheet">
+	<link href="static/css/user/manage.css" rel="stylesheet">
+	<link href="static/css/admin/ownerManage.css" rel="stylesheet">
+	
+</head>
+	<body>
+		<div class="ownerManage-main-contain">
+			<div class="ownerManage-title">
+				
+				<!--search by time-->
+				<div class="ownerManage-time">
+					<div class="input-group">
+						<span class="input-group-addon">From:</span>
+						<input type="text" class="form-control" id="datepicker-from">
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon">To:</span>
+						<input type="text" class="form-control" id="datepicker-to">
+					</div>
+				</div>
+				
+				<!--search-->
+				<div class="ownerManage-id-name">
+					<div class="input-group">
+						<span class="input-group-addon">Search</span>
+						<input type="text" class="form-control" placeholder="input id or name here">
+					</div>
+				</div>
+				
+				<!--list style-->
+				<div class="ownerManage-list-type dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+						List by registration time
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">List by registration time</a>
+						</li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">List by name</a>
+						</li>
+						<li role="presentation"><a role="menuitem" tabindex="-1" href="#">List by </a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<hr />
+			
+			<!--main-->
+			<div class="ownerManage-main">
+				<div class="span12">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>
+											Portrait
+										</th>
+										<th>
+											Store ID
+										</th>
+										<th>
+											Store Name
+										</th>
+										<th>
+											Catogory
+										</th>
+										<th>
+											Note
+										</th>
+										<th>
+											Operation
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<a class="media-left" href="#">
+											   <img src="..." alt="...">
+											</a>
+										</td>
+										<td>
+											12345678900987654
+										</td>
+										<td>
+											Beautiful Clothes Store
+										</td>
+										<td>
+											Clothes
+										</td>
+										<td>
+											The main selling ladies clothes shop
+										</td>
+										<td>
+											<a href="#">Detail</a>
+											&nbsp;<a href="#">Top</a>
+											&nbsp;<a href="#" data-toggle="modal" data-target="#myModal">Blacklist</a>
+											&nbsp;<a href="#">Delete</a>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<a class="media-left" href="#">
+											   <img src="..." alt="...">
+											</a>
+										</td>
+										<td>
+											12345678900987654
+										</td>
+										<td>
+											Beautiful Clothes Store
+										</td>
+										<td>
+											Clothes
+										</td>
+										<td>
+											The main selling ladies clothes shop
+										</td>
+										<td>
+											<a href="#">Detail</a>
+											&nbsp;<a href="#">Top</a>
+											&nbsp;<a href="#" data-toggle="modal" data-target="#myModal">Blacklist</a>
+											&nbsp;<a href="#">Delete</a>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<a class="media-left" href="#">
+											   <img src="..." alt="...">
+											</a>
+										</td>
+										<td>
+											12345678900987654
+										</td>
+										<td>
+											Beautiful Clothes Store
+										</td>
+										<td>
+											Clothes
+										</td>
+										<td>
+											The main selling ladies clothes shop
+										</td>
+										<td>
+											<a href="#">Detail</a>
+											&nbsp;<a href="#">Top</a>
+											&nbsp;<a href="#" data-toggle="modal" data-target="#myModal">Blacklist</a>
+											&nbsp;<a href="#">Delete</a>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<a class="media-left" href="#">
+											   <img src="..." alt="...">
+											</a>
+										</td>
+										<td>
+											12345678900987654
+										</td>
+										<td>
+											Beautiful Clothes Store
+										</td>
+										<td>
+											Clothes
+										</td>
+										<td>
+											The main selling ladies clothes shop
+										</td>
+										<td>
+											<a href="#">Detail</a>
+											&nbsp;<a href="#">Top</a>
+											&nbsp;<a href="#" data-toggle="modal" data-target="#myModal">Blacklist</a>
+											&nbsp;<a href="#">Delete</a>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<a class="media-left" href="#">
+											   <img src="..." alt="...">
+											</a>
+										</td>
+										<td>
+											12345678900987654
+										</td>
+										<td>
+											Beautiful Clothes Store
+										</td>
+										<td>
+											Clothes
+										</td>
+										<td>
+											The main selling ladies clothes shop
+										</td>
+										<td>
+											<a href="#">Detail</a>
+											&nbsp;<a href="#">Top</a>
+											&nbsp;<a href="#" data-toggle="modal" data-target="#myModal">Blacklist</a>
+											&nbsp;<a href="#">Delete</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+			</div>
+			
+			<!--触发式弹出框-->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Blacklist Reason</h4>
+			      </div>
+			      <div class="modal-body">
+			       	<input type="text" class="form-control" />
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary">Blacklist</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			
+			<!--footer-->
+			<footer>
+				<!--pagination-->
+				<nav class="shopManage-pagination">
+					<ul class="pagination">
+						<li><a href="#">&laquo;</a>
+						</li>
+						<li><a href="#">1</a>
+						</li>
+						<li><a href="#">2</a>
+						</li>
+						<li><a href="#">3</a>
+						</li>
+						<li><a href="#">4</a>
+						</li>
+						<li><a href="#">5</a>
+						</li>
+						<li><a href="#">&raquo;</a>
+						</li>
+					</ul>
+				</nav>
+			</footer>
+			<script type="text/javascript">
+			$(function(){
+				$("#datepicker-from").datepicker();
+				$("#datepicker-to").datepicker();
+			});
+			</script>
+		</div>
+	</body>
+</html>

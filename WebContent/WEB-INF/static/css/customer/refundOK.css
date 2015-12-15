@@ -1,0 +1,93 @@
+header{
+    		height: 80px;
+    		background-color: #FF5400;
+    		position:relative;
+    		
+    	}
+    	header .logo{
+    		color:white;
+			text-shadow:0 0 3px #FF4400,3px 3px 3px #EEA60C;
+			font-size: 40px;
+			font-weight: bolder;
+			font-style: italic;
+			
+			padding:0 40px;
+			line-height:80px;
+		}
+		header .identity{
+			font-size: 20px;
+			color:white;
+			padding:0px 40px;
+		}
+		
+		header .search-box{
+			display: inline-block;
+			/* line-height:80px; */
+			margin-left:280px;
+			vertical-align:middle;
+		}
+		header .search-box input[type='search']{
+			width: 400px;
+			height: 35px;
+			border: 2px solid white;
+			float: left;
+			/* font-size: 16px; */
+			
+		}
+		
+		header .search-box button{
+			width: 80px;
+			height: 35px;
+			background-color:#FF5400;
+			text-align: center;
+			color: white;
+			font-size: 20px;
+			line-height: 33px;
+			border:2px solid white;
+			/* border-left: */
+			margin:0;
+		}
+.container{
+	margin:40px auto;
+}
+.background{
+background-color:#FFFFCC;
+height:300px;
+width:100%;
+text-align:center;
+	padding:40px;
+}
+.background ul{
+	margin:0 auto;
+	width:55%;
+}
+.background li{
+ color:gray;
+ text-align:left;
+}
+
+.background .btn_color{
+background-color:#ff5400;
+color:#ffffff;
+margin-top:40px;
+}
+.background .title_color{
+color:#ff5400;
+text-shadow:1px 1px #ff5400;
+}
+.background .title_size{
+font-size:24px;
+}
+
+.background .main_color{
+color:#ff5400;
+}
+
+.background .tick_img{
+	width:40px;
+	height:40px;
+}
+.background .text-muted{
+	width:50%;
+	margin:0 auto;
+}

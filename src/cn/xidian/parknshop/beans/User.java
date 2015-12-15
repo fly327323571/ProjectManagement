@@ -11,17 +11,23 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="User")
+@Table(name="tb_User")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id", unique = true, nullable = false)
-	private int userId;
+	@Column(name = "Id", unique = true, nullable = false)
+	private long Id;
 	
-	@Column(name="name",nullable=false,length=200)
+	@Column(name="username",nullable=false,unique=true,length=50)
 	private String userName;
-
-	@Column(name="telephone",length=20)
+	
+	@Column(name="password",nullable=false,length=50)
+	private String password;
+	
+	@Column(name="nickName",nullable=false,length=200)
+	private String nickName;
+	
+	@Column(name="user_phone",length=20)
 	private String tel;
 	
 	@Column(name="email",nullable=false,length=30)
@@ -33,28 +39,18 @@ public class User {
 	@Column(name="person_id",length=100)
 	private String cardId;
 	
-	@Column(name="power")
-	private int IsSeller;
+	@Column(name="permission")
+	private boolean isSeller;
 	
 	@Column(name="check_register_success")
 	private int checkRegSuccess;
 	
-	@Column(name="password",nullable=false,length=100)
-	private String password;
-	
+
 	@Temporal(TemporalType.DATE) 
 	private Date registerTime;
 	
-//	@OneToMany(cascade=CascadeType.ALL,mappedBy="shopOwner")
-//	private Set<Shop> shops;
-	
-	public int getUserId() {
-		return userId;
-	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+	
 
 	public String getUserName() {
 		return userName;
@@ -88,16 +84,6 @@ public class User {
 		this.cardId = cardId;
 	}
 
-	public int getIsSeller() {
-		return IsSeller;
-	}
-
-	public void setIsSeller(int isSeller) {
-		IsSeller = isSeller;
-	}
-
-
-
 	public String getPassword() {
 		return password;
 	}
@@ -120,6 +106,14 @@ public class User {
 
 	public void setCheckRegSuccess(int checkRegSuccess) {
 		this.checkRegSuccess = checkRegSuccess;
+	}
+
+	public boolean isSeller() {
+		return isSeller;
+	}
+
+	public void setSeller(boolean isSeller) {
+		this.isSeller = isSeller;
 	}
 }
 

@@ -34,6 +34,11 @@ public class ComplaintController {
 		complaint.setComplaintUser(user);
 		complaint.setComplaintedShop(shop);
 		complaintService.create(complaint);
+		
+		Complaint complaintDel=complaintService.get(2, Complaint.class);
+		complaintDel.setComplaintedShop(null);
+		complaintDel.setComplaintUser(null);
+		complaintService.delete(complaintDel);
 		List<Complaint> list=complaintService.getAll(Complaint.class);
 		model.addAttribute("applyList", list);
 		return "admin/handle";

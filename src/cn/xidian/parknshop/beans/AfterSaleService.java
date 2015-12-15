@@ -3,36 +3,40 @@ package cn.xidian.parknshop.beans;
 import javax.persistence.*;
 
 @Entity
-@Table(name="After_Sale_Service")
+@Table(name="tb_Service")
 public class AfterSaleService {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="service_id")
-	private int serviceId;
+	@Column(name="Id")
+	private long Id;
+	
+	@Column(name="service_no",unique=true,nullable=false)
+	private int serviceNo;
 	
 	@Column(name="service_type")
 	private int serviceType;
 	
-	@Column(name="status")
-	private int status;
+	@Column(name="service_status")
+	private int status=0;
 	
 	@OneToOne
-	@JoinColumn(name="shop_id")
+	@JoinColumn(name="shop_no",referencedColumnName="shop_no",insertable=true,updatable=true)
 	private Shop shop;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="apply_Service_User_id")
+	@JoinColumn(name="username",referencedColumnName="username",insertable=true,updatable=true)
 	private User applyServiceUser;
 
-	public int getServiceId() {
-		return serviceId;
-	}
+	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn(name="commodity_no",referencedColumnName="commodity_no",insertable=true,updatable=true)
+	private Commodity commodity;
 
-	public void setServiceId(int serviceId) {
-		this.serviceId = serviceId;
-	}
-
+	@Column(name="reasons",length=200)
+	private String reasons;
+	
+	
+	
 	public int getServiceType() {
 		return serviceType;
 	}
@@ -63,6 +67,38 @@ public class AfterSaleService {
 
 	public void setUser(User applyServiceUser) {
 		this.applyServiceUser = applyServiceUser;
+	}
+
+	public long getId() {
+		return Id;
+	}
+
+	public void setId(long id) {
+		Id = id;
+	}
+
+	public int getServiceNo() {
+		return serviceNo;
+	}
+
+	public void setServiceNo(int serviceNo) {
+		this.serviceNo = serviceNo;
+	}
+
+	public Commodity getCommodity() {
+		return commodity;
+	}
+
+	public void setCommodity(Commodity commodity) {
+		this.commodity = commodity;
+	}
+
+	public String getReasons() {
+		return reasons;
+	}
+
+	public void setReasons(String reasons) {
+		this.reasons = reasons;
 	}
 	
 }

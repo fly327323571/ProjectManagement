@@ -1,0 +1,159 @@
+header {
+	position: relative;
+	width: 95%;
+	margin: 30px auto;
+	padding-bottom: 40px
+}
+
+header .logo {
+	color: #FF5400;
+	text-shadow: 0 0 3px #FF4400, 3px 3px 3px #EEA60C;
+	font-size: 44px;
+	font-weight: bolder;
+	font-style: italic;
+	display: inline-block;
+	vertical-align: bottom;
+	line-height: 0.8;
+}
+
+header .search-box {
+	display: inline-block;
+	margin-left: 150px;
+	vertical-align: text-top;
+}
+
+header .search-box input[type='search'] {
+	width: 450px;
+	height: 38px;
+	border: 2px solid #FF5400;
+	float: left;
+	font-size: 16px;
+	padding: 3px 6px;
+}
+
+header .search-box button {
+	width: 80px;
+	height: 38px;
+	background-color: #FF5400;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+	line-height: 38px;
+	border: 0;
+	margin: 0;
+}
+
+header .tSearch {
+	margin-left: 480px;
+	margin-top: -25px;
+}
+
+header .tSearch li {
+	list-style: none;
+	float: left;
+	border-right: 1px solid gray;
+	margin: 17px 0;
+	width: 70px;
+	text-align: center;
+}
+
+header .tSearch li:nth-child(5) {
+	border-right: 0;
+}
+
+header .tSearch li:nth-child(odd) a {
+	color: black;
+}
+
+header .tSearch li:nth-child(even) a {
+	color: #FF5400;
+}
+
+.content {
+	height: 100%;
+	margin: 20px auto;
+}
+
+.content .order {
+	height: 40px;
+	border-bottom: 2px solid #FF5400;
+}
+
+.content .result {
+	width: 200px;
+	text-align: center;
+	line-height: 40px;
+	height: 100%;
+	font-size: 20px;
+	color: #FF5400;
+	background: white;
+	display: inline-block;
+	float: left;
+	border: 0;
+}
+
+.content .result:FIRST-CHILD {
+	background: #FF5400;
+	color: #fff;
+}
+
+.content .result:hover {
+	background: #FF5400;
+	color: #fff;
+}
+
+.content .show {
+	width: 90%;
+	margin: 0px auto;
+	clear: both;
+	min-height: 100px;
+}
+
+.content .show li {
+	list-style: none;
+	/* float: left; */
+	display: inline-block;
+	width: 250px;
+	height: 250px;
+	margin: 10px 20px;
+	border: 1px solid #F5F5F5;
+}
+
+.content .show li:hover {
+	border-color: #FF5400;
+}
+
+.content .show li img {
+	width: 248px;
+	height: 160px;
+}
+
+.content .show .describe {
+	padding: 10px;
+	color: black;
+}
+
+.content .show .describe .price {
+	color: #FF5400;
+	font-size: 20px;
+	margin-left: 100px;
+}
+/* .content nav{
+    		width:28%;
+    		margin:10px auto;
+    	} */
+.easy {
+	width: 100%;
+	position: fixed;
+	background: rgba(173, 169, 169, 0.79);
+	top: 0px;
+	margin: 0 auto;
+	padding: 20px;
+	padding-bottom: 10px;
+	z-index: 20;
+}
+
+.page {
+	text-align: center;
+	overflow: hidden;
+}

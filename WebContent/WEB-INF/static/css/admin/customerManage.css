@@ -1,0 +1,72 @@
+.status-style {
+	float: left;
+	height: 34px;
+	line-height: 34px;
+	margin: 8px 0 8px 100px;
+}
+
+#status_span {
+	color: #777;
+	font-size: 18px;
+}
+
+.t_Email {
+	line-height: 80px !important;
+	color: #808080;
+}
+
+.t_Phone_Number {
+	line-height: 80px !important;
+	color: #808080;
+}
+
+.t_Status {
+	line-height: 80px !important;
+	color: #808080;
+}
+
+.t_Register_Time {
+	line-height: 80px !important;
+	color: #808080;
+}
+
+.t_Operation {
+	line-height: 80px !important;
+}
+
+.customerManage-main-contain {
+	margin: 20px auto;
+	width: 80%;
+	height: 550px;
+}
+
+.customerManage-title {
+	width: 100%;
+	height: 50px;
+}
+
+.customerManage-time {
+	width: 30%;
+	float: left;
+}
+
+.customerManage-time div {
+	width: 40%;
+	float: left;
+	margin: 0px 10px;
+}
+
+.customerManage-id-name {
+	float: left;
+	width: 30%;
+	margin: 0px 10px;
+}
+
+.customerManage-list-type {
+	margin-right: 5%;
+	float: right;
+}
+
+.customerManage-main {
+	width: 100%;
+}

@@ -1,0 +1,46 @@
+.container {
+	margin-top: 50px;
+}
+
+form section {
+	border-top: 2px dashed #FF5400;
+	padding: 20px;
+}
+
+.intro {
+	font-weight: bold;
+	color: #FF5400;
+}
+
+.btn {
+	background: #FF5400;
+	color: #FFF;
+}
+
+form .upload {
+	position: relative;
+}
+
+form .upload input {
+	position: absolute;
+	top: 0;
+}
+
+form .upload input[type="file"] {
+	opacity: 0;
+	filter: alpha(opacity : 0);
+	z-index: 999;
+}
+
+form .upload input[type="button"] {
+	background: #FF5400;
+	color: white;
+	width: 15%;
+}
+
+form .upload input[type="text"] {
+	margin-left: 16%;
+	width: 30%;
+	border: 0;
+	background-color: inherit;
+}

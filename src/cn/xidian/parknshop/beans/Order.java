@@ -12,7 +12,7 @@ public class Order{
 	@Column(name="order_id")
 	private long Id;
 	
-//	@Column(name="order_no")
+	@Column(name="order_no",nullable=false,unique=true)
 	private int orderNo;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
@@ -28,14 +28,14 @@ public class Order{
 	private int state=0;
 	
 
-
 	@Column(name="pay_way")
 	private int payWay=1;
 	
 	@Column(name="post_way")
 	private int postWay=0;
 	
-
+	@Column(name="order_price",nullable=false)
+	private double orderPrice=0.0;
 
 
 	public User getBuyer() {
@@ -95,6 +95,16 @@ public class Order{
 
 	public void setOrderNo(int orderNo) {
 		this.orderNo = orderNo;
+	}
+
+
+
+	public double getOrderPrice() {
+		return orderPrice;
+	}
+
+	public void setOrderPrice(double orderPrice) {
+		this.orderPrice = orderPrice;
 	}
 
 

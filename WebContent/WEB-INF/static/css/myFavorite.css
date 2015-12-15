@@ -1,0 +1,107 @@
+header {
+	height: 80px;
+	background-color: #FF5400;
+	position: relative;
+}
+
+header .logo {
+	color: white;
+	text-shadow: 0 0 3px #FF4400, 3px 3px 3px #EEA60C;
+	font-size: 40px;
+	font-weight: bolder;
+	font-style: italic;
+	padding: 0 40px;
+	line-height: 80px;
+}
+
+header .identity {
+	font-size: 20px;
+	color: white;
+	padding: 0px 40px;
+}
+
+header .search-box {
+	display: inline-block;
+	/* line-height:80px; */
+	margin-left: 280px;
+	vertical-align: middle;
+}
+
+header .search-box input[type='search'] {
+	width: 400px;
+	height: 35px;
+	border: 2px solid white;
+	float: left;
+	/* font-size: 16px; */
+}
+
+header .search-box button {
+	width: 80px;
+	height: 35px;
+	background-color: #FF5400;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+	line-height: 33px;
+	border: 2px solid white;
+	/* border-left: */
+	margin: 0;
+}
+
+.favorite {
+	width: 80%;
+	margin: 40px auto;
+	/* min-height:300px; */
+}
+
+.favorite .sec {
+	border: rgb(221, 221, 221) solid thin;
+	width: 20%;
+	height: 325px;
+	margin: 0px 20px 40px;
+	padding: 10px;
+	color: black;
+	float: left;
+}
+
+.favorite  .sec img {
+	width: 98%;
+	height: 183px;
+}
+
+.favorite .sec h3 {
+	color: #FF5400;
+}
+
+.tabbable .nav{
+	border-bottom: 2px solid #FF5400;
+}
+
+.tabbable .nav a:hover{
+	background: #FF5400;
+	color: #fff;
+}
+
+.tabbable .nav .active a{
+	background: #FF5400;
+	color: #fff;
+}
+
+.tabbable .nav .active a:hover{
+	background: #FF5400;
+	color: #fff;
+}
+
+.tabbable .nav a{
+	font-size: 20px;
+	color: #FF5400;
+}
+
+.tabbable .tab-content{
+	min-height : 100px;
+}
+
+.page {
+text-align: center;
+overflow: hidden;
+}

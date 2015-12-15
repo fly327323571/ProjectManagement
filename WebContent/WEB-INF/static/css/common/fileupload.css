@@ -1,0 +1,39 @@
+@CHARSET "UTF-8";
+
+.mark_OK {
+	position: absolute;
+	right: 144px;
+	top: 11px;
+	color: green;
+}
+
+.mark_ERROR{
+	position: absolute;
+	right: 144px;
+	top: 11px;
+	color: red;
+}
+
+.uploading {
+	top: 27px;
+	right: 278px;
+	width: 16px;
+	height: 16px;
+}
+
+input[type='file']{
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	font-family: Arial;
+	font-size: 118px;
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
+	opacity: 0;
+}
+
+.loading{
+	position: absolute;
+	background-image:url(../../images/loading.gif);
+}

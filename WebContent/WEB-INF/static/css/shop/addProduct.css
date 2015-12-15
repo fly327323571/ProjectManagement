@@ -1,0 +1,122 @@
+.container {
+	width: 70%;
+	min-height: 300px;
+	padding: 20px;
+	margin: 50px auto 0;
+	background: #F5F5F5;
+}
+
+#productForm{
+	float: left;
+}
+
+.container span {
+	display: inline-block;
+	width: 170px;
+	text-align: right;
+	white-space: nowrap;
+	font-weight: bold;
+	color: #FF5400;
+}
+
+.container  div {
+	/*margin: 10px 0;
+	width: 100%;*/
+}
+
+.container input:not ([type="file"] ){
+	width: 250px;
+	height: 34px;
+	padding: 6px 12px;
+	border: 1px solid #DDDDDD;
+	border-radius: 5px;
+}
+/* .container input[type="file"]{
+    		display:inline;
+    	} */
+.container textarea {
+	width: 298px;
+	padding: 6px 12px;
+	border: 1px solid #DDDDDD;
+	border-radius: 5px;
+	vertical-align: text-top;
+	margin-right: 60px;
+}
+
+.container #submit {
+	margin: 30px 250px;
+	background: #FF5400;
+	color: white;
+	border: 0;
+}
+
+form .upload {
+	position: relative;
+}
+
+form .upload input {
+	position: absolute;
+	top: 0;
+}
+
+form .upload input[type="file"] {
+	opacity: 0;
+	filter: alpha(opacity : 0);
+	z-index: 999;
+}
+
+form .upload input[type="button"] {
+	background: #FF5400;
+	color: white;
+	width: 15%;
+}
+
+form .upload input[type="text"] {
+	margin-left: 16%;
+	width: 30%;
+	border: 0;
+	background-color: inherit;
+}
+
+#addProductBtn{
+	background-color: #ff5400;
+	color: white;
+	width: 150px;
+}
+/*----------------------上传图片的css---------------------*/
+.mark_OK {
+	position: absolute;
+	right: 144px;
+	top: 11px;
+	color: green;
+}
+
+.mark_ERROR{
+	position: absolute;
+	right: 144px;
+	top: 11px;
+	color: red;
+}
+
+#file{
+	position: absolute;
+	top: 6px;
+	margin-left: 11px;
+	background-image: url(../../images/loading.gif);
+	width: 16px;
+	height: 16px;
+}
+
+#uploading{position: absolute;top: 27px;right: 278px;background-image:url(../../images/loading.gif);width: 16px;height: 16px;}
+
+#image_snap_shot{
+	float: right;
+	width: 200px;
+	height: 200px;
+	border: 1px solid #ccc;
+}
+
+#image_snap_shot img{
+	width: 200px;
+	height: 200px;
+}

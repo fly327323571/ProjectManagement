@@ -1,0 +1,71 @@
+
+.navBar li:nth-child(2){
+	background:#FF5400;
+}
+.navBar li:nth-child(2) .glyphicon{
+	color:#FF5400;
+}
+
+.content {
+	width: 85%;
+	margin: 10px auto;
+	background-color: #F5F5F5;
+	padding: 20px;
+}
+
+.payment>ul>li {
+	list-style: none;
+	clear: both;
+	margin: 40px 0;
+	/* border-top:4px dotted #4CADA6; */
+}
+
+.payment>ul>li span { /* font-size:24px; */
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.payment img {
+	width: 160px;
+	height: 35px;
+}
+
+.bank li {
+	list-style: none;
+	float: left;
+	margin: 10px;
+}
+
+.bank { /* display:none; */
+	margin: 20px 50px;
+}
+
+.account {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.account span {
+	display: block;
+	text-align: left;
+	font-weight: bold;
+}
+
+.account>div {
+	margin: 10px 0;
+}
+
+.account input[type='button'] {
+	margin-top: 30px;
+	background: #FF5400;
+	color: white;
+	border: 0;
+}
+
+#__pay{
+	margin-top: 30px;  
+	background: #FF5400;  
+	color: white;  
+	border: 0;
+    width: 100px;
+}

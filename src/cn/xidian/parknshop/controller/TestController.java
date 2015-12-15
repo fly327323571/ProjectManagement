@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import cn.xidian.parknshop.beans.Complaint;
 import cn.xidian.parknshop.beans.TestBean;
 import cn.xidian.parknshop.service.BaseService;
 import cn.xidian.parknshop.service.TestService;

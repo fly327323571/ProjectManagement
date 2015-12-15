@@ -1,0 +1,73 @@
+select{
+height:30px;
+width:400px;
+font-size:16px;
+border:1px solid #CCCCCC;
+border-radius:4px 4px 4px 4px;
+box-shadow:0 1px 1px rgba(0, 0, 0, 0.075) inset;
+background-color:white;
+}
+.btn_color{
+background-color:#ff5400;
+color:#ffffff;
+}
+.title_color{
+color:#ff5400;
+text-shadow:1px 1px #ff5400;
+}
+.main_color{
+color:#ff5400;
+font-size: 18px;
+}
+
+#file {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	font-family: Arial;
+	font-size: 118px;
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
+	opacity: 0;
+	height: 100%;
+}
+
+.mark_OK {
+	position: absolute;
+	right: 54px;
+	top: 11px;
+	color: green;
+}
+
+.mark_ERROR {
+	position: absolute;
+	right: 54px;
+	top: 11px;
+	color: red;
+}
+#uploading {
+	position: absolute;
+	top: 8px;
+	right: -64px;
+	background-image: url(../../images/loading.gif);
+	width: 16px;
+	height: 16px;
+}
+
+.order-id{
+	color: #ff5400;
+	font-size: 17px;
+	margin-top: 5px;
+	font-weight: bold;
+}
+
+.picture{
+	position: absolute;
+	top: 50px;
+	right: 175px;
+}
+.picture img{
+	width: 200px;
+	height: 200px;
+}

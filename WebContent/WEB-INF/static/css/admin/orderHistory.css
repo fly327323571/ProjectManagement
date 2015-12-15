@@ -1,0 +1,59 @@
+.nav_active {
+	background: #ff5400;
+}
+
+.nav_active a {
+	color: white !important;
+}
+
+.nav_option {
+	cursor: pointer;
+}
+
+.btn_color {
+	background-color: #ff5400;
+	color: #ffffff;
+}
+
+.title_color {
+	color: #ff5400;
+	padding-top
+}
+
+.main_color {
+	color: #ff5400;
+}
+
+.sec_color {
+	color: #eea60c;
+}
+
+.panel_btn {
+	color: #ffffff;
+	text-shadow: 1px 1px #eea60c;
+}
+
+.star {
+	color: #eea60c;
+	font-size: 24px;
+}
+
+.t_totalPrice {
+	line-height: 40px !important;
+}
+
+.t_Details {
+	line-height: 40px !important;
+}
+
+.t_orderNumber {
+	line-height: 40px !important;
+}
+
+.t_addTime {
+	line-height: 40px !important;
+}
+
+.t_communicate {
+	line-height: 40px !important;
+}

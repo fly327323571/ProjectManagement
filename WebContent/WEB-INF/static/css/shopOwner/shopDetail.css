@@ -1,0 +1,28 @@
+.main{
+			width:70%;
+			margin:10px auto;
+			background-color: #F5F5F5;
+			padding:100px 0 100px 100px;;
+		}
+		.main label{
+			color:#FF5400;
+		}
+		
+		
+		.main .form-group button{
+			
+			background-color:#FF5400;
+			color:#ffffff;
+		}
+		.main img{
+			width:80px;
+			height:80px;
+		}
+		.option{
+			
+			min-height:60px;
+			line-height: 3.5;
+		}
+		.star{
+			color:#FF5400;
+		}

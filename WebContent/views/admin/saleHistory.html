@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <base href="../../../">
+    
+    <title>ParknShop--Sale History</title>
+    
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+	
+	<script src="static/js/common/jquery-1.11.1.js"></script>
+    <script src="static/js/common/bootstrap.min.js"></script>
+	<link href="static/css/common/bootstrap.min.css" rel="stylesheet">
+	<link href="static/css/user/headTail.css" rel="stylesheet">
+	<link href="static/css/user/manage.css" rel="stylesheet">
+	<link href="static/css/admin/saleHistory.css" rel="stylesheet">
+	
+</head>
+
+	<body>
+		
+		
+		
+			
+			<div class="container saleHistory-container">
+				<div class="col-md-12 column">
+					
+					</br>
+					<!--navigation-->
+					<nav class="navbar navbar-default navbar-style" role="navigation">
+						
+						<div class="saleHistory-navbar-left">
+							Orders:
+						</div>
+
+						<div id="nav-select" class="saleHistory-navbar-right">
+							<ul>
+								<li class="nav-active">
+									<a href="#">All</a>
+								</li>
+								<li>
+									<a href="#">last three days</a>
+								</li>
+								<li>
+									<a href="#">last three months</a>
+								</li>
+							</ul>
+						</div>
+						<form class="navbar-form navbar-right" role="search">
+								<div class="form-group">
+									<input class="form-control" placeholder="name or order number" type="text">
+								</div>
+								<button class="btn btn-style" type="submit">Search</button>
+							</form>
+					</nav>
+					<table class="table table-hover table-style">
+						<thead>
+							<tr>
+								<th>
+									Goods
+								</th>
+								<th>
+									Price
+								</th>
+								<th>
+									Quantity
+								</th>
+								<th>
+									Status
+								</th>
+								<th>
+									Total
+								</th>
+								<th>
+									Operation
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr id="list_1_1" class="danger">
+								<td></td>
+								<td></td>
+								<td><span class="glyphicon glyphicon-comment sn title_color"></span>&nbsp;vendor:<a href="#" class="detail-color"></a>
+								</td>
+								<td></td>
+								<td><em>OrderNum:</em></td>
+								<td></td>
+
+							</tr>
+							<tr id="list_1_2">
+								<td>
+									<img height="80px" width="80px;" /><span><a class="btn"></a></span>
+									<br/>
+								</td>
+								<td>
+									$
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+									$
+								</td>
+								<td>
+									<a class="detail-color" href="viewOrderDetails36.html" target="_blanket">Details</a>
+								</td>
+							</tr>
+							<tr id="list_2_1" class="danger">
+								<td></td>
+								<td></td>
+								<td><span class="glyphicon glyphicon-comment sn title_color"></span>&nbsp;vendor:<a href="#" class="detail-color"></a>
+								</td>
+								<td></td>
+								<td><em>OrderNum:</em></td>
+								<td></td>
+
+							</tr>
+							<tr id="list_2_2">
+								<td>
+									<img height="80px" width="80px;" /><span><a class="btn"></a></span>
+									<br/>
+								</td>
+								<td>
+									$
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+									$
+								</td>
+								<td>
+									<a class="detail-color" href="viewOrderDetails36.html" target="_blanket">Details</a>
+								</td>
+							</tr>
+							<tr id="list_3_1" class="danger">
+								<td></td>
+								<td></td>
+								<td><span class="glyphicon glyphicon-comment sn title_color"></span>&nbsp;vendor:<a href="#" class="detail-color"></a>
+								</td>
+								<td></td>
+								<td><em>OrderNum:</em></td>
+								<td></td>
+
+							</tr>
+							<tr id="list_3_2">
+								<td>
+									<img height="80px" width="80px;" /><span><a class="btn"></a></span>
+									<br/>
+								</td>
+								<td>
+									$
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+									$
+								</td>
+								<td>
+									<a class="detail-color" href="viewOrderDetails36.html" target="_blanket">Details</a>
+								</td>
+							</tr>
+							<tr id="list_4_1" class="danger">
+								<td></td>
+								<td></td>
+								<td><span class="glyphicon glyphicon-comment sn title_color"></span>&nbsp;vendor:<a href="#" class="detail-color"></a>
+								</td>
+								<td></td>
+								<td><em>OrderNum:</em></td>
+								<td></td>
+
+							</tr>
+							<tr id="list_4_2">
+								<td>
+									<img height="80px" width="80px;" /><span><a class="btn"></a></span>
+									<br/>
+								</td>
+								<td>
+									$
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+									$
+								</td>
+								<td>
+									<a class="detail-color" href="viewOrderDetails36.html" target="_blanket">Details</a>
+								</td>
+							</tr>
+							<tr id="list_5_1" class="danger">
+								<td></td>
+								<td></td>
+								<td><span class="glyphicon glyphicon-comment sn title_color"></span>&nbsp;vendor:<a href="#" class="detail-color"></a>
+								</td>
+								<td></td>
+								<td><em>OrderNum:</em></td>
+								<td></td>
+
+							</tr>
+							<tr id="list_5_2">
+								<td>
+									<img height="80px" width="80px;" /><span><a class="btn"></a></span>
+									<br/>
+								</td>
+								<td>
+									$
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+									$
+								</td>
+								<td>
+									<a class="detail-color" href="viewOrderDetails36.html" target="_blanket">Details</a>
+								</td>
+							</tr>
+							<tr id="list_6_1" class="danger">
+								<td></td>
+								<td></td>
+								<td><span class="glyphicon glyphicon-comment sn title_color"></span>&nbsp;vendor:<a href="#" class="detail-color"></a>
+								</td>
+								<td></td>
+								<td><em>OrderNum:</em></td>
+								<td></td>
+
+							</tr>
+							<tr id="list_6_2">
+								<td>
+									<img height="80px" width="80px;" /><span><a class="btn"></a></span>
+									<br/>
+								</td>
+								<td>
+									$
+								</td>
+								<td>
+								</td>
+								<td>
+								</td>
+								<td>
+									$
+								</td>
+								<td>
+									<a class="detail-color" href="viewOrderDetails36.html" target="_blanket">Details</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<center>
+						<ul class="pagination pagination-lg">
+							<li>
+								<a href="#">Prev</a>
+							</li>
+							<li class="pagination-active">
+								<a href="#">1</a>
+							</li>
+							<li>
+								<a href="#">2</a>
+							</li>
+							<li>
+								<a href="#">3</a>
+							</li>
+							<li>
+								<a href="#">4</a>
+							</li>
+							<li>
+								<a href="#">5</a>
+							</li>
+							<li>
+								<a href="#">Next</a>
+							</li>
+						</ul>
+					</center>
+				</div>
+			</div>
+		
+
+		<footer>
+			<div class="concept">
+				<ul>
+					<li><span>easy</span>
+					</li>
+					<li><span>cheap</span>
+					</li>
+					<li><span>safe</span>
+					</li>
+				</ul>
+			</div>
+			<div class="tail">
+				<div>
+					<ul>
+						<li><span>about us</span>
+						</li>
+						<li><a href="#">our homepage</a>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<ul>
+						<li><span>contact us</span>
+						</li>
+						<li><a href="Mailto://764586144@qq.com">Email</a>
+						</li>
+						<li><a href="tencent://message/?uin=764586144&Site=http://qbar.qq.com/application/&Menu=yes">Tencent QQ</a>
+						</li>
+						<li><a href="http://weibo.com/u/3750216917">Sina weibo</a>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<ul>
+						<li><span>our server</span>
+						</li>
+						<li><a href="#">on-line sale</a>
+						</li>
+						<li><a href="#">physical store</a>
+						</li>
+						<li><a href="#">after-sales serves</a>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<ul>
+						<li><span>how to use it</span>
+						</li>
+						<li><a href="#">hlep page</a>
+						</li>
+					</ul>
+				</div>
+				<div>
+					<ul>
+						<li><span>link</span>
+						</li>
+						<li><a href="http://glyphicons.com/">glyphicon</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+	</body>
+
+</html>

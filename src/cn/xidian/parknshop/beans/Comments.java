@@ -5,28 +5,31 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-@Table(name="Comments")
+@Table(name="tb_comment")
 public class Comments {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="comments_id")
+	@Column(name="Id")
 	private int commentsId;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="user_id")
+	@JoinColumn(name="username",referencedColumnName="username",insertable=true,updatable=false)
 	private User user;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="shop_id")
+	@JoinColumn(name="shop_no",referencedColumnName="shop_no",insertable=true,updatable=false)
 	private Shop shop;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="commodity_id")
+	@JoinColumn(name="commodity_no",referencedColumnName="commodity_no",insertable=true,updatable=false)
 	private Commodity commodity;
 	
 	@Column(name="comment",length=200,nullable=false)
 	private String comments;
+	
+	@Column(name="commodity_rank")
+	private double rank;
 	
 	@Temporal(TemporalType.DATE) 
 	private Date commentsTime;
@@ -77,6 +80,14 @@ public class Comments {
 
 	public void setCommentsTime(Date commentsTime) {
 		this.commentsTime = commentsTime;
+	}
+
+	public double getRank() {
+		return rank;
+	}
+
+	public void setRank(double rank) {
+		this.rank = rank;
 	}
 	
 }

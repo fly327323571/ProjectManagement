@@ -8,25 +8,19 @@ public class Admin {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="admin_id")
-	private int adminId;
+	@Column(name="Id")
+	private long Id;
 	
-	@Column(name="admin_account_name",length=20,nullable=false,unique=true)
+	@Column(name="admin_name",length=20,nullable=false,unique=true)
 	private String adminAccountName;
 	
-	@Column(name="admin_account_password",length=20,nullable=false)
+	@Column(name="admin_psw",length=20,nullable=false)
 	private String adminPassword;
 	
-	@Column(name="admin_tel",length=20,nullable=false,unique=true)
+	@Column(name="admin_phone",length=20,nullable=false,unique=true)
 	private String adminTel;
 
-	public int getAdminId() {
-		return adminId;
-	}
 
-	public void setAdminId(int adminId) {
-		this.adminId = adminId;
-	}
 
 	public String getAdminAccountName() {
 		return adminAccountName;
@@ -50,5 +44,13 @@ public class Admin {
 
 	public void setAdminPassword(String adminPassword) {
 		this.adminPassword = adminPassword;
+	}
+
+	public long getId() {
+		return Id;
+	}
+
+	public void setId(long id) {
+		Id = id;
 	}
 }

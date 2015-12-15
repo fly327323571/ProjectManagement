@@ -1,0 +1,82 @@
+header {
+	height: 80px;
+	background-color: #FF5400;
+	position: relative;
+}
+
+header .logo {
+	color: white;
+	text-shadow: 0 0 3px #FF4400, 3px 3px 3px #EEA60C;
+	font-size: 40px;
+	font-weight: bolder;
+	font-style: italic;
+	border-right: 2px solid white;
+	padding: 0 40px;
+	line-height: 80px;
+}
+
+header .identity {
+	font-size: 20px;
+	color: white;
+	padding: 0px 40px;
+}
+
+.content {
+	margin-top: 40px;
+}
+
+.shop-profile {
+	margin: -20px 20px;
+	display: inline-block;
+	min-width: 23%;
+	float: left;
+}
+
+.shop-profile li,.other-shop li {
+	list-style: none;
+	margin: 20px 30px;
+}
+
+.shop-profile  span {
+	color: #FF5400;
+}
+
+.other-shop {
+	width: 70%;
+	margin-left: 24%;
+	margin-right: 80px;
+	padding: 20px 50px;
+}
+
+.link-btn {
+	background-color: #FF5400;
+	color: white;
+	margin: 50px 300px;
+	width: 100px;
+}
+
+table .star {
+	color: #FF5400;
+}
+
+table img {
+	width: 80px;
+	height: 80px;
+}
+
+nav {
+	text-align: center;
+	overflow: hidden;
+}
+
+.nav_option:hover {
+	background-color: #ff9933;
+}
+
+.table tbody tr td{
+	vertical-align: middle;
+}
+
+.table img{
+	margin: 3px;
+}

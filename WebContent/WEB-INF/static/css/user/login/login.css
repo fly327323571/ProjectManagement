@@ -1,0 +1,63 @@
+@CHARSET "UTF-8";
+header{
+    		height: 80px;
+    		background-color: #FF5400;
+    		position:relative;
+    		
+    	}
+    	header .logo{
+    		color:white;
+			text-shadow:0 0 3px #FF4400,3px 3px 3px #EEA60C;
+			font-size: 40px;
+			font-weight: bolder;
+			font-style: italic;
+			border-right:2px solid white;
+			padding:0 40px;
+			line-height:80px;
+		}
+		header .identity{
+			font-size: 20px;
+			color:white;
+			padding:0px 40px;
+		}
+form {
+	display: inline-block;
+	float: left;
+	min-width: 300px;
+	height: 330px;
+	border: 2px solid #DEDEDE;
+	margin: 80px 100px;
+	padding: 20px;
+}
+
+form .my-btn {
+	width: 270px;
+	background-color: #FF5400;
+	color: #ffffff;
+	margin: 5px auto;
+}
+
+.form-group>div {
+	margin-top: 10px;
+	margin-left: 27px;
+}
+
+.form-group>label {
+	display: block;
+	margin-left: 27px;
+}
+
+form a {
+	margin-left: 180px;
+}
+
+form a:last-child {
+	margin-left: 230px;
+}
+
+#show-info span {
+	border: 1px solid red;
+	margin: 5px 30px 0 30px;
+	padding: 5px 10px;
+	color: red;
+}

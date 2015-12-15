@@ -1,0 +1,83 @@
+a:hover {
+	text-decoration: none;
+}
+
+.table .tr {
+	border: 1px solid #4CADA6;
+}
+
+.link-btn {
+	background-color: #4CADA6;
+	color: white;
+}
+
+.container {
+	margin-top: 20px;
+}
+
+nav {
+	text-align: center;
+}
+
+.nav_option:hover {
+	background-color: #E7E7E7;
+}
+
+.page{
+	overflow:hidden;
+}
+.btn_color {
+	background-color: #ff5400;
+	color: #ffffff;
+}
+
+table img {
+	width: 80px;
+	height: 80px;
+}
+
+table .btn {
+	color: white;
+	background-color: #FF5400;
+}
+
+table .star {
+	color: #FF5400;
+}
+
+#category_choice li{
+	cursor: pointer;
+}
+
+#storeList .t_Store span{
+	margin-left: 10px;
+	font-size: 16px;
+}
+
+#storeList .t_Category{
+	line-height: 80px;
+	color: #808080;
+}
+
+#storeList .t_Status{
+	line-height:80px;
+	color:#808080;
+}
+
+#storeList .t_Register_Time{
+	line-height: 80px;
+	color: #808080;
+}
+
+#storeList .t_operation{
+	line-height: 80px;
+}
+
+#category_span{
+	color: #777;
+	font-size: 18px;
+}
+
+#storeList .t_Credit{
+	line-height: 80px;
+}

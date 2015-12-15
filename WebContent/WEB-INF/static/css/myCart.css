@@ -1,0 +1,101 @@
+@CHARSET "UTF-8";
+
+header {
+	height: 80px;
+	background-color: #FF5400;
+	position: relative;
+}
+
+header .logo {
+	color: white;
+	text-shadow: 0 0 3px #FF4400, 3px 3px 3px #EEA60C;
+	font-size: 40px;
+	font-weight: bolder;
+	font-style: italic;
+	padding: 0 40px;
+	line-height: 80px;
+}
+
+header .identity {
+	font-size: 20px;
+	color: white;
+	padding: 0px 40px;
+}
+
+header .search-box {
+	display: inline-block;
+	/* line-height:80px; */
+	margin-left: 280px;
+	vertical-align: middle;
+}
+
+header .search-box input[type='search'] {
+	width: 400px;
+	height: 35px;
+	border: 2px solid white;
+	float: left;
+	/* font-size: 16px; */
+}
+
+header .search-box button {
+	width: 80px;
+	height: 35px;
+	background-color: #FF5400;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+	line-height: 33px;
+	border: 2px solid white;
+	/* border-left: */
+	margin: 0;
+}
+
+.conform-main {
+	width: 80%;
+	margin: 60px auto;
+}
+
+.product_img {
+	width: 80px;
+	height: 80px;
+}
+
+.btn_color {
+	background-color: #ff5400;
+	color: #ffffff;
+}
+
+.title_color {
+	color: #ff5400;
+	text-shadow: 1px 1px #ff5400;
+}
+
+.main_color {
+	color: #ff5400;
+}
+
+.sec_color {
+	color: #eea60c;
+}
+
+.nav_option:hover {
+	background-color: #ff9933;
+}
+
+.checkOut {
+	background-color: #F5F5F5;
+	padding: 30px 50px;
+}
+
+.checkOut #totalPrice {
+	color: #FF5400;
+	font-weight: bold;
+}
+
+.checkOut #check {
+	float: right;
+}
+
+#orderList td{
+	vertical-align : middle;
+}

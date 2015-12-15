@@ -1,0 +1,371 @@
+@CHARSET "UTF-8";
+/* 标题logo */
+header {
+	position: relative;
+	width: 95%;
+	margin: 30px auto;
+	padding-bottom: 40px;
+}
+
+header .logo {
+	color: #FF5400;
+	text-shadow: 0 0 3px #FF4400, 3px 3px 3px #EEA60C;
+	font-size: 44px;
+	font-weight: bolder;
+	font-style: italic;
+	display: inline-block;
+	vertical-align: bottom;
+	line-height: 0.8;
+}
+
+header .search-box {
+	display: inline-block;
+	margin-left: 150px;
+	vertical-align: text-top;
+}
+
+header .search-box input[type='search'] {
+	width: 450px;
+	height: 38px;
+	border: 2px solid #FF5400;
+	float: left;
+	font-size: 16px;
+	padding: 3px 6px;
+}
+
+header .search-box button {
+	width: 80px;
+	height: 38px;
+	background-color: #FF5400;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+	line-height: 38px;
+	border: 0;
+	margin: 0;
+}
+
+header .tSearch {
+	margin-left: 480px;
+	margin-top: -25px;
+}
+
+header .tSearch li {
+	list-style: none;
+	float: left;
+	border-right: 1px solid gray;
+	margin: 17px 0;
+	width: 70px;
+	text-align: center;
+}
+
+header .tSearch li:nth-child(5) {
+	border-right: 0;
+}
+
+header .tSearch li:nth-child(odd) a {
+	color: black;
+}
+
+header .tSearch li:nth-child(even) a {
+	color: #FF5400;
+}
+
+/* 轮播图上边的导航条 */
+.content {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.content>.top {
+	width: 100%;
+	height: 44px;
+	margin-top: 20px;
+}
+
+.content>.top ul {
+	height: 90%;
+	clear: both;
+	padding: 0px;
+	margin: 0px;
+}
+
+.content>.top li {
+	list-style: none;
+	display: inline-block;
+	margin: 0px;
+	padding: 0px;
+	width: 10%;
+	height: 100%;
+	font-weight: bold;
+	font-size: 18px;
+	vertical-align: top;
+	line-height: 2.5;
+	text-align: center;
+	cursor: pointer;
+}
+/* .content > .top li:FIRST-CHILD{
+			
+			background-color: #FF5400;
+			width:200px;
+			color:white;
+		} */
+.content>.top .type:hover {
+	color: #FF5400;
+}
+/* 中间轮播广告 */
+.adt {
+	width: 100%;
+}
+
+.adt .pdt-type {
+	/* display: inline-block; */
+	
+	margin-left:1%;
+	float:left;
+	width:16%;
+	vertical-align: top;
+}
+
+.adt .pdt-type li:first-child {
+	background-color: #FF5400;
+	width: 100%;
+	color: white;
+	font-size: 18px;
+	height: 60px;
+	line-height: 60px;
+}
+
+.adt .pdt-type li {
+	list-style-type: none;
+	width: 100%;
+	min-height: 43px;
+	min-height: 40px;
+	/* background-color:  rgba(133,133,133,0.7); */
+	background-color: #4B4B4B;
+	text-align: center;
+	font-size: 12px;
+	line-height: 40px;
+	margin: 1px 0em;
+	/* border-bottom: 1px solid white; */
+	transition: width linear;
+}
+
+.adt .pdt-type li a {
+	color: white;
+	font-size: 16px;
+}
+
+.adt .pdt-type li:not(:first-child):hover {
+	width: 110%;
+}
+
+.adt .pdt-adt {
+	/* display: inline-block; */
+	width: 80%;
+	margin-left:18%;
+}
+
+.adt .pdt-adt img {
+	display: inline-block;
+	width: 100%;
+	height: 440px;
+}
+
+/* 下边的商品店铺广告 */
+.list {
+	width: 100%;
+	clear:both;
+	/* display:-webkit-box;
+			display:-o-box;
+			display:-moz-box;
+			display:box; */
+}
+
+.list .left { /* -webkit-box-flex:1;
+			-moz-box-flex:1;
+			-o-box-flex:1;
+			box-flex:1; */
+	/* float:left; */
+	/* display: inline-block; */
+	float: left;
+	width: 70%;
+}
+
+
+
+.left .pdt-list {
+	-webkit-column-count: 3;
+	-moz-column-count: 3;
+	-o-column-count: 3;
+	column-count: 3;
+	-webkit-column-width: 30%;
+	-moz-column-width: 30%;
+	-o-column-width: 30%;
+	column-width: 30%;
+	-webkit-column-gap: 3%;
+	-moz-column-gap: 3%;
+	-o-column-gap: 3%;
+	padding: 0 40px;
+}
+
+.left .pdt-list>div {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background: #FF5400;
+	display: inline-block;
+	width: 98%;
+	margin: 20px auto;
+	transition: width linear;
+	-webkit-transition: width linear;
+}
+
+.left .pdt-list>div:hover {
+	width:102%;
+	/* transform: scale(1.1);
+	-ms-transform: scale(1.1); IE 9
+	-webkit-transform: scale(1.1); Safari 和 Chrome
+	-o-transform: scale(1.1); Opera
+	-moz-transform: scale(1.1); */
+}
+
+.left .pdt-list>div img {
+	width: 100%;
+}
+
+.left .pdt-list>div div {
+	padding: 10px 20px;
+}
+
+.left .pdt-list>div .pdt-price {
+	margin-left: 50px;
+	font-size: 24px;
+	font-weight: bold;
+	color: white;
+}
+
+.left>div:FIRST-CHILD {
+	margin: 20px auto;
+	text-align: center;
+}
+
+.pdt-logo {
+	text-align: center;
+	margin: 0px 10px;
+	font-size: 34px;
+	font-weight: bold;
+	text-shadow: 0 0 6px rgba(133, 133, 133, 1);
+	border: 1px solid rgba(133, 133, 133, 1);
+}
+
+.list .right {
+	width: 28%;
+	margin-left: 72%;
+	overflow:hidden;
+	
+}
+
+.right>img {
+	border-radius: 10px;
+}
+.right .shop-list{
+	overflow:hidden;
+	 background-color: #f5f5f5;
+    width: 75%;
+    padding-left: 20px;
+    border: 1px solid #ccc;
+	/* position:relative; */
+}
+.right ul{
+	/*  background-color: #f5f5f5;
+    width: 75%;
+    padding-left: 20px;
+    border: 1px solid #ccc; */
+   /*  postion:absolute; */
+}
+
+.right .shop-logo {
+	border-radius: 10px;
+background: url(../images/girl.png) no-repeat;
+font-size: 54Px;
+font-weight: bold;
+padding-top: 350px;
+color: white;
+width: 100%;
+height: 490px;
+overflow:hidden;
+}
+
+.right li {
+	list-style: none;
+	width: 100%;
+	text-align: center;
+	height: 150px;
+	/* display:none; */
+	/* visibility:hidden; */
+	margin: 5px;
+	
+	
+}
+
+.right li:hover {
+	transform: scale(1.1);
+	-ms-transform: scale(1.1); /* IE 9 */
+	-webkit-transform: scale(1.1); /* Safari 和 Chrome */
+	-o-transform: scale(1.1); /* Opera */
+	-moz-transform: scale(1.1);
+}
+
+.right li img {
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+	border: 1px solid #F5F5F5;
+}
+.right .seeMore{
+	display:none;
+	color:#FF5400;
+	font-size:24px;
+	text-align:center;
+}
+/* 右边的导航条 */
+.easy-nav {
+	width: 50px;
+	height: 700px;
+	position: fixed;
+	right: 0px;
+	background-color: rgba(0, 0, 0, 0.96);
+	display: none;
+	z-index: 100;
+}
+
+.easy-nav ul {
+	margin: 150px auto;
+}
+
+.easy-nav li {
+	list-style: none;
+	margin: 50px 0;
+	border-bottom: 2px solid white;
+	text-align: center;
+	color: white;
+}
+
+.easy-nav li:nth-child(5) {
+	border-bottom: 0;
+}
+
+.easy-nav li span {
+	color: white;
+	font-size: 24px;
+	display: block;
+}
+
+.easy-nav li span:hover {
+	color: #FF5400;
+}
+
+.easy-nav li a {
+	color: white;
+}

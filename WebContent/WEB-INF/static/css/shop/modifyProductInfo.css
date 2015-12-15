@@ -1,0 +1,96 @@
+.container{
+			min-width:70%;
+			background-color: #F5F5F5;
+			margin-top: 20px;
+		}
+		
+
+		.container .pic{
+			float:left;
+			height:350px;
+			width:20%;
+			background-color:#F2F2F5aa;
+			margin-top:5%;
+			margin-left:10%;
+		}
+		.container form{
+			margin-top:5%;
+			margin-left:50px;
+			height:350px;
+			width:50%;
+			float:left;
+		}
+		.container form label{
+			min-width:200px;
+			color:#FF5400;
+		}
+		.container textarea{
+    		width:250px;
+    		padding:6px 12px;
+    		border:1px solid #DDDDDD;
+    		border-radius:5px;
+    			vertical-align: text-top;
+    	}
+    	 .upload{
+    		position:relative;
+    	}
+    	 .upload input{
+    		position:absolute;
+    		top:0;
+    	}
+    	 .upload input[type="file"]{
+    		opacity:0;
+    		filter:alpha(opacity:0);
+    		z-index:999;
+    	}
+    	 .upload input[type="button"]{
+    		background: #FF5400;
+    		color: white;
+    		width:50%;
+    	}
+    	 .upload input[type="text"]{
+    		margin-left:51%;
+    		/* width:30%; */
+    		border:0;
+    		background-color:inherit;
+    	}
+    	
+    	.form-group:last-child{
+			margin-left:15%;
+		}
+		#save ,#close{
+			display:inline-block;
+			width: 30%;
+			background-color: #FF5400;
+			color: #ffffff;
+			margin-top: 30px;
+			margin-left: 15%;
+		}
+    	
+    	/*----------------------上传文件的css-------------------------*/
+.mark_OK {
+	position: absolute;
+	right: 144px;
+	top: 11px;
+	color: green;
+}
+
+.mark_ERROR{
+	position: absolute;
+	right: 144px;
+	top: 11px;
+	color: red;
+}
+
+#uploading {
+position: absolute;
+top: 8px;
+right: -48px;
+background-image: url(../../images/loading.gif);
+width: 16px;
+height: 16px;
+}
+
+#logo{
+	position: absolute; right: 0px; top: 0px; font-family: Arial; font-size: 118px; margin: 0px; padding: 0px; cursor: pointer; opacity: 0; height: 100%;
+}
