@@ -306,7 +306,7 @@ font-weight: bold;">Top 10 shops</div>
 
 
 	</section> </section>
-	<%@include file="common/tail.html" %>
+	<%@include file="WEB-INF/views/common/tail.html" %>
 	<script src="static/js/homepage.js"></script>
 	<script src="static/js/homepageConfig.js"></script>
 <script type="text/template" id="productAdTmpl">

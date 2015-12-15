@@ -1,6 +1,7 @@
 package cn.xidian.parknshop.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,11 +19,21 @@ public class ShopController {
 	@Resource(name="baseService")
 	private BaseService<User> userService;
 	
-	@RequestMapping("/seller/applyShop")
+	@RequestMapping("/shop/index")
+	public String applyOrShowShops(HttpServletRequest request){
+		User user=(User) request.getSession().getAttribute("user");
+		if(user==null){
+			return "/user/login";
+		}
+		else if(user.isSeller()){
+			return "shop/showMyShops";
+		}
+		else{
+			return "shop/applyShop";
+		}
+	}
+	
 	public String applyShop(Shop shop){
-		User shopOwner=userService.get(1, User.class);
-		shop.setShopOwner(shopOwner);
-		shopService.create(shop);
 		return "waitResolve";
 	}
 

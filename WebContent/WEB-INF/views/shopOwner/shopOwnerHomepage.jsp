@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</ul>
 		</div>
 		<div class="container">
-			<iframe id="iframe" src="store/listMyStores/index" class="container"></iframe>
+			<iframe id="iframe" src="shop/index" class="container"></iframe>
 		</div>
 	</section>
 	

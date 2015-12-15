@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<a href="admin/index.do" style="margin-left: 11px;">I'm admin</a>
 	</form>
 	<span class="login-info" style=""></span>
-	<%@include file="../common/tail.html" %>
+	<%@include file="WEB-INF/views/common/tail.html" %>
  </body>
  <script>
  	var redirectUrl = "${historyUrl }";
