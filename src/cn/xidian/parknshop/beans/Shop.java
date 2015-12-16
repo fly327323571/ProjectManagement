@@ -23,6 +23,9 @@ public class Shop {
 	@Column(name = "shop_no", unique = true, nullable = false)
 	private int shopNo;
 	
+	@Column(name="shop_category",nullable=false)
+	private int shopCategories;
+	
 	@Column(name = "shop_name",nullable=false,length=100)
 	private String shopName;
 	
@@ -126,5 +129,11 @@ public class Shop {
 	}
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
+	}
+	public int getShopCategories() {
+		return shopCategories;
+	}
+	public void setShopCategories(int shopCategories) {
+		this.shopCategories = shopCategories;
 	}
 }

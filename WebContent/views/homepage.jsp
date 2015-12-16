@@ -31,6 +31,7 @@ Boolean flag=(session.getAttribute("user")==null);
 </head>
 
 <body class="clearfix">
+<%@include file="common/toolbar.jsp" %>	
 	<section class="easy-nav">
 	<ul>
 		<li><a href="#" class="sn-help"><span

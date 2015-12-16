@@ -1,4 +1,5 @@
 <%@page import="cn.xidian.parknshop.beans.User"%>
+<%@page import="cn.xidian.parknshop.beans.Admin"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <script type="text/javascript" src="static/js/common/toolbar.js"></script>
 <%
@@ -23,10 +24,11 @@ if(userObj == null){
     	</div>
     </section>
 <% }else{
+	if(userObj instanceof User){
 	User user = (User)userObj;
-	String userType = user.getEmail();
+	boolean userType = user.isSeller();
 	String userName = user.getUserName();
-	if(userType.equals(user.getEmail())){
+	if(userType){
 %>
 	<!-- Customer -->
     <section class="site-nav">
@@ -46,7 +48,7 @@ if(userObj == null){
     	</div>
     </section>
     
-<%  }if(userType == user.getEmail()){//Shop Owner%>
+<%  }else{//Shop Owner%>
 
 	<!-- Shop Owner -->
     <section class="site-nav">
@@ -64,12 +66,14 @@ if(userObj == null){
     		<a href="siteMap.html" class="sn-help"><span class="glyphicon glyphicon-globe sn"></span>  site map</a>
     	</div>
     </section>
-<% } if(userType ==user.getEmail()){//admin %>
+<% }} else{//admin %>
 	<!-- Admin -->
+	<%	Admin admin = (Admin)userObj;
+	String adminName=admin.getAdminAccountName(); %>
     <section class="site-nav">
     	<div class="log-info">
     		<span>welcome to<a id="quickTohomepage">PARKnSHOP.com!</a></span>
-			<a href="admin/adminHomepage.do" class="sn-user"><span class="glyphicon glyphicon-user sn"></span><%=userName %></a>
+			<a href="admin/adminHomepage.do" class="sn-user"><span class="glyphicon glyphicon-user sn"></span><%=adminName %></a>
 	    	<a href="javascript:void(0)" class="sn-log">my profile</a>
 	    	<a id="logout" class="sn-log">log out</a>
     	</div>

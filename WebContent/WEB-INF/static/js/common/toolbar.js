@@ -3,10 +3,10 @@ $(function(){
 	
 	var config = {
 			URL : {
-				LOGIN : 'user/login.html',
-				LOGOUT : 'user/logout.html',
+				LOGIN : 'user/login',
+				LOGOUT : 'user/logout',
 				CUSTOMER_REGISTER : 'user/register/customerReg.html',
-				SHOP_OWNER_REGISTER : 'user/register/shopOwnerReg',
+				SHOP_OWNER_REGISTER : 'views/shopOwner/shopOwnerHomepage.jsp',
 				MY_STORES : 'store/index.do',
 				MY_CART : 'cart/myCart.do',
 				MY_HOMEPAGE :  '',

@@ -1,8 +1,8 @@
 $(function(){
 	var config = {
 		URL : {
-			MYSTORES : 'store/listMyStores/index.do',
-			REG_STORE : 'store/openStore/index.do'
+			MYSTORES : 'views/shopOwner/shopList.jsp',
+			REG_STORE : 'shop/register'
 		}
 	};
 	new ShopOwnerHomepage(config);

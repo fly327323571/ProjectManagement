@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="form-group">
 			  <label class="col-sm-2 control-label">Shop Name</label>					
 			<div class="col-sm-6">
-				<input id="shopName" type="text" class="form-control" autofocus="autofocus" required="required" validateType="shopName"/>
+				<input id="shopName" name="shopName" type="text" class="form-control" autofocus="autofocus" required="required" validateType="shopName"/>
 			</div>
 		</div>
 		<div class="form-group">
@@ -53,6 +53,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</select>
 			</div>
 		</div>
+		
+		<div class="form-group">
+			  <label class="col-sm-2 control-label">sourceType</label>					
+			<div class="col-sm-6">
+				<select id="sourceType" name="sourceType" class="form-control" required="required" validateType="userValidate">
+					<option value="-1" style="display:none;">select your shop's sourceType</option>
+					<%int j=0; %>
+					<c:forEach var="sourceType" items="${sourceTypes }">
+						<option value="<%=j++%>">${sourceType }</option>
+					</c:forEach>
+				</select>
+			</div>
+		</div>
+		<!--
 		<div class="form-group">
 			  <label class="col-sm-2 control-label"> &nbsp;&nbsp;&nbsp;Province</label>	
 			  <div class="col-sm-6">
@@ -69,16 +83,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</select>
 			  </div>
 		</div>
+		  -->
 		<div class="form-group">
 			  <label class="col-sm-2 control-label"> &nbsp;&nbsp;&nbsp;Address</label>	
 			  <div class="col-sm-6">
-				<input id="address" type="text" class="form-control" autofocus="autofocus" required="required"/>
+				<input id="address" name="address" type="text" class="form-control" autofocus="autofocus" required="required"/>
 			  </div>
 		</div>
+		
 		<div class="form-group">
-			  <label class="col-sm-2 control-label"> &nbsp;&nbsp;&nbsp;Remarks</label>	
+			  <label class="col-sm-2 control-label"> &nbsp;&nbsp;&nbsp;Description</label>	
 			  <div class="col-sm-6">
-				<textarea id="remarks" class="form-control" rows="3"></textarea>
+				<textarea id="shopDesc"  name="shopDesc" class="form-control" rows="3"></textarea>
 			  </div>
 		</div>
 		<div class="form-group">
