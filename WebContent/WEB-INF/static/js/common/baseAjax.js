@@ -46,10 +46,10 @@ var baseAjax = {
 			type : "post",
 			url : _url,
 			dataType : "json",
-			contentType : "application/json;charset=utf-8",
-			data : JSON.stringify(_data),
+//			contentType: "application/json",
+			data :  jQuery.parseJSON(JSON.stringify(_data)),
 			success : function(obj){
-				var response = obj.model.result;
+				var response = obj.result;
 				if(response.code >= 0){
 					_success(response);
 				}else if(response.code == -5){
@@ -64,7 +64,8 @@ var baseAjax = {
 				}
 			},
 			error : function(o){
-				
+				console.log("ERROR:"+o);
+				console.log(o.Result);
 			}
 		});
 	},

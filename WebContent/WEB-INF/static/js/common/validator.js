@@ -2,8 +2,8 @@ function Validator(config, $root){
 	
 	var _config = config;
 	var _$root = $root ? $root : $("body");
-	var validTip = "<span style='color:green;position: absolute;right: -5px;top: 5px;' class='validate glyphicon glyphicon-ok'></span>";
-	var errTip = "<span style='color:red;position: absolute;right: -5px;top: 5px;' class='validate glyphicon glyphicon-remove'></span>"; 
+	var validTip = '<span style="color:green;position: absolute;right: -5px;top: 5px;" class="validate glyphicon glyphicon-ok"></span>';
+	var errTip = '<span style="color:red;position: absolute;right: -5px;top: 5px;" class="validate glyphicon glyphicon-remove"></span>'; 
 	var loading = '<span style="position: absolute;right: -5px;top: 5px;" class="validate glyphicon"><img src="static/images/loading.gif" alt="" /></span>';
 
 	//常用验证 正则表达式
@@ -71,6 +71,8 @@ function Validator(config, $root){
 				valid = regex.url.test(value); break;
 			case "QQ" : 
 				valid = regex.QQ.test(value); break;
+			case "address":
+				valid = regex.address.test(value);break;
 			case "postcode" :
 				valid = regex.postcode.test(value); break;
 			case "idCard" : 
@@ -160,6 +162,7 @@ $.Validator.regex = {
 		cellphone : /^1\d{10}$/,					//手机号码 13011110000
 		QQ : /[1-9][0-9]{4,}$/,
 		postcode : /^[1-9]\d{5}(?!\d)$/,       //邮政编码
+		address:/^\w{4,25}$/,
 		idCard : /^\d{15}|\d{18}$/,				//15或18位数字
 		ip : /^\d+.\d+.\d+.\d+$/,
 		positiveInteger : /^[1-9]\d*$/,      //正整数

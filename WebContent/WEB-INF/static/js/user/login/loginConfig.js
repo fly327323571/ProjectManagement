@@ -2,7 +2,7 @@ $(function(){
 	
 	var loginConfig = {
 		URL : {
-			LOGIN : "user/login.json",
+			LOGIN : "user/login",
 			HOMEPAGE : "."
 		}	
 	};

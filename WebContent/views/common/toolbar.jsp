@@ -26,7 +26,7 @@ if(userObj == null){
 	User user = (User)userObj;
 	String userType = user.getEmail();
 	String userName = user.getUserName();
-	if(userType .equals( user.getEmail())){
+	if(userType.equals(user.getEmail())){
 %>
 	<!-- Customer -->
     <section class="site-nav">
@@ -46,7 +46,7 @@ if(userObj == null){
     	</div>
     </section>
     
-<%  }if(userType == user.getCardId()){//Shop Owner%>
+<%  }if(userType == user.getEmail()){//Shop Owner%>
 
 	<!-- Shop Owner -->
     <section class="site-nav">
@@ -64,7 +64,7 @@ if(userObj == null){
     		<a href="siteMap.html" class="sn-help"><span class="glyphicon glyphicon-globe sn"></span>  site map</a>
     	</div>
     </section>
-<% } if(userType ==user.getCardId()){//admin %>
+<% } if(userType ==user.getEmail()){//admin %>
 	<!-- Admin -->
     <section class="site-nav">
     	<div class="log-info">

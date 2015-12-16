@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	 -->
 	
-	<form class="form-horizontal" action="<c:url value="/user/register.html"/>" method="post" >
+	<form class="form-horizontal" action="user/register" method="get" >
 		
 		<div class="form-group">
 			 <label class="col-sm-2 control-label">Username</label>
@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="form-group">
 			  <label class="col-sm-2 control-label"> Phone Number</label>					
 			<div class="col-sm-7">
-				<input class="form-control" name="phoneNumber" id="phoneNumber" type="text" required="required" validateType="cellphone"/>
+				<input class="form-control" name="tel" id="tel"  type="text" required="required" validateType="cellphone"/>
 				<div id="phoneNumberCheck" class="check"></div>
 			</div>
 		</div>
@@ -96,6 +96,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div id="emailCheck" class="check"></div>
 			</div>
 		</div>
+		
+		<div class="form-group">
+			  <label class="col-sm-2 control-label"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RealName</label>					
+			<div class="col-sm-7">
+				<input class="form-control" name="nickName"  id="nickName" type="text" required="required" validateType="userName"/>
+				<div id="nickNameCheck" class="check"></div>
+			</div>
+		</div>
+		
+			<div class="form-group">
+			  <label class="col-sm-2 control-label"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Address</label>					
+			<div class="col-sm-7">
+				<input class="form-control" name="address" id="address" type="text" required="required" validateType="address"/>
+				<div id="addressCheck" class="check"></div>
+			</div>
+		</div>
+		
+		
 		
 		<div class="form-group">
 				 <input class="btn btn-default"  type="submit" id="register" value="Register"/>			

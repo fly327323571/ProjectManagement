@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="form-group">
 			  <label class="col-sm-2 control-label">Password</label>
 			<div class="col-sm-10">
-				<input class="form-control" type="password" required="required" id="password"/>
+				<input class="form-control" type="password" required="required" id="password" name="password"/>
 			</div>
 		</div>
 		<a href="user/findPassword/index.do">forgot password?</a>
@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<a href="admin/index.do" style="margin-left: 11px;">I'm admin</a>
 	</form>
 	<span class="login-info" style=""></span>
-	<%@include file="WEB-INF/views/common/tail.html" %>
+	<%@include file="../common/tail.html" %>
  </body>
  <script>
  	var redirectUrl = "${historyUrl }";

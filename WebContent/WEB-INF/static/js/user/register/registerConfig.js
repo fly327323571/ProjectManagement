@@ -2,12 +2,12 @@ $(function(){
 	
 	var registerConfig = {
 		URL : {
-			REGISTER : "user/register.json",
-			CHECK_NAME:"user/register/check.json"
+			REGISTER : "user/register",
+			CHECK_NAME:"user/register/check"
 		},
 		validateConfig : [{
 			id : 'userName',
-			name : 'user name',
+			name : 'userName name',
 			asynValidate : function(value){
 				Register.userNameExistCheck(value);
 			}
@@ -21,8 +21,8 @@ $(function(){
 				return Register.confirmPasswordCheck(value);
 			}
 		},{
-			id : 'phoneNumber',
-			name : 'phone number'
+			id : 'tel',
+			name : 'tel number'
 		},{
 			id : 'email',
 			name : 'email'

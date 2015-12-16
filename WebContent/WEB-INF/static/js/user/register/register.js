@@ -22,8 +22,11 @@ function Register(registerConfig){
 		};
 			
 		baseAjax.doAjax(_registerConfig.URL.CHECK_NAME, info, function(data){//成功操作
+			console.log("success"+data);
 			validator.markValid('userName');
 		}, function(data){//失败操作
+			console.log("fail"+data);
+			
 			validator.markInvalid('userName');
 		});
 	}

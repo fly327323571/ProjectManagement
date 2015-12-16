@@ -36,22 +36,12 @@ public class User {
 	@Column(name="address",nullable=false,length=100)
 	private String address;
 	
-	@Column(name="person_id",length=100)
-	private String cardId;
-	
 	@Column(name="permission")
 	private boolean isSeller;
-	
-	@Column(name="check_register_success")
-	private int checkRegSuccess;
-	
 
 	@Temporal(TemporalType.DATE) 
 	private Date registerTime;
 	
-
-	
-
 	public String getUserName() {
 		return userName;
 	}
@@ -76,13 +66,6 @@ public class User {
 		this.email = email;
 	}
 
-	public String getCardId() {
-		return cardId;
-	}
-
-	public void setCardId(String cardId) {
-		this.cardId = cardId;
-	}
 
 	public String getPassword() {
 		return password;
@@ -100,13 +83,7 @@ public class User {
 		this.registerTime = registerTime;
 	}
 
-	public int getCheckRegSuccess() {
-		return checkRegSuccess;
-	}
 
-	public void setCheckRegSuccess(int checkRegSuccess) {
-		this.checkRegSuccess = checkRegSuccess;
-	}
 
 	public boolean isSeller() {
 		return isSeller;
@@ -114,6 +91,22 @@ public class User {
 
 	public void setSeller(boolean isSeller) {
 		this.isSeller = isSeller;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 }
 
