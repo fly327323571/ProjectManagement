@@ -35,14 +35,15 @@ public class UserBaseController {
 		Map<String,ResultType> map=new HashMap<String,ResultType>();
 		ResultType resultType;
 		try{
-		if(userService.LogIn(userName, secPassWord)){
+		String result=userService.LogIn(userName, secPassWord);
+		if(result.equals("OK")){
 			resultType=new ResultType().success().setResult("Login Yes!");
 			User user=userService.findUserByName(userName);
 			session.setAttribute("user", user);
 			map.put("result", resultType);
 		}
 		else{
-			resultType=new ResultType().error().setResult("Account Error!");
+			resultType=new ResultType().error().setResult(result);
 			map.put("result", resultType);
 		}}
 		catch(Exception e){

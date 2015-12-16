@@ -52,7 +52,7 @@ function Login(loginConfig){
 					setCookie("redirectUrl","");
 				}
 			}, function(data){//失败操作
-				alertFail(data.result.message);
+				alertFail(data.result);
 			});
 		}
 	});

@@ -10,4 +10,8 @@ public class DictionaryUtils {
 	public static enum ShopCategory{
 		Food,Clothes
 	};
+	
+	public static enum UserAccountState{
+		Normal,Warning,Suspend
+	};
 }

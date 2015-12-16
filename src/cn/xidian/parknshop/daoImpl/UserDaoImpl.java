@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import cn.xidian.parknshop.beans.User;
 import cn.xidian.parknshop.dao.UserDao;
+import cn.xidian.parknshop.utils.DictionaryUtils;
 
 @Repository("userDao")
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
@@ -44,16 +45,19 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
 	}
 
 	@Override
-	public boolean LogIn(String userName, String secPassWord) {
+	public String LogIn(String userName, String secPassWord) {
 		// TODO Auto-generated method stub
 		String hql="from User u where u.userName=:userName and u.password=:secPassword";
 		@SuppressWarnings("unchecked")
 		List<User> list=(List<User>) super.getSessionFactory().getCurrentSession().createQuery(hql).setString("userName", userName)
 							.setString("secPassword", secPassWord).list();
 		if(list.isEmpty()){
-			return false;
+			return "Account False!";
 		}
-		return true;
+		else if(list.get(0).getState()==DictionaryUtils.UserAccountState.Suspend.ordinal()){
+			return "Account Suspend,Please Contact Admin!";
+		}
+		return "OK";
 	}
 
 }

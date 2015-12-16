@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean LogIn(String userName, String secPassWord) {
+	public String LogIn(String userName, String secPassWord) {
 		// TODO Auto-generated method stub
 		return userDao.LogIn(userName, secPassWord);
 	}

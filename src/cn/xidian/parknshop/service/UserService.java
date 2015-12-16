@@ -8,6 +8,6 @@ public interface UserService {
 	
 	boolean checkUserNameExist(String userName);
 	
-	boolean LogIn(String userName,String secPassWord);
+	String LogIn(String userName,String secPassWord);
 	
 }
