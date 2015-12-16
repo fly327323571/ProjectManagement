@@ -2,8 +2,8 @@ function Validator(config, $root){
 	
 	var _config = config;
 	var _$root = $root ? $root : $("body");
-	var validTip = '<span style="color:green;position: absolute;right: -5px;top: 5px;" class="validate glyphicon glyphicon-ok"></span>';
-	var errTip = '<span style="color:red;position: absolute;right: -5px;top: 5px;" class="validate glyphicon glyphicon-remove"></span>'; 
+	var validTip = '<span style="color:green;position: absolute;right: -5px;top: 5px;" class="validate glyphicon glyphicon-ok">OK.</span>';
+	var errTip = '<span style="color:red;position: absolute;right: -5px;top: 5px;" class="validate glyphicon glyphicon-remove">NO.</span>'; 
 	var loading = '<span style="position: absolute;right: -5px;top: 5px;" class="validate glyphicon"><img src="static/images/loading.gif" alt="" /></span>';
 
 	//常用验证 正则表达式

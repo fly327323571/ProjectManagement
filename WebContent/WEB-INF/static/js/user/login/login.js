@@ -41,7 +41,7 @@ function Login(loginConfig){
 //				}
 			//};
 			baseAjax.doAjax(_loginConfig.URL.LOGIN, user, function(data){//成功操作
-				console.log(data.result);
+				console.log(data);
 				if(redirectUrl){
 					location.href = redirectUrl;
 				}else{

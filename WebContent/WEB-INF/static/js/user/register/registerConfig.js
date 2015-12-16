@@ -26,6 +26,12 @@ $(function(){
 		},{
 			id : 'email',
 			name : 'email'
+		},{
+			id : 'address',
+			name : 'address'
+		},{
+			id : 'nickName',
+			name : 'nickName'
 		}]
 	};
 	

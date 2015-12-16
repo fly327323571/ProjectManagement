@@ -65,7 +65,6 @@ var baseAjax = {
 			},
 			error : function(o){
 				console.log("ERROR:"+o);
-				console.log(o.Result);
 			}
 		});
 	},

@@ -38,7 +38,7 @@
         </property>
     </bean>
 
-    <mvc:view-controller path="/" view-name="redirect:/index"/>
+    <mvc:view-controller path="/" view-name="redirect:/views/homepage.jsp"/>
     
     <!-- 当在web.xml 中   DispatcherServlet使用 <url-pattern>/</url-pattern> 映射时，能映射静态资源 -->
     <mvc:default-servlet-handler/>
