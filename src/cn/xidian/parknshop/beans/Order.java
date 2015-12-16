@@ -13,7 +13,7 @@ public class Order{
 	private long Id;
 	
 	@Column(name="order_no",nullable=false,unique=true)
-	private int orderNo;
+	private long orderNo;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name="buyer_name",referencedColumnName="username",insertable=true,updatable=true)
@@ -89,11 +89,11 @@ public class Order{
 	}
 
 
-	public int getOrderNo() {
+	public long getOrderNo() {
 		return orderNo;
 	}
 
-	public void setOrderNo(int orderNo) {
+	public void setOrderNo(long orderNo) {
 		this.orderNo = orderNo;
 	}
 

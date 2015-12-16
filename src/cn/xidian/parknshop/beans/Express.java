@@ -12,7 +12,7 @@ public class Express {
 	private long Id;
 
 	@Column(name="express_no",unique=true,nullable=false)
-	private int expressNo;
+	private long expressNo;
 	
 //	@Column(name="express_type",length=20)
 	private String express_type;
@@ -39,11 +39,11 @@ public class Express {
 		this.express_type = express_type;
 	}
 
-	public int getExpressNo() {
+	public long getExpressNo() {
 		return expressNo;
 	}
 
-	public void setExpressNo(int expressNo) {
+	public void setExpressNo(long expressNo) {
 		this.expressNo = expressNo;
 	}
 

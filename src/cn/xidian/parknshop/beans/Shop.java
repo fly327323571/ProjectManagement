@@ -21,7 +21,7 @@ public class Shop {
 	private long shopId;
 	
 	@Column(name = "shop_no", unique = true, nullable = false)
-	private int shopNo;
+	private long shopNo;
 	
 	@Column(name="shop_category",nullable=false)
 	private int shopCategories;
@@ -100,10 +100,10 @@ public class Shop {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public int getShopNo() {
+	public long getShopNo() {
 		return shopNo;
 	}
-	public void setShopNo(int shopNo) {
+	public void setShopNo(long shopNo) {
 		this.shopNo = shopNo;
 	}
 	public double getShopRank() {

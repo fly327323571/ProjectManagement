@@ -38,6 +38,9 @@ public class User {
 	
 	@Column(name="permission")
 	private boolean isSeller;
+	
+	@Column(name="state",nullable=false)
+	private int state;
 
 	@Temporal(TemporalType.DATE) 
 	private Date registerTime;
@@ -107,6 +110,14 @@ public class User {
 
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
 	}
 }
 

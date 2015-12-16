@@ -24,7 +24,7 @@ public class Complaint {
 	private long Id;
 	
 	@Column(name="complaint_no",unique=true,nullable=false)
-	private int complaintNo;
+	private long complaintNo;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name="username",referencedColumnName="username",insertable=true,updatable=true)
@@ -42,7 +42,10 @@ public class Complaint {
 	private Date complaintTime;
 	
 	@Column(name = "complaint_view", length = 100)  
-	private int state;
+	private int complaint_view;
+	
+	@Column(name = "complaint_state", length = 100)  
+	private int complaint_state;
 	
 	@Column(name = "complaint_result", length = 100)  
 	private int handleResult;
@@ -57,13 +60,7 @@ public class Complaint {
         this.reason = reason;  
     } 
    
-    public int getState() {  
-        return this.state;  
-    }  
-  
-    public void setState(int state) {  
-        this.state = state;  
-    }
+
     
     public int getHandleResult() {  
         return this.handleResult;  
@@ -98,7 +95,7 @@ public class Complaint {
 		this.complaintUser = complaintUser;
 	}
 
-	public int getComplaintNo() {
+	public long getComplaintNo() {
 		return complaintNo;
 	}
 
@@ -112,6 +109,22 @@ public class Complaint {
 
 	public void setId(long id) {
 		Id = id;
+	}
+
+	public int getComplaint_view() {
+		return complaint_view;
+	}
+
+	public void setComplaint_view(int complaint_view) {
+		this.complaint_view = complaint_view;
+	}
+
+	public int getComplaint_state() {
+		return complaint_state;
+	}
+
+	public void setComplaint_state(int complaint_state) {
+		this.complaint_state = complaint_state;
 	}
 
 

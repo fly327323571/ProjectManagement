@@ -12,7 +12,7 @@ public class AfterSaleService {
 	private long Id;
 	
 	@Column(name="service_no",unique=true,nullable=false)
-	private int serviceNo;
+	private long serviceNo;
 	
 	@Column(name="service_type")
 	private int serviceType;
@@ -77,11 +77,11 @@ public class AfterSaleService {
 		Id = id;
 	}
 
-	public int getServiceNo() {
+	public long getServiceNo() {
 		return serviceNo;
 	}
 
-	public void setServiceNo(int serviceNo) {
+	public void setServiceNo(long serviceNo) {
 		this.serviceNo = serviceNo;
 	}
 

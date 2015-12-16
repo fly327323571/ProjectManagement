@@ -11,7 +11,7 @@ public class Commodity {
 	private long Id;
 	
 	@Column(name="commodity_no",nullable=false,unique=true)
-	private int commoditNo;
+	private long commoditNo;
 	
 	@Column(name="commodity_name",nullable=false,length=200)
 	private String commodityName;
@@ -92,11 +92,11 @@ public class Commodity {
 		this.shop = shop;
 	}
 
-	public int getCommoditNo() {
+	public long getCommoditNo() {
 		return commoditNo;
 	}
 
-	public void setCommoditNo(int commoditNo) {
+	public void setCommoditNo(long commoditNo) {
 		this.commoditNo = commoditNo;
 	}
 

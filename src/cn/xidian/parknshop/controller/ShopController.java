@@ -30,7 +30,7 @@ public class ShopController {
 		if(user==null){
 			return "/user/login";
 		}
-		else if(!user.isSeller()){
+		else if(user.isSeller()){
 			return "../views/shopOwner/shopList";
 		}
 		else{
@@ -58,7 +58,7 @@ public class ShopController {
 		User shopOwner =(User)session.getAttribute("user");
 		shop.setShopOwner(shopOwner);
 		shop.setOwnerTel(shopOwner.getTel());
-//		shop.setShopNo();
+		shop.setShopNo(System.nanoTime());
 		return "waitResolve";
 	}
 	

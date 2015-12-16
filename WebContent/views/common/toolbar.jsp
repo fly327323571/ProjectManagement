@@ -28,7 +28,7 @@ if(userObj == null){
 	User user = (User)userObj;
 	boolean userType = user.isSeller();
 	String userName = user.getUserName();
-	if(userType){
+	if(!userType){
 %>
 	<!-- Customer -->
     <section class="site-nav">
