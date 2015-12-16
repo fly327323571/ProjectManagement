@@ -9,7 +9,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.xidian.parknshop.beans.ResultType;
 import cn.xidian.parknshop.beans.Shop;
 import cn.xidian.parknshop.beans.User;
 import cn.xidian.parknshop.service.BaseService;
@@ -36,6 +38,13 @@ public class ShopController {
 		else{
 			return "../views/shopOwner/shopRegister";
 		}
+	}
+	
+	@RequestMapping("/shop/check")
+	public @ResponseBody Map<String,ResultType> checkShopName(String shopName){
+		Map<String,ResultType> map=new HashMap<String,ResultType>();
+		
+		return map; 
 	}
 	
 	@RequestMapping("/shop/register")
