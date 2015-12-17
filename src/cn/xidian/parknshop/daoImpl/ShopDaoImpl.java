@@ -1,5 +1,7 @@
 package cn.xidian.parknshop.daoImpl;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -32,10 +34,25 @@ public class ShopDaoImpl extends HibernateDaoSupport implements ShopDao {
 	@Override
 	public List<Shop> findShopByUserName(String userName) {
 		// TODO Auto-generated method stub
-		String hql="from Shop s Where s.username=:userName";
+		String sql="select s.Id from tb_shop s Where s.username=:userName";
 		@SuppressWarnings("unchecked")
-		List<Shop> list=super.getSessionFactory().getCurrentSession().createQuery(hql).setString("userName", userName).list();
-		return list;
+		List<BigInteger> Idlist=super.getSessionFactory().getCurrentSession().createSQLQuery(sql).setString("userName", userName).list();
+		List<Shop> shopList=new ArrayList<Shop>();
+		for(BigInteger id:Idlist){
+			shopList.add((Shop)super.getSessionFactory().getCurrentSession().get(Shop.class, id.longValue()));
+		}
+		return shopList;
+	}
+
+	@Override
+	public Shop findShopByShopNo(long shopNo) {
+		// TODO Auto-generated method stub
+		String hql="from Shop s where s.shopNo=:shopNo";
+		@SuppressWarnings("unchecked")
+		List<Shop> list=super.getSessionFactory().getCurrentSession().createQuery(hql).setLong("shopNo", shopNo).list();
+		if(list.isEmpty())
+			return null;
+		return list.get(0);
 	}
 
 }

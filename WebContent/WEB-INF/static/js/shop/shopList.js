@@ -145,11 +145,11 @@ function ShopList(shopListConfig){
 			 *}
 			 */
 			var page = rs.result;
-			_storeList = page.data;
+			_storeList = page;
 			table.loadData(_storeList);
 			if(_storeList && _storeList.length!=0){
 				$("#pagination").paginate({
-					count 		: page.totalPageCount,//10,
+					count 		: Math.ceil(_storeList.length/5),//10,
 					start 		: curPageIdx,
 					display     : 5,
 					border					: true,

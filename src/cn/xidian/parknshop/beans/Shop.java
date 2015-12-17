@@ -156,4 +156,28 @@ public class Shop implements Serializable {
 	public void setRegTime(Date regTime) {
 		this.regTime = regTime;
 	}
+	
+//	public String toString(){
+//		return "Shop {" +
+//				"storeId:" + shopNo 
+//				+ ", storeName:'" + shopName+ "'"
+//				+ ", userId:" + shopOwner.getUserName() 
+//				+ ", type:" + shopSourse 
+//				+ ", registerTime:'"+ regTime + "'"
+//				+ ", address:" + shopAddr 
+//				+ ", degree:" + shopRank 
+////				+ ", creditValue:" + creditValue 
+//				+ ", status:" + status 
+////				+ ", sortOrder:" + sortOrder 
+//				+ ", logo:'" + shopIcon + "'"
+//				+ ", description:'" + shopDesc+ "'"
+////				+ ", image1:'" + image1 + "'"
+////				+ ", image2:'" + image2 + "'"
+////				+ ", image3:'" + image3 + "'"
+////				+ ", imQq:'" + imQq + "'"
+////				+ ", imWw:'" + imWw + "'"
+////				+ ", connections:" + connections
+//				+ "}";
+//		
+//	}
 }

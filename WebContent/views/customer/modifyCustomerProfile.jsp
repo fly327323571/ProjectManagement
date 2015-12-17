@@ -30,11 +30,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <div class="container">
 	<div  class="pic">
-		<img  src="${user.portrait }" width="200" height="200" >
+		<img  src="${user.portrait }" width="200" height="200" />
 		<div style="position: relative; width: 105px;margin-top: 16px;  margin-left: 30px;">
 			<div class="btn btn-default" style="position: relative; width: 125px;overflow: hidden;">
 	 			<div>Update Image</div>
-				<input type="file" id="file" name="file" accept="image/*">
+				<input type="file" id="logo" name="file" accept="image/*">
 			</div>
 			<span id="uploading" style="display:none;"></span>
 			<span id="upload_mark"class="glyphicon glyphicon-ok mark_OK" style="position: absolute;top: 8px;right: -48px;display:none;"></span>

@@ -51,9 +51,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 						</div><!-- <img src="img/pic.jpg"/> -->
 						<ul> 
-							<li>shop name:<span>${store.storeName }</span></li>
-							<li>credit value:<span>${store.creditValue } stars</span></li>
-							<li>register time:<span>${store.registerTimeString }</span></li>
+							<li>shop name:<span>${shop.shopName }</span></li>
+							<li>credit value:<span>${shop.shopRank } stars</span></li>
+							<li>register time:<span>${shop.regTime}</span></li>
 						</ul>
 						
 					</div>
@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		<div class="container">
 		
-			<iframe id="iframe" src="store/${storeId }/dashboard/index.do" class="container" ></iframe>
+			<iframe id="iframe" src="store/${shop.shopNo}/dashboard/index.do" class="container" ></iframe>
 			</div>
 			
 	</section>
@@ -99,12 +99,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	<%@include file="../common/tail.html" %>
      <script type="text/javascript">
-     	var _storeId = '${storeId}';
+     	var _storeId = '${shop.shopNo}';
      	var info = "${info}";//info 字符串不为空时将会跳转到店家主页 store/index.do
      	if(info){
      		alert(info);
      	}
-     	var logo  = "${store.logo}";
+     	var logo  = "${shop.shopIcon}";
      </script>
   </body>
  <script src="static/js/shop/shopManageHomepage.js"></script>

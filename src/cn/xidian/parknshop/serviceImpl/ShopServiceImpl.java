@@ -28,4 +28,10 @@ public class ShopServiceImpl implements ShopService {
 		return shopDao.findShopByUserName(userName);
 	}
 
+	@Override
+	public Shop findShopByShopNo(long shopNo) {
+		// TODO Auto-generated method stub
+		return shopDao.findShopByShopNo(shopNo);
+	}
+
 }

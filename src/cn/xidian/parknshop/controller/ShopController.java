@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import cn.xidian.parknshop.beans.ResultType;
 import cn.xidian.parknshop.beans.Shop;
@@ -36,8 +37,56 @@ public class ShopController {
 	
 	private static Logger log=Logger.getLogger(ShopController.class);
 	
+	@RequestMapping("/shop/showList")
+	public @ResponseBody Map<String,ResultType> showShopList(HttpSession session){
+		User shopOwner=(User)session.getAttribute("user");
+		ResultType resultType=new ResultType();
+		Map<String,ResultType> map=new HashMap<String,ResultType>();
+		try{
+		List<Shop> shopList=shopService.findShopByUserName(shopOwner.getUserName());
+
+		resultType.success().setResult(shopList);
+		map.put("result", resultType);}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("DB busy");
+			map.put("result", resultType);
+		}
+		return map;
+	}
+	@RequestMapping("shop/*/shopHomePage.do")
+	public ModelAndView ShopManage(Model model,HttpServletRequest request){
+		String reUri=request.getRequestURI();
+		String shopNoStr=reUri.substring(reUri.indexOf('/', 13)+1, reUri.lastIndexOf('/'));
+		long shopNo=Long.valueOf(shopNoStr);
+		Shop shop=shopService.findShopByShopNo(shopNo);
+		model.addAttribute("shop",shop );
+		return new ModelAndView("../views/shop/shopManageHomepage");
+	}
+	
+	@RequestMapping("/shop/*/modifyShopProfile/index.do")
+	public String ModifyShopIndex(Model model,HttpServletRequest request){
+		String reUri=request.getRequestURI();
+		String shopNoStr=reUri.substring(reUri.indexOf('/', 13)+1, reUri.indexOf('/',reUri.indexOf('/', 13)+1));
+		long shopNo=Long.valueOf(shopNoStr);
+		Shop shop=null;
+		try{
+			shop=shopService.findShopByShopNo(shopNo);}
+		catch(Exception e){
+			log.error(e);
+			return "../views/error";
+		}
+		model.addAttribute("store", shop);
+		List<String> categories=new ArrayList<String>();
+		for(DictionaryUtils.ShopCategory i:DictionaryUtils.ShopCategory.values()){
+			categories.add(i.toString());
+		}
+		model.addAttribute("categories", categories);
+		return "../views/shop/modifyShopProfile";
+	}
+	
 	@RequestMapping("/shop/index")
-	public String applyOrShowShops(HttpServletRequest request){
+	public String applyOrShowShops(HttpServletRequest request,Model model){
 		User user=(User) request.getSession().getAttribute("user");
 		if(user==null){
 			return "/user/login";
@@ -46,6 +95,16 @@ public class ShopController {
 			return "../views/shopOwner/shopList";
 		}
 		else{
+			List<String> categories=new ArrayList<String>(); 
+			List<String> sourceTypes=new ArrayList<String>();
+			for(DictionaryUtils.ShopCategory i:DictionaryUtils.ShopCategory.values()){
+				categories.add(i.toString());
+			}
+			for(DictionaryUtils.ShopSourceType i:DictionaryUtils.ShopSourceType.values()){
+				sourceTypes.add(i.toString());
+			}
+			model.addAttribute("categories",categories);
+			model.addAttribute("sourceTypes",sourceTypes);
 			return "../views/shopOwner/shopRegister";
 		}
 	}

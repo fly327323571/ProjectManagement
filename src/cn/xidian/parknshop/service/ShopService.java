@@ -9,4 +9,6 @@ public interface ShopService {
 	boolean checkShopName(String shopName);
 	
 	List<Shop> findShopByUserName(String userName);
+	
+	Shop findShopByShopNo(long shopNo);
 }

@@ -1,12 +1,12 @@
 $(function(){
 	var modifyShopProfileConfig = {
 		URL : {
-			MODIFY : "store/"+$("#storeId").val()+"/modify",
-			CHECK_STORE_NAME : "store/{storeId}/checkStoreName.json".replace("{storeId}", $("#storeId").val()),
-			POSTAGE_POLICY : "store/{storeId}/expressRule.json".replace("{storeId}", $("#storeId").val())
+			MODIFY : "shop/"+$("#storeId").val()+"/modify",
+			CHECK_STORE_NAME : "shop/{storeId}/checkShopName".replace("{storeId}", $("#storeId").val()),
+			POSTAGE_POLICY : "shop/{storeId}/expressRule.json".replace("{storeId}", $("#storeId").val())
 		},
 		basicValidateConfig : [{
-			id : 'storeName',
+			id : 'shopName',
 			name : 'shop name',
 			asynValidate : function(value){
 				modifyShopProfile.shopNameExistCheck(value);

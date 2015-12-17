@@ -4,7 +4,7 @@ $(function(){
 		URL : {//页面所有的URL配置
 			STORE_NAME_CHECK : "shop/*/checkShopName",
 			OPEN_STORE : "shop/apply",
-			SHOP_LIST : "store/listMyStores/index.do"
+			SHOP_LIST : "shop/showList"
 //			LOAD_PROVINCE : "province.json",
 //			LOAD_CITY : "{province}/cities.json"
 		},

@@ -30,7 +30,7 @@ $(function(){
 		URL : {//页面所有的URL配置
 			SUBMIT:'store/{storeId}/manageShopLink'.replace("{storeId}", storeId),
 			DETAILS : "store/index.do",
-			LIST : "store/listMyStores.json",
+			LIST : "shop/showList",
 			SHOP_LINKS : "store/{storeId}/shopLinks.json".replace("{storeId}", storeId),
 			SHOP_HOMEPAGE : "business/market/{storeId}/shopHomePage.do",
 		},

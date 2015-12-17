@@ -2,7 +2,7 @@ $(function(){
 	var config = {
 		URL : {
 			FILE_UPLOAD : "upload/fileUpload",
-			SAVE : "user/modifyProfile.json"
+			SAVE : "shop/modifyProfile"
 		},
 		validateConfig : [{
 			id : "phoneNumber",

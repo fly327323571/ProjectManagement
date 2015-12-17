@@ -20,12 +20,12 @@ function ModifyCustomerProfile(config){
 	            var $mark = $("#upload_mark");
 	            $mark.attr('class','glyphicon glyphicon-ok mark_OK');
 	        	$mark.show();
-	        	logo_path = data.path;
+	        	logo_path = data.result;
 	            $("#uploading").hide();
 	            $(".pic img").fadeOut('500',function(){
-	            	$(".pic img").attr('src',data.path);
+	            	$(".pic img").attr('src',data.result);
 		            $(".pic img").fadeIn('1000');
-		            $("#image").val(data.path);
+		            $("#image").attr('src',data.result);
 	            });
 	            bindUploadFileEvent();
 			},function(data){

@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="nav">
 			<ul>
 				<li><a id="nav_shoplist" href="javascript:void(0)" class="option">shop list</a></li>
-				<li><a id="nav_new_shop"href="javascript:void(0)" class="option">register new shop</a></li>
+				<li><a id="nav_new_shop" href="javascript:void(0)" class="option">register new shop</a></li>
 			</ul>
 		</div>
 		<div class="container">

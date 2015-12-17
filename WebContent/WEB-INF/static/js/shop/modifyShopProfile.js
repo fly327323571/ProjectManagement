@@ -9,18 +9,18 @@ function modifyShopProfile(modifyShopProfileConfig){
 	//------------------验证函数------------------//
 	
 	function checkShopName(){
-		var storeName = $("#storeName").val().trim();
-		var url = _modifyShopProfileConfig.URL.CHECK_STORE_NAME+"?storeName="+storeName;
-		baseAjax.doAjax(url, null, function(data){
+//		var storeName = $("#shopName").val().trim();
+		var url = _modifyShopProfileConfig.URL.CHECK_STORE_NAME;
+		baseAjax.doAjax(url,$("#shopName").serialize(), function(data){
 			var isValid = data.result;
 			$("span.validate").remove();
-			if(isValid){
+			if(isValid=="can Use"){
 				storeNameAvailable = true;
-				basicValidator.markValid('storeName');
+				basicValidator.markValid('shopName');
 				//$("#storeName").after("<span style='color:green;position: absolute;right: -5px;top: 5px;color:green;' class='validate glyphicon glyphicon-ok'></span>");
 			}else{
-				storeNameAvailable = false;
-				basicValidator.markInvalid('storeName');
+				storeNameAvailable = false;  
+				basicValidator.markInvalid('shopName');
 				//$("#storeName").after("<span style='color:red;position: absolute;right: -5px;top: 5px;' class='validate glyphicon glyphicon-remove'></span>");
 			}
 		}, function(data){
@@ -87,7 +87,7 @@ function modifyShopProfile(modifyShopProfileConfig){
 	            var $mark = $("#upload_mark");
 	            $mark.attr('class','glyphicon glyphicon-ok mark_OK');
 	        	$mark.show();
-	        	logo_path = data.path;
+	        	logo_path = data.result;
 	        	$(".pic > img").attr('src', logo_path);
 	            $("#uploading").hide();
 	            bindUploadEvent();

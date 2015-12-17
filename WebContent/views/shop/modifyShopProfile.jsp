@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="tab-pane active" id="panel-334142">
 			<div class="clearfix bs-callout bs-callout-warning" style="padding:auto;">
 			<div class="pic">
-				<img  src="${store.logo}" width="200" height="200" >
+				<img  src="${store.shopIcon}" width="200" height="200" >
 				<div style="position: relative; width: 105px;margin-top: 16px;  margin-left: 30px;">
 					<div class="btn btn-default" style="position: relative; width: 125px;overflow: hidden;">
 			 			<div>Update Logo</div>
@@ -57,15 +57,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<label class="col-sm-2 control-label" for="inputEmail3">Store
 						id</label>
 					<div class="col-sm-7">
-						<input class="form-control" type="text" value="${store.storeId}" id="storeId" />
+						<input class="form-control" type="text" value="${store.shopNo}" id="storeId" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="inputEmail3">Shop
 						Name</label>
 					<div class="col-sm-7">
-						<input class="form-control" type="text" value="${store.storeName }"
-							id="storeName" required="required" validateType="storeName"/>
+						<input class="form-control" type="text" value="${store.shopName }"
+							id="shopName" required="required" validateType="storeName"/>
 					</div>
 				</div>
 				<div class="form-group">
@@ -77,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<c:forEach var="category" items="${categories}">
 							<%request.setAttribute("i", i);%>
 							<option value="<%=i++%>"
-							 <c:if test='${store.type ==i}'>selected="selected"</c:if>
+							 <c:if test='${store.shopCategories ==i}'>selected="selected"</c:if>
 							>${category}</option>
 						</c:forEach>
 						</select>
@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="inputEmail3">Remarks</label>
 					<div class="col-sm-7">
-						<textarea rows="3" id="remarks" class="form-control">${store.description }</textarea>
+						<textarea rows="3" id="remarks" class="form-control">${store.shopDesc }</textarea>
 					</div>
 				</div>
 				<div class="form-group">
