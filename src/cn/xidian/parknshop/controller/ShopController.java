@@ -1,5 +1,7 @@
 package cn.xidian.parknshop.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 import javax.annotation.Resource;
@@ -9,22 +11,30 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import cn.xidian.parknshop.beans.ResultType;
 import cn.xidian.parknshop.beans.Shop;
 import cn.xidian.parknshop.beans.User;
 import cn.xidian.parknshop.service.BaseService;
+import cn.xidian.parknshop.service.ShopService;
 import cn.xidian.parknshop.utils.DictionaryUtils;
+import jxl.common.Logger;
 
 @Controller
 public class ShopController {
 
 	@Resource(name="baseService")
-	private BaseService<Shop> shopService;
+	private BaseService<Shop> shopBaseService;
 	
-	@Resource(name="baseService")
-	private BaseService<User> userService;
+	@Resource(name="shopService")
+	private ShopService shopService;
+	
+	private String logoUrl="";
+	
+	private static Logger log=Logger.getLogger(ShopController.class);
 	
 	@RequestMapping("/shop/index")
 	public String applyOrShowShops(HttpServletRequest request){
@@ -40,10 +50,26 @@ public class ShopController {
 		}
 	}
 	
-	@RequestMapping("/shop/check")
+	@RequestMapping("/shop/*/checkShopName")
 	public @ResponseBody Map<String,ResultType> checkShopName(String shopName){
 		Map<String,ResultType> map=new HashMap<String,ResultType>();
-		
+		ResultType resultType=new ResultType();
+		try{
+			if(shopService.checkShopName(shopName)){
+				resultType.success().setResult("can Use");
+				map.put("result", resultType);
+			}
+			else{
+				resultType.error().setResult("Illeagal");
+				map.put("result", resultType);
+			}
+		}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("DB busy");
+			map.put("result", resultType);
+			return map;
+		}
 		return map; 
 	}
 	
@@ -68,24 +94,69 @@ public class ShopController {
 		shop.setShopOwner(shopOwner);
 		shop.setOwnerTel(shopOwner.getTel());
 		shop.setShopNo(System.nanoTime());
-		return "waitResolve";
+		shop.setShopIcon(logoUrl);
+//		shop.setShopCategories(DictionaryUtils.ShopCategory.fromString(shop.getShopCategories()));
+		shopBaseService.create(shop);
+		return "../views/shopOwner/shopList";
+	}
+	
+	@RequestMapping("/upload/fileUpload")
+	public @ResponseBody Map<String,ResultType>  uploadLogo(@RequestParam("myfiles") MultipartFile file,
+			 							HttpSession session){
+		User shopOwner=(User)session.getAttribute("user");
+		Map<String,ResultType> map=new HashMap<String,ResultType>();
+		String Path=session.getServletContext().getRealPath("/WEB-INF/static/upload/shopLogo/")+shopOwner.getNickName();
+		ResultType resultType=new ResultType();
+        String fileName = file.getOriginalFilename();
+        String UniqueName=UUID.randomUUID().toString() + fileName;
+        File tempFile = new File(Path,UniqueName);  
+        if (!tempFile.getParentFile().exists()) {  
+            tempFile.getParentFile().mkdir();  
+        } 
+        if(fileName.substring(fileName.indexOf('.')+1,fileName.length()).equals("jpg")
+        	||fileName.substring(fileName.indexOf('.')+1,fileName.length()).equals("png")
+        	||fileName.substring(fileName.indexOf('.')+1,fileName.length()).equals("gif")
+        	||fileName.substring(fileName.indexOf('.')+1,fileName.length()).equals("jpeg")){
+        if (!tempFile.exists()) {  
+            try {
+				tempFile.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				log.error(e);
+				resultType.error().setResult("File Upload Error,Please retry!");
+				map.put("result", resultType);
+				e.printStackTrace();
+				return map;
+			}  
+        }  
+        try {
+			file.transferTo(tempFile);
+			logoUrl="static/upload/shopLogo/"+shopOwner.getNickName()+"/"+UniqueName+"";
+			resultType.success().setResult("static/upload/shopLogo/"+shopOwner.getNickName()+"/"+UniqueName);
+			map.put("result", resultType);
+		} catch (IllegalStateException | IOException e) {
+			// TODO Auto-generated catch block
+			log.error(e);
+			resultType.error().setResult("File Upload Error,Please retry!");
+			map.put("result", resultType);
+			e.printStackTrace();
+			return map;
+		}  }
+        else{
+        	resultType.error().setResult("File Type Error!");
+        	map.put("result", resultType);
+        }
+		return map;
 	}
 	
 
 	public BaseService<Shop> getShopService() {
-		return shopService;
+		return shopBaseService;
 	}
 
-	public void setShopService(BaseService<Shop> shopService) {
-		this.shopService = shopService;
+	public void setShopService(BaseService<Shop> shopBaseService) {
+		this.shopBaseService = shopBaseService;
 	}
 
-	public BaseService<User> getUserService() {
-		return userService;
-	}
-
-	public void setUserService(BaseService<User> userService) {
-		this.userService = userService;
-	}
 
 }

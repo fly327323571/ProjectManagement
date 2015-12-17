@@ -78,13 +78,16 @@ var baseAjax = {
             dataType: 'json', //返回值类型，一般设置为json、application/json
             elementIds: elementIds, //传递参数到服务器
             success: function(data, status){  
-            	if(data.code==0){
-                	_success(data);
-                }else if(data.code==-1){
-                	_fail(data);
+            	console.log(data);
+            	var response=data.result;
+            	if(response.code==0){
+                	_success(response);
+                }else if(response.code==-1){
+                	_fail(response);
                 }
             },
             error: function(data, status, e){ 
+            	console.log(data)
             	_fail(data);
             }
         });

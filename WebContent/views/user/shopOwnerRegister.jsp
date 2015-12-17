@@ -51,13 +51,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<span class="identity">to be shop owner</span>
 	</header>
 	<div class="container">
-		<form id="form" class="form-horizontal" action="<c:url value="/user/register/saveShopOwner"/>" method="post">
+		<form id="form" class="form-horizontal" action="<c:url value="/user/register/saveShopOwner"/>" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<label class="col-sm-1 control-label" for="inputEmail3">Portrait</label>
 				<div class="col-sm-7" style="position: relative; width: 105px;">
 					<div class="btn btn-default" style="position: relative; width: 120px;overflow: hidden;">
  						<div>Select File</div>
-						<input type="file" id="file" name="file" accept="image/*">
+						<input type="file" id="file" name="file"  accept="image/*"/>
 					</div>
 					<span id="uploading" style="display:none;"></span>
 			  		<span id="upload_mark"class="glyphicon glyphicon-ok mark_OK" style="position: absolute;top: 8px;right: -64px;display:none;"></span>
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 		</form>
-		<div id="show-info"><img src="" alt="" />
+		<div id="show-info" ><img  alt="Logo" width='100px' height='100px' />
 		</div>
 	</div>
 <%@include file="../common/tail.html" %>

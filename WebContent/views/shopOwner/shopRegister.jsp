@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 	<div class="clearfix">
-	<form class="form-horizontal">
+	<form class="form-horizontal" id="shopRegForm">
 		
 		<div class="form-group">
 			  <label class="col-sm-2 control-label">Shop Name</label>					
@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="form-group">
 			  <label class="col-sm-2 control-label">Category</label>					
 			<div class="col-sm-6">
-				<select id="category" name="category" class="form-control" required="required" validateType="userValidate">
+				<select id="shopCategories" name="shopCategories" class="form-control" required="required" validateType="userValidate">
 					<option value="-1" style="display:none;">select your shop's category</option>
 					<%int i=0; %>
 					<c:forEach var="category" items="${categories }">
@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="form-group">
 			  <label class="col-sm-2 control-label">sourceType</label>					
 			<div class="col-sm-6">
-				<select id="sourceType" name="sourceType" class="form-control" required="required" validateType="userValidate">
+				<select id="shopSourse" name="shopSourse" class="form-control" required="required" validateType="userValidate">
 					<option value="-1" style="display:none;">select your shop's sourceType</option>
 					<%int j=0; %>
 					<c:forEach var="sourceType" items="${sourceTypes }">
@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="form-group">
 			  <label class="col-sm-2 control-label"> &nbsp;&nbsp;&nbsp;Address</label>	
 			  <div class="col-sm-6">
-				<input id="address" name="address" type="text" class="form-control" autofocus="autofocus" required="required"/>
+				<input id="shopAddr" name="shopAddr" type="text" class="form-control" autofocus="autofocus" required="required"/>
 			  </div>
 		</div>
 		
@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  <div class="col-sm-6" style="position: relative; width: 105px;">
  					<div class="btn btn-default" style="position: relative; width: 120px;overflow: hidden;">
  						<div>Select File</div>
-						<input type="file" id="logo" name="myfiles" accept="image/*">
+						<input type="file" id="logo" name="myfiles" accept="image/* required="required"/>
 					</div>
 					<span id="uploading" style="display:none;"></span>
 			  		<span id="upload_mark"class="glyphicon glyphicon-ok mark_OK" style="position: absolute;top: 8px;right: -64px;display:none;"></span>

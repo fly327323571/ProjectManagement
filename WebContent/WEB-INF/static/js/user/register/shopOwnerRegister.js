@@ -38,12 +38,13 @@ $(function(){
 	            var $mark = $("#upload_mark");
 	            $mark.attr('class','glyphicon glyphicon-ok mark_OK');
 	        	$mark.show();
-	        	portrait_path = data.path;
-	        	$("#show-info img").attr('src',data.path);
-	        	$("#portrait").val(data.path);
+	        	portrait_path = data.result;
+	        	$("#show-info img").attr('src',data.result);
+	        	$("#portrait").val(data.result);
 	            $("#uploading").hide();
 	            bindUploadFileEvent();
 			},function(data){
+				console.log(data)
 				var $mark = $("#upload_mark");
 				$mark.attr('class','glyphicon glyphicon-remove mark_ERROR');
 	        	$mark.show();

@@ -3,7 +3,6 @@ package cn.xidian.parknshop.daoImpl;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.websocket.Session;
 
 import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
@@ -25,8 +24,8 @@ public class ShopDaoImpl extends HibernateDaoSupport implements ShopDao {
 		String hql="from Shop s Where s.shopName=:shopName";
 		List<?> list=super.getSessionFactory().getCurrentSession().createQuery(hql).setString("shopName", shopName).list();
 		if(list.isEmpty())
-			return false;
-		return true;
+			return true;
+		return false;
 	}
 
 }

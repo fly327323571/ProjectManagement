@@ -7,7 +7,7 @@ function ShopRegister(shopRegisterConfig){
 	//---------------------验证函数-------------------------//
 	function checkShopName(value){//ajax异步验证
 		
-		var url = _shopRegisterConfig.URL.STORE_NAME_CHECK + "?storeName="+value;
+		var url = _shopRegisterConfig.URL.STORE_NAME_CHECK + "?shopName="+value;
 		
 		baseAjax.doAjax(url, null, function(data){
 			var isValid = data.result;
@@ -18,7 +18,8 @@ function ShopRegister(shopRegisterConfig){
 			}
 			
 		}, function(data){
-			alertFail(data.result.message);
+			validator.markInvalid('shopName');
+			alertFail(data.result);
 		});
 		
 	}
@@ -43,19 +44,8 @@ function ShopRegister(shopRegisterConfig){
 			return;
 		}
 		
-		var store = {
-			"storeName" : $("#shopName").val(),
-			"type" : $("#category").val(),
-			"address" : {
-				"province" : getSelectText($("#province")),
-				"city" : getSelectText($("#city")),
-				"address" : $("#address").val()
-			},
-			"description" : $("#remarks").val(),
-			"logo" : logo_path
-		};
 		
-		baseAjax.doAjax(_shopRegisterConfig.URL.OPEN_STORE, store, function(data){
+		baseAjax.doAjax(_shopRegisterConfig.URL.OPEN_STORE, $('#shopRegForm').serialize(), function(data){
 			alertSuccess('request for new store has been submitted',function(){
 				window.location.href = _shopRegisterConfig.URL.SHOP_LIST;
 				var shopOwnerHomepage = window.parent.ShopOwnerHomepage;
@@ -80,10 +70,10 @@ function ShopRegister(shopRegisterConfig){
 	            var $mark = $("#upload_mark");
 	            $mark.attr('class','glyphicon glyphicon-ok mark_OK');
 	        	$mark.show();
-	        	logo_path = data.path;
+	        	logo_path = data.result;
 	            $("#uploading").hide();
 	            $("#_shopImage img").fadeOut('1000',function(){
-	            	$("#_shopImage img").attr('src',data.path);
+	            	$("#_shopImage img").attr('src',data.result);
 		            $("#_shopImage img").fadeIn('1000');
 	            });
 	            bindUploadFileEvent();

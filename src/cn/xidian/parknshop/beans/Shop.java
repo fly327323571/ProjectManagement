@@ -1,5 +1,7 @@
 package cn.xidian.parknshop.beans;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +16,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="tb_Shop")
-public class Shop {
+public class Shop implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id", unique = true, nullable = false)
@@ -32,7 +39,7 @@ public class Shop {
 	@Column(name="shop_rank",nullable=false)
 	private double shopRank=1;
 	
-	@Column(name = "shop_icon",length=100)
+	@Column(name = "shop_icon",length=200)
 	private String shopIcon;
 	
 	@Column(name = "owner_telephone",length=20)
