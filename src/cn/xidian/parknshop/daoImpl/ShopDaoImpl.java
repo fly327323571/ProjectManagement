@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import cn.xidian.parknshop.beans.Shop;
 import cn.xidian.parknshop.dao.ShopDao;
 
 @Repository("shopDao")
@@ -26,6 +27,15 @@ public class ShopDaoImpl extends HibernateDaoSupport implements ShopDao {
 		if(list.isEmpty())
 			return true;
 		return false;
+	}
+
+	@Override
+	public List<Shop> findShopByUserName(String userName) {
+		// TODO Auto-generated method stub
+		String hql="from Shop s Where s.username=:userName";
+		@SuppressWarnings("unchecked")
+		List<Shop> list=super.getSessionFactory().getCurrentSession().createQuery(hql).setString("userName", userName).list();
+		return list;
 	}
 
 }

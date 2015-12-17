@@ -1,6 +1,7 @@
 package cn.xidian.parknshop.beans;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 @Entity
@@ -59,6 +62,10 @@ public class Shop implements Serializable {
 	
 	@Column(name="remarks",length=200)
 	private String remarks;
+	
+	@Column(name="registerTime",nullable=false)
+	@Temporal(TemporalType.DATE)
+	private Date regTime;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name="username",referencedColumnName="username",insertable =true,updatable =true)
@@ -142,5 +149,11 @@ public class Shop implements Serializable {
 	}
 	public void setShopCategories(int shopCategories) {
 		this.shopCategories = shopCategories;
+	}
+	public Date getRegTime() {
+		return regTime;
+	}
+	public void setRegTime(Date regTime) {
+		this.regTime = regTime;
 	}
 }

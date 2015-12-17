@@ -94,6 +94,7 @@ public class ShopController {
 		shop.setShopOwner(shopOwner);
 		shop.setOwnerTel(shopOwner.getTel());
 		shop.setShopNo(System.nanoTime());
+		shop.setRegTime(new Date());
 		shop.setShopIcon(logoUrl);
 //		shop.setShopCategories(DictionaryUtils.ShopCategory.fromString(shop.getShopCategories()));
 		shopBaseService.create(shop);
