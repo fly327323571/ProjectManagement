@@ -44,13 +44,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="form-group">
 				 <label class="col-sm-2 control-label" for="inputEmail3" >Product Name</label>
 				<div class="col-sm-7" >
-					<input class="form-control" type="text" value="${product.commodityName }" id="commodityName" required="required" validateType="productName"/>
+					<input class="form-control" type="text" value="${product.commodityName }" id="commodityName" name="commodityName" required="required" validateType="productName"/>
 				</div>
 			</div>
 			<div class="form-group">
 				  <label class="col-sm-2 control-label" for="inputEmail3">Price</label>					
 				<div class="col-sm-7">
-					<input class="form-control" type="text" value='${product.commodityPrice }' id="commodityPrice" required="required" validateType="positiveFloat"/>
+					<input class="form-control" type="text" value='${product.commodityPrice }' id="commodityPrice" name="commodityPrice" required="required" validateType="positiveFloat"/>
 				</div>
 			</div>
 			
@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="form-group">
 				  <label class="col-sm-2 control-label" for="inputEmail3">product introduciton</label>					
 				<div class="col-sm-7">
-					<textarea class="form-control" rows="3" id="commodityDetail" >${product.commodityDetail }</textarea>
+					<textarea class="form-control" rows="3" id="commodityDetail"  name="commodityDetail">${product.commodityDetail }</textarea>
 				</div>
 			</div>
 			

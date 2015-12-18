@@ -11,13 +11,13 @@ function ModifyProductInfo(config){
 	//----------------验证函数-----------------------//
 	
 	function checkProductName(value){
-		var url = _config.URL.CHECK_PRODUCT_NAME + "?productName=" + value;
+		var url = _config.URL.CHECK_PRODUCT_NAME + "?commodityName=" + value;
 		baseAjax.doAjax(url, null, function(data){
 			var isValid = data.result;
 			if(isValid){
-				validator.markValid('productName');
+				validator.markValid('commodityName');
 			}else{
-				validator.markInvalid('productName');
+				validator.markInvalid('commodityName');
 			}
 		}, function(data){
 			
@@ -28,11 +28,11 @@ function ModifyProductInfo(config){
 	$("#save").bind("click",function(){
 		var product = {
 				"productId" : productId,
-				"productName" : $("#productName").val(),
-				"presentPrice" : $("#price").val(),
-				"type" : $("#category").val(),
-				"amounts" : $("#amounts").val(),
-				"description" : $("#description").val(),
+				"commodityName" : $("#commodityName").val(),
+				"commodityPrice" : $("#commodityPrice").val(),
+				"category" : $("#category").val(),
+				"commodityCount" : $("#commodityCount").val(),
+				"commodityDetail" : $("#commodityDetail").val(),
 				"defaultImage": $("#file").val(),
 			};
 		
@@ -50,7 +50,7 @@ function ModifyProductInfo(config){
 				window.location.href = _config.URL.SUCCESS;
 			});
 		},function(data){
-			showTip(data.result.message);
+			showTip(data.result);
 		});
 	});
 	//取消修改

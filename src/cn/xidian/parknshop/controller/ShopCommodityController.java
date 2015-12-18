@@ -228,9 +228,40 @@ public class ShopCommodityController {
 		return map;
 	}
 	
-	@RequestMapping("product/{storeId}/modify")
-	public Map<String,ResultType> modifyComm(@PathVariable long storeId,Commodity commodity){
+	@RequestMapping("product/{productId}/modify")
+	public @ResponseBody Map<String,ResultType> modifyComm(@PathVariable long productId,Commodity commodity){
 		Map<String,ResultType> map=new HashMap<String,ResultType>();
+		ResultType resultType=new ResultType();
+		Commodity preCommodity=null;
+		try{
+			preCommodity=shopCommodityService.findCommodityByCommNo(productId);}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("db busy!");
+			map.put("result", resultType);
+			return map;
+		}
+		if(preCommodity==null){
+			resultType.error().setResult("error.please retry");
+			map.put("result", resultType);
+			return map;
+		}
+		preCommodity.setCategory(commodity.getCategory());
+		preCommodity.setCommodityDetail(commodity.getCommodityDetail());
+		preCommodity.setCommodityName(commodity.getCommodityName());
+		preCommodity.setCommodityPrice(commodity.getCommodityPrice());
+		preCommodity.setCommodityCount(commodity.getCommodityCount());
+		try{
+			commodityBaseService.update(preCommodity);
+		}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("db busy!");
+			map.put("result", resultType);
+			return map;
+		}
+		resultType.success().setResult("Update Ok~");
+		map.put("result", resultType);
 		return map;
 	}
 }

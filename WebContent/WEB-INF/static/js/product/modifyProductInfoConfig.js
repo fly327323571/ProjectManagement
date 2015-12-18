@@ -1,9 +1,9 @@
 $(function(){
 	var config = {
 		URL : {
-			SAVE : 'product/{storeId}/modify'.replace("{storeId}", storeId), //保存修改的地址
+			SAVE : 'product/{productId}/modify'.replace("{productId}", productId), //保存修改的地址
 			SUCCESS:'product/{storeId}/list/index.do'.replace("{storeId}", storeId), //修改成功后，或者取消修改后跳转的页面地址
-			CHECK_PRODUCT_NAME : 'product/{storeId}/{productId}/checkProductName'.replace("{storeId}", storeId).replace("{productId}",productId)
+			CHECK_PRODUCT_NAME : 'product/{shopNo}/*/checkProductName'.replace("{shopNo}", storeId)
 		},
 		dialogRemind : function(message){},//占位符
 		validateConfig : [{
@@ -27,6 +27,10 @@ $(function(){
 			id : 'commodityCount',
 			name : 'commodityCount',
 			remind : this.dialogRemind
+		},
+		{
+			id:'commodityDetail',
+			name:'commodityDetail'
 		}]
 	};
 	new ModifyProductInfo(config);
