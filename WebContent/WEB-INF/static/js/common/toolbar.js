@@ -7,7 +7,7 @@ $(function(){
 				LOGOUT : 'user/logout',
 				CUSTOMER_REGISTER : 'user/register/customerReg.html',
 				SHOP_OWNER_REGISTER : 'views/user/shopOwnerRegister.jsp',
-				MY_STORES : 'store/index.do',
+				MY_STORES : 'views/shopOwner/shopOwnerHomepage.jsp',
 				MY_CART : 'cart/myCart.do',
 				MY_HOMEPAGE :  '',
 				CART_COUNT : 'cart/count.json',

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import cn.xidian.parknshop.beans.ResultType;
 import cn.xidian.parknshop.beans.User;
@@ -29,7 +30,18 @@ public class UserBaseController {
 	@Resource(name="userService")
 	private UserService  userService;
 	
+	@RequestMapping("/user/logout")
+	public ModelAndView LogOut(HttpSession session){
+		session.setAttribute("user", null);
+		return new ModelAndView("../views/homepage");
+	}
+	
 	@RequestMapping("/user/login")
+	public ModelAndView redirectLogIn(){
+		return new ModelAndView("../views/user/login");
+	}
+	
+	@RequestMapping("/user/loginIn")
 	public @ResponseBody  Map<String,ResultType> LogIn(String userName,String password,HttpSession session){
 		String secPassWord=MD5Utils.MD5(password);
 		Map<String,ResultType> map=new HashMap<String,ResultType>();

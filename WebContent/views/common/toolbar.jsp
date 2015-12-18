@@ -10,7 +10,7 @@ if(userObj == null){
     <section class="site-nav">
     	<div class="log-info">
     		<span>welcome to<a id="quickTohomepage">PARKnSHOP.com!</a>  <span class="glyphicon glyphicon-user sn"></span></span>
-	    	<a id="login" class="sn-log">log in</a>
+	    	<a id="login"  class="sn-log">log in</a>
 	    	<a id="__register" class="sn-register">register</a>
     	</div>
     	<div class="quick-menu">

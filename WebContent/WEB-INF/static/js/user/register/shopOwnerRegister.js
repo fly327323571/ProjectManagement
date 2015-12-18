@@ -24,6 +24,7 @@ $(function(){
 		}
 		baseAjax.doAjax('user/register/saveShopOwner', $("#form").serialize(), function(data){
 			alertSuccess(data.result);
+			window.location.href=".";
 			
 		}, function(data){
 			alertFail(data.result);
