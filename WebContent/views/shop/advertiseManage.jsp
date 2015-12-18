@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<select id="product1" class="form-control" name="inputProduct" required="required" validateType="nonNegativeInteger">
 								<option value="-1" style="display:none;">select your product</option>
 								<c:forEach var="product" items="${products }">
-								<option value="${product.productId }">${product.productName }</option>
+								<option value="${product.commoditNo }">${product.commodityName }</option>
 								</c:forEach>
 							</select>
 						</div>
@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<select id="product2" class="form-control" name="inputProduct" required="required" validateType="nonNegativeInteger">
 							<option value="-1" style="display:none;">select your product</option>
 								<c:forEach var="product" items="${products }">
-								<option value="${product.productId }">${product.productName }</option>
+								<option value="${product.commoditNo }">${product.commodityName }</option>
 								</c:forEach>
 							</select>
 						</div>
@@ -121,7 +121,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<select id="product3" class="form-control" name="inputProduct" required="required" validateType="nonNegativeInteger">
 							<option value="-1" style="display:none;">select your product</option>
 								<c:forEach var="product" items="${products }">
-								<option value="${product.productId }">${product.productName }</option>
+								<option value="${product.commoditNo }">${product.commodityName }</option>
 								</c:forEach>
 							</select>
 						</div>

@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
   
   <body>
-     <%@include file="common/toolbar.jsp" %>
+     <%@include file="../common/toolbar.jsp" %>
 	<header>
 		<span class="logo">PARKnSHOP</span>
 		<span class="identity">administrator page</span>

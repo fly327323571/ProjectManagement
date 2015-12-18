@@ -48,10 +48,44 @@ public class ShopCommodityController {
 		return new ModelAndView("../views/shop/dashboard");
 	}
 	
+	@RequestMapping("shop/{shopNo}/manageAd/index.do")
+	public ModelAndView manageAdIndex(@PathVariable long shopNo,Model model){
+		model.addAttribute("storeId",shopNo);
+		List<Commodity> commodities=null;
+		try{
+			commodities=shopCommodityService.findCommByShopNo(shopNo);
+		}
+		catch(Exception e){
+			log.error(e);
+		}
+		model.addAttribute("products", commodities);
+		return new ModelAndView("../views/shop/advertiseManage");
+	}
+	
 	@RequestMapping("product/{shopNo}/list/index.do")
 	public ModelAndView commodityListIndex(@PathVariable long shopNo,Model model){
 		model.addAttribute("storeId",shopNo);
 		return new ModelAndView("../views/shop/productList");
+	}
+	
+	@RequestMapping("product/{shopNo}/modify/{productNo}/index.do")
+	public ModelAndView redirectModifyCommInfo(@PathVariable long shopNo,@PathVariable long productNo,Model model){
+		model.addAttribute("storeId",shopNo);
+		Commodity commodity=null;
+		List<String> categories=new ArrayList<String>();
+		for(CommodityCategory c:DictionaryUtils.CommodityCategory.values()){
+			categories.add(c.toString());
+		}
+		model.addAttribute("categories",categories);
+		try{
+			commodity=shopCommodityService.findCommodityByCommNo(productNo);
+		}
+		catch(Exception e){
+			log.error(e);
+		}
+		model.addAttribute("product", commodity);
+		return new ModelAndView("../views/shop/modifyProductInfo");
+		
 	}
 	
 	@RequestMapping("product/{shopNo}/select")
@@ -191,6 +225,12 @@ public class ShopCommodityController {
         	resultType.error().setResult("File Type Error!");
         	map.put("result", resultType);
         }
+		return map;
+	}
+	
+	@RequestMapping("product/{storeId}/modify")
+	public Map<String,ResultType> modifyComm(@PathVariable long storeId,Commodity commodity){
+		Map<String,ResultType> map=new HashMap<String,ResultType>();
 		return map;
 	}
 }

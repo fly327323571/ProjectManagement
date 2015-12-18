@@ -43,5 +43,15 @@ public class ShopCommodityDaoImpl extends HibernateDaoSupport implements ShopCom
 		}
 		return commList;
 	}
+	@Override
+	public Commodity findCommodityByCommNo(long commNo) {
+		// TODO Auto-generated method stub
+		String hql="from Commodity c where c.commoditNo=:commNo";
+		@SuppressWarnings("unchecked")
+		List<Commodity> commList=super.getSessionFactory().getCurrentSession().createQuery(hql).setLong("commNo",commNo).list();
+		if(commList.isEmpty())
+			return null;
+		return commList.get(0);
+	}
 
 }

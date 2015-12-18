@@ -14,15 +14,15 @@ public class Comments {
 	private int commentsId;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="username",referencedColumnName="username",insertable=true,updatable=false)
+	@JoinColumn(name="username",referencedColumnName="username",insertable=true,updatable=true)
 	private User user;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="shop_no",referencedColumnName="shop_no",insertable=true,updatable=false)
+	@JoinColumn(name="shop_no",referencedColumnName="shop_no",insertable=true,updatable=true)
 	private Shop shop;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="commodity_no",referencedColumnName="commodity_no",insertable=true,updatable=false)
+	@JoinColumn(name="commodity_no",referencedColumnName="commodity_no",insertable=true,updatable=true)
 	private Commodity commodity;
 	
 	@Column(name="comment",length=200,nullable=false)

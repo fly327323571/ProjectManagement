@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <div class="container">
 	<div  class="pic">
-		<img  src="${product.defaultImage}" width="200" height="200" >
+		<img  src="${product.commodityImg}" width="200" height="200" >
 		<div style="position: relative; width: 105px;margin-top: 16px;  margin-left: 30px;">
 			<div class="btn btn-default" style="position: relative; width: 125px;overflow: hidden;">
 	 			<div>Update Logo</div>
@@ -44,13 +44,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="form-group">
 				 <label class="col-sm-2 control-label" for="inputEmail3" >Product Name</label>
 				<div class="col-sm-7" >
-					<input class="form-control" type="text" value="${product.productName }" id="productName" required="required" validateType="productName"/>
+					<input class="form-control" type="text" value="${product.commodityName }" id="commodityName" required="required" validateType="productName"/>
 				</div>
 			</div>
 			<div class="form-group">
 				  <label class="col-sm-2 control-label" for="inputEmail3">Price</label>					
 				<div class="col-sm-7">
-					<input class="form-control" type="text" value='${product.presentPrice }' id="price" required="required" validateType="positiveFloat"/>
+					<input class="form-control" type="text" value='${product.commodityPrice }' id="commodityPrice" required="required" validateType="positiveFloat"/>
 				</div>
 			</div>
 			
@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<c:forEach var="category" items="${categories}">
 						<%request.setAttribute("i", i);%>
 						<option value="<%=i++%>"
-						 <c:if test='${product.type ==i}'>selected="selected"</c:if>
+						 <c:if test='${product.category ==i}'>selected="selected"</c:if>
 						>${category}</option>
 					</c:forEach>
 					</select>
@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="form-group">
 				  <label class="col-sm-2 control-label" for="inputEmail3">Quantity</label>					
 				<div class="col-sm-7">
-					<input class="form-control"  type="text" value="${product.amounts }" id="amounts" required="required" validateType="positiveInteger"/>
+					<input class="form-control"  type="text" value="${product.commodityCount }" id="commodityCount" required="required" validateType="positiveInteger"/>
 				</div>
 			</div>
 			
@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="form-group">
 				  <label class="col-sm-2 control-label" for="inputEmail3">product introduciton</label>					
 				<div class="col-sm-7">
-					<textarea class="form-control" rows="3" id="description" >${product.description }</textarea>
+					<textarea class="form-control" rows="3" id="commodityDetail" >${product.commodityDetail }</textarea>
 				</div>
 			</div>
 			
@@ -124,7 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="static/js/common/validator.js"></script> 
 <script type="text/javascript">
 	 var storeId = "${storeId}";
-	 var productId = ${product.productId};
+	 var productId = ${product.commoditNo};
 </script>
 
 

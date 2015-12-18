@@ -9,4 +9,6 @@ public interface ShopCommodityDao {
 	boolean checkCommName(String commName,long shopNo);
 	
 	List<Commodity> findCommodityByShopNo(long shopNo);
+	
+	Commodity findCommodityByCommNo(long commNo);
 }

@@ -15,11 +15,15 @@ public class Advertisement {
 	@JoinColumn(name="shop_no",referencedColumnName="shop_no",insertable=true,updatable=true)
 	private Shop shop;
 	
-	@Column(name="ad_url",nullable=false,length=100)
-	private String adUrl;
+	@OneToOne
+	@JoinColumn(name="commodity_no",referencedColumnName="commodity_no",insertable=true,updatable=true)
+	private Commodity commodity;
 	
 	@Column(name="ad_type")
 	private int adType=1;
+	
+	@Column(name="ad_url")
+	private String adUrl;
 	
 	@Column(name="ad_content",nullable=false,length=200)
 	private String adContent;
@@ -73,5 +77,13 @@ public class Advertisement {
 
 	public void setAdImg(String adImg) {
 		this.adImg = adImg;
+	}
+
+	public Commodity getCommodity() {
+		return commodity;
+	}
+
+	public void setCommodity(Commodity commodity) {
+		this.commodity = commodity;
 	}
 }

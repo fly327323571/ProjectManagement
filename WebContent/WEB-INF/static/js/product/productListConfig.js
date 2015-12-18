@@ -52,8 +52,8 @@ $(function(){
 					row : 1,
 					render : tableRenderer.addTimeRender
 				},{
-					name : 'saleVolume',//销量
-					data : 'saleVolume',
+					name : 'saleVolumn',//销量
+					data : 'saleVolumn',
 					visible : true,
 					row : 1,
 					render : tableRenderer.saleVolumeRenderer

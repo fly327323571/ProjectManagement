@@ -28,4 +28,10 @@ public class ShopCommodityServiceImpl implements ShopCommodityService {
 		return shopCommodityDao.findCommodityByShopNo(shopNo);
 	}
 
+	@Override
+	public Commodity findCommodityByCommNo(long commNo) {
+		// TODO Auto-generated method stub
+		return shopCommodityDao.findCommodityByCommNo(commNo);
+	}
+
 }

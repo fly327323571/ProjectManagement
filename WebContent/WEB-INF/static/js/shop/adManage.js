@@ -16,7 +16,7 @@ function AdManage(config){
 				console.log(data);
 				$parent.siblings(".upload_mark").remove();
 				$parent.after(markOk);
-	        	callback ? callback(data.path) : undefined;
+	        	callback ? callback(data) : undefined;
 	            bindUploadFileEvent($file,callback);
 			},function(data){
 				$parent.siblings(".upload_mark").remove();

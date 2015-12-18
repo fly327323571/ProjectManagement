@@ -9,4 +9,6 @@ public interface ShopCommodityService {
 	boolean checkCommName(String commName,long shopNo);
 	
 	List<Commodity> findCommByShopNo(long shopNo);
+	
+	Commodity findCommodityByCommNo(long commNo);
 }

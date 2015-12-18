@@ -25,10 +25,13 @@ public class Commodity {
 	private int category;
 	
 	@Column(name="commodity_salevolumn",nullable=false)
-	private long saleVolumn=0;
+	private long saleVolume=0;
 	
 	@Column(name="commodity_image",length=100)
 	private String commodityImg;
+	
+	@Column(name="commodity_avgRank")
+	private double avgRank=0D;
 	
 	@Column(name="commodity_price",nullable=false)
 	private double commodityPrice;
@@ -137,11 +140,19 @@ public class Commodity {
 	}
 
 	public long getSaleVolumn() {
-		return saleVolumn;
+		return saleVolume;
 	}
 
-	public void setSaleVolumn(long saleVolumn) {
-		this.saleVolumn = saleVolumn;
+	public void setSaleVolumn(long saleVolume) {
+		this.saleVolume = saleVolume;
+	}
+
+	public double getAvgRank() {
+		return avgRank;
+	}
+
+	public void setAvgRank(double avgRank) {
+		this.avgRank = avgRank;
 	}
 	
 }
