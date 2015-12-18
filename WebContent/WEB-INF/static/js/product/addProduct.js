@@ -8,13 +8,15 @@ function AddProduct(config){
 	
 	//-----------------------验证函数-------------------------//
 	function checkProductName(value){
-		var url = _config.URL.CHECK_PRODUCT_NAME + "?productName=" + value;
-		baseAjax.doAjax(url, null, function(data){
+		var url = _config.URL.CHECK_PRODUCT_NAME ;
+		var product = {
+				'commodityName' : $("#commodityName").val()}
+		baseAjax.doAjax(url, product, function(data){
 			var isValid = data.result;
-			if(isValid){
-				validator.markValid('productName');
+			if(isValid=="Can Use"){
+				validator.markValid('commodityName');
 			}else{
-				validator.markInvalid('productName');
+				validator.markInvalid('commodityName');
 			}
 		}, function(data){
 			
@@ -42,11 +44,11 @@ function AddProduct(config){
 			return;
 		}
 		var product = {
-			'productName' : $("#productName").val().trim(),
-			'presentPrice' : parseFloat($("#presentPrice").val()),//此处需要考虑转换符号
+			'commodityName' : $("#commodityName").val(),
+			'commodityPrice' : parseFloat($("#commodityPrice").val()),//此处需要考虑转换符号
 			'type' : parseInt($("#type").val()),//
-			'amounts' : parseInt($("#amounts").val()),
-			'description' : $("#description").val().trim(),
+			'commodityCount' : parseInt($("#commodityCount").val()),
+			'commodityDetail' : $("#commodityDetail").val(),
 			'defaultImage' : $("#defaultImage").val()
 		};
 		
@@ -66,14 +68,14 @@ function AddProduct(config){
 			// 开始上传文件时显示一个图片
 	        $("#uploading").show();
 	        $("#upload_mark").hide();
-			baseAjax.ajaxFileUpload('upload/fileUpload','file',function(data){
+			baseAjax.ajaxFileUpload(_config.URL.UPLOADIMG,'file',function(data){
 				console.log(data);
 	            var $mark = $("#upload_mark");
 	            $mark.attr('class','glyphicon glyphicon-ok mark_OK');
 	        	$mark.show();
-	        	image_path = data.path;
+	        	image_path = data.result;
 	            $("#uploading").hide();
-	            $("#defaultImage").val(data.path);
+	            $("#defaultImage").val(image_path);
 	            $("#_productImage").attr('src',image_path);
 	            $("#_productImage").fadeIn('1500');
 	            bindUploadFileEvent();

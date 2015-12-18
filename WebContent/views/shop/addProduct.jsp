@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="form-group">
 					 <span class="col-sm-2 control-label" for="productName">Product name</span>
 					 <div class="col-sm-7" >
-					 	<input type="text" class="form-control" id="productName" name="productName" required="required" validateType="productName" placeholder="composed by letters, Numbers, underscores and space,length 4-16 "/><!--  -->
+					 	<input type="text" class="form-control" id="commodityName" name="commodityName" required="required" validateType="productName" placeholder="composed by letters, Numbers, underscores and space,length 4-16 "/><!--  -->
 					 	
 					 </div>
 				</div>
@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="form-group">
 					 <span class="col-sm-2 control-label" for="presentPrice">Price</span>
 					 <div class="col-sm-7" >
-					 	<input type="text" class="form-control" id="presentPrice" name="presentPrice" required="required" validateType="positiveFloat"/>
+					 	<input type="text" class="form-control" id="commodityPrice" name="commodityPrice" required="required" validateType="positiveFloat"/>
 					 </div>
 				</div>
 				<div class="form-group">
@@ -58,14 +58,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="form-group">
 					 <span class="col-sm-2 control-label" for="amounts">Quantity</span>
 					 <div class="col-sm-7" >
-					 	<input type="number" class="form-control" id="amounts" name="amounts" required="required" validateType="positiveInteger"/>
+					 	<input type="number" class="form-control" id="commodityCount" name="commodityCount" required="required" validateType="positiveInteger"/>
 					 </div>
 				</div>
 				
 				<div class="form-group">
 					 <span class="col-sm-2 control-label" for="description">description</span>
 					 <div class="col-sm-7" >
-					 	<textarea id="description" rows="3" class="form-control" name="description" required="required"></textarea>
+					 	<textarea id="commodityDetail" rows="3" class="form-control" name="commodityDetail" required="required"></textarea>
 					 </div>
 				</div>
 				

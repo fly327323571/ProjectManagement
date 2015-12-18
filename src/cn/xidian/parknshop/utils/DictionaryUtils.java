@@ -38,4 +38,18 @@ public class DictionaryUtils {
 	public static enum UserAccountState{
 		Normal,Warning,Suspend
 	};
+	
+	
+	public static enum CommodityCategory{
+		Food,Clothes;
+		private static HashMap<String,CommodityCategory> fromString=new HashMap<String,CommodityCategory>();
+		static{	
+			for(CommodityCategory c:CommodityCategory.values()){
+				fromString.put(c.toString(), c);
+			}
+		} 
+		public static CommodityCategory fromString(String typeName){
+			return fromString.get(typeName);
+		}
+	}
 }

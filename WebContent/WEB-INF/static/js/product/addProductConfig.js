@@ -2,30 +2,31 @@ $(function(){
 	
 	var config = {
 		URL : {
-			ADD : "product/{storeId}/add.json".replace('{storeId}',storeId),
-			DELETE : "product/{storeId}/delete.json".replace('{storeId}',storeId),
-			CHECK_PRODUCT_NAME : 'product/{storeId}/*/checkProductName.json'.replace("{storeId}", storeId),
-			LIST : "product/{storeId}/list/index.do".replace('{storeId}',storeId)
+			ADD : "product/{shopNo}/add".replace('{shopNo}',storeId),
+			DELETE : "product/{shopNo}/delete".replace('{shopNo}',storeId),
+			CHECK_PRODUCT_NAME : 'product/{shopNo}/*/checkProductName'.replace("{shopNo}", storeId),
+			LIST : "product/{shopNo}/list/index.do".replace('{shopNo}',storeId),
+			UPLOADIMG:"product/{shopNo}/upload/CommodityImg.do".replace('{shopNo}',storeId)
 		},
 		validateConfig : [{
-			id : 'productName',
-			name : 'product name',
+			id : 'commodityName',
+			name : 'commodityName',
 			asynValidate : function(value){
 				AddProduct.checkProductName(value);
 			}
 		},{
-			id : 'presentPrice',
-			name : "price"
+			id : 'commodityPrice',
+			name : "commodityPrice"
 		},{
 			id : 'type',
 			name : 'category',
 			remind : 'please choose the category'
 		},{
-			id : "amounts",
-			name : 'quantity'
+			id : "commodityCount",
+			name : 'commodityCount'
 		},{
-			id : 'description',
-			name :'description'
+			id : 'commodityDetail',
+			name :'commodityDetail'
 		}]
 	};
 	

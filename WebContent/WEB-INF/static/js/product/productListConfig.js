@@ -19,8 +19,8 @@ $(function(){
 				return html;
 			},
 			productRender : function(data){
-				var img = '<img src="'+data.defaultImage+'" class="product_img">';
-				var span = '<span>'+data.productName+'</span>';
+				var img = '<img src="'+data.commodityImg+'" class="product_img">';
+				var span = '<span>'+data.commodityName+'</span>';
 				return img + span;
 			},
 			operationRenderer : function(productId){
@@ -34,11 +34,11 @@ $(function(){
 
 	var config = {
 			URL : {
-				ADD : "product/{storeId}/add.json".replace('{storeId}',storeId),
-				DELETE : "product/{storeId}/delete.json".replace('{storeId}',storeId),
-				MODIFY : "product/{storeId}/modify/{productId}/index.do".replace('{storeId}',storeId),
-				LIST : "product/{storeId}/select.json".replace('{storeId}',storeId),
-				DELETE_CHECK : "product/{storeId}/delete/check.json".replace('{storeId}',storeId),
+				ADD : "product/{shopNo}/add".replace('{shopNo}',storeId),
+				DELETE : "product/{shopNo}/delete.json".replace('{shopNo}',storeId),
+				MODIFY : "product/{shopNo}/modify/{productId}/index.do".replace('{shopNo}',storeId),
+				LIST : "product/{shopNo}/select".replace('{shopNo}',storeId),
+				DELETE_CHECK : "product/{shopNo}/delete/check.json".replace('{shopNo}',storeId),
 			},
 			tableConfig : {
 				header : ["Products","Price","Quantity","Introduction",""],//请注意,此处的""字符串不可删除,目的是为了保持列表的列数目一致
@@ -59,43 +59,43 @@ $(function(){
 					render : tableRenderer.saleVolumeRenderer
 				},{
 					name : 'id',//页面上显示的信息
-					data : 'productId',//对应Store.java 实体类的字段
+					data : 'commoditNo',//对应Store.java 实体类的字段
 					visible : true,
 					row : 1,
 					render : tableRenderer.productIdRenderer
 				},{
 					name : 'category',
-					data : 'type',
+					data : 'category',
 					visible : true,
 					row  : 1,
 					render : tableRenderer.categoryRender
 				},{
 					name : 'product',
-					data : 'defaultImage & productName',
+					data : 'commodityImg & commodityName',
 					visible : true,
 					row : 2,
 					render : tableRenderer.productRender
 				},{
 					name : 'price',
-					data : 'presentPrice',
+					data : 'commodityPrice',
 					visible : true,
 					row : 2,
 					render : null
 				},{
-					name : 'amounts',
-					data : 'amounts',
+					name : 'commodityCount',
+					data : 'commodityCount',
 					visible : true,
 					row : 2,
 					render : null
 				},{
-					name : 'description',
-					data : 'description',
+					name : 'commodityDetail',
+					data : 'commodityDetail',
 					visible : true,
 					row : 2,
 					render : null
 				},{
 					name : 'operation',
-					data : 'productId',
+					data : 'commoditNo',
 					visible : true,
 					row : 2,
 					render : tableRenderer.operationRenderer

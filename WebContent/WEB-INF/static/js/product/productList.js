@@ -72,11 +72,11 @@ function ProductList(config){
 			 *}
 			 */
 			var page = rs.result;
-			_productList = page.data;
+			_productList = page;
 			table.loadData(_productList);
 			if(_productList && _productList.length>0){
 				$("#pagination").paginate({
-					count 		: page.totalPageCount,//10,
+					count 		: Math.ceil(page.length/5),//10,
 					start 		: curPageIdx,
 					display     : 5,
 					border					: true,

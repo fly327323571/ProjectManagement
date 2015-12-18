@@ -47,16 +47,18 @@ public class ShopController {
 		User shopOwner=(User)session.getAttribute("user");
 		ResultType resultType=new ResultType();
 		Map<String,ResultType> map=new HashMap<String,ResultType>();
+		List<Shop> shopList=null;
 		try{
-		List<Shop> shopList=shopService.findShopByUserName(shopOwner.getUserName());
+			shopList=shopService.findShopByUserName(shopOwner.getUserName());
 
-		resultType.success().setResult(shopList);
-		map.put("result", resultType);}
+		}
 		catch(Exception e){
 			log.error(e);
 			resultType.error().setResult("DB busy");
 			map.put("result", resultType);
 		}
+		resultType.success().setResult(shopList);
+		map.put("result", resultType);
 		return map;
 	}
 	@RequestMapping("shop/*/shopHomePage.do")

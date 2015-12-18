@@ -1,5 +1,7 @@
 package cn.xidian.parknshop.beans;
 
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,6 +21,12 @@ public class Commodity {
 	@Column(name="commodity_brief_info",length=200)
 	private String commodityInfo;
 	
+	@Column(name="commodity_category",length=2,nullable=false)
+	private int category;
+	
+	@Column(name="commodity_salevolumn",nullable=false)
+	private long saleVolumn=0;
+	
 	@Column(name="commodity_image",length=100)
 	private String commodityImg;
 	
@@ -30,6 +38,10 @@ public class Commodity {
 	
 	@Column(name="commodity_detail",length=500)
 	private String commodityDetail;
+	
+	@Column(name="commodity_addTime",nullable=false)
+	@Temporal(TemporalType.DATE)
+	private Date addTime;
 	
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name="shop_no",referencedColumnName="shop_no",insertable=true,updatable=true)
@@ -106,6 +118,30 @@ public class Commodity {
 
 	public void setId(long id) {
 		Id = id;
+	}
+
+	public int getCategory() {
+		return category;
+	}
+
+	public void setCategory(int category) {
+		this.category = category;
+	}
+
+	public Date getAddTime() {
+		return addTime;
+	}
+
+	public void setAddTime(Date addTime) {
+		this.addTime = addTime;
+	}
+
+	public long getSaleVolumn() {
+		return saleVolumn;
+	}
+
+	public void setSaleVolumn(long saleVolumn) {
+		this.saleVolumn = saleVolumn;
 	}
 	
 }

@@ -44,7 +44,7 @@ if(userObj == null){
     		<a href="javascript:void(0)" class="sn-favorite"><span class="glyphicon glyphicon-heart sn"></span>  my favorite</a>
     		<a id="shopOwnerRegister" class="sn-help"><span class="glyphicon glyphicon-star sn"></span>  to be ShopOwner</a>
     		<a href="javascript:void(0)" class="sn-help"><span class="glyphicon glyphicon-question-sign sn"></span>  help</a>
-    		<a href="siteMap.html" class="sn-help"><span class="glyphicon glyphicon-globe sn"></span>  site map</a>
+    		<a href="siteMap.do" class="sn-help"><span class="glyphicon glyphicon-globe sn"></span>  site map</a>
     	</div>
     </section>
     
@@ -63,7 +63,7 @@ if(userObj == null){
     		<a href="javascript:void(0)" class="sn-cart"><span class="glyphicon glyphicon-shopping-cart sn"></span>  my cart</a>
     		<a href="javascript:void(0)" class="sn-favorite"><span class="glyphicon glyphicon-heart sn"></span>  my favorite</a>
     		<a href="javascript:void(0)" class="sn-help"><span class="glyphicon glyphicon-question-sign sn"></span>  help</a>
-    		<a href="siteMap.html" class="sn-help"><span class="glyphicon glyphicon-globe sn"></span>  site map</a>
+    		<a href="siteMap.do" class="sn-help"><span class="glyphicon glyphicon-globe sn"></span>  site map</a>
     	</div>
     </section>
 <% }} else{//admin %>
