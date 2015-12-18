@@ -22,11 +22,11 @@ $(function(){
 		if(!validator.validate()){
 			return;
 		}
-		baseAjax.doAjax('shop/apply', $("#form").serialize(), function(data){
-			alterSuccess(data.result);
+		baseAjax.doAjax('user/register/saveShopOwner', $("#form").serialize(), function(data){
+			alertSuccess(data.result);
 			
 		}, function(data){
-			alterFail(data.result);
+			alertFail(data.result);
 		})
 //		$("#form").submit();
 	});
@@ -38,7 +38,7 @@ $(function(){
 			// 开始上传文件时显示一个图片
 	        $("#uploading").show();
 	        $("#upload_mark").hide();
-			baseAjax.ajaxFileUpload('upload/fileUpload','file',function(data){
+			baseAjax.ajaxFileUpload('user/upload/portraitUpload','file',function(data){
 				console.log(data);
 	            var $mark = $("#upload_mark");
 	            $mark.attr('class','glyphicon glyphicon-ok mark_OK');

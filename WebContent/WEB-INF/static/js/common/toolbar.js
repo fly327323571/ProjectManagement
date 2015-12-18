@@ -6,7 +6,7 @@ $(function(){
 				LOGIN : 'user/login',
 				LOGOUT : 'user/logout',
 				CUSTOMER_REGISTER : 'user/register/customerReg.html',
-				SHOP_OWNER_REGISTER : 'views/shopOwner/shopOwnerHomepage.jsp',
+				SHOP_OWNER_REGISTER : 'views/user/shopOwnerRegister.jsp',
 				MY_STORES : 'store/index.do',
 				MY_CART : 'cart/myCart.do',
 				MY_HOMEPAGE :  '',

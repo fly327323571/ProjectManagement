@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name="tb_shopOwner")
 public class ShopOwner implements Serializable {
 
 	/**
