@@ -53,11 +53,11 @@ function modifyShopProfile(modifyShopProfileConfig){
 		}
 		
 		var modifyShopProfile={
-				storeId: $("#storeId").val(),
-				storeName: $("#storeName").val().trim(),
-				description: $("#remarks").val().trim(),
-				type: $("#category").val(),
-				logo: $(".pic > img").attr('src')
+				shopNo: $("#shopNo").val(),
+				shopName: $("#shopName").val().trim(),
+				shopDesc: $("#remarks").val(),
+				shopCategories: $("#category").val(),
+				shopIcon: $(".pic > img").attr('src')
 		}; 
 		
 		baseAjax.doAjax(_modifyShopProfileConfig.URL.MODIFY, modifyShopProfile, function(data){//成功操作

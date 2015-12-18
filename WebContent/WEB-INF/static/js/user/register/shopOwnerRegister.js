@@ -22,8 +22,13 @@ $(function(){
 		if(!validator.validate()){
 			return;
 		}
-		
-		$("#form").submit();
+		baseAjax.doAjax('shop/apply', $("#form").serialize(), function(data){
+			alterSuccess(data.result);
+			
+		}, function(data){
+			alterFail(data.result);
+		})
+//		$("#form").submit();
 	});
 	
 	

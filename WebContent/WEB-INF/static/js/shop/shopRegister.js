@@ -47,7 +47,7 @@ function ShopRegister(shopRegisterConfig){
 		
 		baseAjax.doAjax(_shopRegisterConfig.URL.OPEN_STORE, $('#shopRegForm').serialize(), function(data){
 			alertSuccess('request for new store has been submitted',function(){
-				window.location.href = _shopRegisterConfig.URL.SHOP_LIST;
+				window.location.href = 'shop/redirectList';
 				var shopOwnerHomepage = window.parent.ShopOwnerHomepage;
 				if(shopOwnerHomepage)
 				{
@@ -55,7 +55,7 @@ function ShopRegister(shopRegisterConfig){
 				}
 			});
 		},function(data){
-			alertFail(data.result.message);
+			alertFail(data.result);
 		});
 	});
 	

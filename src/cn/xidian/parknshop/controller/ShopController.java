@@ -37,6 +37,11 @@ public class ShopController {
 	
 	private static Logger log=Logger.getLogger(ShopController.class);
 	
+	@RequestMapping("/shop/redirectList")
+	public ModelAndView redirctList(){
+		return new ModelAndView("../views/shopOwner/shopList");
+	}
+	
 	@RequestMapping("/shop/showList")
 	public @ResponseBody Map<String,ResultType> showShopList(HttpSession session){
 		User shopOwner=(User)session.getAttribute("user");
@@ -109,6 +114,28 @@ public class ShopController {
 		}
 	}
 	
+	@RequestMapping("/shop/*/modify")
+	public @ResponseBody Map<String,ResultType> modifyShop(Shop shop,HttpSession session){
+		Map<String,ResultType> map=new HashMap<String,ResultType>();
+		ResultType resultType=new ResultType();
+		try{
+			Shop preShop=shopService.findShopByShopNo(shop.getShopNo());
+			preShop.setShopDesc(shop.getShopDesc());
+			preShop.setShopCategories(shop.getShopCategories());
+			preShop.setShopIcon(shop.getShopIcon());
+			preShop.setShopName(shop.getShopName());
+			shopBaseService.update(preShop);
+		}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("Db busy");
+			map.put("result", resultType);
+			return map;
+		}
+		map.put("result", resultType);
+		return map;
+	}
+
 	@RequestMapping("/shop/*/checkShopName")
 	public @ResponseBody Map<String,ResultType> checkShopName(String shopName){
 		Map<String,ResultType> map=new HashMap<String,ResultType>();
@@ -148,17 +175,30 @@ public class ShopController {
 	}
 	
 	@RequestMapping("/shop/apply")
-	public String applyShop(Shop shop,HttpSession session){
+	public @ResponseBody Map<String,ResultType> applyShop(Shop shop,HttpSession session){
 		User shopOwner =(User)session.getAttribute("user");
+		Map<String,ResultType> map=new HashMap<String,ResultType>();
+		ResultType resultType=new ResultType();
 		shop.setShopOwner(shopOwner);
 		shop.setOwnerTel(shopOwner.getTel());
 		shop.setShopNo(System.nanoTime());
 		shop.setRegTime(new Date());
 		shop.setShopIcon(logoUrl);
 //		shop.setShopCategories(DictionaryUtils.ShopCategory.fromString(shop.getShopCategories()));
-		shopBaseService.create(shop);
-		return "../views/shopOwner/shopList";
+		try{
+		shopBaseService.create(shop);}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("Server Busy.Retry");
+			map.put("result", resultType);
+			return map;
+		}
+		resultType.success().setResult("Register Success.");
+		map.put("result", resultType);
+		return map;
 	}
+	
+
 	
 	@RequestMapping("/upload/fileUpload")
 	public @ResponseBody Map<String,ResultType>  uploadLogo(@RequestParam("myfiles") MultipartFile file,
@@ -208,6 +248,8 @@ public class ShopController {
         }
 		return map;
 	}
+	
+	
 	
 
 	public BaseService<Shop> getShopService() {

@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<label class="col-sm-2 control-label" for="inputEmail3">Store
 						id</label>
 					<div class="col-sm-7">
-						<input class="form-control" type="text" value="${store.shopNo}" id="storeId" />
+						<input class="form-control" type="text" value="${store.shopNo}" id="shopNo" />
 					</div>
 				</div>
 				<div class="form-group">
@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="inputEmail3">Remarks</label>
 					<div class="col-sm-7">
-						<textarea rows="3" id="remarks" class="form-control">${store.shopDesc }</textarea>
+						<textarea rows="3" id="shopDesc" class="form-control">${store.shopDesc }</textarea>
 					</div>
 				</div>
 				<div class="form-group">
