@@ -38,18 +38,39 @@ public class ShopController {
 	private static Logger log=Logger.getLogger(ShopController.class);
 	
 	@RequestMapping("/shop/redirectList")
-	public ModelAndView redirctList(){
+	public ModelAndView redirctList(Model model){
+		List<String> categories=new ArrayList<String>();
+		for(DictionaryUtils.ShopCategory s:DictionaryUtils.ShopCategory.values()){
+			categories.add(s.name());
+		}
+		model.addAttribute("categories",categories);
 		return new ModelAndView("../views/shopOwner/shopList");
 	}
 	
 	@RequestMapping("/shop/showList")
-	public @ResponseBody Map<String,ResultType> showShopList(HttpSession session){
-		User shopOwner=(User)session.getAttribute("user");
+	public @ResponseBody Map<String,ResultType> showShopList(HttpServletRequest request,HttpSession session){
+//		User shopOwner=(User)session.getAttribute("user");
+		Map<String,String> QueryParamMap=new HashMap<String,String>();
+		String pageIndex=request.getParameter("page[pageIndex]");
+		String pageSize=request.getParameter("page[pageSize]");
+		String categoryFilters=request.getParameter("columnFilters[0][value][]");
+		String shopNameFilters=request.getParameter("columnFilters[1][value][]");
+		String orderFilters=request.getParameter("orderFilters[0][name]");
+		String isAsc=request.getParameter("orderFilters[0][isAscending]");
 		ResultType resultType=new ResultType();
+		QueryParamMap.put("pageIndex", pageIndex);
+		QueryParamMap.put("pageSize", pageSize);
+		if(categoryFilters!=null){
+			int category=DictionaryUtils.ShopCategory.fromString(categoryFilters).numberOfShopCategory();
+			QueryParamMap.put("categoryFilters", String.valueOf(category));}
+		if(shopNameFilters!=null)
+			QueryParamMap.put("shopNameFilters", shopNameFilters);
+		QueryParamMap.put("orderFilters", orderFilters);
+		QueryParamMap.put("isAsc", isAsc);
 		Map<String,ResultType> map=new HashMap<String,ResultType>();
 		List<Shop> shopList=null;
 		try{
-			shopList=shopService.findShopByUserName(shopOwner.getUserName());
+			shopList=shopService.findShopsBySomeFilter(QueryParamMap);
 
 		}
 		catch(Exception e){

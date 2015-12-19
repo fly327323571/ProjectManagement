@@ -1,7 +1,7 @@
 $(function(){
 	var config = {
 		URL : {
-			MYSTORES : 'views/shopOwner/shopList.jsp',
+			MYSTORES : 'shop/redirectList',
 			REG_STORE : 'shop/register'
 		}
 	};

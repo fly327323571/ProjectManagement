@@ -15,7 +15,12 @@ $(function(){
 				return html;
 			},
 			categoryRenderer : function(data){
-				var html = '<a class="main_color" href="viewOrderDetails.html " target="_blanket">category:'+data+'</a>';
+				var viewData;
+				if(data==0)
+					viewData='Food';
+				else if(data==1)
+					viewData='Clothes'
+				var html = '<a class="main_color" href="viewOrderDetails.html " target="_blanket">category:'+viewData+'</a>';
 				return html;
 			},
 			productRender : function(data){
@@ -68,7 +73,7 @@ $(function(){
 					data : 'category',
 					visible : true,
 					row  : 1,
-					render : tableRenderer.categoryRender
+					render : tableRenderer.categoryRenderer
 				},{
 					name : 'product',
 					data : 'commodityImg & commodityName',

@@ -3,11 +3,14 @@ $(function(){
 	var tableRenderer = {//数据渲染到页面上的函数
 		storeRenderer : function(data){
 			var html = "<a target='_blank' href='" + shopListConfig.URL.SHOP_HOMEPAGE.replace("{shopNo}",data.shopNo)+ "'>" +
-					"<img src='" + data.shopIcon + "'/><span>" + data.shopName + "</span></a>";
+					"<img src='" + data.shopIcon + "'/><span id='store_name'>" + data.shopName + "</span></a>";
 			return html;
 		},
 		categoryRenderer : function(data){
-			return data;
+			if(data==0)
+				return 'Food'
+			else if(data==1)
+				return 'Clothes'
 		},
 		creditRenderer : function(data){
 			var span = "<span class='glyphicon glyphicon-star star'></span>";

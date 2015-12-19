@@ -5,33 +5,69 @@ import java.util.*;
 public class DictionaryUtils {
 
 	
-	public static final String FILE_PATH="../Upload/Shop/";
 	
 	public static enum ShopSourceType{
-		SelfSale,OfflineSale,Distribution,Undefined;
+		SelfSale(0),OfflineSale(1),Distribution(2),Undefined(3);
+		private final int numberOfShopSourceType;
+		
+		
+		ShopSourceType(int size){
+			this.numberOfShopSourceType=size;
+		}
+		
+		public int numberOfShopSourceType(){return numberOfShopSourceType;}
+		
 		private static HashMap<String,ShopSourceType> fromString=new HashMap<String,ShopSourceType>();
+		
+		private static HashMap<Integer,ShopSourceType> fromInteger=new HashMap<Integer,ShopSourceType>();
 		static{	
 			for(ShopSourceType c:ShopSourceType.values()){
 				fromString.put(c.toString(), c);
+			}
+			for(ShopSourceType c:ShopSourceType.values()){
+				fromInteger.put(c.numberOfShopSourceType, c);
 			}
 		} 
 		public static ShopSourceType fromString(String typeName){
 			return fromString.get(typeName);
 		}
 		
+		public static ShopSourceType fromInteger(int i){
+			return fromInteger(i);
+		}
+		
 	};
 	
 	public static enum ShopCategory{
-		Food,Clothes;
+		Food(0),Clothes(1);
+		
+		private final int numberOfShopCategory;
+		
+		ShopCategory(int size) {
+			// TODO Auto-generated constructor stub
+			this.numberOfShopCategory=size;
+		}
+		
+		private static HashMap<Integer,ShopCategory> fromInteger=new HashMap<Integer,ShopCategory>();
+		
 		private static HashMap<String,ShopCategory> fromString=new HashMap<String,ShopCategory>();
 		static{	
 			for(ShopCategory c:ShopCategory.values()){
 				fromString.put(c.toString(), c);
 			}
+			for(ShopCategory c:ShopCategory.values()){
+				fromInteger.put(c.numberOfShopCategory(), c);
+			}
 		} 
 		public static ShopCategory fromString(String typeName){
 			return fromString.get(typeName);
 		}
+		
+		public static ShopCategory fromInteger(int i){
+			return fromInteger(i);
+		}
+		
+		public int numberOfShopCategory(){return numberOfShopCategory;}
 		
 	};
 	

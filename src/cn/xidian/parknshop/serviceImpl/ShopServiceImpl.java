@@ -1,6 +1,7 @@
 package cn.xidian.parknshop.serviceImpl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -32,6 +33,12 @@ public class ShopServiceImpl implements ShopService {
 	public Shop findShopByShopNo(long shopNo) {
 		// TODO Auto-generated method stub
 		return shopDao.findShopByShopNo(shopNo);
+	}
+
+	@Override
+	public List<Shop> findShopsBySomeFilter(Map<String, String> filter) {
+		// TODO Auto-generated method stub
+		return shopDao.findShopsBySomeFilter(filter);
 	}
 
 }
