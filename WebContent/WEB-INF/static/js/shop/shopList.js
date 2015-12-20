@@ -90,7 +90,7 @@ function ShopList(shopListConfig){
 		var storeName = $("#store_name").val();
 		if(storeName){
 			columnFilters.push({
-				"name" : 'shopName',
+				"name" : 'storeName',
 				"filterType" : 'CONTAIN',
 				"value" : [storeName]
 			});
