@@ -1,6 +1,5 @@
 package cn.xidian.parknshop.beans;
 
-
 import javax.persistence.*;
 
 @Entity
@@ -21,8 +20,12 @@ public class Order{
 	
 
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="seller_id")
+	@JoinColumn(name="seller_name",referencedColumnName="username",insertable=true,updatable=true)
 	private User seller;
+	
+	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinColumn(name="shop_no",referencedColumnName="shop_no",insertable=true,updatable=true)
+	private Shop shop;
 	
 	@Column(name="status")
 	private int state=0;
@@ -36,7 +39,6 @@ public class Order{
 	
 	@Column(name="order_price",nullable=false)
 	private double orderPrice=0.0;
-
 
 	public User getBuyer() {
 		return buyer;
@@ -105,6 +107,14 @@ public class Order{
 
 	public void setOrderPrice(double orderPrice) {
 		this.orderPrice = orderPrice;
+	}
+
+	public Shop getShop() {
+		return shop;
+	}
+
+	public void setShop(Shop shop) {
+		this.shop = shop;
 	}
 
 
