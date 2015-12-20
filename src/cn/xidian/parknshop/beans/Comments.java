@@ -28,8 +28,11 @@ public class Comments {
 	@Column(name="comment",length=200,nullable=false)
 	private String comments;
 	
-	@Column(name="commodity_rank")
+	@Column(name="comment_rank")
 	private double rank;
+	
+	@Column(name="comment_isRead")
+	private int isRead;
 	
 	@Temporal(TemporalType.DATE) 
 	private Date commentsTime;
@@ -88,6 +91,14 @@ public class Comments {
 
 	public void setRank(double rank) {
 		this.rank = rank;
+	}
+
+	public int getIsRead() {
+		return isRead;
+	}
+
+	public void setIsRead(int isRead) {
+		this.isRead = isRead;
 	}
 	
 }
