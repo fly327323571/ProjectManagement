@@ -13,5 +13,7 @@ public interface ShopService {
 	
 	Shop findShopByShopNo(long shopNo);
 	
-	List<Shop> findShopsBySomeFilter(Map<String,String> filter);
+	List<Shop> findShopsBySomeFilter(Map<String,String> filter,String userName);
+
+	List<Shop> findOtherShopsBySomeFilter(Map<String, String> filter, long shopNo);
 }

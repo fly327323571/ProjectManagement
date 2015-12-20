@@ -2,12 +2,15 @@ $(function(){
 	
 	var tableRenderer = {//数据渲染到页面上的函数
 		storeRenderer : function(data){
-			var html = "<a target='_blank' href='" + manageShopLinkConfig.URL.SHOP_HOMEPAGE.replace("{storeId}",data.storeId) + "'>" +
-					"<img src='" + data.logo + "'/><span>" + data.storeName + "</span></a>";
+			var html = "<a target='_blank' href='" + manageShopLinkConfig.URL.SHOP_HOMEPAGE.replace("{storeId}",data.shopNo) + "'>" +
+					"<img src='" + data.shopIcon + "'/><span>" + data.shopName + "</span></a>";
 			return html;
 		},
 		categoryRenderer : function(data){
-			return data;
+			switch(data){
+			case 0:return 'Food'; 
+			case 1:return 'Clothes';
+			}
 		},
 		creditRenderer : function(data){
 			var span = "<span class='glyphicon glyphicon-star star'></span>";
@@ -20,46 +23,46 @@ $(function(){
 		regTimeRenderer : function(data){
 			return data;
 		},
-		operationRenderer : function(storeId){
-			var html="<input type='checkbox' name='linkTo' value="+storeId+" />";
+		operationRenderer : function(data){
+			var html="<input type='checkbox' name='linkTo' value="+data.shopNo+" shopIcon="+data.shopIcon+" shopNo="+storeId+"  />";
 			return html;
 		}
 	};
 	
 	var manageShopLinkConfig = {
 		URL : {//页面所有的URL配置
-			SUBMIT:'store/{storeId}/manageShopLink'.replace("{storeId}", storeId),
+			SUBMIT:'store/{shopNo}/manageShopLink'.replace("{shopNo}", storeId),
 			DETAILS : "store/index.do",
-			LIST : "shop/showList",
-			SHOP_LINKS : "store/{storeId}/shopLinks.json".replace("{storeId}", storeId),
-			SHOP_HOMEPAGE : "business/market/{storeId}/shopHomePage.do",
+			LIST : "shop/link/{shopNo}/showList".replace("{shopNo}", storeId),
+			SHOP_LINKS : "store/{shopNo}/shopLinks.json".replace("{shopNo}", storeId),
+			SHOP_HOMEPAGE : "business/market/{shopNo}/shopHomePage.do".replace("{shopNo}", storeId),
 		},
 		tableConfig : {
 			metadata : [
 			  {
 				  name : '',//页面上显示的信息
-				  data : 'storeId',//对应Store.java 实体类的字段
+				  data : 'shopNo&shopIcon',//对应Store.java 实体类的字段
 				  visible : true,
 				  render : tableRenderer.operationRenderer
 			  },
 			  {
 				  name : 'Store',
-				  data : 'logo & storeName & storeId',
+				  data : ' shopIcon & shopName & shopNo',
 				  visible : true,
 				  render : tableRenderer.storeRenderer
 			  },{
 				  name : 'Category',
-				  data : 'category',
+				  data : 'shopCategories',
 				  visible : true,
 				  render : tableRenderer.categoryRenderer
 			  },{
 				  name : 'Credit',
-				  data : 'creditValue',
+				  data : 'shopRank',
 				  visible : true,
 				  render : tableRenderer.creditRenderer
 			  },{
 				  name : 'Register Time',
-				  data : 'registerTimeString',
+				  data : 'regTime',
 				  visible : true,
 				  render : tableRenderer.regTimeRenderer
 			  }]

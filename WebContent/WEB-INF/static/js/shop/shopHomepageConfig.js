@@ -1,11 +1,11 @@
 $(function(){
 	var config={
 		URL:{
-			ADVERTISE_IMG:'business/market/{storeId}/showAds.json'.replace("{storeId}", storeId),
-			PRODUCT_LIST : "business/market/{storeId}/showProducts.json".replace("{storeId}", storeId),
+			ADVERTISE_IMG:'business/market/{shopNo}/showAds.json'.replace("{shopNo}", storeId),
+			PRODUCT_LIST : "business/market/{shopNo}/showProducts".replace("{shopNo}", storeId),
 			PRODUCT_SHOW : "product/productDetail/{productId}.do",
-			SHOP_LINKS : "store/{storeId}/shopLinks.json".replace("{storeId}", storeId),
-			SHOP_HOMEPAGE : "business/market/{storeId}/shopHomePage.do",
+			SHOP_LINKS : "shop/{shopNo}/shopLinks".replace("{shopNo}", storeId),
+			SHOP_HOMEPAGE : "business/market/{shopNo}/shopHomePage.do",
 		}
 	};
 	new ShopHomepage(config);

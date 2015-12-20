@@ -6,7 +6,7 @@ function ManageShopLink(manageShopLinkConfig){
 	var _shopLink = null;
 	var pageSize = 5;
 	var curPageIdx = 1;
-	var orderBy = undefined;
+	var orderBy = 'registerTime';
 	var isAscending = false;
 	var category = 'All';
 	
@@ -21,7 +21,9 @@ function ManageShopLink(manageShopLinkConfig){
 		var checkedItem = $("input[checked='checked']");
 		var info = [];
 		$.each(checkedItem,function(i,item){
-			info.push(parseInt($(item).val()));
+			info.push("shopIcon"+":"+"\""+$(item).attr('shopIcon')+"\"");
+			info.push("shopNo"+":"+$(item).attr('shopNo'));
+			info.push("linkTo"+":"+$(item).val())
 		});
 		//需要跟数据库补充完整的字段
 		baseAjax.doAjax(_manageShopLinkConfig.URL.SUBMIT, info, function(rs){
@@ -37,12 +39,12 @@ function ManageShopLink(manageShopLinkConfig){
 	//-----------------常用函数------------------------//
 	function getOrderFilters(){
 		var orderFilters = [];
-		/*if(orderBy){
+		if(orderBy){
 			orderFilters[0] = {
 				"name" :	orderBy,
 				"isAscending" : isAscending
 			};
-		}*/
+		}
 		return orderFilters;
 	}
 	
@@ -101,12 +103,12 @@ function ManageShopLink(manageShopLinkConfig){
 		var queryParam = getQueryParam();
 		baseAjax.doAjax(_manageShopLinkConfig.URL.LIST, queryParam, function(rs){
 			var page = rs.result;
-			_shopLink = page.data;
+			_shopLink = page;
 			_shopLink = removeThisStore(_shopLink);
 			table.loadData(_shopLink);
 			if(_shopLink && _shopLink.length!=0){
 				$("#pagination").paginate({
-					count 		: page.totalPageCount,//10,
+					count 		: Math.ceil(_shopLink.length/5),//10,
 					start 		: curPageIdx,
 					display     : 5,
 					border					: true,

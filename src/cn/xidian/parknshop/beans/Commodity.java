@@ -13,7 +13,7 @@ public class Commodity {
 	private long Id;
 	
 	@Column(name="commodity_no",nullable=false,unique=true)
-	private long commoditNo;
+	private long commodityNo;
 	
 	@Column(name="commodity_name",nullable=false,length=200)
 	private String commodityName;
@@ -106,15 +106,7 @@ public class Commodity {
 	public void setShop(Shop shop) {
 		this.shop = shop;
 	}
-
-	public long getCommoditNo() {
-		return commoditNo;
-	}
-
-	public void setCommoditNo(long commoditNo) {
-		this.commoditNo = commoditNo;
-	}
-
+	
 	public long getId() {
 		return Id;
 	}
@@ -153,6 +145,14 @@ public class Commodity {
 
 	public void setAvgRank(double avgRank) {
 		this.avgRank = avgRank;
+	}
+
+	public long getCommodityNo() {
+		return commodityNo;
+	}
+
+	public void setCommodityNo(long commodityNo) {
+		this.commodityNo = commodityNo;
 	}
 	
 }

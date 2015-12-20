@@ -48,9 +48,26 @@ public class ShopController {
 		return new ModelAndView("../views/shopOwner/shopList");
 	}
 	
+	@RequestMapping("shop/{shopNo}/manageShopLink/index.do")
+	public ModelAndView redirectMangeLink(@PathVariable long shopNo,Model model){
+		Shop shop=null;
+		try{
+			shop=shopService.findShopByShopNo(shopNo);}
+		catch(Exception e){
+			log.error(e);
+			return new ModelAndView("../views/error.jsp");
+		}
+		model.addAttribute("category",DictionaryUtils.ShopCategory.fromInteger(shop.getShopCategories()).name());
+		model.addAttribute("store", shop);
+		model.addAttribute("storeId", shop.getShopNo());
+		return new ModelAndView("../views/shopOwner/manageShopLink");
+	}
+	
+	
+	
 	@RequestMapping("/shop/showList")
 	public @ResponseBody Map<String,ResultType> showShopList(HttpServletRequest request,HttpSession session){
-//		User shopOwner=(User)session.getAttribute("user");
+		User shopOwner=(User)session.getAttribute("user");
 		Map<String,String> QueryParamMap=new HashMap<String,String>();
 		String pageIndex=request.getParameter("page[pageIndex]");
 		String pageSize=request.getParameter("page[pageSize]");
@@ -73,7 +90,7 @@ public class ShopController {
 		Map<String,ResultType> map=new HashMap<String,ResultType>();
 		List<Shop> shopList=null;
 		try{
-			shopList=shopService.findShopsBySomeFilter(QueryParamMap);
+			shopList=shopService.findShopsBySomeFilter(QueryParamMap,shopOwner.getUserName());
 
 		}
 		catch(Exception e){
@@ -85,6 +102,45 @@ public class ShopController {
 		map.put("result", resultType);
 		return map;
 	}
+	
+	@RequestMapping("/shop/link/{shopNo}/showList")
+	public @ResponseBody Map<String,ResultType> showOtherShops(HttpServletRequest request,@PathVariable long shopNo){
+		Map<String,String> QueryParamMap=new HashMap<String,String>();
+		String pageIndex=request.getParameter("page[pageIndex]");
+		String pageSize=request.getParameter("page[pageSize]");
+		String columnFilterName_0=request.getParameter("columnFilters[0][name]");
+		String columnFilterName_1=request.getParameter("columnFilters[1][name]");
+		String columnFilterValue_0=request.getParameter("columnFilters[0][value][]");
+		String columnFilterValue_1=request.getParameter("columnFilters[1][value][]");
+		String orderFilters=request.getParameter("orderFilters[0][name]");
+		String isAsc=request.getParameter("orderFilters[0][isAscending]");
+		ResultType resultType=new ResultType();
+		QueryParamMap.put("pageIndex", pageIndex);
+		QueryParamMap.put("pageSize", pageSize);
+		if(columnFilterName_0!=null){
+			QueryParamMap.put(columnFilterName_0, columnFilterValue_0);
+		}
+		if(columnFilterName_1!=null)
+			QueryParamMap.put(columnFilterName_1, columnFilterValue_1);
+		QueryParamMap.put("orderFilters", orderFilters);
+		QueryParamMap.put("isAsc", isAsc);
+		Map<String,ResultType> map=new HashMap<String,ResultType>();
+		List<Shop> shopList=null;
+		try{
+			shopList=shopService.findOtherShopsBySomeFilter(QueryParamMap,shopNo);
+
+		}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("DB busy");
+			map.put("result", resultType);
+		}
+		resultType.success().setResult(shopList);
+		map.put("result", resultType);
+		return map;
+	}
+	
+	
 	@RequestMapping("shop/*/shopHomePage.do")
 	public ModelAndView ShopManage(Model model,HttpServletRequest request){
 		String reUri=request.getRequestURI();

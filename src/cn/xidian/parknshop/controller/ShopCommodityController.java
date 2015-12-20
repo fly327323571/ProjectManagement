@@ -153,7 +153,7 @@ public class ShopCommodityController {
 			map.put("result", resultType);
 			return map;
 		}
-		commodity.setCommoditNo(System.nanoTime());
+		commodity.setCommodityNo(System.nanoTime());
 		commodity.setShop(shop);
 		commodity.setCommodityImg(logoUrl);
 		commodity.setAddTime(new Date());

@@ -44,7 +44,7 @@ header .search-box button {
 	border: 0;
 	margin: 0;
 }
-/* 下边的商品店铺广告 */
+/* 涓嬭竟鐨勫晢鍝佸簵閾哄箍鍛� */
 .list {
 	width: 100%;
 	display: -webkit-box;
@@ -84,9 +84,7 @@ header .search-box button {
 	margin: 20px 25px;
 }
 
-.left .pdt-list>div:hover {
-	transform: scale(1.2);
-}
+
 
 .left .pdt-list>div img {
 	width: 250px;
@@ -233,7 +231,7 @@ header .search-box button {
 	width: 200px;
 	height: 100px;
 }
-/* 右边的导航条 */
+/* 鍙宠竟鐨勫鑸潯 */
 .easy-nav {
 	width: 50px;
 	height: 700px;

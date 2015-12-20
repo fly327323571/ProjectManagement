@@ -24,7 +24,7 @@ $(function(){
 			return data;
 		},
 		operationRenderer : function(data){
-			var storeId = data.storeId;
+			var storeId = data.shopNo;
 			var status = data.status;
 			var html = "";
 			switch(status){

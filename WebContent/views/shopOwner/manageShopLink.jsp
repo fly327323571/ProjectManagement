@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta name="description" content="">
 	<meta name="author" content="">
 	
-	<!--append ¡®#!watch¡¯ to the browser URL, then refresh the page. -->
+	<!--append â€˜#!watchâ€™ to the browser URL, then refresh the page. -->
 	
 	<script src="static/js/common/jquery-1.11.1.js"></script>
     <script src="static/js/common/bootstrap.min.js"></script>
@@ -40,17 +40,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<section class="content">
 		<div class="shop-profile">
 			<ul>
-				<li><img alt="shop logo" src="${store.logo }"/></li>
-				<li>Store Name:<span>${store.storeName }</span></li>
-				<li>Category:<span>${store.category }</span></li>
-				<li>Credit: ${store.creditValue }
+				<li><img alt="shop logo" src="${store.shopIcon }"/></li>
+				<li>Store Name:<span>${store.shopName }</span></li>
+				<li>Category:<span>${category}</span></li>
+				<li>Credit: ${store.shopRank }
 					<!-- <span class="glyphicon glyphicon-star star"></span>
 					<span class="glyphicon glyphicon-star star"></span>
 					<span class="glyphicon glyphicon-star star"></span>
 					<span class="glyphicon glyphicon-star star"></span>
 					<span class="glyphicon glyphicon-star star"></span> -->
 				</li>
-				<li>Register Time:<span>${store.registerTimeString }</span></li>
+				<li>Register Time:<span>${store.regTime.toString() }</span></li>
 			</ul>
 		</div>
 		<div  class="other-shop">

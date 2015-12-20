@@ -48,15 +48,10 @@ public class DictionaryUtils {
 			this.numberOfShopCategory=size;
 		}
 		
-		private static HashMap<Integer,ShopCategory> fromInteger=new HashMap<Integer,ShopCategory>();
-		
 		private static HashMap<String,ShopCategory> fromString=new HashMap<String,ShopCategory>();
 		static{	
 			for(ShopCategory c:ShopCategory.values()){
 				fromString.put(c.toString(), c);
-			}
-			for(ShopCategory c:ShopCategory.values()){
-				fromInteger.put(c.numberOfShopCategory(), c);
 			}
 		} 
 		public static ShopCategory fromString(String typeName){
@@ -64,7 +59,12 @@ public class DictionaryUtils {
 		}
 		
 		public static ShopCategory fromInteger(int i){
-			return fromInteger(i);
+			for(ShopCategory c:ShopCategory.values()){
+				if(c.numberOfShopCategory()==i){
+					return c;
+				}
+			}
+			return null;
 		}
 		
 		public int numberOfShopCategory(){return numberOfShopCategory;}

@@ -88,11 +88,11 @@ function ShopHomepage(config){
 		baseAjax.doAjax(_config.URL.PRODUCT_LIST, queryParam, function(rs){
 			
 			var page = rs.result;
-			_productList = page.data;
+			_productList = page;
 			renderProductList(_productList);
 			if(_productList && _productList.length!=0){
 				$("#pagination").paginate({
-					count 		: page.totalPageCount,//10,
+					count 		: Math.ceil(_productList.length/5),//10,
 					start 		: curPageIdx,
 					display     : 5,
 					border					: true,
@@ -109,17 +109,17 @@ function ShopHomepage(config){
 			}
 			
 		}, function(data){
-			alertFail(data.result.message);
+			alertFail(data.result);
 		});
 	}
 	loadData();
 	
     function renderProduct(product){
-    	var link = _config.URL.PRODUCT_SHOW.replace("{productId}",product.productId);
+    	var link = _config.URL.PRODUCT_SHOW.replace("{productId}",product.commodityNo);
     	var html = $("#productShelfTmpl").html().replace("{link}",link)
-    		.replace("{defaultImage}",product.defaultImage)
-    		.replace("{productName}",product.productName)
-    		.replace("{presentPrice}",product.presentPrice);
+    		.replace("{defaultImage}",product.commodityImg)
+    		.replace("{productName}",product.commodityName)
+    		.replace("{presentPrice}",product.commodityPrice);
     	return html;
     }
     
@@ -135,9 +135,9 @@ function ShopHomepage(config){
     	var $shopLink = $(".link-shop ul");
     	$shopLink.children().remove();
     	$.each(shopLinks,function(i,shopLink){
-    		var link = _config.URL.SHOP_HOMEPAGE.replace("{storeId}",shopLink.linkStoreId);
-    		var html = $("#shopLinkTmpl").html().replace("{link}",link)
-    			.replace("{logo}",shopLink.image);
+    		var link = _config.URL.SHOP_HOMEPAGE.replace("{storeId}",shopLink.shopNo);
+    		var html = $("#shopLinkTmpl").html().replace("{link}",shopLink.shopName)
+    			.replace("{logo}",shopLink.shopIcon);
     		$shopLink.append(html);
     	});
     }

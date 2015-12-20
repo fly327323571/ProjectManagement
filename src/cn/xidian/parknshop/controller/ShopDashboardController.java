@@ -58,4 +58,42 @@ public class ShopDashboardController {
 		map.put("result", resultType);
 		return map;
 	}
+	
+	@RequestMapping("shop/{shopNo}/dashboard/newOrders/count")
+	public Map<String,ResultType> countNewOrders(@PathVariable long shopNo){
+		Map<String,ResultType> map=new HashMap<String,ResultType>();
+		ResultType resultType=new ResultType();
+		long count=0;
+		try{
+			count=service.getNewOrderCount(shopNo);
+		}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("db busy");
+			map.put("result", resultType);
+			return map;
+		}
+		resultType.success().setResult(count);
+		map.put("result", resultType);
+		return map;
+	}
+	
+	@RequestMapping("shop/{shopNo}/dashboard/income/count")
+	public Map<String,ResultType> countIncomes(@PathVariable long shopNo){
+		Map<String,ResultType> map=new HashMap<String,ResultType>();
+		ResultType resultType=new ResultType();
+		double count=0;
+		try{
+			count=service.getTotalEarnedCount(shopNo);
+		}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("db busy");
+			map.put("result", resultType);
+			return map;
+		}
+		resultType.success().setResult(count);
+		map.put("result", resultType);
+		return map;
+	}
 }

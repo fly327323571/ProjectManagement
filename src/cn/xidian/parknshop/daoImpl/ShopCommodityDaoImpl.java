@@ -71,6 +71,9 @@ public class ShopCommodityDaoImpl extends HibernateDaoSupport implements ShopCom
 		if(filters.get("orderFilters").equals("addTime")){
 			sql.append(" order by c.commodity_addTime");
 		}
+		else if(filters.get("orderFilters").equals("productId")){
+			sql.append(" order by c.commodity_no");
+		}
 		String isAsc=filters.get("isAsc");
 		if(Boolean.valueOf(isAsc)){
 			sql.append(" asc");
