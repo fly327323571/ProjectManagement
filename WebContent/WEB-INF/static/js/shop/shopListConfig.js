@@ -29,10 +29,10 @@ $(function(){
 			var html = "";
 			switch(status){
 			case 1://正常开店
-				var btn_1 = "<a target='_blank' href='" + shopListConfig.URL.LINK_SHOP.replace('{storeId}',storeId) + 
+				var btn_1 = "<a target='_blank' href='" + shopListConfig.URL.LINK_SHOP.replace('{shopNo}',storeId) + 
 				"'><button type='button' class='btn link-btn'>link shop</button></a>";
 		
-				var btn_2 = "<a target='_blank' href='" + shopListConfig.URL.SHOP_HOME.replace('{storeId}',storeId) + 
+				var btn_2 = "<a target='_blank' href='" + shopListConfig.URL.SHOP_HOME.replace('{shopNo}',storeId) + 
 				"'><button type='button' class='btn link-btn'>enter</button></a>";
 				html = btn_1 +" "+ btn_2;
 				break;
@@ -53,8 +53,8 @@ $(function(){
 	var shopListConfig = {
 		URL : {//页面所有的URL配置
 			LIST : "shop/showList",
-			LINK_SHOP : "store/{shopNo}/manageShopLink/index.do",
-			SHOP_HOME : "store/{shopNo}/shopManageHomePage/index.do",
+			LINK_SHOP : "shop/{shopNo}/manageShopLink/index.do",
+			SHOP_HOME : "shop/{shopNo}/shopManageHomePage/index.do",
 			SHOP_HOMEPAGE : "shop/{shopNo}/shopHomePage.do",
 		},
 		tableConfig : {

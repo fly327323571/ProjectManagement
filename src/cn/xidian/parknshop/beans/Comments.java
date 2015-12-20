@@ -31,8 +31,8 @@ public class Comments {
 	@Column(name="comment_rank")
 	private double rank;
 	
-	@Column(name="comment_isRead")
-	private int isRead;
+	@Column(name="comment_isRead",length=2)
+	private int isRead=0;
 	
 	@Temporal(TemporalType.DATE) 
 	private Date commentsTime;

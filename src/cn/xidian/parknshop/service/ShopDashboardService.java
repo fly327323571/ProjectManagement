@@ -1,7 +1,7 @@
-package cn.xidian.parknshop.dao;
+package cn.xidian.parknshop.service;
 
-public interface ShopDashboardDao {
-
+public interface ShopDashboardService {
+	
 	long getFavorCount(long shopNo);
 
 	long getNewCommentsCount(long shopNo);
@@ -9,5 +9,4 @@ public interface ShopDashboardDao {
 	double getTotalEarnedCount(long shopNo);
 
 	long getNewOrderCount(long shopNo);
-
 }
