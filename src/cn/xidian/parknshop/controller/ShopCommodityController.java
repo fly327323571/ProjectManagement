@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -89,12 +90,26 @@ public class ShopCommodityController {
 	}
 	
 	@RequestMapping("product/{shopNo}/select")
-	public @ResponseBody Map<String,ResultType> showCommList(@PathVariable long shopNo){
+	public @ResponseBody Map<String,ResultType> showCommList(@PathVariable long shopNo,HttpServletRequest request){
 		Map<String,ResultType> map=new HashMap<String,ResultType>();
 		ResultType resultType=new ResultType();
+		Map<String,String> QueryParamMap=new HashMap<String,String>();
+		String pageIndex=request.getParameter("page[pageIndex]");
+		String pageSize=request.getParameter("page[pageSize]");
+		String columnFilterName_0=request.getParameter("columnFilters[0][name]");
+		String columnFilterValue_0=request.getParameter("columnFilters[0][value][]");
+		String orderFilters=request.getParameter("orderFilters[0][name]");
+		String isAsc=request.getParameter("orderFilters[0][isAscending]");
+		QueryParamMap.put("pageIndex", pageIndex);
+		QueryParamMap.put("pageSize", pageSize);
+		if(columnFilterName_0!=null){
+			QueryParamMap.put(columnFilterName_0, columnFilterValue_0);
+		}
+		QueryParamMap.put("orderFilters", orderFilters);
+		QueryParamMap.put("isAsc", isAsc);
 		List<Commodity> list=null;
 		try{
-			list=shopCommodityService.findCommByShopNo(shopNo);
+			list=shopCommodityService.findCommodityByFilters(QueryParamMap, shopNo);
 		}
 		catch(Exception e){
 			log.error(e);

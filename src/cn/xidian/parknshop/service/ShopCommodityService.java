@@ -11,4 +11,6 @@ public interface ShopCommodityService {
 	List<Commodity> findCommByShopNo(long shopNo);
 	
 	Commodity findCommodityByCommNo(long commNo);
+	
+	List<Commodity> findCommodityByFilters(Map<String,String> filters,long shopNo);
 }

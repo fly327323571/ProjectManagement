@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import cn.xidian.parknshop.beans.Shop;
 import cn.xidian.parknshop.dao.ShopDao;
+import cn.xidian.parknshop.utils.DictionaryUtils;
 
 @Repository("shopDao")
 public class ShopDaoImpl extends HibernateDaoSupport implements ShopDao {
@@ -64,14 +65,14 @@ public class ShopDaoImpl extends HibernateDaoSupport implements ShopDao {
 		StringBuilder hql=new StringBuilder();
 		hql.append("from Shop s ");
 		
-		if(filter.containsKey("categoryFilters")){
-			hql.append("where s.shopCategories=").append(filter.get("categoryFilters"));
-			if(filter.containsKey("shopNameFilters")){
-				hql.append(" and s.shopName like '%").append(filter.get("shopNameFilters")).append("%'");
+		if(filter.containsKey("category")){
+			hql.append("where s.shopCategories=").append(DictionaryUtils.ShopCategory.fromString(filter.get("category")).numberOfShopCategory());
+			if(filter.containsKey("shopName")){
+				hql.append(" and s.shopName like '%").append(filter.get("shopName")).append("%'");
 			}
 		}
-		else if(filter.containsKey("shopNameFilters")){
-			hql.append("where s.shopName='").append(filter.get("shopNameFilters")).append("'");
+		else if(filter.containsKey("shopName")){
+			hql.append("where s.shopName like '%").append(filter.get("shopName")).append("%'");
 		}
 		if(filter.get("orderFilters").equals("registerTime"))
 			hql.append(" order by s.regTime ");

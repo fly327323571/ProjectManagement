@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -53,18 +54,20 @@ public class ShopController {
 		Map<String,String> QueryParamMap=new HashMap<String,String>();
 		String pageIndex=request.getParameter("page[pageIndex]");
 		String pageSize=request.getParameter("page[pageSize]");
-		String categoryFilters=request.getParameter("columnFilters[0][value][]");
-		String shopNameFilters=request.getParameter("columnFilters[1][value][]");
+		String columnFilterName_0=request.getParameter("columnFilters[0][name]");
+		String columnFilterName_1=request.getParameter("columnFilters[1][name]");
+		String columnFilterValue_0=request.getParameter("columnFilters[0][value][]");
+		String columnFilterValue_1=request.getParameter("columnFilters[1][value][]");
 		String orderFilters=request.getParameter("orderFilters[0][name]");
 		String isAsc=request.getParameter("orderFilters[0][isAscending]");
 		ResultType resultType=new ResultType();
 		QueryParamMap.put("pageIndex", pageIndex);
 		QueryParamMap.put("pageSize", pageSize);
-		if(categoryFilters!=null){
-			int category=DictionaryUtils.ShopCategory.fromString(categoryFilters).numberOfShopCategory();
-			QueryParamMap.put("categoryFilters", String.valueOf(category));}
-		if(shopNameFilters!=null)
-			QueryParamMap.put("shopNameFilters", shopNameFilters);
+		if(columnFilterName_0!=null){
+			QueryParamMap.put(columnFilterName_0, columnFilterValue_0);
+		}
+		if(columnFilterName_1!=null)
+			QueryParamMap.put(columnFilterName_1, columnFilterValue_1);
 		QueryParamMap.put("orderFilters", orderFilters);
 		QueryParamMap.put("isAsc", isAsc);
 		Map<String,ResultType> map=new HashMap<String,ResultType>();
@@ -87,6 +90,13 @@ public class ShopController {
 		String reUri=request.getRequestURI();
 		String shopNoStr=reUri.substring(reUri.indexOf('/', 13)+1, reUri.lastIndexOf('/'));
 		long shopNo=Long.valueOf(shopNoStr);
+		Shop shop=shopService.findShopByShopNo(shopNo);
+		model.addAttribute("shop",shop );
+		return new ModelAndView("../views/shop/shopManageHomepage");
+	}
+	
+	@RequestMapping("shop/{shopNo}/shopManageHomePage/index.do")
+	public ModelAndView ShopManage(@PathVariable long shopNo,Model model){
 		Shop shop=shopService.findShopByShopNo(shopNo);
 		model.addAttribute("shop",shop );
 		return new ModelAndView("../views/shop/shopManageHomepage");
@@ -120,6 +130,11 @@ public class ShopController {
 			return "/user/login";
 		}
 		else if(user.isSeller()){
+			List<String> categories=new ArrayList<String>();
+			for(DictionaryUtils.ShopCategory s:DictionaryUtils.ShopCategory.values()){
+				categories.add(s.name());
+			}
+			model.addAttribute("categories",categories);
 			return "../views/shopOwner/shopList";
 		}
 		else{
