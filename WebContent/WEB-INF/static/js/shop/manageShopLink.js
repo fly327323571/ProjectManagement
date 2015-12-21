@@ -21,12 +21,16 @@ function ManageShopLink(manageShopLinkConfig){
 		var checkedItem = $("input[checked='checked']");
 		var info = [];
 		$.each(checkedItem,function(i,item){
-			info.push("shopIcon"+":"+"\""+$(item).attr('shopIcon')+"\"");
-			info.push("shopNo"+":"+$(item).attr('shopNo'));
-			info.push("linkTo"+":"+$(item).val())
+			 info.push("{\"shopIcon"+"\":"+"\""+$(item).attr('shopIcon')+"\","+"\"shopNo"+"\":"+$(item).attr('shopNo')+","+
+						"\"linkTo"+"\":"+$(item).val()+"}");
 		});
+		var str=info.join(',');
 		//需要跟数据库补充完整的字段
-		baseAjax.doAjax(_manageShopLinkConfig.URL.SUBMIT, info, function(rs){
+		var sub={
+				info:str
+		}
+		
+		baseAjax.doAjax(_manageShopLinkConfig.URL.SUBMIT, sub, function(rs){
 			alertSuccess("Operation is successful",function(){
 				window.location.href = _manageShopLinkConfig.URL.DETAILS;
 			});

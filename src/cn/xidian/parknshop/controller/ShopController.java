@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
 import cn.xidian.parknshop.beans.ResultType;
 import cn.xidian.parknshop.beans.Shop;
 import cn.xidian.parknshop.beans.User;
@@ -63,7 +67,20 @@ public class ShopController {
 		return new ModelAndView("../views/shopOwner/manageShopLink");
 	}
 	
-	
+	@RequestMapping("/store/{shopNo}/manageShopLink")
+	public @ResponseBody Map<String,ResultType> manageShopLink(@PathVariable long shopNo,HttpServletRequest request){
+		//{"shopIcon":"static/upload/shopLogo/feiyue/f2febd7f-940f-4fcc-9a98-580c1df3b13asearchMove.gif","shopNo":175814676661502,"linkTo":36750779276355},{"shopIcon":"static/upload/shopLogo/feiyue/4e7c5fb2-9f08-4b13-abeb-0a945956eed7homepageRGB123126135.jpg","shopNo":175814676661502,"linkTo":176016959823660}
+		String json="["+request.getParameter("info")+"]";
+		 JSONArray jsonArray = JSON.parseArray(json);
+		 List<JSONObject> jsonObjList=new ArrayList<JSONObject>();
+		 for(int i=0;i<jsonArray.size();i++){
+			 JSONObject jsonObject=jsonArray.getJSONObject(i);
+			 jsonObjList.add(jsonObject);
+		 }
+		
+		return null;
+		
+	}
 	
 	@RequestMapping("/shop/showList")
 	public @ResponseBody Map<String,ResultType> showShopList(HttpServletRequest request,HttpSession session){
@@ -102,6 +119,7 @@ public class ShopController {
 		map.put("result", resultType);
 		return map;
 	}
+	
 	
 	@RequestMapping("/shop/link/{shopNo}/showList")
 	public @ResponseBody Map<String,ResultType> showOtherShops(HttpServletRequest request,@PathVariable long shopNo){
