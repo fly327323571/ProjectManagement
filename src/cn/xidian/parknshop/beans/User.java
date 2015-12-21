@@ -125,6 +125,14 @@ public class User implements Serializable {
 	public void setState(int state) {
 		this.state = state;
 	}
+	
+	public long getId() {
+		return Id;
+	}
+
+	public void setId(long id) {
+		Id = id;
+	}
 }
 
 
