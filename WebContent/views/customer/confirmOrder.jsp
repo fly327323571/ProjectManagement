@@ -50,15 +50,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <button class="btn btn_color" id="newAddress" type="button" >Use a new address</button>
         
         <h4 class = "tittle">Confirm your Order</h4>
-        <div >order_id, order_no, order_price , buyer_name, seller_name
+        <div >
          <table id="orderToPay" class="table table-hover">
-         	<tr><th>No</th><th>Buyer Name</th><th>Order No</th><th>Order Price</th></tr>
+         	<tr><th>No</th><th>Buyer Name</th><th>Order No</th><th>Order Price</th><th>Seller Name</th></tr>
 			<c:forEach items="${orderList }"  var="order" varStatus="status">
+				<tr>
 				<td>${status.index+1 }</td>
 				<td>${empty order[3]?" ":order[3]}</td>
 				<td>${empty order[1]?" ":order[1]}</td>
 		        <td>${empty order[2]?" ":order[2]}￥</td>	 
-	         	<td>${empty order[4]?" ":order[4]}</td>    
+	         	<td>${empty order[4]?" ":order[4]}</td> 
+	         	</tr>   
 			</c:forEach>
          </table>       
         </div>
@@ -150,6 +152,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="static/js/common/validator.js"></script>
 <script src="static/js/common/jquery.paginate.js"></script>
 <script src="static/js/common/bootstrap-modal.js"></script>
-<script src="static/js/shopping/confirmOrder.js"></script>
+<!-- <script src="static/js/shopping/confirmOrder.js"></script> -->
 <script src="static/js/shopping/confirmOrderConfig.js"></script>
 </html>

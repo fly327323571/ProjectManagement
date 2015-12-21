@@ -71,6 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<table id="orderList" class="table">
 			<tr><th>No</th><th>Buyer Name</th><th>Order No</th><th>Order Price</th><th>Pay Way</th><th>Status</th></tr>
 			<c:forEach items="${orderList }"  var="order" varStatus="status">
+				<tr>
 				<td>${status.index+1 }</td>
 				<td>${order[6]}</td>
 				<td>${empty order[1]?" ":order[1]}</td>
@@ -100,6 +101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	               		<td>received</td>
 	               	</c:when>
 	         	</c:choose>
+	         	</tr>
 			</c:forEach>
 		</table>
 		<nav class="page">
