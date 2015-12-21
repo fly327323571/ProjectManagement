@@ -46,7 +46,7 @@ public class AfterController {
 		}
 		model.addAttribute("map", list_view);
 		afterService.updateStatus();
-		return "/views/admin/AfterSaleService";
+		return "../views/admin/AfterSaleService";
 	}
 	
 	@RequestMapping("detail")
@@ -64,7 +64,7 @@ public class AfterController {
 		List<Map<String, Object>> mapList = new ArrayList<>();
 		mapList.add(map);
 		model.addAttribute("mapList", mapList);
-		return "/views/admin/orderDetail";
+		return "../views/admin/orderDetail";
 	}
 	
 	@RequestMapping("approve")

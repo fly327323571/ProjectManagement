@@ -29,7 +29,7 @@ public class ShopDashboardDaoImpl extends HibernateDaoSupport implements ShopDas
 	@Override
 	public long getNewCommentsCount(long shopNo) {
 		// TODO Auto-generated method stub
-		String sql="select count(Id) as num from tb_comments c where c.shop_no=:shopNo and c.comment_isRead=0";
+		String sql="select count(Id) as num from tb_comment c where c.shop_no=:shopNo and c.comment_isRead=0";
 		BigInteger num =(BigInteger) super.getSessionFactory().getCurrentSession().createSQLQuery(sql).setLong("shopNo", shopNo).uniqueResult();
 		return num.longValue();
 	}

@@ -25,7 +25,7 @@ public class AuditShopController {
 	public String ShopName(HttpServletRequest request, HttpServletResponse response, Model model){
 		List<Map<String, Object>> list = auditShopService.getShopInfo();
 		model.addAttribute("shopInfo", list);
-		return "/views/admin/shopManage";
+		return "../views/admin/shopManage";
 	}
 	
 	@RequestMapping("/approve")
