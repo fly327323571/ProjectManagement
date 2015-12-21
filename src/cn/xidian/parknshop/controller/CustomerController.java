@@ -75,4 +75,10 @@ public class CustomerController {
 		
 		return "../views/customer/confirmOrder";
 	}
+	
+	@RequestMapping("/customer/pay")
+	public String pay(Model model) {
+		
+		return "../views/customer/pay";
+	}
 }
