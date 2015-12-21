@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -67,8 +68,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</form>
 		</div>
 		</nav>
-
-		<table id="orderList" class="table"></table>
+		<table id="orderList" class="table">
+			<tr><th>No</th><th>Buyer Name</th><th>Order No</th><th>Order Price</th><th>Pay Way</th><th>Status</th></tr>
+			<c:forEach items="${orderList }"  var="order" varStatus="status">
+				<td>${status.index+1 }</td>
+				<td>${order[6]}</td>
+				<td>${empty order[1]?" ":order[1]}</td>
+		        <td>${empty order[2]?" ":order[2]}￥</td>
+		        <c:choose>
+	               	<c:when test="${empty order[3]}">
+	            			<td>&nbsp;</td>
+	            	</c:when>
+	               	<c:when test="${order[3] == 0}">
+	               		<td>Online Payment</td>
+	               	</c:when>
+	               	<c:when test="${order[3] == 1 }">
+	               		<td>Cash on delivery</td>
+	               	</c:when>
+	         	</c:choose>
+	         	<c:choose>
+	               	<c:when test="${empty order[5]}">
+	            			<td>&nbsp;</td>
+	            	</c:when>
+	               	<c:when test="${order[5] == 0}">
+	               		<td>non-payment</td>
+	               	</c:when>
+	               	<c:when test="${order[5] == 1 }">
+	               		<td>not receiving</td>
+	               	</c:when>
+	               	<c:when test="${order[5] == 2 }">
+	               		<td>received</td>
+	               	</c:when>
+	         	</c:choose>
+			</c:forEach>
+		</table>
 		<nav class="page">
 		<div id="pagination"></div>
 		</nav>
@@ -104,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="static/js/common/jquery-1.11.1.js"></script>
 <script src="static/js/common/bootstrap.min.js"></script>
 <script src="static/js/common/bootstrap-modal.js"></script>
-<script src="static/js/customer/customerBuyHistory.js"></script>
+<!-- <script src="static/js/customer/customerBuyHistory.js"></script> -->
 <script src="static/js/customer/customerBuyHistoryConfig.js"></script>
 <script src="static/js/common/baseAjax.js"></script>
 <script src="static/js/common/table.js"></script>
