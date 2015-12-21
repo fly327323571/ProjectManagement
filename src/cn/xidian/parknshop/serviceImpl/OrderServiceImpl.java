@@ -29,4 +29,9 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.findOrdersWithUnpayByName(buyerName);
 	}
 	
+	@Override
+	public void updateOrder(Order order) {
+		orderDao.updateOrder(order);
+	}
+	
 }

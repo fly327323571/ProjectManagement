@@ -97,6 +97,7 @@ public class CustomerController {
 			for (Order order : orderList) {
 				sumPrice += order.getOrderPrice();
 				order.setState(RECEIVING);
+				orderService.updateOrder(order);
 			}
 			
 			model.addAttribute("sumPrice", sumPrice);

@@ -15,5 +15,6 @@ public interface OrderService {
 	
 	public List<Order> findOrdersByName(String name);
 	public List<Order> findOrdersWithUnpayByName(String buyerName);
+	public void updateOrder(Order order);
 }
 	

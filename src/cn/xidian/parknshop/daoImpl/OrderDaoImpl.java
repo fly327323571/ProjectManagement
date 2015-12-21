@@ -41,4 +41,8 @@ public class OrderDaoImpl extends HibernateDaoSupport implements OrderDao{
 		query.setParameter("name", buyerName);
 		return query.list();
 	}
+	
+	public void updateOrder(Order order) {
+		super.getSessionFactory().getCurrentSession().merge(order);
+	}
 }
