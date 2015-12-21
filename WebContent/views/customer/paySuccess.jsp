@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<img src="static/images/tick.png" class="tick_img"/>&nbsp;<span class="title_color title_size">You have purchased the product successfully</span>
 				<br/><br/><br/>
 				<ul>
-			      <li>The payment amount:<span class="glyphicon glyphicon-usd">￥{sumPrice }</span></li>
+			      <li>The payment amount:<span>￥${sumPrice }</span></li>
 			      <%-- <li>The postage:<span class="glyphicon glyphicon-usd">${totalPostage }</span></li> --%>
 			      <%-- <li>The address of delivery:${address.province } ${address.city } ${address.address }</li> --%>
 			      <%-- <li><a href="business/viewOrderDetails/${orderId }">view the order</a></li> --%>
