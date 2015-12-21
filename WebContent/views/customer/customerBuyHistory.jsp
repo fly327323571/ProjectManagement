@@ -73,31 +73,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<c:forEach items="${orderList }"  var="order" varStatus="status">
 				<tr>
 				<td>${status.index+1 }</td>
-				<td>${order[6]}</td>
-				<td>${empty order[1]?" ":order[1]}</td>
-		        <td>${empty order[2]?" ":order[2]}￥</td>
+				<td>${order.buyer.userName}</td>
+				<td>${empty order.orderNo?" ":order.orderNo}</td>
+		        <td>${empty order.orderPrice?" ":order.orderPrice}￥</td>
 		        <c:choose>
-	               	<c:when test="${empty order[3]}">
+	               	<c:when test="${empty order.payWay}">
 	            			<td>&nbsp;</td>
 	            	</c:when>
-	               	<c:when test="${order[3] == 0}">
+	               	<c:when test="${order.payWay == 0}">
 	               		<td>Online Payment</td>
 	               	</c:when>
-	               	<c:when test="${order[3] == 1 }">
+	               	<c:when test="${order.payWay == 1}">
 	               		<td>Cash on delivery</td>
 	               	</c:when>
 	         	</c:choose>
 	         	<c:choose>
-	               	<c:when test="${empty order[5]}">
+	               	<c:when test="${empty order.state}">
 	            			<td>&nbsp;</td>
 	            	</c:when>
-	               	<c:when test="${order[5] == 0}">
+	               	<c:when test="${order.state == 0}">
 	               		<td>non-payment</td>
 	               	</c:when>
-	               	<c:when test="${order[5] == 1 }">
+	               	<c:when test="${order.state == 1}">
 	               		<td>not receiving</td>
 	               	</c:when>
-	               	<c:when test="${order[5] == 2 }">
+	               	<c:when test="${order.state == 2}">
 	               		<td>received</td>
 	               	</c:when>
 	         	</c:choose>
