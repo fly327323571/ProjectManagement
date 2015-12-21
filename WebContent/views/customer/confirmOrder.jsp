@@ -68,10 +68,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <div class="checkOut">
 	    	<span>orders' total price: ${sumPrice}￥</span><span id="totalPrice"></span>
 	   		<!-- <button class="btn btn_color">pay</button> -->
-	   		<a href="/ParknShop/customer/pay"><input type="button" class="btn btn_color"></input></a>
+	   		<a href="/ParknShop/customer/redirectToPay"><input value="Pay" type="button" class="btn btn_color"></input></a>
 	    </div>
   </div>  
-  <script type="text/template" id="dialogTmpl">
+  	<script type="text/template" id="dialogTmpl">
 	<div class="modal" id="dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
      <div class="modal-dialog" style="width:800px;">
 	      <div class="modal-content" >
@@ -88,8 +88,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   	  </div>
 	   	  </div>
    	  </div>
-</div>
-</script>
+	</div>
+	</script>
     
 
    <%@include file="../common/tail.html" %>

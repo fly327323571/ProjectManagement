@@ -76,7 +76,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</li>
 				<li><input type="radio" name="payment" value="COD"/><span>COD</span></li>
 			</ul>
-			<div align="center"><button id="__pay" class="btn btn-default">pay</button></div>
+			<div align="center"><!-- <button id="__pay" class="btn btn-default">pay</button> -->
+				<a href="/ParknShop/customer/pay"><input value="Pay" type="button" class="btn btn-default"></input>
+			</div>
 		</div>
 	</section>
 	<div class="modal" id="dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -110,9 +112,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    	  </div>
 </div>
 		
-	<%@include file="../common/tail.html" %>
-     <script src="static/js/common/baseAjax.js"></script>
-      <script src="static/js/common/bootstrap-modal.js"></script>
+<%@include file="../common/tail.html" %>
+<script src="static/js/common/baseAjax.js"></script>
+<script src="static/js/common/bootstrap-modal.js"></script>
 <script src="static/js/shopping/pay.js"></script>
 <script src="static/js/shopping/payConfig.js"></script>
      <script>

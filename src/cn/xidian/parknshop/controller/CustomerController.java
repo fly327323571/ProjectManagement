@@ -76,9 +76,31 @@ public class CustomerController {
 		return "../views/customer/confirmOrder";
 	}
 	
-	@RequestMapping("/customer/pay")
-	public String pay(Model model) {
+	@RequestMapping("/customer/redirectToPay")
+	public String redirectToPay(Model model) {
 		
 		return "../views/customer/pay";
+	}
+	
+	@RequestMapping("/customer/pay")
+	public String pay(HttpServletRequest request, Model model){
+		final int RECEIVING = 1;
+		
+		String name = null;
+		User user = (User) request.getSession().getAttribute("user");
+		if (user != null) {
+			name = user.getUserName();
+		
+			List<Order> orderList = orderService.findOrdersWithUnpayByName(name);
+			
+			double sumPrice = 0;
+			for (Order order : orderList) {
+				sumPrice += order.getOrderPrice();
+				order.setState(RECEIVING);
+			}
+			
+			model.addAttribute("sumPrice", sumPrice);
+		}
+		return "../views/customer/paySuccess";
 	}
 }
