@@ -14,6 +14,6 @@ import cn.xidian.parknshop.dao.OrderDao;
 public interface OrderService {
 	
 	public List<Order> findOrdersByName(String name);
-
+	public List<Order> findOrdersWithUnpayByName(String buyerName);
 }
 	

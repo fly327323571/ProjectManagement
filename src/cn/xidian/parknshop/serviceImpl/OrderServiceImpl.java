@@ -22,4 +22,11 @@ public class OrderServiceImpl implements OrderService {
 		
 		return orderDao.findOrderByName(name);
 	}
+	
+	@Override
+	public List<Order> findOrdersWithUnpayByName(String buyerName) {
+		
+		return orderDao.findOrdersWithUnpayByName(buyerName);
+	}
+	
 }

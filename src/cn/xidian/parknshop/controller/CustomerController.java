@@ -43,7 +43,7 @@ public class CustomerController {
 	}
 	
 	@RequestMapping("/customer/orderDetails")
-	public String showOrderDetails(HttpServletRequest request, Model model, String buyerName) {
+	public String showOrderDetails(HttpServletRequest request, Model model) {
 		/*假用户名*/
 		String name = "11111";
 		User user = (User) request.getSession().getAttribute("user");
@@ -54,5 +54,19 @@ public class CustomerController {
 		model.addAttribute("orderList", orderList);
 		
 		return "../views/customer/customerBuyHistory";
+	}
+	
+	@RequestMapping("/customer/confirmOrders")
+	public String confirmOrders(HttpServletRequest request, Model model) {
+		/*假用户名*/
+		String name = "11111";
+		User user = (User) request.getSession().getAttribute("user");
+		if (user != null) {
+			name = user.getUserName();
+		}
+		List<Order> orderList = orderService.findOrdersWithUnpayByName(name);
+		model.addAttribute("orderList", orderList);
+		
+		return "../views/customer/confirmOrder";
 	}
 }
