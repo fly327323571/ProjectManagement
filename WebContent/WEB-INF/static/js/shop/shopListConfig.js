@@ -28,7 +28,7 @@ $(function(){
 			var status = data.status;
 			var html = "";
 			switch(status){
-			case 1://正常开店
+			case 1,4://正常开店
 				var btn_1 = "<a target='_blank' href='" + shopListConfig.URL.LINK_SHOP.replace('{shopNo}',storeId) + 
 				"'><button type='button' class='btn link-btn'>link shop</button></a>";
 		
@@ -40,7 +40,7 @@ $(function(){
 				var btn_1 = '<a><button style="margin-top:20px" type="button" class="btn" disabled="disabled">applying</button></a>';
 				html = btn_1;
 				break;
-			case 2://拒绝
+			case 2,3://拒绝
 				var btn_1 = '<a><button style="margin-top:20px" type="button" class="btn">rejected</button></a>';
 				html = btn_1;
 				break;
