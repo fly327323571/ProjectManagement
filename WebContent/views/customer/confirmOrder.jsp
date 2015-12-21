@@ -66,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
      <div id="pagination"></div>   
 	    <div class="checkOut">
-	    	<span>orders' total price: ${sumPrice}￥</span><span id="totalPrice"></span>
+	    	<span>orders' total price:￥ ${sumPrice}</span><span id="totalPrice"></span>
 	   		<!-- <button class="btn btn_color">pay</button> -->
 	   		<a href="/ParknShop/customer/redirectToPay"><input value="Pay" type="button" class="btn btn_color"></input></a>
 	    </div>
