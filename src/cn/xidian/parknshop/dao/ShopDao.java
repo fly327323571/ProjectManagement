@@ -16,4 +16,6 @@ public interface ShopDao {
 	List<Shop> findShopsBySomeFilter(Map<String,String> filter,String userName);
 	
 	List<Shop> findOtherShopsBySomeFilter(Map<String,String>filter,long shopNo);
+	
+	List<Shop> findShopByShopName(String shopname);
 }

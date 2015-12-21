@@ -12,6 +12,6 @@ public interface ShopCommodityDao {
 	List<Commodity> findCommodityByShopNo(long shopNo);
 	
 	Commodity findCommodityByCommNo(long commNo);
-
+	
 	List<Commodity> findCommodityByFilters(Map<String, String> filters, long shopNo);
 }

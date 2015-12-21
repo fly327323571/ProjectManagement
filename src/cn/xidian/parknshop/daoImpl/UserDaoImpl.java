@@ -59,5 +59,16 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao{
 		}
 		return "OK";
 	}
+	
+	@Override
+	public List<User> findUserByNickName(String nickName) {
+		// TODO Auto-generated method stub
+		String hql="from User u where u.nickName=:nickName";
+		@SuppressWarnings("unchecked")
+		List<User> list=super.getSessionFactory().getCurrentSession().createQuery(hql).setString("nickName", nickName).list();
+		if(list.isEmpty())
+			return null;
+		return list ;
+	}
 
 }

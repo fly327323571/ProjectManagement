@@ -35,10 +35,17 @@ public class ShopServiceImpl implements ShopService {
 		return shopDao.findShopByShopNo(shopNo);
 	}
 
+	
 	@Override
-	public List<Shop> findShopsBySomeFilter(Map<String, String> filter,String userName) {
+	public List<Shop> findShopByShopName(String shopname) {
 		// TODO Auto-generated method stub
-		return shopDao.findShopsBySomeFilter(filter,userName);
+		return shopDao.findShopByShopName(shopname);
+	}
+
+	@Override
+	public List<Shop> findShopsBySomeFilter(Map<String, String> filter, String userName) {
+		// TODO Auto-generated method stub
+		return shopDao.findShopsBySomeFilter(filter, userName);
 	}
 
 	@Override
@@ -46,5 +53,4 @@ public class ShopServiceImpl implements ShopService {
 		// TODO Auto-generated method stub
 		return shopDao.findOtherShopsBySomeFilter(filter, shopNo);
 	}
-
 }

@@ -1,5 +1,7 @@
 package cn.xidian.parknshop.serviceImpl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -30,6 +32,12 @@ public class UserServiceImpl implements UserService {
 	public String LogIn(String userName, String secPassWord) {
 		// TODO Auto-generated method stub
 		return userDao.LogIn(userName, secPassWord);
+	}
+	
+	@Override
+	public List<User> findUserByNickName(String nickName) {
+		// TODO Auto-generated method stub
+		return userDao.findUserByNickName(nickName);
 	}
 
 }

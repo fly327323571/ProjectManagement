@@ -1,5 +1,7 @@
 package cn.xidian.parknshop.service;
 
+import java.util.List;
+
 import cn.xidian.parknshop.beans.User;
 
 public interface UserService {
@@ -9,5 +11,7 @@ public interface UserService {
 	boolean checkUserNameExist(String userName);
 	
 	String LogIn(String userName,String secPassWord);
+	
+	List<User> findUserByNickName(String nickName);
 	
 }

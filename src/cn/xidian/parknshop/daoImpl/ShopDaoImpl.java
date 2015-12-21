@@ -130,5 +130,17 @@ public class ShopDaoImpl extends HibernateDaoSupport implements ShopDao {
 		}
 		return resultList;
 	}
+	
+	@Override
+	public List<Shop> findShopByShopName(String shopname) {
+		// TODO Auto-generated method stub
+		String hql="from Shop s where s.shopName=:shopName";
+		@SuppressWarnings("unchecked")
+		List<Shop> list=super.getSessionFactory().getCurrentSession().createQuery(hql).setString("shopName", shopname).list();
+		if(list.isEmpty())
+			return null;
+		return list;
+	
+	}
 
 }
