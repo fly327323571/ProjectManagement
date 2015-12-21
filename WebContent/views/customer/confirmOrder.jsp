@@ -51,26 +51,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
         <h4 class = "tittle">Confirm your Order</h4>
         <div >
-         <table id="orderToPay" class="table table-hover">
+        <table id="orderToPay" class="table table-hover">
          	<tr><th>No</th><th>Buyer Name</th><th>Order No</th><th>Order Price</th><th>Seller Name</th></tr>
-			<c:forEach items="${orderList }"  var="order" varStatus="status">
-				<tr>
-				<td>${status.index+1 }</td>
-				<td>${empty order[3]?" ":order[3]}</td>
-				<td>${empty order[1]?" ":order[1]}</td>
-		        <td>${empty order[2]?" ":order[2]}￥</td>	 
-	         	<td>${empty order[4]?" ":order[4]}</td> 
-	         	</tr>   
+			<c:forEach items="${orderList }"  var="order" varStatus="status"> 
+	         	<tr>
+	         		<td>${status.index+1 }</td>
+					<td>${empty order.buyer.userName?" ":order.buyer.userName}</td>
+					<td>${empty order.orderNo?" ":order.orderNo}</td>
+			        <td>${empty order.orderPrice?" ":order.orderPrice}￥</td>	 
+		         	<td>${empty order.seller.userName?" ":order.seller.userName}</td> 
+	         	</tr> 
 			</c:forEach>
          </table>       
         </div>
-     <div id="pagination"></div>
-     
-    <div class="checkOut">
-    	<span>selected goods's total price: $ </span><span id="totalPrice"></span>
-   		<button class="btn btn_color"  id="pay">pay</button>
-    </div>
-    
+     <div id="pagination"></div>   
+	    <div class="checkOut">
+	    	<span>selected goods's total price: ${sumPrice}￥</span><span id="totalPrice"></span>
+	   		<button class="btn btn_color"  id="pay">pay</button>
+	    </div>
   </div>  
   <script type="text/template" id="dialogTmpl">
 	<div class="modal" id="dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

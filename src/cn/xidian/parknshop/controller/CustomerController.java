@@ -65,7 +65,13 @@ public class CustomerController {
 			name = user.getUserName();
 		}
 		List<Order> orderList = orderService.findOrdersWithUnpayByName(name);
+		
+		double sumPrice = 0;
+		for (Order order : orderList) {
+			sumPrice += order.getOrderPrice();
+		}
 		model.addAttribute("orderList", orderList);
+		model.addAttribute("sumPrice", sumPrice);
 		
 		return "../views/customer/confirmOrder";
 	}

@@ -33,12 +33,22 @@ public class OrderDaoImpl extends HibernateDaoSupport implements OrderDao{
 		return query.list();
 	}
 	
-	@SuppressWarnings("unchecked")
+	/*@SuppressWarnings("unchecked")
 	public List<Order> findOrdersWithUnpayByName(String buyerName){
 		String sql = "select order_id, order_no, order_price , buyer_name, seller_name from tb_order where status = 0 and buyer_name = :name";
 	
 		Session session = super.getSessionFactory().getCurrentSession();
 		Query query = session.createSQLQuery(sql);
+		query.setParameter("name", buyerName);
+		return query.list();
+	}*/
+	
+	@SuppressWarnings("unchecked")
+	public List<Order> findOrdersWithUnpayByName(String buyerName){
+		String hql = "from Order as o where o.state = 0 and o.buyer.userName= :name";
+	
+		Session session = super.getSessionFactory().getCurrentSession();
+		Query query = session.createQuery(hql);
 		query.setParameter("name", buyerName);
 		return query.list();
 	}
