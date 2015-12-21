@@ -37,7 +37,8 @@ public class CustomerController {
 	private OrderService orderService;
 	
 	@RequestMapping("/customer/customerHomePage")
-	public String redirctCustomerHomePage(){
+	public String customerHomePage(){
+		
 		return "../views/customer/customerHomepage";
 	}
 	
@@ -45,7 +46,10 @@ public class CustomerController {
 	public String showOrderDetails(HttpServletRequest request, Model model, String buyerName) {
 		/*假用户名*/
 		String name = "11111";
-		
+		User user = (User) request.getSession().getAttribute("user");
+		if (user != null) {
+			name = user.getUserName();
+		}
 		List<Order> orderList = orderService.findOrdersByName(name);
 		model.addAttribute("orderList", orderList);
 		

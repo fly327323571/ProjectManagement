@@ -37,7 +37,7 @@ Boolean flag=(session.getAttribute("user")==null);
 		<li><a href="#" class="sn-help"><span
 				class="glyphicon glyphicon-question-sign sn"></span> help</a>
 		</li>
-		<li><a href=""
+		<li><a href="/ParknShop/customer/customerHomePage"
 			class="sn-homepage"><span class="glyphicon glyphicon-home sn"></span>
 				home</a>
 		</li>

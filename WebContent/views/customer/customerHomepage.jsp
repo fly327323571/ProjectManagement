@@ -48,16 +48,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<a href="javascript:void(0)" id="view_profile">View Profile</a>
 								<a href="javascript:void(0)" id="modify_profile">Modify Profile</a>
 							</div>
-						</div><!-- <img src="img/pic.jpg"/> -->
+						</div>
 						<ul> 
 							<li>User name:<span>${user.userName }</span></li>
-							<li>Credit :<span>${user.degree }</span></li>
-							<li>Registration Time:<span>${user.registerTimeString }</span></li>
 						</ul>
 						
 					</div>
 				</li>
-				<li><a id="order_history" href="javascript:void(0)" class="option">Buy History</a></li>
+				<li><a id="order_history" href="/ParknShop/customer/orderDetails" class="option">Order details</a></li>
 				<li><a id="myCart"  href="javascript:void(0)" target="_top" class="option">My Cart</a></li>
 				<li><a id="myFavorite"  href="javascript:void(0)" target="_top" class="option">My Favorite</a></li>
 			</ul>
@@ -70,9 +68,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<%@include file="../common/tail.html" %>
   </body>
 <script src="static/js/common/baseAjax.js"></script>  
-<script src="static/js/customer/customerHomepage.js"></script>
-<script src="static/js/customer/customerHomepageConfig.js"></script>
+<!-- <script src="static/js/customer/customerHomepage.js"></script>
+<script src="static/js/customer/customerHomepageConfig.js"></script> -->
 <script>
-	var portrait = "${user.portrait}";	
 </script>
 </html>
