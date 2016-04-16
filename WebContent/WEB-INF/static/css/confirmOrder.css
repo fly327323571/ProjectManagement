@@ -22,7 +22,7 @@ h4 {
 	margin: 20px 0;
 }
 
-.address-frame i{
+.address-frame i {
 	font-style: normal;
 }
 
@@ -131,14 +131,14 @@ h4 {
 	background-color: #ff9933;
 }
 
-.form-group .form-control{
+.form-group .form-control {
 	margin-top: 9px;
 }
 
-.form-group .control-label{
-	line-height : 3;
+.form-group .control-label {
+	line-height: 3;
 }
 
-.table tbody tr td{
-	vertical-align : middle;
+.table tbody tr td {
+	vertical-align: middle;
 }

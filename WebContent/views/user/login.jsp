@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 
   <header>
-		<a href="" class="logo">PARKnSHOP</a>
+	<img src="static/images/logo.jpg" style="padding-top:10px;padding-left:20px;height:60px;"></img>
 		<span class="identity">login</span>
  </header>
    <div  style="float:left;width:50%">
@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 		</div>
 		<a href="<c:url value="/user/register/customerReg"/>">registration</a>
-		<a href="admin/index.do" style="margin-left: 11px;">I'm admin</a>
+		<a href="/ParknShop/views/admin/login.jsp" style="margin-left: 11px;">I'm admin</a>
 	</form>
 	<span class="login-info" style=""></span>
 	<%@include file="../common/tail.html" %>

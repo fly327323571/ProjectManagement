@@ -4,7 +4,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <base href="<%=basePath%>">
@@ -23,18 +23,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <link href="static/css/confirmOrder.css" rel="stylesheet">
       <script src="static/js/common/jquery-1.11.1.js"></script>
 	<script src="static/js/common/bootstrap.min.js"></script>
-	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var orderCount = ${orderCount};
+			var isEmpty = false;
+			if (orderCount == 0) isEmpty = true; 
+			$("#payButton").click(function(){	
+				if (!isEmpty) {
+					location.href="/ParknShop/customer/redirectToPay?orderCount="+orderCount+"&isInner="+${isInner};
+				} else {
+					alertSuccess("No order to pay");
+				}							
+			});
+			
+		});
+	</script>
   </head>
   
   <body>
-    <%@include file="../common/toolbar.jsp" %>
-	<header>
-		<span class="logo">PARKnSHOP</span>
-		<div class="search-box">
-    		<input type="search" placeholder=" Big promotion!Come & Grab!"/>
-    		<button type="button" id="search">search</button>
-    	</div>
-	</header>
+	<c:choose>
+       	<c:when test="${isInner == 0}">
+       		<%@include file="../common/toolbar.jsp" %>      	
+			<header>
+				<img src="static/images/logo.jpg" style="padding-top:10px;padding-left:20px;height:60px;"></img>
+				<div class="search-box">
+		    		<input type="search" placeholder=" Big promotion!Come & Grab!"/>
+		    		<button type="button" id="search">search</button>
+		    	</div>
+			</header>
+		</c:when>
+  	 </c:choose>  
 	<ul class="navBar">
 		<li><span class="glyphicon glyphicon-hand-right"></span> Confirm Order</li>
 		<li><span class="glyphicon glyphicon-hand-right"></span> Pay</li>
@@ -67,8 +85,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <div id="pagination"></div>   
 	    <div class="checkOut">
 	    	<span>orders' total price:￥ ${sumPrice}</span><span id="totalPrice"></span>
-	   		<!-- <button class="btn btn_color">pay</button> -->
-	   		<a href="/ParknShop/customer/redirectToPay"><input value="Pay" type="button" class="btn btn_color"></input></a>
+	   		<button id="payButton" class="btn btn_color">pay</button>
+	   	<!-- <a id="pay" href="/ParknShop/customer/redirectToPay"><input id="payButton" value="Pay" type="button" class="btn btn_color"></input></a>-->
 	    </div>
   </div>  
   	<script type="text/template" id="dialogTmpl">
@@ -153,4 +171,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="static/js/common/bootstrap-modal.js"></script>
 <!-- <script src="static/js/shopping/confirmOrder.js"></script> -->
 <script src="static/js/shopping/confirmOrderConfig.js"></script>
+
+
 </html>

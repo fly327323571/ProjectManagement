@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
   <link rel="shortcut icon" href="img/favicon.png">
  
-	
+
 	
 </head>
 	
@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="nav_option">
-					<a href="javascript:void(0);" id="orderByRegTime">Register time<span id="reg_time_caret" class="caret" style="display:none;"></span></a>
+					<a href="/ParknShop/admin/shopInfoByRegistTime" id="orderByRegTime">Register time<span id="reg_time_caret" class="caret" style="display:none;"></span></a>
 				</li>
 			</ul>
 			
@@ -74,7 +74,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  </a>
 				  <ul id="status_choice" class="dropdown-menu">
 				    <!-- dropdown menu links -->
-				      <li><a tabindex="-1" class="status_item">All</a></li>
+				      <li><a tabindex="-1" class="status_item" href="/ParknShop/admin/shopInfoByStatus?status=All">All</a></li>
+				      <li><a tabindex="-1" class="status_item" href="/ParknShop/admin/shopInfoByStatus?status=Applying">Applying</a></li>
+				      <li><a tabindex="-1" class="status_item" href="/ParknShop/admin/shopInfoByStatus?status=Pass">Pass</a></li>
+				      <li><a tabindex="-1" class="status_item" href="/ParknShop/admin/shopInfoByStatus?status=NotPass">NotPass</a></li>
+				      <li><a tabindex="-1" class="status_item" href="/ParknShop/admin/shopInfoByStatus?status=Shut">Shut</a></li>
+				      <li><a tabindex="-1" class="status_item" href="/ParknShop/admin/shopInfoByStatus?status=Warn">Warn</a></li>
 				      <c:forEach var="status" items="${userStatus }">
 				      	<li><a tabindex="-1" class="status_item">${status}</a></li>
 					  </c:forEach>
@@ -83,15 +88,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 			
-			<form class="navbar-form navbar-right" role="search">
+			<form id="MyForm" class="navbar-form navbar-right" role="search" action="/ParknShop/admin/shopInfoByReaserch">
 				<div class="form-group">
-					<input id="user_name" class="form-control" placeholder="shop owner name" type="text">
+					<input id="user_name" class="form-control" placeholder="shop owner name" type="text" name="userName">
 				</div>
-				<div id="search" class="btn btn_color" type="button">Search</div>
+				<div id="search" class="btn btn_color" type="button" onclick="formSubmit();">Search</div>
 			</form>
 		</div>
 	</nav>
-    <table id="shopOwnerList" class="table"></table>
+    <table id="shopOwnerList" class="table">
+    	<c:forEach items="${shopInfo }" var="map" varStatus="status">
+    		<tr>
+    			<td>${map.userName }</td>
+    			<td>${map.shopNo }</td>
+    			<td>
+    				<c:if test="${map.status eq 0 }">Applying</c:if>
+    				<c:if test="${map.status eq 1 }">Pass</c:if>
+    				<c:if test="${map.status eq 2 }">NotPass</c:if>
+    				<c:if test="${map.status eq 3 }">Shut</c:if>
+    				<c:if test="${map.status eq 4 }">Warn</c:if>
+    			</td>
+    			<td>${map.regTime }</td>
+    			<td>
+    				<a href="/ParknShop/admin/approve?id=${map.shopNo }">Approve</a>
+    				<a href="/ParknShop/admin/disapprove?id=${map.shopNo }">Disapprove</a>
+    			</td>
+    		</tr>
+    	</c:forEach>
+    </table>
 	<nav class="page"><!-- 分页 -->
 		<div id="pagination"></div>
 	</nav>
@@ -113,6 +137,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	   	  </div>
    	  </div>
 </div>
+<script type="text/javascript">
+	function formSubmit(){
+		$("#MyForm").submit();
+	}
+</script>
 <script type="text/template" id="detailTmpl">
 	<div class="dialog-block">
 		<p class="dialog-block-title">Shop owner<p>
@@ -131,7 +160,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 		</div>
     	</div>
 		<div class="form-group">
-			<label class="col-sm-3 control-label" style="line-height: 20px;padding-bottom: 8px;">ID card</label>
+			<label class="col-sm-3 control-label" style="line-height: 20px;padding-bottom: 8px;">Shop No</label>
 	 		<div class="col-sm-7">
 	  		<input class="form-control" name="idCard" type="text" autofocus="autofocus" readonly="true" style="background-color: white;cursor: text;">
 	 		</div>
@@ -190,6 +219,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 	</div><!-- end of block-->
 </script>
+	
   </body>
  <script src="static/js/common/baseAjax.js"></script>
  <script src="static/js/common/table.js"></script>
@@ -197,4 +227,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <script src="static/js/common/bootstrap-modal.js"></script>
  <script src="static/js/admin/shopOwnerManage.js"></script>
  <script src="static/js/admin/shopOwnerManageConfig.js"></script>
+ 
+
+ 
 </html>

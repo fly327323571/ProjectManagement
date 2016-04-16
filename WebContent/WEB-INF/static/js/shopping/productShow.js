@@ -346,7 +346,7 @@ function ProductShow(config){
 	$("#minus_number_button").attr('disabled',true);
 	
 	$("#contact").bind("click",function(){
-		var userId = $(this).attr("userId");
-		$("#chat").attr("userId",userId);
+		var username = $(this).attr("username");
+		$("#chat").attr("userId",username);
 	});
 }

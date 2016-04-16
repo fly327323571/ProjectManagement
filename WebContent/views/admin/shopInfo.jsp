@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<td>
 
 	<form action="admin/${currentshop.shopNo}/editShop" method="post">
-		<table>
+		<table class="table table-striped table-bordered table-hover">
 		 <colgroup align="right"></colgroup>
 		<tr>
 			<td>Shop No</td>
@@ -41,8 +41,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<td><input type="text" name="shopName" readonly="readonly" value="${currentshop.shopName}"/></td>
 		</tr>
 		<tr>
-		    <td>Shop Id</td>
-			<td><input type="text" name="shopNo" readonly="readonly" value="${currentshop.shopId}"/></td>
+		    <td>Shop Rank</td>
+			<td><input type="text" name="shopRank" value="${currentshop.shopRank}"/></td>
 			<td>Shop Owner</td>
 			<td><input type="text" name="" readonly="readonly"  value="${currentshop.shopOwner.userName}"/></td>			
 		</tr>
@@ -51,8 +51,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<td>Owner Telephone</td>
 			<td><input type="text" name="ownerTel" value="${currentshop.ownerTel}"/></td>
 			<td>Shop Categories</td>
-			<td><input type="text" name="shopCategories"  value="${currentshop.shopCategories}"/></td>
+			<%-- <td><input type="text" name="shopCategories"  readonly="readonly" value="${Categories[currentshop.shopCategories]}"/></td> --%>
+			<td>
+			    <select name="shopCategories">
+                        <option value=0> please select !</option>
+                        <option ${currentshop.shopCategories eq 0?"selected='selected'":"" } value=0>Food</option>
+                        <option ${currentshop.shopCategories eq 1?"selected='selected'":"" } value=1>Clothes</option>
+                        <option ${currentshop.shopCategories eq 2?"selected='selected'":"" } value=2>Tools</option>
+                 </select>
 			
+			</td>
 
 		</tr>
 		<tr>
@@ -63,9 +71,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</tr>
 		<tr>
 			<td>Shop Sourse</td>
-			<td><input type="text" name="shopSourse" value="${currentshop.shopSourse}"/></td>
+			<%-- <td><input type="text" name="shopSourse" value="${currentshop.shopSourse}"/></td> --%>
+			<td>    <select name="shopSourse">
+                        <option value=0> please select !</option>
+                        <option ${currentshop.shopSourse eq 0?"selected='selected'":"" } value=0>SelfSale</option>
+                        <option ${currentshop.shopSourse eq 1?"selected='selected'":"" } value=1>OfflineSale</option>
+                        <option ${currentshop.shopSourse eq 2?"selected='selected'":"" } value=2>Distribution</option>
+                        <option ${currentshop.shopSourse eq 3?"selected='selected'":"" } value=3>Undefined</option>
+                 </select>
+            </td>
 			<td>Status</td>
-			<td><input type="text" name="status" value="${currentshop.status}"/></td>
+			<%-- <td><input type="text" name="status" value="${currentshop.status}"/></td> --%>
+			 <td>    <select name="status">
+                        <option value=1> please select !</option>
+                        <option ${currentshop.status eq 1?"selected='selected'":"" } value=1>Normal</option>
+                        <option ${currentshop.status eq 4?"selected='selected'":"" } value=4>Waring</option>
+                        <option ${currentshop.status eq 3?"selected='selected'":"" } value=3>BlackList</option>
+                 </select>
+            </td>
 		</tr>
 		<tr>
 			<td>Remarks</td>
@@ -74,8 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<td><input type="text" name="" readonly="readonly" value="${currentshop.regTime}"/></td>
 		</tr>
 		<tr>
-		   <td>Shop Rank</td>
-			<td><input type="text" name="shopRank" value="${currentshop.shopRank}"/></td>
+		    
 		    <td>
 			<input type="submit" value="save"/>	&nbsp;
 			</td>

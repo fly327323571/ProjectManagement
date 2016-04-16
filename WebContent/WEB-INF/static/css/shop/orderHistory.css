@@ -1,47 +1,53 @@
-img.product_img{
-	width:80px;
-	height:80px;
-}
-.btn_color{
-background-color:#ff5400;
-color:#ffffff;
-}
-.title_color{
-color:#ff5400;
-text-shadow:1px 1px #ff5400;
-}
-.main_color{
-color:#ff5400;
-}
-.sec_color{
-color:#eea60c;
-}
-.page{
-	overflow:hidden;
-}
-.nav .nav_option:hover{
-background-color:#E7E7E7;
+img.product_img {
+	width: 80px;
+	height: 80px;
 }
 
-#search_by li{
-	cursor:pointer;
+.btn_color {
+	background-color: #ff5400;
+	color: #ffffff;
 }
 
-.modal-open .modal-body{
+.title_color {
+	color: #ff5400;
+	text-shadow: 1px 1px #ff5400;
+}
+
+.main_color {
+	color: #ff5400;
+}
+
+.sec_color {
+	color: #eea60c;
+}
+
+.page {
+	overflow: hidden;
+}
+
+.nav .nav_option:hover {
+	background-color: #E7E7E7;
+}
+
+#search_by li {
+	cursor: pointer;
+}
+
+.modal-open .modal-body {
 	height: 48%;
 }
 
-#orderList td{
-	vertical-align : middle;
+#orderList td {
+	vertical-align: middle;
 }
 
-#orderList .t_price{
+#orderList .t_price {
 	color: #ff5400;
 	font-weight: bold;
 	font-family: arial;
 }
 
-.express li i{
+.express li i {
 	background: url(../../images/express.jpg) no-repeat 0 0;
 	display: inline-block;
 	width: 36px;
@@ -49,7 +55,8 @@ background-color:#E7E7E7;
 	float: left;
 	line-height: 29px;
 }
-.express li span{
+
+.express li span {
 	float: left;
 	margin-left: 16px;
 	height: 25px;
@@ -57,34 +64,36 @@ background-color:#E7E7E7;
 	font-size: 16px;
 }
 
-span.info{
+span.info {
 	color: purple;
 	font-size: 27px;
 	margin: 7px;
 }
 
-#orderList .t_addTime{
+#orderList .t_addTime {
 	width: 10%;
 }
-#orderList .t_communicate{
+
+#orderList .t_communicate {
 	width: 15%;
 }
 
-#orderList table .t_Products{
+#orderList table .t_Products {
 	width: 23%;
 }
 
-#orderList table .t_Original_Price{
+#orderList table .t_Original_Price {
 	width: 17%;
 }
 
-#orderList table .t_Quantity{
+#orderList table .t_Quantity {
 	width: 13%;
 }
 
-#orderList table .t_totalPrice{
+#orderList table .t_totalPrice {
 	width: 9%;
 }
-#orderList table .t_message{
+
+#orderList table .t_message {
 	width: 24%;
 }

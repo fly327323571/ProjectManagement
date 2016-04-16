@@ -1,17 +1,21 @@
-.btn_color{
-background-color:#ff5400;
-color:#ffffff;
+.btn_color {
+	background-color: #ff5400;
+	color: #ffffff;
 }
-.title_color{
-color:#ff5400;
-text-shadow:1px 1px #ff5400;
+
+.title_color {
+	color: #ff5400;
+	text-shadow: 1px 1px #ff5400;
 }
-.main_color{
-color:#ff5400;
+
+.main_color {
+	color: #ff5400;
 }
-.sec_color{
-color:#eea60c;
+
+.sec_color {
+	color: #eea60c;
 }
-.background{
-background-color:#FFFFCC
+
+.background {
+	background-color: #FFFFCC
 }

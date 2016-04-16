@@ -6,15 +6,15 @@ $(function(){
 				return html;
 			},
 			shopOwnerRenderer:function(data){
-				var html='<span class="glyphicon glyphicon-comment sn title_color"></span>&nbsp;<a href="javascript:void(0)">vendor:'+data+' </a></td><td>';
+				var html='<span class="glyphicon glyphicon-comment sn title_color"></span>&nbsp;<a href="javascript:void(0)">vendor:'+data.shop.shopOwner.userName+' </a></td><td>';
 				return html;
 			},
 			saleVolumeRenderer:function(data){
-				var html='<em>saleVolume:</em>'+data+'</td><td>';
+				var html='<em>saleVolume:</em>'+data.saleVolumn+'</td><td>';
 				return html;
 			},
 			viewDetailRenderer:function(data){
-				var url = config.URL.VIEW_PRODUCT_DETAIL.replace("{productId}",data);
+				var url = config.URL.VIEW_PRODUCT_DETAIL.replace("{productId}",data.commodityNo);
 				var html='<a class="main_color viewProductDetail" href="'+url+'" target="_blanket">View product details</a>';
 				return html;
 			},
@@ -24,23 +24,23 @@ $(function(){
 				return html;
 			},
 			productRender : function(data){
-				var img = '<img src="'+data.productImage+'" class="product_img">';
-				var span = '<span>'+data.productName+'</span>';
+				var img = '<img src="'+data.commodityImg+'" class="product_img">';
+				var span = '<span>'+data.commodityName+'</span>';
 				return img + '<br />'+ span;
 			},
 			shopNameRenderer:function(data){
-				var link = config.URL.VISIT_SHOP.replace("{storeId}",data.storeId);
-				var html='<a href='+link+'>'+'<b>'+data.shopName+'</b></a>';
+				var link = config.URL.VISIT_SHOP.replace("{storeId}",data.shop.shopNo);
+				var html='<a href='+link+'>'+'<b>'+data.shop.shopName+'</b></a>';
 				return html;
 			},
 			unitPriceRenderer : function(data){
-				var html = '$<span class="unitPrice">' + data+'</span>';
+				var html = '$<span class="unitPrice">' +parseFloat(data.price)/parseInt(data.commodityNum)+'</span>';
 				return html;
 			},
 			
 			quantityRenderer : function(data){
-				var number=data.quantity?data.quantity:1;
-				var cartid = data.cartId;
+				var number=data.commodityNum?data.commodityNum:1;
+				var cartid = data.id;
 				var html =
 	              ' <button class="minus_number_button" style = "width:20px" '+ (number==1?'disabled="disabled"':'')+'>-</button>'+
 	             '<input class="product_number_input" type="text" style="width:40px;text-align:center" cartid="'+cartid+'" value="'+number+'">'+ 
@@ -50,13 +50,13 @@ $(function(){
 			
 			priceRenderer : function(data){
 				//var price=$("#unitPrice").html()*$("#product_number_input").val();
-				var price=data;
+				var price=data.price*data.commodityNum;
 				var html = '$<span class="price">' + price+'</span>';
 				return html;
 			},
 			
-			operationRenderer : function(cartId){
-				var btn= '<button class="btn btn_color delete"  cartId="'+cartId+'">delete</button>';
+			operationRenderer : function(data){
+				var btn= '<button class="btn btn_color delete"  cartId="'+data+'">delete</button>';
 				return btn;
 			},
 			statusRenderer:function(data){
@@ -77,7 +77,7 @@ $(function(){
 				CHECK_OUT: 'cart/checkOut.json',
 				UPDATE : 'cart/modify.json',
 				LIST :'cart/list.json',
-				ORDER_CONFIRM : 'business/orderConfirm/index.do',
+				ORDER_CONFIRM : 'customer/confirmOrders',
 				VISIT_SHOP : "business/market/{storeId}/shopHomePage.do"
 			},
 			
@@ -95,7 +95,7 @@ $(function(){
 				},
 				{
 					name : 'cartId',
-					data : 'cartId', //根据不同的状态，显示出不同的信息
+					data : 'id', //根据不同的状态，显示出不同的信息
 					visible : false,
 					row : 1,
 					render : tableRenderer.orderIdRenderer
@@ -107,7 +107,7 @@ $(function(){
 					render : tableRenderer.addTimeRender
 				},{
 					name : 'shopOwner',//该商品所属店铺店主的名字
-					data : 'shopOwner',
+					data : 'commodity',
 					visible : true,
 					row : 1,
 					render : tableRenderer.shopOwnerRenderer
@@ -119,13 +119,13 @@ $(function(){
 					render : null
 				},{
 					name : 'saleVolume',//
-					data : 'saleVolume',//对应Store.java 实体类的字段
+					data : 'commodity',//对应Store.java 实体类的字段
 					visible : true,
 					row : 1,
 					render : tableRenderer.saleVolumeRenderer
 				},{
 					name : 'viewProductDetail',
-					data : "productId",
+					data : "commodity",
 					visible : true,
 					row  : 1,
 					render : tableRenderer.viewDetailRenderer
@@ -137,37 +137,37 @@ $(function(){
 					render : tableRenderer.selectRenderer
 				},{
 					name : 'product',
-					data : 'productImage & productName',
+					data : 'commodity',
 					visible : true,
 					row : 2,
 					render : tableRenderer.productRender
 				},{
 					name : 'shopName',
-					data : 'shopName & storeId',
+					data : 'commodity',
 					visible : true,
 					row : 2,
 					render : tableRenderer.shopNameRenderer
 				},{
 					name : 'unitPrice',
-					data : 'price',
+					data : 'price&commodityNum',
 					visible : true,
 					row : 2,
 					render : tableRenderer.unitPriceRenderer
 				},{
 					name : 'number',
-					data : 'quantity & cartId',
+					data : 'id&commodityNum',
 					visible : true,
 					row : 2,
 					render : tableRenderer.quantityRenderer
 				},{
 					name : 'price',
-					data : 'totalPrice',
+					data : 'price&commodityNum',
 					visible : true,
 					row : 2,
 					render : tableRenderer.priceRenderer
 				},{
 					name : 'operation',
-					data : 'cartId',
+					data : 'id',
 					visible : true,
 					row : 2,
 					render : tableRenderer.operationRenderer

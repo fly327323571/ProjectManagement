@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -22,18 +23,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 	 <script src="static/js/common/jquery-1.11.1.js"></script>
     <script src="static/js/common/bootstrap.min.js"></script>
+    	<script type="text/javascript">
+		$(document).ready(function(){
+			var orderCount = ${orderCount};
+			var isEmpty = false;
+			if (orderCount == 0) isEmpty = true; 
+			$("#payButton").click(function(){	
+				if (!isEmpty) {
+					location.href="/ParknShop/customer/pay?orderCount="+orderCount+"&isInner="+${isInner};
+				} else {
+					alertSuccess("No order to pay");
+				}							
+			});
+			
+		});
+	</script>
   </head>
    
   
   <body>
-     <%@include file="../common/toolbar.jsp" %>
-<header>
-		<span class="logo">PARKnSHOP</span>
-		<div class="search-box">
-    		<input type="search" placeholder=" Big promotion!Come & Grab!"/>
-    		<button type="button" id="search">search</button>
-    	</div>
-	</header>
+  	<c:choose>
+       	<c:when test="${isInner == 0}">
+       		<%@include file="../common/toolbar.jsp" %>       	
+			<header>
+				<img src="static/images/logo.jpg" style="padding-top:10px;padding-left:20px;height:60px;"></img>
+				<div class="search-box">
+		    		<input type="search" placeholder=" Big promotion!Come & Grab!"/>
+		    		<button type="button" id="search">search</button>
+		    	</div>
+			</header>
+		</c:when>
+	</c:choose>
 	<ul class="navBar">
 				<li><span class="glyphicon glyphicon-hand-right"></span> Confirm Order</li>
 				<li><span class="glyphicon glyphicon-hand-right"></span> Pay</li>
@@ -74,10 +94,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</ul>
 					
 				</li>
-				<li><input type="radio" name="payment" value="COD"/><span>COD</span></li>
 			</ul>
-			<div align="center"><!-- <button id="__pay" class="btn btn-default">pay</button> -->
-				<a href="/ParknShop/customer/pay"><input value="Pay" type="button" class="btn btn-default"></input>
+			<br />
+			<div align="center">
+				<button id="payButton" class="btn btn-default">pay</button>
+				<!-- <a href="/ParknShop/customer/pay"><input value="Pay" type="button" class="btn btn-default"></input> -->
 			</div>
 		</div>
 	</section>

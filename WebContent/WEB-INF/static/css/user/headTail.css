@@ -28,7 +28,7 @@ a:hover {
 	box-shadow: 2px 2px 10px #808080;
 }
 
-.site-nav .log-info,.quick-menu {
+.site-nav .log-info, .quick-menu {
 	height: 30px;
 	line-height: 30px;
 	display: inline-block;
@@ -48,11 +48,11 @@ a:hover {
 	color: rgba(133, 133, 133, 1);
 }
 
-.site-nav a.sn-user{
+.site-nav a.sn-user {
 	margin-left: 3px;
 }
 
-.quick-menu a:last-child{
+.quick-menu a:last-child {
 	margin-right: 20px;
 }
 

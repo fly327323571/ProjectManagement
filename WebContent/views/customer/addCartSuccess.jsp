@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   <%@include file="../common/toolbar.jsp" %>
      <header>
-		<span class="logo">PARKnSHOP</span>
+		<img src="static/images/logo.jpg" style="padding-top:10px;padding-left:20px;height:60px;"></img>
 		<div class="search-box">
     		<input type="search" placeholder=" Big promotion!Come & Grab!"/>
     		<button type="button" id="search">search</button>
@@ -42,12 +42,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<br/>
 				<div class="background-left">
-					<img src="${cart.productImage }" alt="" height=100 width=100 />
+					<img src="${cart.commodity.commodityImg }" alt="" height=100 width=100 />
 				</div>
 				<div class="background-right">
 					<ul>
-				      <li><b>Name:</b><span class="glyphicon">${cart.product.productName }</span></li>
-				      <li><b>Amount:</b><span class="glyphicon">${cart.quantity }</span></li>
+				      <li><b>Name:</b><span class="glyphicon">${cart.commodity.commodityName }</span></li>
+				      <li><b>Amount:</b><span class="glyphicon">${cart.commodityNum }</span></li>
 				      <li><b>price:</b><span class="glyphicon glyphicon-usd">${cart.price }</span></li>
 				    </ul>
 					<a class="btn btn_color btn_style" type="button" href="cart/myCart.do">check out</a>

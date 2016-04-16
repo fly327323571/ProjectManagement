@@ -7,7 +7,7 @@
 	color: green;
 }
 
-.mark_ERROR{
+.mark_ERROR {
 	position: absolute;
 	right: 144px;
 	top: 11px;
@@ -21,7 +21,7 @@
 	height: 16px;
 }
 
-input[type='file']{
+input[type='file'] {
 	position: absolute;
 	right: 0px;
 	top: 0px;
@@ -33,7 +33,7 @@ input[type='file']{
 	opacity: 0;
 }
 
-.loading{
+.loading {
 	position: absolute;
-	background-image:url(../../images/loading.gif);
+	background-image: url(../../images/loading.gif);
 }

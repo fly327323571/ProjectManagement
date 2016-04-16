@@ -59,10 +59,9 @@ form .form-group:last-child {
 	padding: 5px 30px;
 	color: red;
 }*/
-
-.tip{
+.tip {
 	position: absolute;
 	top: 6px;
 	right: -73px;
-	color : red;
+	color: red;
 }

@@ -4,7 +4,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <base href="<%=basePath%>">
@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   <%@include file="../common/toolbar.jsp" %>
 	<header>
-		<span class="logo">PARKnSHOP</span>
+		<img src="static/images/logo.jpg" style="padding-top:10px;padding-left:20px;height:60px;"></img>
 		<div class="search-box">
     		<input type="search" placeholder=" Big promotion!Come & Grab!"/>
     		<button type="button" id="search">search</button>
@@ -39,52 +39,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   
   <div class = "main" >
-  <input type="hidden" id="userId" value="${user.userId }"/>
+  <input type="hidden" id="userId" value="${store.shopOwner.userName }"/>
     <div class = "view">
-	    <img src="${product.defaultImage}" class="img-thumbnail">
+	    <img src="${product.commodityImg}" class="img-thumbnail">
 	    <span  class = "glyphicon glyphicon-heart collection" id="favorite"></span>
     </div>
     
     <div class = "product-view">
-      <input type="hidden" id="productId" value="${product.productId}"/>
-      <h3 class = "pro-title" >${product.productName} </h3>
+      <input type="hidden" id="productId" value="${product.commodityNo}"/>
+      <h3 class = "pro-title" >${product.commodityName} </h3>
       <div style = "width:100px;float:left">
         <p>Price:</p>
         <p>Inventory:</p>
         <p>Delivery:</p>
         <p>Postage:</p>
-        <p>Color:</p>
         <p>Number:</p>
         <p>Contact:</p>
         <p></p>
       </div >
       <div class="right">
-        <p class="emphasis">$<span id="price">${product.presentPrice}</span></p>
-        <p id="amounts">${product.amounts}</p>
+        <p class="emphasis">$<span id="price">${product.commodityPrice}</span></p>
+        <p id="amounts">${product.commodityCount}</p>
         <!-- 地址 -->
-        <p><span class="address">${store.address.province } ${store.address.city } </span>To
+        <p><span class="address">${store.shopAddr }</span>To
         <span class="">
-        <select id="province" type="text" class="" autofocus="autofocus" required="required" validateType="nonNegativeInteger">
-		</select> 
-		<select id="city" type="text" class="" autofocus="autofocus" required="required" validateType="nonNegativeInteger">
-		</select>
+        <input type="text" name="toAddr" id="toAddr"/>
 		</span>
 		</p>
 		
-		<p id="postage" class="emphasis">20</p>
-        <p >
-        	<span class="option" style="cursor: pointer;">Black</span>
-        	<span class="option" style="cursor: pointer;">White</span>
-        	<span class="option" style="cursor: pointer;">Gray</span>
-        </p>
+		<p id="postage" class="emphasis">20 </p>
      
 	    <p>
 	      <button id="minus_number_button" style = "width:20px">-</button> <input id="product_number_input" type = "text" style = "width:40px;text-align:center" value="1" >
 	      <button id="add_number_button" style = "width:20px">+</button>
 	    </p>
 		  <p>
-		    <button id="contact"type = "button" class = "btn btn-default" style = "border:0px" userId="${shopOwner.userId }">
-		    	<span class="glyphicon glyphicon-user session emphasis">${shopOwner.userName }</span>
+		    <button id="contact"type = "button" class = "btn btn-default" style = "border:0px" username="${store.shopOwner.userName }">
+		    	<span class="glyphicon glyphicon-user session emphasis">${store.shopOwner.userName }</span>
 		    </button>
 		  </p>
 		  <p id="info-show">please complete the info!</p>
@@ -105,37 +96,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	      		<div class="form-group" style="margin-bottom: 5px;">
 	      			<label class="col-sm-6 control-label" for="shopName">shop name :</label>
 	      			<div class="col-sm-6">
-						<div class="store-infor-col" id="shopName">${store.storeName }</div>
+						<div class="store-infor-col" id="shopName">${store.shopName }</div>
 					</div>
 	      		</div>
 		    	<div class="form-group" style="margin-bottom: 5px;">
 		    		<label class="col-sm-6 control-label" for="credit">credit :</label>
 		    		<div class="col-sm-6">
-		    			<div class="store-infor-col" id="credit">${store.creditValue }</div>
+		    			<div class="store-infor-col" id="credit">${store.shopRank }</div>
 		    		</div>
 		    	</div>
 		    	<div class="form-group" style="margin-bottom: 5px;">
 		    		<label class="col-sm-6 control-label" for="shopOwner">shop owner : </label>
 	      			<div class="col-sm-6">
-						<div class="store-infor-col" id="shopOwner">${shopOwner.userName }</div>
+						<div class="store-infor-col" id="shopOwner">${store.shopOwner.userName }</div>
 					</div>
 	      		</div>
 	      		<div class="form-group" style="margin-bottom: 5px;">
-		    		<label class="col-sm-6 control-label" for="shopOwner">Province : </label>
+		    		<label class="col-sm-6 control-label" for="shopOwner">Address : </label>
 	      			<div class="col-sm-6">
-						<div class="store-infor-col">${store.address.province } </div>
-					</div>
-	      		</div>
-	      		<div class="form-group" style="margin-bottom: 5px;">
-		    		<label class="col-sm-6 control-label" for="shopOwner">City : </label>
-	      			<div class="col-sm-6">
-						<div class="store-infor-col">${store.address.city } </div>
+						<div class="store-infor-col">${store.shopAddr } </div>
 					</div>
 	      		</div>
 	      		</div><!-- end of form -->
 	      		<div>
-	      			<button storeId="${store.storeId }" type="button" class="btn btn-default  my-btn" id="enterShop" style="margin-left: 8px;">visit shop</button>
-	      			<button storeId="${store.storeId }" type="button" class="btn btn-default  my-btn" id="addFavoriteShop" style="margin-left: 5px;">Add Favorite</button>
+	      			<button storeId="${store.shopNo }" type="button" class="btn btn-default  my-btn" id="enterShop" style="margin-left: 8px;">visit shop</button>
+	      			<button storeId="${store.shopNo }" type="button" class="btn btn-default  my-btn" id="addFavoriteShopBtn" style="margin-left: 5px;">Add Favorite</button>
 	      		</div>
       		</div><!-- end of panel body -->
     	</div>
@@ -173,7 +158,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		
 	</ul>
 	<div class="pdt-detail">
-		<p>${product.description }</p>
+		<p>${commodityDetail }</p>
 	</div>
 </div>
 <div id="pagination"></div>
@@ -202,9 +187,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script src="static/js/shopping/productShowConfig.js"></script>
  <script src="static/js/communicate/communicate.js"></script>
  <script src="static/js/common/jquery.paginate.js"></script>
-  <script>
-   var _storeId = ${store.storeId};
+ <script type="text/javascript">
+   var _storeId = ${store.shopNo};
    var status = ${store.status};
+   var userId  = ${store.shopOwner.userName};
+   $(document).ready(function(){
+		/* $("#addFavoriteShopBtn").click(function(){	
+			location.href = "/ParknShop/customer/addFavoriteShop?shopNo="+${store.shopNo};		
+		}); */
+		addFavorite_json();
+		/* $("#favorite").click(function(){	
+			location.href = "/ParknShop/customer/addFavoriteCommidity?commodityNo="+${product.commodityNo};		
+		}) */
+	});
+   function addFavorite_json(){
+		var shopNo = ${store.shopNo};
+		var commodityNo = ${product.commodityNo};
+		$("#addFavoriteShopBtn").click(function(){	
+			url = "/ParknShop/customer/addFavoriteShop";	
+			args = {"shopNo": shopNo};
+			$.get(url,args);
+			alertSuccess("Succeed in adding favorite shop");
+					
+		});	
+		$("#favorite").click(function(){	
+			url = "/ParknShop/customer/addFavoriteCommidity";	
+			args = {"commodityNo": commodityNo};
+			$.get(url,args);
+			alertSuccess("Succeed in adding favorite commodity");
+		})
+	}
   </script>
   
 </html>

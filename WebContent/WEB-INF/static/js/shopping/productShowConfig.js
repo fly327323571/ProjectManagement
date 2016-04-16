@@ -1,9 +1,9 @@
 $(function(){
 	var config={
 			URL:{
-				BUY_NOW : 'business/buyNow.json',
-				ADD_TO_CART:'cart/add.json',
-				CONFIRM:'business/orderConfirm/index.do',
+				BUY_NOW : 'business/buyNow',
+				ADD_TO_CART:'cart/add',
+				CONFIRM:'customer/confirmOrders',
 				ADD_FAVORITE_PRODUCT:'user/addToFavorite/product.json',
 				ADD_FAVORITE_STORE : 'user/addToFavorite/store.json',
 				LOAD_COMMENTS:'business/loadComments',

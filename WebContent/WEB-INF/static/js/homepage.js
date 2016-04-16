@@ -23,7 +23,7 @@ function Homepage(config){
 		})
 		
 	}
-	setTimeout(adaptHeight,300);
+//	setTimeout(adaptHeight,30000);
 	
 	//slide
 	function slide(i){
@@ -68,23 +68,23 @@ function Homepage(config){
 	});
 	
 	function renderProductAd(productAd){
-		var html = $("#productAdTmpl").html().replace("{logo}",productAd.logo)
-			.replace("{productName}",productAd.productName)
-			.replace("{storeName}",productAd.storeName)
-			.replace("{price}",productAd.proPrice)
-			.replace("{link}",productAd.link);
+		var html = $("#productAdTmpl").html().replace("{logo}",productAd.commodity.commodityImg)
+			.replace("{productName}",productAd.commodity.commodityName)
+			.replace("{storeName}",productAd.shop.shopName)
+			.replace("{price}",productAd.commodity.commodityPrice)
+			.replace("{link}",productAd.commodityLink);
 		return html;
 	}
 	
 	function renderShopAd(shopAd){
-		var html = $("#shopAdTmpl").html().replace("{link}",shopAd.link)
-			.replace("{logo}",shopAd.logo);
+		var html = $("#shopAdTmpl").html().replace("{link}",shopAd.shopLink)
+			.replace("{logo}",shopAd.shop.shopIcon);
 		return html;
 	}
 	
 	function loadProductAds(){
 		baseAjax.doAjax(_config.URL.FETCH_PRODUCT_ADS,null,function(data){
-			var productAds = data.result.data;
+			var productAds = data.result;
 			$(".pdt-list").children().remove();
 			$.each(productAds,function(i,ad){
 				var html = renderProductAd(ad);
@@ -100,7 +100,7 @@ function Homepage(config){
 	function loadShopAds(){
 		
 		baseAjax.doAjax(_config.URL.FETCH_SHOP_ADS,null,function(data){
-			var shopAds = data.result.data;
+			var shopAds = data.result;
 			$(".shop-list ul").children().remove();
 			$.each(shopAds,function(i,shopAd){
 				var html = renderShopAd(shopAd);

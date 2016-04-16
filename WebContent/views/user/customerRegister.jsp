@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <%@include file="../common/toolbar.jsp" %>
 
 <header>
-		<span class="logo">PARKnSHOP</span>
+		<img src="static/images/logo.jpg" style="padding-top:10px;padding-left:20px;height:60px;"></img>
 		<span class="identity">register</span>
 </header>
 
@@ -98,7 +98,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		
 		<div class="form-group">
-			  <label class="col-sm-2 control-label"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RealName</label>					
+			  <label class="col-sm-2 control-label"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NickName</label>					
 			<div class="col-sm-7">
 				<input class="form-control" name="nickName"  id="nickName" type="text" required="required" validateType="userName"/>
 				<div id="nickNameCheck" class="check"></div>

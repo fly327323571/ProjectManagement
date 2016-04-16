@@ -43,40 +43,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 
   <header>
-		<a href="" class="logo">PARKnSHOP</a>
-		<span class="identity">Admin login</span>
+		<img src="static/images/logo.jpg" style="padding-top:10px;padding-left:20px;height:60px;"></img>
+
+<span class="identity">Admin login</span>
  </header>
    <div  style="float:left;width:50%">
 	 <!--  <img  src="static/images/ylogo.png" style="margin-left:5%"> -->
 	  <img  src="static/images/ypic.jpg" style="margin-top:10%;margin-left:20%">
   </div>
-  <form class="form-horizontal">
+  <form class="form-horizontal" action="/ParknShop/adminLogin/login" id="adminLoginForm" method="post">
   		<div id="show-info">
   		
   		</div>
 		<div class="form-group">
 			 <label class="col-sm-2 control-label">Username</label>
 			<div class="col-sm-10">
-				<input class="form-control" type="text" placeholder="username" autofocus="autofocus" required="required" id="userName"/>
+				<input class="form-control" type="text" placeholder="username" autofocus="autofocus" required="required" id="userName" name="username"/>
 			</div>
 		</div>
 		<div class="form-group">
 			  <label class="col-sm-2 control-label">Password</label>
 			<div class="col-sm-10">
-				<input class="form-control" type="password" required="required" id="password"/>
+				<input class="form-control" type="password" required="required" id="password" name="password"/>
 			</div>
 		</div>
 		<a href="#">forgot password?</a>
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10" >
-				 <div class="btn btn-default my-btn" id="login">Login</div>
+				 <div class="btn btn-default my-btn" id="login" onclick="adminLogin();">Login</div>
 			</div>
 		</div>
 		
 	</form>
 	<span class="login-info" style=""></span>
 	<%@include file="../common/tail.html" %>
+	
+	<script type="text/javascript">
+	function adminLogin(){
+		var username = $("#userName");
+		var password = $("#password");
+		if(username!=null&&password!=null){
+			$("#adminLoginForm").submit();
+		}
+		
+	}
+</script>
  </body>
+ 
+ 
  <script>
  	var redirectUrl = "${historyUrl }";
  </script>

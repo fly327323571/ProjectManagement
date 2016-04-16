@@ -3,7 +3,8 @@ $(function(){
 		URL : {
 			SAVE : 'product/{productId}/modify'.replace("{productId}", productId), //保存修改的地址
 			SUCCESS:'product/{storeId}/list/index.do'.replace("{storeId}", storeId), //修改成功后，或者取消修改后跳转的页面地址
-			CHECK_PRODUCT_NAME : 'product/{shopNo}/*/checkProductName'.replace("{shopNo}", storeId)
+			CHECK_PRODUCT_NAME : 'product/{shopNo}/*/checkProductName'.replace("{shopNo}", storeId),
+			UPLOAD_PRODUCT_IMG: 'product/{shopNo}/upload/CommodityImg.do'.replace("{shopNo}", storeId)
 		},
 		dialogRemind : function(message){},//占位符
 		validateConfig : [{

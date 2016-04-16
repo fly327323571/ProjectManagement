@@ -69,13 +69,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 		</nav>
 		<table id="orderList" class="table">
-			<tr><th>No</th><th>Buyer Name</th><th>Order No</th><th>Order Price</th><th>Pay Way</th><th>Status</th></tr>
+			<tr><th>No</th><th>Order No</th><th>Order Time</th><th>Order Price</th><th>Status</th>
+				<th>Pay Way</th><th>Shop Name</th><th>More Details</th><th>Pay</th><th>Sign for</th>
+			</tr>
 			<c:forEach items="${orderList }"  var="order" varStatus="status">
 				<tr>
 				<td>${status.index+1 }</td>
-				<td>${order.buyer.userName}</td>
 				<td>${empty order.orderNo?" ":order.orderNo}</td>
-		        <td>${empty order.orderPrice?" ":order.orderPrice}￥</td>
+				<td>${order.addTime} </td>
+		        <td>￥${empty order.orderPrice?" ":order.orderPrice}</td>
+		        <c:choose>
+	               	<c:when test="${empty order.state}">
+	            			<td>&nbsp;</td>
+	            	</c:when>
+	            	<c:when test="${order.state == 0}">
+	               		<td>Lose Efficiency</td>
+	               	</c:when>
+	               	<c:when test="${order.state == 1}">
+	               		<td>Unpaid</td>
+	               	</c:when>
+	               	<c:when test="${order.state == 2}">
+	               		<td>Not shipped</td>
+	               	</c:when>
+	               	<c:when test="${order.state == 3}">
+	               		<td>User request a refund</td>
+	               	</c:when>
+	               	<c:when test="${order.state == 4}">
+	               		<td>Seller refused to refund</td>
+	               	</c:when>
+	               	<c:when test="${order.state == 5}">
+	               		<td>refund</td>
+	               	</c:when>
+	               	<c:when test="${order.state == 6}">
+	               		<td>Shipped</td>
+	               	</c:when>
+	               	<c:when test="${order.state == 7}">
+	               		<td>Signed</td>
+	               	</c:when>
+	               	<c:when test="${order.state == 8}">
+	               		<td>Comment</td>
+	               	</c:when>
+	               	<c:when test="${order.state == 9}">
+	               		<td>Termination</td>
+	               	</c:when>
+	         	</c:choose>	
 		        <c:choose>
 	               	<c:when test="${empty order.payWay}">
 	            			<td>&nbsp;</td>
@@ -87,22 +124,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	               		<td>Cash on delivery</td>
 	               	</c:when>
 	         	</c:choose>
-	         	<c:choose>
-	               	<c:when test="${empty order.state}">
-	            			<td>&nbsp;</td>
-	            	</c:when>
-	               	<c:when test="${order.state == 0}">
-	               		<td>non-payment</td>
-	               	</c:when>
-	               	<c:when test="${order.state == 1}">
-	               		<td>not receiving</td>
-	               	</c:when>
-	               	<c:when test="${order.state == 2}">
-	               		<td>received</td>
-	               	</c:when>
-	         	</c:choose>
+	    		<td>${order.shop.shopName }</td>
+	    		<td>
+					<a href="/ParknShop/customer/moreOrderDetail?orderId=${order.id}"><input value="More" type="button" class="btn btn_color"></input></a>
+				</td>
+				<td>
+					<c:choose>
+						<c:when test="${order.state == 1}">
+							<a href="/ParknShop/customer/confirmOrders?isInner=1"><input value="Pay" type="button" class="btn btn_color"></input></a>
+						</c:when>
+						<c:otherwise>
+							Can't Pay
+						</c:otherwise>
+					</c:choose>
+				</td>
+				<td>
+					<c:choose>
+						<c:when test="${order.state == 6}">
+							<a href="/ParknShop/customer/signFor?orderId=${order.id}"><input value="Sign" type="button" class="btn btn_color"></input></a>
+						</c:when>
+						<c:otherwise>
+							Can't Sign
+						</c:otherwise>
+					</c:choose>
+				</td>
 	         	</tr>
 			</c:forEach>
+			
 		</table>
 		<nav class="page">
 		<div id="pagination"></div>

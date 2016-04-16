@@ -15,7 +15,7 @@ if(userObj == null){
     	</div>
     	<div class="quick-menu">
     		
-    		<a href="." class="sn-homepage"><span class="glyphicon glyphicon-home sn"></span>  my homepage</a>
+    		<a href="/ParknShop/customer/customerHomePage" class="sn-homepage"><span class="glyphicon glyphicon-home sn"></span>  my homepage</a>
     		<a href="javascript:void(0)" class="sn-cart"><span class="glyphicon glyphicon-shopping-cart sn"></span>  my cart</a>
     		<a href="javascript:void(0)" class="sn-favorite"><span class="glyphicon glyphicon-heart sn"></span>  my favorite</a>
     		<a id="shopOwnerRegister" class="sn-help"><span class="glyphicon glyphicon-star sn"></span>  to be ShopOwner</a>
@@ -27,7 +27,7 @@ if(userObj == null){
 	if(userObj instanceof User){
 	User user = (User)userObj;
 	boolean userType = user.isSeller();
-	String userName = user.getUserName();
+	String userName = user.getNickName();
 	if(!userType){
 %>
 	<!-- Customer -->
@@ -39,7 +39,7 @@ if(userObj == null){
     	</div>
     	<div class="quick-menu">
     		
-    		<a href="javascript:void(0)" class="sn-homepage"><span class="glyphicon glyphicon-home sn"></span>  my homepage</a>
+    		<a href="/ParknShop/customer/customerHomePage" class="sn-homepage"><span class="glyphicon glyphicon-home sn"></span>  my homepage</a>
     		<a href="javascript:void(0)" class="sn-cart"><span class="glyphicon glyphicon-shopping-cart sn"></span>  my cart</a>
     		<a href="javascript:void(0)" class="sn-favorite"><span class="glyphicon glyphicon-heart sn"></span>  my favorite</a>
     		<a id="shopOwnerRegister" class="sn-help"><span class="glyphicon glyphicon-star sn"></span>  to be ShopOwner</a>
@@ -59,9 +59,9 @@ if(userObj == null){
 	    	<a id="logout" class="sn-log">log out</a>
     	</div>
     	<div class="quick-menu">
-    		<a href="javascript:void(0)" class="sn-homepage"><span class="glyphicon glyphicon-home sn"></span> my homepage</a>
+    		<a href="/ParknShop/customer/customerHomePage" ><span class="glyphicon glyphicon-home sn"></span> my homepage</a>
     		<a href="javascript:void(0)" class="sn-cart"><span class="glyphicon glyphicon-shopping-cart sn"></span>  my cart</a>
-    		<a href="javascript:void(0)" class="sn-favorite"><span class="glyphicon glyphicon-heart sn"></span>  my favorite</a>
+    		<a href="/ParknShop/customer/myFavorite"><span class="glyphicon glyphicon-heart sn"></span>  my favorite</a>
     		<a href="javascript:void(0)" class="sn-help"><span class="glyphicon glyphicon-question-sign sn"></span>  help</a>
     		<a href="siteMap.do" class="sn-help"><span class="glyphicon glyphicon-globe sn"></span>  site map</a>
     	</div>
@@ -78,7 +78,7 @@ if(userObj == null){
 	    	<a id="logout" class="sn-log">log out</a>
     	</div>
     	<div class="quick-menu">
-    		<a href="javascript:void(0)" class="sn-homepage"><span class="glyphicon glyphicon-home sn"></span>  homepage</a>
+    		<a href="/ParknShop/customer/customerHomePage" class="sn-homepage"><span class="glyphicon glyphicon-home sn"></span>  homepage</a>
     		<a href="javascript:void(0)" class="sn-help"><span class="glyphicon glyphicon-question-sign sn"></span>  help</a>
     		<a href="siteMap.html" class="sn-help"><span class="glyphicon glyphicon-globe sn"></span>  site map</a>
     	</div>

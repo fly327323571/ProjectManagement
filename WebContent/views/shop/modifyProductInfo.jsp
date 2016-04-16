@@ -124,7 +124,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="static/js/common/validator.js"></script> 
 <script type="text/javascript">
 	 var storeId = "${storeId}";
-	 var productId = ${product.commoditNo};
+	 var productId = ${product.commodityNo};
 </script>
 
 

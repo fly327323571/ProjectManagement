@@ -84,8 +84,6 @@ header .search-box button {
 	margin: 20px 25px;
 }
 
-
-
 .left .pdt-list>div img {
 	width: 250px;
 }
@@ -106,8 +104,8 @@ header .search-box button {
 	text-align: center;
 }
 
-#pagination .jPag-control-back{
-	margin : auto;
+#pagination .jPag-control-back {
+	margin: auto;
 }
 
 .pdt-logo {

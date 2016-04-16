@@ -31,10 +31,10 @@ td {
 					<c:if test="${afterservice.serviceType eq '0' }">Refund</c:if>
 				</td>
 				<td>${afterservice.reason }</td>
-				<td><a href="/ParknShop/afterSaleService/detail?commodityNo=${afterservice.commodityNo }&userName=${afterservice.userName}">详情</a></td>
+				<td><a href="/ParknShop/afterSaleService/detail?commodityNo=${afterservice.commodityNo }&userName=${afterservice.userName}">Detail</a></td>
 				<td>
-					<a href="/ParknShop/afterSaleService/approve?serviceNo=${afterservice.serviceNo }&serviceType=${afterservice.serviceType}">受理</a>
-					<a href="/ParknShop/afterSaleService/disapprove?serviceNo=${afterservice.serviceNo }&serviceType=${afterservice.serviceType}">驳回</a>
+					<a href="/ParknShop/afterSaleService/approve?serviceNo=${afterservice.serviceNo }&serviceType=${afterservice.serviceType}">Approve</a>
+					<a href="/ParknShop/afterSaleService/disapprove?serviceNo=${afterservice.serviceNo }&serviceType=${afterservice.serviceType}">Disapprove</a>
 				</td>
 			</tr>
 			

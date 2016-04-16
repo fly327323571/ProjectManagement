@@ -32,7 +32,7 @@ $(function(){
 	var manageShopLinkConfig = {
 		URL : {//页面所有的URL配置
 			SUBMIT:'store/{shopNo}/manageShopLink'.replace("{shopNo}", storeId),
-			DETAILS : "store/index.do",
+			DETAILS : "shop/redirect/index",
 			LIST : "shop/link/{shopNo}/showList".replace("{shopNo}", storeId),
 			SHOP_LINKS : "store/{shopNo}/shopLinks.json".replace("{shopNo}", storeId),
 			SHOP_HOMEPAGE : "business/market/{shopNo}/shopHomePage.do".replace("{shopNo}", storeId),

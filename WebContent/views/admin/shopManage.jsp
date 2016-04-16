@@ -13,32 +13,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>ParknShop--shop Manage</title>
     
     <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<meta name="description" content=""/>
+	<meta name="author" content=""/>
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<script src="static/js/common/jquery-1.11.1.js"></script>
     <script src="static/js/common/bootstrap.min.js"></script>
     
-	<link href="static/css/common/bootstrap.min.css" rel="stylesheet">
-	<link href="static/css/common/jpagination.css" rel="stylesheet">
-	<link href="static/css/user/headTail.css" rel="stylesheet">
-	<link href="static/css/user/style.css" rel="stylesheet">
+	<link href="static/css/common/bootstrap.min.css" rel="stylesheet"/>
+	<link href="static/css/common/jpagination.css" rel="stylesheet"/>
+	<link href="static/css/user/headTail.css" rel="stylesheet"/>
+	<link href="static/css/user/style.css" rel="stylesheet"/>
 	<link href="static/css/admin/shopManage.css" rel="stylesheet"/>
-	<link href="static/css/shopOwner/shopList.css" rel="stylesheet" type="text/css">
+	<link href="static/css/shopOwner/shopList.css" rel="stylesheet" type="text/css"/>
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
   <![endif]-->
 
   <!-- Fav and touch icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
-  <link rel="shortcut icon" href="img/favicon.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png"/>
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png"/>
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png"/>
+  <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png"/>
+  <link rel="shortcut icon" href="img/favicon.png"/>
  
 	
 	
@@ -50,19 +50,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <div class="container">
   	<nav class="navbar navbar-default" role="navigation">
-		<div class="navbar-header">
+		<!-- <div class="navbar-header">
 			 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span>
 			 <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand">Sort by:</a>
-		</div>
+		</div> -->
+		
 		
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
+			<!-- <ul class="nav navbar-nav">
 				<li class="nav_option">
 					<a href="javascript:void(0);" id="orderByRegTime">Register time<span id="reg_time_caret" class="caret" style="display:none;"></span></a>
 				</li>
-			</ul>
+			</ul> -->
 			
-			<div class="status-style">
+			<%-- <div class="status-style">
 				<span id="status_span">Status:</span>
 				<div class="btn-group">
 				  <a class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
@@ -78,10 +79,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  </ul>
 				  <!-- 待修改 -->
 				</div>
-			</div>
+			</div> --%>
 			
-			<form class="navbar-form navbar-right" role="search">
-				<div style="float:left;">
+			<form action="admin/shopSearch" class="navbar-form navbar-right" role="search" method="post">
+			<%-- 	<div style="float:left;">
 				<span id="category_span">Category:</span>
 				<div class="btn-group">
 				  <a class="btn dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
@@ -96,15 +97,46 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					  </c:forEach>
 				  </ul>
 				</div>
-			</div>
+			</div> --%>
 				<div class="form-group">
-					<input id="store_name" class="form-control" placeholder="store name" type="text">
+					<input id="store_name" class="form-control" name="shopname" placeholder="store name" type="text">
 				</div>
-				<div id="search" class="btn btn_color" type="button">Search</div>
+				<input id="search" class="btn btn_color" type="submit" value="Search">
 			</form>
 		</div>
 	</nav>
-    <table id="storeList" class="table"></table>
+     <table  class="table">
+          <thead>
+             <tr>
+                <th>No</th>
+                <th>ShopNo</th>
+                <th>ShopName</th>
+                <th>ShopCategories</th>
+                <th>ShopRank</th>
+                <th>QwnerTel</th>             
+                <th>ShopAddr</th>
+                <th>Register time</th>
+                <th>Operation</th>               
+             </tr>
+          </thead>
+           <tbody >
+                  <c:forEach items="${ShopList}" var="person" varStatus="status">
+            	   <tr>          	    
+                      <td>${status.index+1 }</td>
+                      <td>${person.shopNo }</td>
+                      <td>${person.shopName}</td>
+                      <td>${Categories[person.shopCategories]}</td>
+                      <td>${person.shopRank}</td>
+                      <td>${person.ownerTel}</td>
+                      <td>${person.shopAddr}</td>
+                      <td>${person.regTime}</td> 
+                      <td>                 	  
+                  	     <a href="admin/handleShop?shopNo=${person.shopNo }">&nbsp;&nbsp;&nbsp;Handle</a>            	   
+                      </td>                    	
+                   </tr>
+                 </c:forEach>
+             </tbody>
+    </table>
 	<nav class="page"><!-- 分页 -->
 		<div id="pagination"></div>
 	</nav>
@@ -144,7 +176,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 		</div>
     	</div>
 		<div class="form-group">
-			<label class="col-sm-3 control-label" style="line-height: 20px;padding-bottom: 8px;">ID card</label>
+			<label class="col-sm-3 control-label" style="line-height: 20px;padding-bottom: 8px;">Shop No</label>
 	 		<div class="col-sm-7">
 	  		<input class="form-control" name="idCard" type="text" autofocus="autofocus" readonly="true" style="background-color: white;cursor: text;">
 	 		</div>
@@ -204,10 +236,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div><!-- end of block-->
 </script>
   </body>
- <script src="static/js/common/baseAjax.js"></script>
+ <!-- <script src="static/js/common/baseAjax.js"></script>
  <script src="static/js/common/table.js"></script>
  <script src="static/js/common/jquery.paginate.js"></script>
  <script src="static/js/common/bootstrap-modal.js"></script>
  <script src="static/js/admin/shopManage.js"></script>
- <script src="static/js/admin/shopManageConfig.js"></script>
+ <script src="static/js/admin/shopManageConfig.js"></script> -->
 </html>

@@ -1,9 +1,9 @@
-
-.navBar li:nth-child(2){
-	background:#FF5400;
+.navBar li:nth-child(2) {
+	background: #FF5400;
 }
-.navBar li:nth-child(2) .glyphicon{
-	color:#FF5400;
+
+.navBar li:nth-child(2) .glyphicon {
+	color: #FF5400;
 }
 
 .content {
@@ -62,10 +62,10 @@
 	border: 0;
 }
 
-#__pay{
-	margin-top: 30px;  
-	background: #FF5400;  
-	color: white;  
+#__pay {
+	margin-top: 30px;
+	background: #FF5400;
+	color: white;
 	border: 0;
-    width: 100px;
+	width: 100px;
 }

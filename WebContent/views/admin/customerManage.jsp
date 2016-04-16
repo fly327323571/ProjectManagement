@@ -49,13 +49,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <div class="container">
   	<nav class="navbar navbar-default" role="navigation">
-		<div class="navbar-header">
+		<!-- <div class="navbar-header">
 			 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span>
 			 <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand">Sort by:</a>
-		</div>
+		</div> -->
 		
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
+		<%-- 	<ul class="nav navbar-nav">
 				<li class="nav_option">
 					<a href="javascript:void(0);" id="orderByRegTime">Register time<span id="reg_time_caret" class="caret" style="display:none;"></span></a>
 				</li>
@@ -76,24 +76,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  </ul>
 				  <!-- 待修改 -->
 				</div>
-			</div>
-			<form class="navbar-form navbar-right" role="search">
+			</div> --%>
+			<form action="admin/customerSearch" class="navbar-form navbar-right" role="search">
 				<div class="form-group">
-					<input id="user_name" class="form-control" placeholder="customer name" type="text">
+					<input id="user_name" class="form-control" placeholder="nick name" name="nickname" type="text">
 				</div>
-				<div id="search" class="btn btn_color" type="button">Search</div>
+				<input id="search" class="btn btn_color" type="submit" value="Search">
 			</form>
 		</div>
 	</nav>
-    <table id="customerList" class="table"></table>
+    <table  class="table">
+          <thead>
+             <tr>
+                <th>number</th>
+                <th>username</th>
+                <th>nickname</th>
+                <th>email</th>
+                <th>phone</th>
+                <th>address</th>
+                <th>register time</th>
+                <th>operation</th>               
+             </tr>
+          </thead>
+           <tbody >
+                  <c:forEach items="${Customerlist}" var="person" varStatus="status">
+            	   <tr>          	    
+                      <td>${status.index+1 }</td>
+                      <td>${person.userName }</td>
+                      <td>${person.nickName}</td>
+                      <td>${person.email}</td>
+                      <td>${person.tel}</td>
+                      <td>${person.address}</td>
+                      <td>${person.registerTime}</td> 
+                      <td>                 	  
+                  	    <a href="admin/handleCustomer?userName=${person.userName}">&nbsp;&nbsp;Handle</a>         	   
+                      </td>                    	
+                   </tr>
+                 </c:forEach>
+             </tbody>
+    </table>
 	<nav class="page">
 		<div id="pagination"></div>
 	</nav>
 	</div>
   </body>
- <script src="static/js/common/baseAjax.js"></script>
+<!--  <script src="static/js/common/baseAjax.js"></script>
  <script src="static/js/common/table.js"></script>
- <script src="static/js/common/jquery.paginate.js"></script>
- <script src="static/js/admin/customerManage.js"></script>
- <script src="static/js/admin/customerManageConfig.js"></script>
+ <script src="static/js/common/jquery.paginate.js"></script> -->
+ <!-- <script src="static/js/admin/customerManage.js"></script> -->
+<!--  <script src="static/js/admin/customerManageConfig.js"></script> -->
 </html>

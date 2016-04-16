@@ -2,8 +2,8 @@ $(function(){
 	var config = {
 		URL : {
 			FILE_UPLOAD : "advertise/{shopNo}/upload/fileUpload".replace("{shopNo}", storeId),
-			UPLOAD_ADS : "store/{shopNo}/manageAd".replace("{shopNo}", storeId),
-			DASH_BOARD : "store/{shopNo}/dashboard/index".replace("{shopNo}", storeId)
+			UPLOAD_ADS : "store/{shopNo}/saveAd".replace("{shopNo}", storeId),
+			DASH_BOARD : "shop/{shopNo}/dashboard/index.do".replace("{shopNo}", storeId)
 		},
 		validateConfig : [{
 			id : 'product1',

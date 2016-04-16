@@ -9,7 +9,9 @@ function MyCart(config){
 	var orderBy = 'addTime';
 	var isAscending = false;
 	var selectedCartIds = [];
+	var cardIds;
 	var _cartId;
+	var totalPrice = 0;
 	/*var searchType = 'productName';*/
 	
 	
@@ -73,11 +75,11 @@ function MyCart(config){
 			 *}
 			 */
 			var page = rs.result;
-			_orderList = page.data;
+			_orderList = page;
 			table.loadData(_orderList);
 			if(_orderList && _orderList.length>0){
 				$("#pagination").paginate({
-					count 		: page.totalPageCount,//10,
+					count 		: Math.ceil(_orderList.length/5),//10,
 					start 		: curPageIdx,
 					display     : 5,
 					border					: true,
@@ -153,7 +155,7 @@ function MyCart(config){
 	
 	function calculateTotalPrice(){
 		var checkedItem = $("#orderList input[checked='checked']").parents("tr");
-		var totalPrice = 0;
+		
 		selectedCartIds = [];
 		$.each(checkedItem,function(i, item){
 			var $item = $(item);
@@ -294,8 +296,14 @@ function MyCart(config){
 		$("#check").bind("click",function(){
 			if(selectedCartIds.length==0){
 				$("#dialog").modal(dialog);
-			}else{
-				baseAjax.doAjax(_config.URL.CHECK_OUT, selectedCartIds, function(rs){
+			}
+			else{
+				cardIds=selectedCartIds.join(",");
+				var reqData={
+						"cartIds":cardIds,
+						"totalPrice":totalPrice
+				}
+				baseAjax.doAjax(_config.URL.CHECK_OUT, reqData, function(rs){
 					window.location.href = _config.URL.ORDER_CONFIRM;
 				},function(rs){
 					alertFail(rs.data.message);

@@ -2,28 +2,28 @@ $(function(){
 	var tableRenderer = {// 数据渲染到页面上的函数
 			addTimeRender : function(data) {
 				var d = new Date(data);
-				var html = '<b>' + d.getFullYear() + '-' + (d.getMonth() + 1)+'-'
-						+ d.getDate() + '</b>';
+				var html = '<b>' + d.addTime.getFullYear() + '-' + (d.addTime.getMonth() + 1)+'-'
+						+ d.addTime.getDate() + '</b>';
 				return html;
 			},
 			buyerRenderer : function(data) {
 				var html = '<span class="glyphicon glyphicon-comment sn title_color"></span>&nbsp;'+
-				'<a class="contact" userId="'+data.userId+'" href="javascript:void(0)">customer:' 
-					+ data.userName + '</a></td><td>';
+				'<a class="contact" userId="'+data.buyer.Id+'" href="javascript:void(0)">customer:' 
+					+ data.buyer.userName + '</a></td><td>';
 				return html;
 			},
 			orderNumberRenderer : function(data) {
-				var html = '<em>OrderId:</em> ' + data
+				var html = '<em>OrderId:</em> ' + data.orderNo
 						+ '</span></td><td>';
 				return html;
 			},
 			orderDetailsRenderer : function(data) {
-				var html = '<a class="main_color" href="'+ orderHistoryListConfig.URL.ORDER_DETAILS.replace("{orderId}",data)+ 
+				var html = '<a class="main_color" href="'+ orderHistoryListConfig.URL.ORDER_DETAILS.replace("{orderId}",data.orderNo)+ 
 				'" target="_blank">View order details</a>';
 				return html;
 			},
 			totalPriceRenderer:function(data){
-				return parseFloat(data).toFixed(2);
+				return parseFloat(data.orderPrice).toFixed(2);
 			},statusRenderer : function(data) {
 				var html = '';
 				/**
@@ -39,7 +39,7 @@ $(function(){
 	 * 8 已评论
 	 * 9 终止
 				 */
-				switch(data){
+				switch(data.state){
 				case 1:html+='unpaid';break;
 				case 2:html+='unshipped';break;
 				case 3:html+='refunding';break;
@@ -68,14 +68,14 @@ $(function(){
 			productsRenderer : function(subOrders) {
 				
 				function renderSubOrder(subOrder){
-					var link = orderHistoryListConfig.URL.VIEW_PRODUCT.replace("{productId}",subOrder.productId);
-					var html = $("#subOrderTmpl").html().replace("{productImage}",subOrder.img)
+					var link = orderHistoryListConfig.URL.VIEW_PRODUCT.replace("{productId}",subOrder.commodityNo);
+					var html = $("#subOrderTmpl").html().replace("{productImage}",subOrder.commodityImg)
 						.replace("{link}",link)
-						.replace("{productName}",subOrder.productName)
-						.replace("{price}",subOrder.realPrice.toFixed(2))
-						.replace("{quantity}",subOrder.quantity)
-						.replace("{totalPrice}",(subOrder.quantity * subOrder.realPrice).toFixed(2))
-						.replace("{message}",subOrder.remark);
+						.replace("{productName}",subOrder.commodityName)
+						.replace("{price}",subOrder.commodityPrice.toFixed(2))
+						.replace("{quantity}",subOrder.commodityCount)
+						.replace("{totalPrice}",(subOrder.commodityCount * subOrder.commodityPrice).toFixed(2))
+						.replace("{message}",subOrder.commodityDetail);
 					return html;
 				}
 				var $table = $("<table class='table table-hover'></table>");
@@ -103,43 +103,43 @@ $(function(){
 			renderRowCount : 2,
 			metadata : [ {
 				name : 'addTime',
-				data : 'addTime',
+				data : 'order',
 				visible : true,
 				row : 1,
 				render : tableRenderer.addTimeRender
 			}, {
 				name : 'communicate',// 买家
-				data : 'userName & userId',
+				data : 'order',
 				visible : true,
 				row : 1,
 				render : tableRenderer.buyerRenderer
 			}, {
 				name : 'orderNumber',// 页面上显示的信息
-				data : 'mainOrderId',//
+				data : 'order',//
 				visible : true,
 				row : 1,
 				render : tableRenderer.orderNumberRenderer
 			},{
 				name : 'Details',
-				data : 'mainOrderId',
+				data : 'order',
 				visible : true,
 				row : 1,
 				render : tableRenderer.orderDetailsRenderer
 			},{
 				name : 'totalPrice',
-				data : 'totalPrice',
+				data : 'order',
 				visible : true,
 				row : 1,
 				render : tableRenderer.totalPriceRenderer
 			},{
 				name : 'Status',
-				data : 'status',
+				data : 'order',
 				visible : true,
 				row : 1,
 				render : tableRenderer.statusRenderer
 			},{
 				name : "products",
-				data : "productsOfOrder",
+				data : "commodityOfOrder",
 				visible : true,
 				row : 2,
 				colspan : 7,

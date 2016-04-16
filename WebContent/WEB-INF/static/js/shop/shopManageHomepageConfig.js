@@ -9,7 +9,9 @@ $(function(){
 			MANAGE_PRODUCT : 'product/{shopNo}/list/index.do'.replace('{shopNo}', _storeId),
 			ADD_PRODUCT : 'product/{shopNo}/add/index.do'.replace('{shopNo}', _storeId),
 			MANAGE_ADS : 'shop/{shopNo}/manageAd/index.do'.replace('{shopNo}', _storeId),
-			DASHBOARD : 'shop/{shopNo}/dashboard/index.do'.replace('{shopNo}', _storeId)
+			DASHBOARD : 'shop/{shopNo}/dashboard/index.do'.replace('{shopNo}', _storeId),
+			APPLY_ADS: 'shop/{shopNo}/applyAds/index.do'.replace('{shopNo}', _storeId),
+			APPLY_COMMODITY_ADS:'product/{shopNo}/applyAds/index.do'.replace('{shopNo}', _storeId)
 		}
 	};
 	new ShopManageHomepage(config);

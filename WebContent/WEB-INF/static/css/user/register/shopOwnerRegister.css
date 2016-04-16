@@ -60,7 +60,6 @@ form .form-group:last-child {
 	color: red;
 }
 
-
 .mark_OK {
 	position: absolute;
 	right: 144px;
@@ -68,19 +67,43 @@ form .form-group:last-child {
 	color: green;
 }
 
-.mark_ERROR{
+.mark_ERROR {
 	position: absolute;
 	right: 144px;
 	top: 11px;
 	color: red;
 }
 
-#file{
-	position: absolute; right: 0px; top: 0px; font-family: Arial; font-size: 118px; margin: 0px; padding: 0px; cursor: pointer; opacity: 0; height: 100%;
+#file {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	font-family: Arial;
+	font-size: 118px;
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
+	opacity: 0;
+	height: 100%;
 }
 
-#uploading{position: absolute;top: 8px;right: -64px;background-image:url(../../../images/loading.gif);width: 16px;height: 16px;}
+#uploading {
+	position: absolute;
+	top: 8px;
+	right: -64px;
+	background-image: url(../../../images/loading.gif);
+	width: 16px;
+	height: 16px;
+}
 
-#show-info{float: right;position: relative;top: -308px;right: 31px;}
+#show-info {
+	float: right;
+	position: relative;
+	top: -308px;
+	right: 31px;
+}
 
-#show-info img{width: 140px;height: 160px;}
+#show-info img {
+	width: 140px;
+	height: 160px;
+}

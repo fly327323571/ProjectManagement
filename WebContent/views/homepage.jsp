@@ -32,6 +32,7 @@ Boolean flag=(session.getAttribute("user")==null);
 
 <body class="clearfix">
 <%@include file="common/toolbar.jsp" %>	
+<!-- 
 	<section class="easy-nav">
 	<ul>
 		<li><a href="#" class="sn-help"><span
@@ -52,10 +53,10 @@ Boolean flag=(session.getAttribute("user")==null);
 		</a>
 		</li>
 	</ul>
-	</section>
+	</section> -->
 	
 	
-	<header> <span class="logo">PARKnSHOP</span>
+	<header> <img src="static/images/logo.jpg" style="padding-top:10px;padding-left:20px;height:60px;"></img>
 
 	<div class="search-box">
 		<input type="search" placeholder=" Big promotion!Come & Grab!" id="query" name="query"/>
@@ -158,7 +159,7 @@ Boolean flag=(session.getAttribute("user")==null);
     color: white;
     font-weight: bold;
     margin-bottom: 6px;margin-top: 0px;
-">Top 10 products
+">Recommendation Products
 			      
 		</div>
 		<div class="pdt-list" style="
@@ -257,7 +258,6 @@ Boolean flag=(session.getAttribute("user")==null);
 	<div class="right">
 
 		<!-- <img alt="" src="static/images/girl.png"> -->
-		<div class="shop-logo">Shop</div>
 		<div style="text-align: center;
 width: 76%;
 height: 43px;
@@ -265,7 +265,7 @@ line-height: 43px;
 background-color: #ff5400;
 color: white;
 font-size: 16px;
-font-weight: bold;">Top 10 shops</div>
+font-weight: bold;">Recommendation Shops</div>
 	<div class="shop-list">
 		<ul>
 			<li><a href="#"><img src="static/images/logo-fg.jpg" />

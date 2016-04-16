@@ -14,8 +14,9 @@ function orderHistoryList(orderHistoryListConfig){
 	var isAscending = false;
 	var category= 'status';
 	var status='all';
+	var today = new Date(); 
 	var name='';
-	var time=null;
+	var time=new Date(today.getTime()-31 * 24 * 3600 * 1000).toLocaleDateString();;
 	
 	
 	//改变导航栏样式
@@ -29,6 +30,12 @@ function orderHistoryList(orderHistoryListConfig){
 		changeCSS(this);
 		var $a=$(this).find('a');
 		status=$a.attr("id");
+		if(status=='shipped'){
+			status=6;}
+		else if(status=='unshipped'){
+			status=2;}
+		else if(status=='done'){
+			status=9;}
 		loadData();
 	});
 	
@@ -46,15 +53,18 @@ function orderHistoryList(orderHistoryListConfig){
 	
 	function getColumnFilters(){
 		var columnFilters = [];
+		columnFilters.push({
+			"name" : 'addtime',
+			"filterType" : 'LESS',
+			"value" :[time]
+		});
+		columnFilters.push({
+				"name" : 'productName',
+				"filterType" : 'CONTAIN',
+				"value" :[name]
+			});
 		if(category=='status'){
-			if(status=='contain'){
-				columnFilters.push({
-					"name" : 'productName',
-					"filterType" : 'CONTAIN',
-					"value" :[name]
-				});
-			}
-			else if(status=='all'){
+			if(status=='all'){
 				columnFilters.push({
 					"name" : 'status',
 					"filterType" : 'GREATER',
@@ -67,13 +77,6 @@ function orderHistoryList(orderHistoryListConfig){
 					"value" :[status]
 				});
 			}
-			
-		}else{
-			columnFilters.push({
-				"name" : 'addtime',
-				"filterType" : 'LESS',
-				"value" :addTime
-			});
 		}
 		
 		return columnFilters;
@@ -106,12 +109,12 @@ function orderHistoryList(orderHistoryListConfig){
 		baseAjax.doAjax(_orderHistoryListConfig.URL.LIST, queryParam, function(rs){
 						
 			var page = rs.result;
-			_orderList = page.data;
+			_orderList = page;
 			table.loadData(_orderList);
 			
 			if(_orderList && _orderList.length!=0){
 				$("#pagination").paginate({
-					count 		: page.totalPageCount,//10,
+					count 		: Math.ceil(_orderList.length/5),//10,
 					start 		: curPageIdx,
 					display     : 5,
 					border					: true,
@@ -271,41 +274,39 @@ function orderHistoryList(orderHistoryListConfig){
 	$("#category_choice .category_item").bind("click",function(){
 		var request = $(this).text();
 		var today = new Date();  
-		 
 		if(request=='one month'){
-			time=new Date(today.getTime()-31 * 24 * 3600 * 1000);
+			time=new Date(today.getTime()-31 * 24 * 3600 * 1000).toLocaleDateString();
 		}else{
-			time=new Date(today.getTime()-3*31 * 24 * 3600 * 1000);
+			time=new Date(today.getTime()-3*31 * 24 * 3600 * 1000).toLocaleDateString();
 		}
-		$("#category").text(category);
+		$("#category").text(request);
 		loadData();
 	});
 	
 	$("#search").bind("click",function(){
-		status='contain';
 		name=$("#searchContent").val();
 		loadData();
 	});
 	
-	$("#all").bind("click",function(){
-		status = 'all';
-		loadData();
-	});
-	
-	$("#shipped").bind("click",function(){
-		status=6;
-		loadData();
-	});
-	
-	$("#unshipped").bind("click",function(){
-		status=2;
-		loadData();
-	});
-	
-	$("#done").bind("click",function(){
-		status=9;
-		loadData();
-	});
+//	$("#all").bind("click",function(){
+//		status = 'all';
+//		loadData();
+//	});
+//	
+//	$("#shipped").bind("click",function(){
+//		status=6;
+//		loadData();
+//	});
+//	
+//	$("#unshipped").bind("click",function(){
+//		status=2;
+//		loadData();
+//	});
+//	
+//	$("#done").bind("click",function(){
+//		status=9;
+//		loadData();
+//	});
 	
 	$("body").on("click",".contact",function(){
 		var userId = $(this).attr("userId");

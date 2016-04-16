@@ -6,7 +6,7 @@ function SearchResult(config){
 	var curPageIdx = 1;
 	var orderBy = 'addTime';
 	var isAscending = false;
-	var searchType ='productName';
+	var searchType ='commodityName';
 	
 	
 	//改变导航栏样式
@@ -36,11 +36,11 @@ function SearchResult(config){
 		
 		var keyword = $("#productType").val();
 		if(keyword){
-			columnFilters.push({
+			columnFilters[0]={
 				"name" : searchType,
-				"filterType" : searchType=='productName'?'CONTAIN':'EQUAL',
+				"filterType" : searchType=='commodityName'?'CONTAIN':'EQUAL',
 				"value" : [keyword]
-			});
+			};
 		}
 		
 		return columnFilters;
@@ -74,18 +74,18 @@ function SearchResult(config){
 		$.each(data,function(i, item){
 			var $li = $("<li></li>");
 			var $a=$("<a></a>");
-				$a.attr("href","product/productDetail/"+item.productId);
-			var $img=$("<img />");
-				$img.attr("src",item.defaultImage);
+				$a.attr("href","product/productDetail/"+item.commodityNo);
+			var $img=$("<img width='160px' weight='160px'/>");
+				$img.attr("src",item.commodityImg);
 			var $div=$("<div class='describe'></div>");
-			var $productName=$("<span class='name'></span><br/>");
-				$productName.html(item.productName);
+			var $commodityName=$("<span class='name'></span>");
+				$commodityName.html(item.commodityName);
 			var $storeBelong=$("<span class='pdt-shop'></span>");
 				$storeBelong.html('');
-			var $productPrice=$("<span class='price'></span>");
-				$productPrice.html(item.presentPrice);
+			var $commodityPrice=$("<span class='price'></span>");
+				$commodityPrice.html('Price:'+item.commodityPrice);
 			
-			$div.append($productName).append($storeBelong).append($productPrice);
+			$div.append($commodityName).append($storeBelong).append($commodityPrice);
 			$a.append($img).append($div);
 			$li.append($a);
 			$ul.append($li);
@@ -103,11 +103,11 @@ function SearchResult(config){
 			 *}
 			 */
 			var page = rs.result;
-			_productList = page.data;
+			_productList = page;
 			renderData(_productList);
 			if(_productList && _productList.length>0){
 				$("#pagination").paginate({
-					count 		: page.totalPageCount,//10,
+					count 		: rs.totalPageCount,//10,
 					start 		: curPageIdx,
 					display     : 5,
 					border					: true,
@@ -147,6 +147,7 @@ function SearchResult(config){
 	$(".content .result").bind("click",function(){
 		changeCSS($(this));
 		orderBy=$(this).attr("value");
+		isAscending=!isAscending;
 		loadData();
 	});
 	
@@ -161,21 +162,21 @@ function SearchResult(config){
 	}
 	
 	function showSearchResult(){
-		var list = page.data;
+		var list = page;
 		var ul = $(".content .show");
 		$.each(list,function(i, item){
 			var html = $("#searchResultTmpl").html()
-				.replace("{productId}",item.productId)
-				.replace("{defaultImage}",item.defaultImage)
-				.replace("{productName}",item.productName)
-				.replace("{presentPrice}",item.presentPrice);
+				.replace("{commodityNo}",item.commodityNo)
+				.replace("{commodityImg}",item.commodityImg)
+				.replace("{commodityName}",item.commodityName)
+				.replace("{commodityPrice}",item.commodityPrice);
 			ul.append(html);
 		});
 		if(list && list.length!=0){
 			$("#pagination").paginate({
-				count 		: page.totalPageCount,
+				count 		: pageCount,
 				start 		: curPageIdx,
-				display     : page.pageSize,
+				display     : 12,
 				border					: true,
 				border_color			: '#ddd',
 				text_color  			: '#428bca',

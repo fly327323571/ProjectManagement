@@ -73,35 +73,35 @@ header .search-box button {
 	color: #FF5400;
 }
 
-.tabbable .nav{
+.tabbable .nav {
 	border-bottom: 2px solid #FF5400;
 }
 
-.tabbable .nav a:hover{
+.tabbable .nav a:hover {
 	background: #FF5400;
 	color: #fff;
 }
 
-.tabbable .nav .active a{
+.tabbable .nav .active a {
 	background: #FF5400;
 	color: #fff;
 }
 
-.tabbable .nav .active a:hover{
+.tabbable .nav .active a:hover {
 	background: #FF5400;
 	color: #fff;
 }
 
-.tabbable .nav a{
+.tabbable .nav a {
 	font-size: 20px;
 	color: #FF5400;
 }
 
-.tabbable .tab-content{
-	min-height : 100px;
+.tabbable .tab-content {
+	min-height: 100px;
 }
 
 .page {
-text-align: center;
-overflow: hidden;
+	text-align: center;
+	overflow: hidden;
 }

@@ -9,10 +9,10 @@ $(function(){
 				SHOP_OWNER_REGISTER : 'views/user/shopOwnerRegister.jsp',
 				MY_STORES : 'views/shopOwner/shopOwnerHomepage.jsp',
 				MY_CART : 'cart/myCart.do',
-				MY_HOMEPAGE :  '',
+				MY_HOMEPAGE :  'customer/customerHomePage',
 				CART_COUNT : 'cart/count.json',
 				SEARCH : 'search/cusSearch.do?query=',
-				FAVORITE:'user/getMyFavorites',
+				FAVORITE:'customer/myFavorite',
 				FAVORITE_COUNT : 'user/favorites/count.json'
 			}
 	};

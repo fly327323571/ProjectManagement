@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   <%@include file="../common/toolbar.jsp" %>
      <header>
-		<span class="logo">PARKnSHOP</span>
+		<img src="static/images/logo.jpg" style="padding-top:10px;padding-left:20px;height:60px;"></img>
 		<div class="search-box">
     		<input type="search" placeholder=" Big promotion!Come & Grab!"/>
     		<button type="button" id="search">search</button>
@@ -47,24 +47,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="tab-content">
 			<div class="tab-pane active f_product" id="panel-334142">
 				<div class = "favorite clearfix">
-			      <c:forEach items="${favorites}" var="item">
-				  <a class="sec" href="product/productDetail/${item.productId}">
-				  
-					  <img src="${item.productImage }">
-					  <h3 class = "tittle">${item.productName }</h3>
-					  <p> ${item.shopName }</p>
+			      <c:forEach items="${collectCommodityList}" var="collectCommodity">
+				  <a class="sec" href="product/${collectCommodity.commodity.shop.shopNo}/productDetail/${collectCommodity.commodity.commodityNo}.do">				  
+					  <img src="${collectCommodity.commodity.commodityImg}">
+					  <h3 class = "tittle">Product Name: ${collectCommodity.commodity.commodityName }</h3>
+					  <p> Shop Name: ${collectCommodity.commodity.shop.shopName}</p>
 				  </a>
 			      </c:forEach>
  				</div>
 			</div>
 			<div class="tab-pane f_store" id="panel-995732">
 				<div class = "favorite clearfix">
-			      <c:forEach items="${favorites}" var="item">
-				  <a class="sec" href="product/productDetail/${item.productId}">
+			      <c:forEach items="${collectShopList}" var="collectShop">
+				  <a class="sec" href="business/market/${collectShop.shop.shopNo}/shopHomePage.do">
 				  
-					  <img src="${item.productImage }">
-					  <h3 class = "tittle">${item.productName }</h3>
-					  <p> ${item.shopName }</p>
+					  <img src="${collectShop.shop.shopIcon}">
+					  <h3 class = "tittle">Shop Name: ${collectShop.shop.shopName }</h3>
+					  <%-- <p> ${item.shopName }</p> --%>
 				  </a>
 			      </c:forEach>
  				</div>

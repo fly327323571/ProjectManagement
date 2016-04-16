@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <%@include file="../common/toolbar.jsp" %>
 	<header>
-		<span class="logo">PARKnSHOP</span>
+		<img src="static/images/logo.jpg" style="padding-top:10px;padding-left:20px;height:60px;"></img>
 		<span class="identity">customer page</span>
 		<div class="search-box">
     		<input type="search" placeholder=" Big promotion!Come & Grab!"/>
@@ -55,14 +55,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						
 					</div>
 				</li>
-				<li><a id="order_history" href="/ParknShop/customer/orderDetails" class="option">Order details</a></li>
+				<li><a id="order_history" href="/ParknShop/customer/customerHomePage" class="option">Order details</a></li>
 				<li><a id="myCart"  href="javascript:void(0)" target="_top" class="option">My Cart</a></li>
-				<li><a id="myFavorite"  href="javascript:void(0)" target="_top" class="option">My Favorite</a></li>
+				<li><a id="myFavorite"  href="/ParknShop/customer/myFavorite" target="_top" class="option">My Favorite</a></li>
 			</ul>
 		</div>
 		<div class="container">
 		
-			<iframe src="business/orderHistory/index.do" class="container" ></iframe>
+			<iframe src="/ParknShop/customer/orderDetails" class="container" ></iframe>
 		</div>	
 	</section>
 	<%@include file="../common/tail.html" %>

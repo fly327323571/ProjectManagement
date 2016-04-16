@@ -3,7 +3,7 @@ $(function(){
 	var tableRenderer = {//数据渲染到页面上的函数
 			addTimeRender : function(data){
 				var d = new Date(data);
-				var html = "<b>" +d.getFullYear()+'/'+ d.getMonth() + "/" + d.getDay() +"</b>";
+				var html = "<b>" +d.getFullYear()+'/'+ (d.getMonth()+1)+ "/" + (d.getDay()+10) +"</b>";
 				return html;
 			},
 			saleVolumeRenderer : function(data){
@@ -23,6 +23,10 @@ $(function(){
 				var html = '<a class="main_color" href="viewOrderDetails.html " target="_blanket">category:'+viewData+'</a>';
 				return html;
 			},
+			priceRender: function(data){
+				var html="$<span>"+data+"</span>";
+				return html;
+			},
 			productRender : function(data){
 				var img = '<img src="'+data.commodityImg+'" class="product_img">';
 				var span = '<span>'+data.commodityName+'</span>';
@@ -40,10 +44,10 @@ $(function(){
 	var config = {
 			URL : {
 				ADD : "product/{shopNo}/add".replace('{shopNo}',storeId),
-				DELETE : "product/{shopNo}/delete.json".replace('{shopNo}',storeId),
+				DELETE : "product/{shopNo}/delete".replace('{shopNo}',storeId),
 				MODIFY : "product/{shopNo}/modify/{productId}/index.do".replace('{shopNo}',storeId),
 				LIST : "product/{shopNo}/select".replace('{shopNo}',storeId),
-				DELETE_CHECK : "product/{shopNo}/delete/check.json".replace('{shopNo}',storeId),
+				DELETE_CHECK : "product/{shopNo}/delete/check".replace('{shopNo}',storeId),
 			},
 			tableConfig : {
 				header : ["Products","Price","Quantity","Introduction",""],//请注意,此处的""字符串不可删除,目的是为了保持列表的列数目一致
@@ -64,7 +68,7 @@ $(function(){
 					render : tableRenderer.saleVolumeRenderer
 				},{
 					name : 'id',//页面上显示的信息
-					data : 'commoditNo',//对应Store.java 实体类的字段
+					data : 'commodityNo',//对应Store.java 实体类的字段
 					visible : true,
 					row : 1,
 					render : tableRenderer.productIdRenderer
@@ -85,7 +89,7 @@ $(function(){
 					data : 'commodityPrice',
 					visible : true,
 					row : 2,
-					render : null
+					render : tableRenderer.priceRender
 				},{
 					name : 'commodityCount',
 					data : 'commodityCount',
@@ -100,7 +104,7 @@ $(function(){
 					render : null
 				},{
 					name : 'operation',
-					data : 'commoditNo',
+					data : 'commodityNo',
 					visible : true,
 					row : 2,
 					render : tableRenderer.operationRenderer

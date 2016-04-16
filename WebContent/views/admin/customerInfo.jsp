@@ -32,19 +32,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<td>
 
 	<form action="admin/${currentuser.userName}/editCustomer" method="post">
-		<table>
+		<table  class="table table-striped table-bordered table-hover">
 		 <colgroup align="right"></colgroup>
 		<tr>
-		    <td>Password</td>
-			<td><input type="text" name="password" value="${currentuser.password}"/></td>
+		    
 			<td>UserName</td>
-			<td><input type="text" name="userName" readonly="readonly" value="${currentuser.userName}"/></td>			
+			<td><input type="text" name="userName" readonly="readonly" value="${currentuser.userName}"/></td>
+			<td>Time</td>
+			<td><input type="text" name="" readonly="readonly" value="${currentuser.registerTime}"/></td>
+					
 		</tr>
 		<tr>
 		    <td>NickName</td>
-			<td><input type="text" name="nickName"  value="${currentuser.nickName}"/></td>
-		    <td>Email</td>
-			<td><input type="text" name="email"  value="${currentuser.email}"/></td>						
+			<td><input type="text" name="nickName"  value="${currentuser.nickName}"/></td>	
+			<td>Password</td>
+			<td><input type="text" name="password" value="${currentuser.password}"/></td>
+		    						
 		</tr>
 		<tr>			
 			<td>Telephone</td>
@@ -53,16 +56,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<td><input type="text" name="address"  value="${currentuser.address}"/></td>
 		</tr>
 		<tr>
+		    <td>Email</td>
+			<td><input type="text" name="email"  value="${currentuser.email}"/></td>
 			<td>State</td>
-			<td><input type="text" name="state" value="${currentuser.state}"/></td>
-			<td>Time</td>
-			<td><input type="text" name="" readonly="readonly" value="${currentuser.registerTime}"/></td>
+			<%-- <td><input type="text" name="state" value="${currentuser.state}"/></td> --%>
+			<td> 
+			     <select name="state">
+                        	<option value=0> please select !</option>
+                        	<option ${currentuser.state eq 0?"selected='selected'":"" } value=0>normal</option>
+                            <option ${currentuser.state eq 1?"selected='selected'":"" } value=1>waring</option>
+                            <option ${currentuser.state eq 2?"selected='selected'":"" } value=2>blacklist</option>
+                 </select>
+			</td>
+			
 		</tr>
 		
 		<tr>
-		   
+		    <td></td>
+		    <td></td>
 		    <td>
-			<input type="submit" value="save"/>
+			<input type="submit" value="Handle"/>
 			</td>
 		</tr>
 

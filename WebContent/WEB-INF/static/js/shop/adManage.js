@@ -16,7 +16,7 @@ function AdManage(config){
 				console.log(data);
 				$parent.siblings(".upload_mark").remove();
 				$parent.after(markOk);
-	        	callback ? callback(data) : undefined;
+	        	callback ? callback(data.result) : undefined;
 	            bindUploadFileEvent($file,callback);
 			},function(data){
 				$parent.siblings(".upload_mark").remove();
@@ -63,14 +63,17 @@ function AdManage(config){
 			var img_path = $section.find("img").attr("src");
 			var productId = $section.find("select").val();
 			var description = $section.find("textarea").val();
-			var ad = {
-				"objectId" : productId,
-				"title" : description,
-				"logo" : img_path
-			};
-			ads.push(ad);
+				
+			ads.push("{\"productId\":"+productId+","+
+					"\"title\":"+"\""+description+"\","+
+					"\"adImg\":"+"\""+img_path+"\"}");
+			
 		});
-		baseAjax.doAjax(_config.URL.UPLOAD_ADS, ads, function(data){
+		var str=ads.join(',');
+		var jsonStr={
+				adsJson:str
+		};
+		baseAjax.doAjax(_config.URL.UPLOAD_ADS, jsonStr, function(data){
 			alertSuccess("advertisement updated successfully!",function(){
 				window.location.href = _config.URL.DASH_BOARD;
 			});

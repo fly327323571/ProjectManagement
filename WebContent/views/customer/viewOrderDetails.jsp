@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body>
- <%@include file="../common/toolbar.jsp" %>
+ <%-- <%@include file="../common/toolbar.jsp" %> --%>
 <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-12 column">
@@ -37,19 +37,57 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</h3>
 			
 			<div style="text-align:right">
-			<a class="btn"><span class="glyphicon glyphicon-comment sn title_color"></span>&nbsp;vendor: ${vendor.userName }</a>
+			<a class="btn"><span class="glyphicon glyphicon-comment sn title_color"></span>&nbsp;vendor: ${order.seller.userName }</a>
 			</div>
 			<hr/>
 			<div class="row clearfix" >
 				<div class="col-md-4 column">
-					<h4><span class="main_color">Order Status: </span>${order.statusString }</h4>
+					<h4><span class="main_color">Order Status: </span>
+						<c:choose>
+			               	<c:when test="${empty order.state}">
+			            		&nbsp;
+			            	</c:when>
+			               	<c:when test="${order.state == 0}">
+			               		Lose Efficiency
+			               	</c:when>
+			               	<c:when test="${order.state == 1}">
+			               		Unpaid
+			               	</c:when>
+			            	 <c:when test="${order.state == 2}">
+			            		non-payment
+			            	</c:when>
+			               	<c:when test="${order.state ==6}">
+			               		Not shipped
+			               	</c:when>
+			               	<c:when test="${order.state >= 7}">
+			               		User request a refund
+			               	</c:when>
+			               	<c:when test="${order.state == 3}">
+			               		Seller refused to refund
+			               	</c:when>
+			               	<c:when test="${order.state == 4}">
+			               		refund
+			               	</c:when>
+			               	<c:when test="${order.state == 5}">
+			               		Shipped
+			               	</c:when>
+			               	<c:when test="${order.state == 6}">
+			               		Signed
+			               	</c:when>
+			               	<c:when test="${order.state == 7}">
+			               		Comment
+			               	</c:when>
+			               	<c:when test="${order.state == 8}">
+			               		Termination
+			               	</c:when>
+			         	</c:choose>	
+					</h4>
 					<br/>
-					<div>
+				<div>
 					<dl>
-						<dt><b class="main_color">Delivery Address:</b></dt>
-						<dd><address> <strong>${address.province }, ${address.city }.</strong><br /> ${address.address }<br /> <abbr title="Phone">P:</abbr> ${address.phoneTel }</address></dd>
-						<dt><b class="main_color">Receiver Name</b></dt>
-						<dd><p>${address.consignee }</p></dd>
+						<dt><b class="main_color">Delivery Address: </b>${order.toAddr}</dt>
+						<br/>
+						<dt><b class="main_color">Receiver Name: </b>${order.buyer.userName}</dt>
 						<!--<dt><b class="main_color">Customer Message</b></dt>
 						<dd><p><i>I want the blue one. ^-^</i></p></dd>  -->
 						
@@ -67,55 +105,89 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="panel-heading">
 							<dl>
 								<dt>
-									OrderID
+									OrderNO
 								</dt>
 								<dd>
-									<p>${order.mainOrderId }</p>
+									<p>${order.orderNo }</p>
 								</dd>
 								<dt>
-								Product Name
+								Product Information
 								</dt>
 								<dd>
-									<c:forEach var="subOrder" items="${order.productsOfOrder }">
-									<p>${subOrder.productName }</p>
-									</c:forEach>
+									<table id="commodityInfoTable">
+										<tr>
+										<th>Name</th><th>Price</th><th>Number</th><th>Comment</th>
+										</tr>
+										<c:forEach items="${orderDetails }" var="orderDetail" >
+											<tr>
+											<td>${orderDetail.commodity.commodityName}</td>
+											<td>${orderDetail.commodity.commodityPrice }</td>
+											<td>${orderDetail.count}</td>
+											
+											<td>
+											<c:choose>
+											<c:when test="${order.state != 8}">
+												<a href="/ParknShop/customer/comment?orderDetailId=${orderDetail.id}">
+												<input value="Comment" type="button" ></input>
+												</a>			
+			            					</c:when>
+											 <c:when test="${order.state == 6}">
+			               						<a href="/ParknShop/customer/signIn?orderNo=${order.orderNo} }">
+												<input value="Sign In " type="button"></input>
+												</a>
+			               					</c:when>
+											</c:choose>
+											</td>
+											
+											</tr>
+										</c:forEach>
+									</table>
+									<br/>
 								</dd>
 								<dt>
 									Total Price 
 								</dt>
 								<dd>
-									<p>${order.totalPrice }</p>
+									<p>${order.orderPrice }</p>
 								</dd>					
 								<dt>
 									Date of Order
 								</dt>
 								<dd>
-									<p>${order.addTimeString }</p>
+									<p>${order.addTime}</p>
 								</dd>
 								<dt>
 									Payment Type
 								</dt>
 								<dd>
-									<p>${order.paymentType }</p>
+									<c:choose>
+						               	<c:when test="${order.payWay == 0}">
+						               		<td>Online Payment</td>
+						               	</c:when>
+						               	<c:when test="${order.payWay == 1}">
+						               		<td>Cash on delivery</td>
+						               	</c:when>
+						         	</c:choose>
 								</dd>
+								<br />
 								<dt>
-									Post Company
+									Express Company
 								</dt>
 								<dd>
-									<p id="postCompany">${order.postType }</p>
+									<p>${empty express? "Unshipped":express.expressCompanyName}</p>
 								</dd>
 							</dl>	
 						</div>
 						<div id="track" class="panel-footer" style="background-color:#ff9900;color:#ffffff;">
-							TrackID: <em>${order.packageNumber }</em>
-							<a class="btn panel_btn" target="_blank" href="business/logistics?packageNumber=${order.packageNumber }"><b>Track the logistics?</b></a>
+							TrackID: <em></em>
+							<a class="btn panel_btn" target="_blank" href="business/logistics?packageNumber="><b>Track the logistics?</b></a>
 						</div>
 					</div>
 				</div>
 			</div>
 			<hr/>
 			
- <center><button class="btn btn-default" type="submit" onclick="window.close();">Close</button></center>
+ <center><!-- <button class="btn btn-default" type="submit" onclick="window.close();">Close</button> --></center>
 		</div>
 	</div>
 </div>

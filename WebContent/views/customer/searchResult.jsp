@@ -23,12 +23,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
    
   <body>
-     <%@include file="../common/toolbar.jsp" %>
+     
      <script>
 		toolbarFloatDisable = true;
 	</script>
 	 <header>
-    	<span class="logo">PARKnSHOP</span>
+    	<img src="static/images/logo.jpg" style="padding-top:10px;padding-left:20px;height:60px;"></img>
     	
     	<form class="search-box" action="">
     		<input type="search"  name="type" id="productType" placeHolder="Shopping, as easy as a click!" value="${query }"/>
@@ -48,34 +48,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class='order'>
    			<button type="button" class="result" id="orderByDefault" value='addTime'>Search Result</button>
    			<button type="button" class="result" id="orderBySales" value='saleVolume'>Sort By Sales</button>
-   			<button type="button" class="result" id="orderByPrice" value='presentPrice'>Sort by Price</button>
+   			<button type="button" class="result" id="orderByPrice" value='commodityPrice'>Sort by Price</button>
    		</div>
    		
-   		
+  
    		<ul class="show">
-   		<!-- <c:forEach items="${productList}" var="item" >
+   		<!--  
    		<li>
-        <a href="product/productDetail/${item.productId}">
-    				<img alt="" src="${item.defaultImage}" width="160px" height="160px">
-    				<div class="describe">
-			    					<span class="name">${item.productName}</span>
-			    					<span class="price">Price:${item.presentPrice}</span>
-			    	</div>
-   		</a>
-   		</li>
-   		</c:forEach> -->
+   		<a>
+    		<img alt="">
+    			<div class="describe">
+			    	<span class="name"></span>
+			    	<span class="price"></span>
+			   </div>
+   		</a></li>
+   		-->
    		</ul>
+   		
 		<nav class="page">
 			<div id="pagination"></div>
 		</nav>
 	</section>
 	<script type="text/template" id="searchResultTmpl">
 		<li>
-        <a href="product/productDetail/{productId}">
-    		<img alt="" src="{defaultImage}" width="160px" height="160px">
+        <a href="product/productDetail/{commodityNo}">
+    		<img alt="" src="{commodityImg}" width="160px" height="160px">
     			<div class="describe">
-			    	<span class="name">{productName}</span>
-			    	<span class="price">Price:{presentPrice}</span>
+			    	<span class="name">{commodityName}</span>
+			    	<span class="price">Price:{commodityPrice}</span>
 			   </div>
    		</a>
    		</li>
@@ -91,7 +91,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <script src="static/js/common/ajaxfileupload.js"></script>
      <script src="static/js/common/bootstrap-modal.js"></script>
      <script>
-     	var page = ${page};
+     	var	page = ${page};
+     
+     	var pageCount=${pageCount};
      </script>
   </body>
 </html>

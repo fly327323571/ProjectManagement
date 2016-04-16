@@ -74,7 +74,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					 <div class="col-sm-7" >
 						 <div class="btn btn-default" style="position: relative; width: 120px;overflow: hidden;">
 	 						<div>Select File</div>
-							<input type="file" id="file" name="file" accept="image/*">
+							<input type="file" id="file" name="myfiles" accept="image/*">
 						 </div>
 						<span id="uploading" style="display:none;"></span>
 				  		<span id="upload_mark"class="glyphicon glyphicon-ok mark_OK" style="position: absolute;display:none;color: green;"></span>

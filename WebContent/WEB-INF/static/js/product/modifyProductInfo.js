@@ -64,12 +64,12 @@ function ModifyProductInfo(config){
 			// 开始上传文件时显示一个图片
 	        $("#uploading").show();
 	        $("#upload_mark").hide();
-			baseAjax.ajaxFileUpload('upload/fileUpload','logo',function(data){
+			baseAjax.ajaxFileUpload(_config.URL.UPLOAD_PRODUCT_IMG,'logo',function(data){
 				console.log(data);
 	            var $mark = $("#upload_mark");
 	            $mark.attr('class','glyphicon glyphicon-ok mark_OK');
 	        	$mark.show();
-	        	logo_path = data.path;
+	        	logo_path = data.result;
 	        	$(".pic > img").attr('src', logo_path);
 	            $("#uploading").hide();
 	            bindUploadEvent();

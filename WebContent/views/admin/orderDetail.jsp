@@ -20,18 +20,50 @@ tr {
 	<div>
 		<table>
 			<tr>
-				<th>orderNO</th>
-				<th>orderPrice</th>
-				<th>payWay</th>
-				<th>state</th>
-				<th>commodityName</th>
+				<th>OrderNO</th>
+				<th>OrderPrice</th>
+				<th>PayWay</th>
+				<th>State</th>
+				<th>CommodityName</th>
 			</tr>
 			<c:forEach items="${mapList }" var="orderDetail" varStatus="status">
 				<tr>
 					<td>${orderDetail.orderNo }</td>
 					<td>${orderDetail.orderPrice }</td>
-					<td>${orderDetail.payWay }</td>
-					<td>${orderDetail.state }</td>
+					<td>
+						<c:if test="${orderDetail.payWay eq 0}">
+							Online
+						</c:if>
+						<c:if test="${orderDetail.payWay eq 1}">
+							Cash 
+						</c:if>
+					</td>
+					<td>
+						<c:if test="${orderDetail.state eq 1}">
+							non-payment
+						</c:if>
+						<c:if test="${orderDetail.state eq 2}">
+							non-consignment
+						</c:if>
+						<c:if test="${orderDetail.state eq 3}">
+							apply for refund
+						</c:if>
+						<c:if test="${orderDetail.state eq 4}">
+							refuse refund
+						</c:if>
+						<c:if test="${orderDetail.state eq 5}">
+							consignment
+						</c:if>
+						<c:if test="${orderDetail.state eq 6}">
+							sign
+						</c:if>
+						<c:if test="${orderDetail.state eq 7}">
+							comments
+						</c:if>
+						<c:if test="${orderDetail.state eq 8}">
+							over
+						</c:if>
+					</td>
 					<td>${orderDetail.commodityName}</td>
 				</tr>
 			</c:forEach>

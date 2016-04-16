@@ -18,7 +18,7 @@ function ViewIncome(orderHistoryListConfig){
 	function getStartOfToday(){
 		var now = new Date();
 		now.setHours(0, 0, 0, 0);
-		return now.getTime();
+		return now.toLocaleString();
 	}
 	
 	function getStartOfThisWeek(){
@@ -28,14 +28,14 @@ function ViewIncome(orderHistoryListConfig){
 		var startDateDay = dateDay - day + 1;
 		date.setDate(startDateDay);
 		date.setHours(0, 0, 0, 0);
-		return date.getTime();
+		return date.toLocaleString();
 	}
 	
 	function getStartOfThisMonth(){
 		var date = new Date();
 		date.setDate(1);
 		date.setHours(0, 0, 0, 0);
-		return date.getTime();
+		return date.toLocaleString();
 	}
 	
 	function getStartOfThisYear(){
@@ -43,7 +43,7 @@ function ViewIncome(orderHistoryListConfig){
 		date.setMonth(0);
 		date.setDate(1);
 		date.setHours(0, 0, 0, 0);
-		return date.getTime();
+		return date.toLocaleString();
 	}
 	//改变导航栏样式
 	function changeCSS(obj){
@@ -122,11 +122,11 @@ function ViewIncome(orderHistoryListConfig){
 		baseAjax.doAjax(_orderHistoryListConfig.URL.LIST, queryParam, function(rs){
 						
 			var page = rs.result;
-			_orderList = page.data;
+			_orderList = page;
 			table.loadData(_orderList);
 			if(_orderList && _orderList.length!=0){
 				$("#pagination").paginate({
-					count 		: page.totalPageCount,//10,
+					count 		: Math.ceil(_orderList.length/5),//10,
 					start 		: curPageIdx,
 					display     : 5,
 					border					: true,

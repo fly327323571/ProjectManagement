@@ -20,10 +20,10 @@ $(function(){
 	
 	function showMessage(data){
 		var html = $("#chat .messages").html();
-		var date = new Date(data.time);
+		var date = new Date(data.date);
 		var dateString = date.getFullYear() + "/" + (date.getMonth()+1) + "/" + date.getDate() + " "
 		+ date.toLocaleTimeString().substring(2);
-		html = html + dateString +"<br/>"+data.fromUserName + ": "+data.content+"<br><br>";
+		html = html + dateString +"<br/>"+data.senderName + ": "+data.message+"<br><br>";
 		$("#chat .messages").html(html);
 		$("#chat .messages").scrollTop( $("#chat .messages")[0].scrollHeight );
 	}
@@ -68,9 +68,9 @@ $(function(){
 			}
 			$.each(messageList,function(i, message){				
 				showMessage(message);
-				toUserId = message.fromUserId;
+				toUserId = message.senderName;
 			});
-			setTimeout(fetchMessage,3000);
+//			setTimeout(fetchMessage,3000);
 		}, function(data){
 			
 		});

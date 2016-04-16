@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <td>${person.complaintTime }</td> 
           <td>
      	  <%--  <a href="admin/modifyShop?shopId=${person.complaintedShop.shopId }">HandleShop</a> --%>
-     	   <a href="admin/modifyComplaint_Shop?complaintNo=${person.complaintNo}">HandleShop</a>
+     	   <a href="admin/complaintDetial?complaintNo=${person.complaintNo}">HandleShop</a>
           </td>       	
         </tr>
         </c:forEach>

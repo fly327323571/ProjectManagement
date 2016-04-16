@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
      <%@include file="../common/toolbar.jsp" %>
 	<header>
-		<span class="logo">PARKnSHOP</span>
+		<img src="static/images/logo.jpg" style="padding-top:10px;padding-left:20px;height:60px;"></img>
 		<span class="identity">shop page</span>
 		<div class="search-box">
     		<input type="search" placeholder=" Big promotion!Come & Grab!"/>
@@ -65,6 +65,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<li><a id="add_products" href="javascript:void(0)" class="option">Add Products</a></li>
 				<li><a id="modify_shop_profile" href="javascript:void(0)" class="option">Modify Profile</a></li>
 				<li><a id="manage_ads" href="javascript:void(0)" class="option">Manage Ads</a></li><!-- WEB-INF/views/shop/advertiseManage.html -->
+				<li><a id="apply_ads" href="javascript:void(0)" class="option">Apply HomePage Shop Ads</a></li>
+				<li><a id="apply_productAds" href="javascript:void(0)" class="option">Apply HomePage Product Ads</a></li>
 			</ul>
 		</div>
 		<div class="container">

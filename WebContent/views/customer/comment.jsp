@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -30,42 +30,62 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
 	 
 	
-	<%@include file="../common/toolbar.jsp" %>
-	<header>
-		<span class="logo">PARKnSHOP</span>
+	<%-- <%@include file="../common/toolbar.jsp" %> --%>
+	<!-- <header>
+		<img src="static/images/logo.jpg" style="padding-top:10px;padding-left:20px;height:60px;"></img>
 		<div class="search-box">
     		<input type="search" placeholder=" Big promotion!Come & Grab!"/>
     		<button type="button" id="search">search</button>
     	</div>
-	</header>
+	</header> -->
   
   
   <div class = "main" >
-    <div class = "view">
-	    <img src="${product.defaultImage}" class="img-thumbnail">
-	   
-    </div>
-    
-    <div class = "product-view">
-      
-      <h3 class = "pro-title" >${product.productName}</h3>
+    <%-- <div class = "view">
+	    <img src="${product.defaultImage}" class="img-thumbnail">	   
+    </div>  --%>
+    <div class = "product-view">   
+      <h3 class = "pro-title" >${commodity.commodityName}</h3>
       <div style = "width:100px;float:left">
-        <p>Price:</p>
-        
-        <p>Postage:</p>
-        
-        <p></p>
+        <p>Price:<span id="price"> ￥ ${commodity.commodityPrice}</span></p>    
       </div >
       <div class="right">
-        <p class="emphasis">$<span id="price">${product.presentPrice}</span></p>
-		<p id="postage" class="emphasis">${product.amounts}</p>
+        <%-- <p class="emphasis"><span id="price"> ￥ ${commodity.commodityPrice}</span></p> --%>
       </div>
-  </div>
-
-    
+      <div>
+      	<form action="/ParknShop/customer/commentSubmit" method="post">
+			<input type="hidden" name="orderDetailId" value="${orderDetailId}" />
+			<table>
+				<tr>
+				<th>Comment Rank</th>
+				<td>
+       				<select name="rank">
+        				<option value="1">1</option>
+        				<option value="2">2</option>
+        				<option value="3">3</option>
+        				<option value="4">4</option>
+        				<option value="5">5</option>
+       				</select>
+       			</td>
+        		</tr>
+        		<tr>
+        			<th>Comment</th>
+                    <td colspan="3"><textarea name="comments" cols="45" rows="4"></textarea></td> 
+        		</tr>
+        		<tr>
+        		<td>
+        			<input type="submit" value="Submit" />
+				</td>
+        		</tr>
+			</table>
+      	</form>
+      
+      </div>
+      
+  </div>    
   </div>
 	
-<div class="comment">
+<!-- <div class="comment">
 	
 	<div>
 		<button type="button" class="result">comments</button>
@@ -74,10 +94,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="commentdetail">
 <div class="top">
 <font size="4" >Another buyers needs your comment</font>
-</div>
+</div> -->
 
 
-<form>
+<%-- <form>
 <div class="left">
 <div class="productcomment">comment</div>
 <input type="hidden" id="orderId" value="${orderId}"/>
@@ -135,7 +155,7 @@ Consistent description:&nbsp;&nbsp;
 </div>
 
 
-</div>
+</div> --%>
 
 
   <%@include file="../common/tail.html" %>

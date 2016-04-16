@@ -6,7 +6,7 @@
 	background: #F5F5F5;
 }
 
-#productForm{
+#productForm {
 	float: left;
 }
 
@@ -22,14 +22,69 @@
 .container  div {
 	/*margin: 10px 0;
 	width: 100%;*/
+	
 }
 
-.container input:not ([type="file"] ){
-	width: 250px;
-	height: 34px;
-	padding: 6px 12px;
-	border: 1px solid #DDDDDD;
-	border-radius: 5px;
+.container
+ 
+input
+:not
+ 
+(
+[
+type
+=
+"file"
+]
+ 
+){
+width
+:
+ 
+250
+px
+;
+
+	
+height
+:
+ 
+34
+px
+;
+
+	
+padding
+:
+ 
+6
+px
+ 
+12
+px
+;
+
+	
+border
+:
+ 
+1
+px
+ 
+solid
+ 
+#DDDDDD
+;
+
+	
+border-radius
+:
+ 
+5
+px
+;
+
+
 }
 /* .container input[type="file"]{
     		display:inline;
@@ -78,7 +133,7 @@ form .upload input[type="text"] {
 	background-color: inherit;
 }
 
-#addProductBtn{
+#addProductBtn {
 	background-color: #ff5400;
 	color: white;
 	width: 150px;
@@ -91,14 +146,14 @@ form .upload input[type="text"] {
 	color: green;
 }
 
-.mark_ERROR{
+.mark_ERROR {
 	position: absolute;
 	right: 144px;
 	top: 11px;
 	color: red;
 }
 
-#file{
+#file {
 	position: absolute;
 	top: 6px;
 	margin-left: 11px;
@@ -107,16 +162,23 @@ form .upload input[type="text"] {
 	height: 16px;
 }
 
-#uploading{position: absolute;top: 27px;right: 278px;background-image:url(../../images/loading.gif);width: 16px;height: 16px;}
+#uploading {
+	position: absolute;
+	top: 27px;
+	right: 278px;
+	background-image: url(../../images/loading.gif);
+	width: 16px;
+	height: 16px;
+}
 
-#image_snap_shot{
+#image_snap_shot {
 	float: right;
 	width: 200px;
 	height: 200px;
 	border: 1px solid #ccc;
 }
 
-#image_snap_shot img{
+#image_snap_shot img {
 	width: 200px;
 	height: 200px;
 }

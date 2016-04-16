@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -26,14 +27,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
 
   <body>
-  <%@include file="../common/toolbar.jsp" %>
-     <header>
-		<span class="logo">PARKnSHOP</span>
-		<div class="search-box">
-    		<input type="search" placeholder=" Big promotion!Come & Grab!"/>
-    		<button type="button" id="search">search</button>
-    	</div>
-	</header>
+  	<c:choose>
+       	<c:when test="${isInner == 0}">
+       		<%@include file="../common/toolbar.jsp" %>    	
+		     <header>
+				<img src="static/images/logo.jpg" style="padding-top:10px;padding-left:20px;height:60px;"></img>
+				<div class="search-box">
+		    		<input type="search" placeholder=" Big promotion!Come & Grab!"/>
+		    		<button type="button" id="search">search</button>
+		    	</div>
+			</header>
+		</c:when>
+	</c:choose>
 	<div class="container">
 		<div class="row clearfix">
 			<div class="background">

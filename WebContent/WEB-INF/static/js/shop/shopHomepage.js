@@ -35,9 +35,9 @@ function ShopHomepage(config){
 		var ads = rs.result;
 		var item = $(".item img");
 		$.each(ads,function(i, ad){
-			item.eq(i).attr("src",ad.logo);
+			item.eq(i).attr("src",ad.adImg);
 			item.eq(i).bind("click",function(){
-				window.location.href = ad.link;
+				window.location.href = ad.adUrl;
 			});
 			item.eq(i).css("cursor","pointer");
 		});
@@ -135,9 +135,9 @@ function ShopHomepage(config){
     	var $shopLink = $(".link-shop ul");
     	$shopLink.children().remove();
     	$.each(shopLinks,function(i,shopLink){
-    		var link = _config.URL.SHOP_HOMEPAGE.replace("{storeId}",shopLink.shopNo);
-    		var html = $("#shopLinkTmpl").html().replace("{link}",shopLink.shopName)
-    			.replace("{logo}",shopLink.shopIcon);
+    		var link = _config.URL.SHOP_HOMEPAGE.replace("{shopNo}",shopLink.linkedShop_no);
+    		var html = $("#shopLinkTmpl").html().replace("{link}",link)
+    			.replace("{logo}",shopLink.linkedShopImg);
     		$shopLink.append(html);
     	});
     }

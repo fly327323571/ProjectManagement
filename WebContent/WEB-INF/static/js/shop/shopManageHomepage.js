@@ -41,6 +41,13 @@ function ShopManageHomepage(config){
 		$("#iframe").attr('src',_config.URL.MANAGE_ADS);
 	});
 	
+	$("#apply_ads").bind("click",function(){
+		$("#iframe").attr('src',_config.URL.APPLY_ADS);
+	});
+	
+	$("#apply_productAds").bind("click",function(){
+		$("#iframe").attr('src',_config.URL.APPLY_COMMODITY_ADS);
+	})
 	$(".content .img").hover(function(){
 		if($(".content .img > div").css('display')=='none'){
 			$(".content .img > div").slideDown('1000');

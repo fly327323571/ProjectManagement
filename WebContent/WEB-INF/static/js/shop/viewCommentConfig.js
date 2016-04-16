@@ -1,7 +1,7 @@
 function ViewCommentComponent(){
 	var tableRenderer = {// 数据渲染到页面上的函数
 			buyerRenderer : function(data){
-				return data.buyerName;
+				return data.userName;
 			},
 			addTimeRender : function(data) {
 				var d = new Date(data);
@@ -10,14 +10,26 @@ function ViewCommentComponent(){
 				return html;
 			},
 			productRenderer:function(data){
-				var html='<a target="_blank" href="'+config.URL.PRODUCT_SHOW.replace("{productId}",data.productId)+'">'+data.productName+'</a>';
+				var html='<a target="_blank" href="'+config.URL.PRODUCT_SHOW.replace("{productId}",data.commodityNo)+'">'+data.commodityName+'</a>';
 				return html;
 			},
 			commentRenderer:function(data){
 				return data;
 			},
 			replyRenderer : function(data){
-				var html = '<textarea></textarea><button style="float: right;"class="btn btn-warning" orderId="'+data+'">reply</button>';
+				var html = '<textarea></textarea><button style="float: right;"class="btn btn-warning" commentsId="'+data+'">reply</button></br>'+
+							'<input type="text" id="reason" style="width:120px;margin-right:6px;"><button type="button" onclick="complain()" id="complain" commentId="'+data+'"  class="btn btn-warning">complain</button>';
+				return html;
+			},
+			complainRenderer:function(data){
+				
+			},
+			rankRenderer:function(data){
+				var span = "<span class='glyphicon glyphicon-star star'></span>";
+				var html = "";
+				for(var i=1;i<=data;i++){
+					html = html + span + '\n';
+				}
 				return html;
 			}
 		};
@@ -27,9 +39,10 @@ function ViewCommentComponent(){
 	var config = {
 		URL : {//页面所有的URL配置
 			
-			LIST: 'store/{storeId}/dashboard/comment/query.json'.replace("{storeId}", storeId),
-			PRODUCT_SHOW : 'product/productDetail/{productId}.json',
-			REPLY : "business/comment/reply/{orderId}.json"
+			LIST: 'store/{shopNo}/dashboard/comment/query'.replace("{shopNo}", storeId),
+			PRODUCT_SHOW : 'product/{shopNo}/productDetail/{productId}.do'.replace("{shopNo}", storeId),
+			REPLY : "business/comment/reply/{orderId}.json",
+			COMPLAIN:"business/comment/{commentsId}/complain"
 		},
 		
 		tableConfig : {
@@ -37,8 +50,8 @@ function ViewCommentComponent(){
 			
 			renderRowCount : 1,
 			metadata : [ {
-				name : 'Order Id',
-				data : 'orderId',
+				name : 'Id',
+				data : 'commentsId',
 				visible : true,
 				render : null
 			}, {
@@ -49,28 +62,34 @@ function ViewCommentComponent(){
 				render : null
 			},{
 				name : 'Deal Time',
-				data : 'time',
+				data : 'commentsTime',
 				visible : true,
 				render : tableRenderer.addTimeRender
 			},{
 				name : 'Buyer',
-				data : 'buyerId & buyerName',
+				data : 'user',
 				visible : true,
 				render : tableRenderer.buyerRenderer
 			},{
+				name : 'Rank',
+				data : 'rank',
+				visible : true,
+				render : tableRenderer.rankRenderer
+			},{
 				name : 'Product',
-				data : 'productId & productName',
+				data : 'commodity',
 				visible : true,
 				render : tableRenderer.productRenderer
 			}, {
 				name : 'Comment',
-				data : 'comment',
+				data : 'comments',
 				visible : true,
 				render : tableRenderer.commentRenderer
 			},{
-				name : "Reply",
-				data : "orderId",
+				name : "Reply Or Complain",
+				data : "commentsId",
 				visible : true,
+				row : 1,
 				render : tableRenderer.replyRenderer
 			}]
 		},

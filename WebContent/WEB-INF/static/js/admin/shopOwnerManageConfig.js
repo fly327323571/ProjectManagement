@@ -58,7 +58,7 @@ $(function(){
 					  render : tableRenderer.shopOwnerRenderer
 				  },
 				  {
-					  name : 'ID Card',//页面上显示的信息
+					  name : 'Shop No',//页面上显示的信息
 					  data : 'idCard',//对应User.java 实体类的字段
 					  visible : true,
 					  render : tableRenderer.idCardRenderer

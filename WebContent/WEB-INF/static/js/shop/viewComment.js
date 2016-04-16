@@ -59,11 +59,11 @@ function ViewComment(config){
 		baseAjax.doAjax(_config.URL.LIST, queryParam, function(rs){
 			
 			var page = rs.result;
-			_list = page.data;
+			_list = page;
 			table.loadData(_list);
 			if(_list && _list.length!=0){
 				$("#pagination").paginate({
-					count 		: page.totalPageCount,//10,
+					count 		: Math.ceil(_list.length/5),//10,
 					start 		: curPageIdx,
 					display     : pageSize,
 					border					: true,
@@ -99,4 +99,23 @@ function ViewComment(config){
 			alertFail("server internal error,please contact with admin");
 		});
 	});
+	
 }
+function complain(){
+	var reason=$("#reason");
+	var reply=$("#replyTextArea");
+	var complainReason={
+			reason:reason.val()
+	};
+	var commentId=$("#complain").attr("commentId");
+	baseAjax.doAjax("business/comment/{commentsId}/complain".replace('{commentsId}',commentId),complainReason ,function(data){
+		alertSuccess("Complain successfully!");
+		reason.attr("disabled",true);
+		reply.attr("disabled",true);
+		$("#newComments").text($("#newComments").text()-1);
+	},function(data){
+		console.log(data);
+		alertFail("server internal error,please contact with admin");
+	});
+}
+
