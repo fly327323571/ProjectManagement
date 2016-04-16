@@ -55,7 +55,20 @@
     </bean>
     
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>  
-    
+    <!--
+   <mvc:interceptors>    
+    <mvc:interceptor>   
+     	<mvc:mapping path="/" />  
+     	<mvc:mapping path="/user/*" />  
+     	<mvc:mapping path="/shop/*" />  
+     	<mvc:mapping path="/customer/*" />  
+     	<mvc:mapping path="/admin/*" />  
+     	<mvc:mapping path="/store/*" /> 
+     	<mvc:mapping path="/product/*" /> 
+     	<mvc:mapping path="/cart/*" /> 
+		<bean class="cn.xidian.parknshop.interceptor.CommonInterceptor"></bean>    
+    </mvc:interceptor>  
+</mvc:interceptors>   -->
   
     
 </beans>

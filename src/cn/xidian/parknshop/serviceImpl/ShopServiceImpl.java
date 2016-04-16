@@ -7,9 +7,12 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import cn.xidian.parknshop.beans.Advertisement;
+import cn.xidian.parknshop.beans.HomePageShopAds;
 import cn.xidian.parknshop.beans.Shop;
 import cn.xidian.parknshop.dao.ShopDao;
 import cn.xidian.parknshop.service.ShopService;
+import cn.xidian.parknshop.utils.HomePageAdvHelper;
 
 @Service("shopService")
 public class ShopServiceImpl implements ShopService {
@@ -49,8 +52,38 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	@Override
-	public List<Shop> findOtherShopsBySomeFilter(Map<String, String> filter, long shopNo) {
+	public List<Shop> findOtherShopsBySomeFilter(Map<String, String> filter, long shopNo,String userName) {
 		// TODO Auto-generated method stub
-		return shopDao.findOtherShopsBySomeFilter(filter, shopNo);
+		return shopDao.findOtherShopsBySomeFilter(filter, shopNo,userName);
+	}
+
+	@Override
+	public List<Advertisement> findCommodityAdvertise(long shopNo) {
+		// TODO Auto-generated method stub
+		return shopDao.findCommodityAdvertise(shopNo);
+	}
+
+	@Override
+	public boolean checkHomePageAd(long shopNo) {
+		// TODO Auto-generated method stub
+		return shopDao.checkHomePageAd(shopNo);
+	}
+
+	@Override
+	public HomePageShopAds findHomePageShopAdByShopNo(long shopNo) {
+		// TODO Auto-generated method stub
+		return shopDao.findHomePageShopAdByShopNo(shopNo);
+	}
+
+	@Override
+	public List<HomePageShopAds> findHomePageShopAds() {
+		// TODO Auto-generated method stub
+		return shopDao.findHomePageShopAds();
+	}
+
+	@Override
+	public List<HomePageAdvHelper> findCurHomePageAdByShopNo(long shopNo) {
+		// TODO Auto-generated method stub
+		return shopDao.findCurHomePageAdByShopNo(shopNo);
 	}
 }

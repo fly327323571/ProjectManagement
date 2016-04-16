@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cn.xidian.parknshop.beans.User;
 import cn.xidian.parknshop.dao.UserDao;
+import cn.xidian.parknshop.dao.UserRepository;
 import cn.xidian.parknshop.service.UserService;
 
 @Service("userService")
@@ -15,6 +17,9 @@ public class UserServiceImpl implements UserService {
 
 	@Resource(name="userDao")
 	private UserDao userDao;
+	
+//	@Resource 暂时不使用JPA 避免扫描注入 
+	private UserRepository userRepository;
 	
 	@Override
 	public User findUserByName(String userName) {
@@ -39,5 +44,12 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userDao.findUserByNickName(nickName);
 	}
+
+	@Override
+	public User createUser(User user) {
+		// TODO Auto-generated method stub
+		return userRepository.save(user);
+	}
+
 
 }

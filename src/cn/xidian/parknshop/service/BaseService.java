@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface BaseService<T>{
 
-    T get(int id,Class<T> type);
+    T get(long id,Class<T> type);
     
     void create(T obj);
     

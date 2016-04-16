@@ -5,7 +5,8 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import cn.xidian.parknshop.beans.Comments;
+import cn.xidian.parknshop.beans.Odium;
+import cn.xidian.parknshop.beans.Admin;
 import cn.xidian.parknshop.beans.Complaint;
 import cn.xidian.parknshop.dao.AdminDao;
 import cn.xidian.parknshop.service.AdminService;
@@ -23,9 +24,9 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public List<Comments> findCommentByState(int state) {
+	public List<Odium> findOdiumByState(int state) {
 		// TODO Auto-generated method stub
-		return adminDao.findCommentByState(state);
+		return adminDao.findOdiumByState(state);
 	}
 
 	@Override
@@ -35,9 +36,15 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public Comments findCommentById(int commentsId) {
+	public Odium findOdiumByNo(long number) {
 		// TODO Auto-generated method stub
-		return adminDao.findCommentById(commentsId);
+		return adminDao.findOdiumByNo(number);
+	}
+
+	@Override
+	public List<Admin> adminLogin(String username, String password) {
+		
+		return adminDao.adminLogin(username, password);
 	}
 
 }

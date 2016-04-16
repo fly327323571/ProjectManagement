@@ -26,7 +26,12 @@ public class OrderDetail {
 	@JoinColumn(name="order_no",referencedColumnName="order_no",insertable=true,
 				updatable=true)
 	private Order order;
+	
+	@Column(name="message",length=255)
+	private String message;
+	
 
+	
 	public long getId() {
 		return id;
 	}
@@ -65,6 +70,14 @@ public class OrderDetail {
 
 	public void setOrder(Order order) {
 		this.order = order;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	
 }

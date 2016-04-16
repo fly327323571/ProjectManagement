@@ -6,7 +6,7 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-@Table(name="tb_Commodity")
+@Table(name="tb_commodity")
 public class Commodity implements Serializable {
 	/**
 	 * 
@@ -161,4 +161,8 @@ public class Commodity implements Serializable {
 		this.commodityNo = commodityNo;
 	}
 	
+	@Override
+	public String toString(){
+		return this.commodityNo+"-"+this.commodityName;
+	}
 }

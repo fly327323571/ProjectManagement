@@ -10,7 +10,7 @@ public interface BaseDao<T> {
 	 
 	void update(T t);
 	 
-	T findObjById(int id,Class<T> type);
+	T findObjById(long id,Class<T> type);
 	
 	int getTotalCount(Class<T> type);
 	

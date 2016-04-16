@@ -11,21 +11,33 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import cn.xidian.parknshop.beans.Express;
+import cn.xidian.parknshop.beans.Order;
 import cn.xidian.parknshop.beans.ResultType;
 import cn.xidian.parknshop.beans.ShopOwner;
 import cn.xidian.parknshop.beans.User;
+import cn.xidian.parknshop.service.BaseService;
+import cn.xidian.parknshop.service.OrderService;
 import cn.xidian.parknshop.service.ShopOwnerService;
+import cn.xidian.parknshop.utils.DictionaryUtils;
 
 @Controller
 public class ShopOwnerController {
 
 	@Resource(name="shopOwnerService")
 	private ShopOwnerService shopOwnerService;
+	
+	@Resource(name="orderService")
+	private OrderService orderService;
+	
+	@Resource(name="baseService")
+	private BaseService<Express> baseExpressService;
 	
 	private static Logger log=Logger.getLogger(ShopOwnerController.class);
 	
@@ -103,5 +115,53 @@ public class ShopOwnerController {
         	map.put("result", resultType);
         }
 		return map;
+	}
+	
+	@RequestMapping("business/ship/{orderId}")
+	public @ResponseBody Map<String,ResultType> shipProduct(@PathVariable long orderId,long trackNumber,String expressType){
+		Map<String,ResultType> map=new HashMap<String,ResultType>();
+		ResultType resultType=new ResultType();
+		Order order=null;
+		try{
+			order=orderService.findOrderByOrderNo(orderId);
+		}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("Db busy");
+			map.put("result", resultType);
+			return map;
+		}
+		Express express=new Express();
+		express.setExpressCompanyName(expressType);
+		express.setExpressNo(trackNumber);
+		express.setOrder(order);
+		express.setFromAddr(order.getSeller().getAddress());
+		express.setExpress_type(expressType);
+		express.setToAddr(order.getToAddr());
+		express.setPrice(5.5D);
+		try{
+			baseExpressService.create(express);
+		}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("Db busy");
+			map.put("result", resultType);
+			return map;
+		}
+		order.setDeliveryStatus(1);
+		try{
+			orderService.updateOrder(order);
+			orderService.updateOrderStatus(DictionaryUtils.OrderStatus.shipped, orderId);
+		}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("Db busy");
+			map.put("result", resultType);
+			return map;
+		}
+		resultType.success().setResult("Success");
+		map.put("result", resultType);
+		return map;
+		
 	}
 }

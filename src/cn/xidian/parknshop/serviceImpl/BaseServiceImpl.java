@@ -55,7 +55,7 @@ public class BaseServiceImpl<T> implements BaseService<T> {
 	}
 
 	@Override
-	public T get(int id, Class<T> type) {
+	public T get(long id, Class<T> type) {
 		// TODO Auto-generated method stub
 		return baseDao.findObjById(id, type);
 	}

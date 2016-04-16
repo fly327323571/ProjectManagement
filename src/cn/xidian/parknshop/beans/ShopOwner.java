@@ -27,7 +27,7 @@ public class ShopOwner implements Serializable {
 	private String idCard;
 	
 	@OneToOne
-	@JoinColumn(name="username",referencedColumnName="username")
+	@JoinColumn(name="username",referencedColumnName="username",insertable=true,updatable=true)
 	private User user;
 	
 	

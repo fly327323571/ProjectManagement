@@ -49,4 +49,22 @@ public class AuditShopServiceImpl implements AuditShopService {
 		return auditShopDaoImpl.updateDisapproveShop(id);
 	}
 
+	@Override
+	public List<Map<String, Object>> getShopInfoByRegistTime() {
+	
+		return auditShopDaoImpl.getShopInfoByRegistTime();
+	}
+
+	@Override
+	public List<Map<String, Object>> getShopInfoByStatus(Integer status) {
+		
+		return auditShopDaoImpl.getShopInfoByStatus(status);
+	}
+
+	@Override
+	public List<Map<String, Object>> shopInfoByReaserch(String userName) {
+		
+		return auditShopDaoImpl.shopInfoByReaserch(userName);
+	}
+
 }

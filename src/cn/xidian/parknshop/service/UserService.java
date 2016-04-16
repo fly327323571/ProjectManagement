@@ -14,4 +14,6 @@ public interface UserService {
 	
 	List<User> findUserByNickName(String nickName);
 	
+	User createUser(User user);
+	
 }

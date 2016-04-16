@@ -3,7 +3,7 @@ package cn.xidian.parknshop.beans;
 import javax.persistence.*;
 
 @Entity
-@Table(name="tb_Admin")
+@Table(name="tb_admin")
 public class Admin {
 
 	@Id
@@ -14,7 +14,7 @@ public class Admin {
 	@Column(name="admin_name",length=20,nullable=false,unique=true)
 	private String adminAccountName;
 	
-	@Column(name="admin_psw",length=20,nullable=false)
+	@Column(name="admin_psw",length=200,nullable=false)
 	private String adminPassword;
 	
 	@Column(name="admin_phone",length=20,nullable=false,unique=true)

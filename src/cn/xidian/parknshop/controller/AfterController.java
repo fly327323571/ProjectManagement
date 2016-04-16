@@ -33,10 +33,10 @@ public class AfterController {
 	@RequestMapping("/view")
 	public String allAfterService(HttpServletRequest request, HttpServletResponse response, Model model){
 		Map<String, Object> map = null;
-		List<Map<String, Object>> list_view = new ArrayList<>();
+		List<Map<String, Object>> list_view = new ArrayList<Map<String, Object>>();
 		List<AfterSaleService> list = afterService.getAfterSaleServiceInfo();
 		for(int i=0;i<list.size();i++){
-			map = new HashMap<>();
+			map = new HashMap<String, Object>();
 			map.put("commodityNo", list.get(i).getCommodity().getCommodityNo());
 			map.put("userName", list.get(i).getUser().getUserName());
 			map.put("reason", list.get(i).getReasons());
@@ -54,14 +54,14 @@ public class AfterController {
 		List<OrderDetail> list = orderDetailService.getDetailInfo(userName, Long.valueOf(commodityNo));
 		Map<String, Object> map = null;
 		for(int i=0;i<list.size();i++){
-			map = new HashMap<>();
+			map = new HashMap<String, Object>();
 			map.put("orderNo", list.get(i).getOrder().getOrderNo());
 			map.put("orderPrice", list.get(i).getOrder().getOrderPrice());
 			map.put("payWay", list.get(i).getOrder().getPayWay());
 			map.put("state", list.get(i).getOrder().getState());
 			map.put("commodityName", list.get(i).getCommodity().getCommodityName());
 		}
-		List<Map<String, Object>> mapList = new ArrayList<>();
+		List<Map<String, Object>> mapList = new ArrayList<Map<String, Object>>();
 		mapList.add(map);
 		model.addAttribute("mapList", mapList);
 		return "../views/admin/orderDetail";

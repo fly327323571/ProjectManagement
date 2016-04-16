@@ -1,13 +1,10 @@
 package cn.xidian.parknshop.beans;
 
 import javax.persistence.Id;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,13 +16,11 @@ public class ShopLinks {
 	@Column(name="Id")
 	private long Id;
 	
-	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
-	@JoinColumn(name="shop_no",referencedColumnName="shop_no",insertable=true,updatable=true)
-	private Shop shop;
+	@Column(name="shop_no",nullable=false)
+	private long shop_no;
 	
-	@ManyToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
-	@JoinColumn(name="linkedshop_no",referencedColumnName="shop_no",insertable=true,updatable=true)
-	private Shop linkedShop;
+	@Column(name="linkedShop_no",nullable=false)
+	private long linkedShop_no;
 	
 	@Column(name="linkedShopImg",nullable=true,length=255)
 	private String linkedShopImg;
@@ -38,21 +33,6 @@ public class ShopLinks {
 		Id = id;
 	}
 
-	public Shop getShop() {
-		return shop;
-	}
-
-	public void setShop(Shop shop) {
-		this.shop = shop;
-	}
-
-	public Shop getLinkedShop() {
-		return linkedShop;
-	}
-
-	public void setLinkedShop(Shop linkedShop) {
-		this.linkedShop = linkedShop;
-	}
 
 	public String getLinkedShopImg() {
 		return linkedShopImg;
@@ -60,6 +40,22 @@ public class ShopLinks {
 
 	public void setLinkedShopImg(String linkedShopImg) {
 		this.linkedShopImg = linkedShopImg;
+	}
+
+	public long getLinkedShop_no() {
+		return linkedShop_no;
+	}
+
+	public void setLinkedShop_no(long linkedShop_no) {
+		this.linkedShop_no = linkedShop_no;
+	}
+
+	public long getShop_no() {
+		return shop_no;
+	}
+
+	public void setShop_no(long shop_no) {
+		this.shop_no = shop_no;
 	}
 	
 }

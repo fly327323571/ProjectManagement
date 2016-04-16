@@ -4,6 +4,7 @@ import java.util.*;
 
 import javax.annotation.Resource;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.xidian.parknshop.beans.ResultType;
 import cn.xidian.parknshop.service.ShopDashboardService;
-import jxl.common.Logger;
 
 @Controller
 public class ShopDashboardController {
@@ -60,7 +60,7 @@ public class ShopDashboardController {
 	}
 	
 	@RequestMapping("shop/{shopNo}/dashboard/newOrders/count")
-	public Map<String,ResultType> countNewOrders(@PathVariable long shopNo){
+	public @ResponseBody Map<String,ResultType> countNewOrders(@PathVariable long shopNo){
 		Map<String,ResultType> map=new HashMap<String,ResultType>();
 		ResultType resultType=new ResultType();
 		long count=0;
@@ -79,7 +79,7 @@ public class ShopDashboardController {
 	}
 	
 	@RequestMapping("shop/{shopNo}/dashboard/income/count")
-	public Map<String,ResultType> countIncomes(@PathVariable long shopNo){
+	public @ResponseBody Map<String,ResultType> countIncomes(@PathVariable long shopNo){
 		Map<String,ResultType> map=new HashMap<String,ResultType>();
 		ResultType resultType=new ResultType();
 		double count=0;

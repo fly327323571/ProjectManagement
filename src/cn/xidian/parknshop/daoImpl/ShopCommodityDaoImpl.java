@@ -13,6 +13,9 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import cn.xidian.parknshop.beans.Commodity;
+import cn.xidian.parknshop.beans.HomePageCommodityAds;
+import cn.xidian.parknshop.beans.Order;
+import cn.xidian.parknshop.beans.OrderDetail;
 import cn.xidian.parknshop.dao.ShopCommodityDao;
 
 @Repository("shopCommodityDao")
@@ -48,7 +51,7 @@ public class ShopCommodityDaoImpl extends HibernateDaoSupport implements ShopCom
 	@Override
 	public Commodity findCommodityByCommNo(long commNo) {
 		// TODO Auto-generated method stub
-		String hql="from Commodity c where c.commoditNo=:commNo";
+		String hql="from Commodity c where c.commodityNo=:commNo";
 		@SuppressWarnings("unchecked")
 		List<Commodity> commList=super.getSessionFactory().getCurrentSession().createQuery(hql).setLong("commNo",commNo).list();
 		if(commList.isEmpty())
@@ -91,6 +94,36 @@ public class ShopCommodityDaoImpl extends HibernateDaoSupport implements ShopCom
 		}
 			return resultList;
 
+	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<HomePageCommodityAds> findHomePageCommodityAds() {
+		// TODO Auto-generated method stub
+		String hql="from HomePageCommodityAds t where t.status=1";
+		return super.getSessionFactory().getCurrentSession().createQuery(hql).list();
+	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Commodity> findNotAdvCommodity(long shopNo) {
+		// TODO Auto-generated method stub
+		String hql="from Commodity c where c.commodityNo not in ("
+				+ "select d.commodity.commodityNo from HomePageCommodityAds d) and c.shop.shopNo="+shopNo;
+		return super.getSessionFactory().getCurrentSession().createQuery(hql).list();
+	}
+	@Override
+	public void updateOrderByDeleteCommodity(Commodity commodity) {
+		// TODO Auto-generated method stub
+		String sql="update tb_order as t set t.status=0,t.delivery_status=3 where t.order_no in ("
+				+ "select a.order_no from ( select o.order_no from tb_orderDetail o where o.commodity_no=? ) a )";
+		super.getSessionFactory().getCurrentSession().createSQLQuery(sql).setParameter(0, commodity.getCommodityNo()).executeUpdate();
+		String hql="from OrderDetail o where o.commodity.commodityNo="+commodity.getCommodityNo();
+		@SuppressWarnings("unchecked")
+		List<OrderDetail> oDList=(List<OrderDetail>) super.getSessionFactory().getCurrentSession().createQuery(hql).list();
+		for(OrderDetail orderDetail:oDList){
+			orderDetail.setCommodity(null);
+		}
+		super.getSessionFactory().getCurrentSession().delete(commodity);
+		super.getSessionFactory().getCurrentSession().flush();
 	}
 
 }

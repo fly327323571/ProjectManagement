@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
-@Table(name="tb_Complaint")
+@Table(name="tb_complaint")
 
 public class Complaint {
 	
@@ -42,13 +42,13 @@ public class Complaint {
 	private Date complaintTime;
 	
 	@Column(name = "complaint_view", length = 100)  
-	private int complaint_view;
+	private int complaint_view=0;
 	
 	@Column(name = "complaint_state", length = 100)  
-	private int complaint_state;
+	private int complaint_state=0;
 	
 	@Column(name = "complaint_result", length = 100)  
-	private int handleResult;
+	private int handleResult=0;
 
 
   

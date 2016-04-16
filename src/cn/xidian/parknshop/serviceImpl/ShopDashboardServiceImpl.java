@@ -34,7 +34,7 @@ public class ShopDashboardServiceImpl implements ShopDashboardService {
 	@Override
 	public long getNewOrderCount(long shopNo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return shopDashboardDao.getNewOrderCount(shopNo);
 	}
 
 }

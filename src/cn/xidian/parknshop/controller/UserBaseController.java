@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,7 +16,6 @@ import cn.xidian.parknshop.beans.User;
 import cn.xidian.parknshop.service.BaseService;
 import cn.xidian.parknshop.service.UserService;
 import cn.xidian.parknshop.utils.MD5Utils;
-import jxl.common.Logger;
 
 @Controller
 public class UserBaseController {
@@ -82,7 +82,9 @@ public class UserBaseController {
 		user.setPassword(secPassword);
 		user.setRegisterTime(new Date());
 		try{
-			userBaseService.create(user);}
+			userBaseService.create(user);
+//			userService.createUser(user);
+			}
 		catch(Exception e){
 			log.error(e);
 			return "error";

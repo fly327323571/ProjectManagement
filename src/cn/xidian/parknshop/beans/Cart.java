@@ -27,6 +27,9 @@ public class Cart {
 	@Column(name="sum_price")
 	private double price;
 	
+	@Column(name="status")
+	private int status=0;
+	
 	@Temporal(TemporalType.DATE) 
 	private Date addTime;
 
@@ -60,6 +63,30 @@ public class Cart {
 
 	public void setAddTime(Date addTime) {
 		this.addTime = addTime;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public long getId() {
+		return Id;
+	}
+
+	public void setId(long id) {
+		Id = id;
 	}
 
 

@@ -42,7 +42,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements BaseDao<T> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public T findObjById(int id, Class<T> type) {
+	public T findObjById(long id, Class<T> type) {
 		// TODO Auto-generated method stub
 		return (T) super.getSessionFactory().getCurrentSession().get(type,id);
 	}

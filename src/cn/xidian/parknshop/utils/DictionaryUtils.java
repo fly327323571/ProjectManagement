@@ -75,6 +75,17 @@ public class DictionaryUtils {
 		Normal,Warning,Suspend
 	};
 	
+	public static enum CommentsIsRead{
+		Read(1),NoRead(0);
+		private final int numberOfCommentsIsRead;
+		CommentsIsRead(int size){
+			this.numberOfCommentsIsRead=size;
+		}
+		public int numberOfCommentsIsRead(){
+			return numberOfCommentsIsRead;
+		}
+	}
+	
 	
 	public static enum CommodityCategory{
 		Food,Clothes;
@@ -87,5 +98,16 @@ public class DictionaryUtils {
 		public static CommodityCategory fromString(String typeName){
 			return fromString.get(typeName);
 		}
+	}
+	
+	public static enum OrderStatus{
+		Unpaid(1),unshipped(2),refunding(3),refundRejected(4),refunded(5),
+		shipped(6),received(7),commented(8),done(9);
+		private final int size;
+		OrderStatus(int size){
+			this.size=size;
+		}
+		public int getOrderStatusIntValue(){
+			return size;}
 	}
 }

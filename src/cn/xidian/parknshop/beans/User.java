@@ -12,7 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="tb_User")
+@Table(name="tb_user")
 public class User implements Serializable {
 	/**
 	 * 
@@ -30,7 +30,7 @@ public class User implements Serializable {
 	@Column(name="password",nullable=false,length=50)
 	private String password;
 	
-	@Column(name="nickName",nullable=false,length=200)
+	@Column(name="nick_name",nullable=false,length=200)
 	private String nickName;
 	
 	@Column(name="user_phone",length=20)
@@ -43,10 +43,10 @@ public class User implements Serializable {
 	private String address;
 	
 	@Column(name="permission")
-	private boolean isSeller;
+	private boolean isSeller=false;
 	
 	@Column(name="state",nullable=false)
-	private int state;
+	private int state=0;
 
 	@Temporal(TemporalType.DATE) 
 	private Date registerTime;

@@ -17,5 +17,10 @@ public interface AuditShopService {
 	public Commodity getAllSaleCommodity();
 	
 	public List<Shop> getAllAuditPersonInfo();
-
+	
+	public List<Map<String, Object>> getShopInfoByRegistTime();
+	
+	public List<Map<String, Object>> getShopInfoByStatus(Integer status);
+	
+	public List<Map<String, Object>> shopInfoByReaserch(String userName);
 }

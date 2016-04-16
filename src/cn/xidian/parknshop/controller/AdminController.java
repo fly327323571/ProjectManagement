@@ -1,26 +1,30 @@
 package cn.xidian.parknshop.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import jxl.common.Logger;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.xidian.parknshop.beans.Comments;
+import cn.xidian.parknshop.beans.Odium;
 import cn.xidian.parknshop.beans.Complaint;
+import cn.xidian.parknshop.beans.HomePageCommodityAds;
+import cn.xidian.parknshop.beans.HomePageShopAds;
 import cn.xidian.parknshop.beans.ResultType;
 import cn.xidian.parknshop.beans.Shop;
 import cn.xidian.parknshop.beans.User;
 import cn.xidian.parknshop.service.AdminService;
 import cn.xidian.parknshop.service.BaseService;
+import cn.xidian.parknshop.service.ShopCommodityService;
 import cn.xidian.parknshop.service.ShopService;
 import cn.xidian.parknshop.service.UserService;
 
@@ -33,8 +37,17 @@ public class AdminController {
 	@Resource(name="baseService")	
 	private BaseService<Shop> shopService;
 	
+	@Resource(name="shopService")
+	private ShopService shopService2;
+	
+	@Resource(name="shopCommodityService")
+	private ShopCommodityService shopCommodityService;
+	
 	@Resource(name="baseService")	
 	private BaseService<Complaint> complaintService;
+	
+	@Resource(name="baseService")	
+	private BaseService<Odium> odiumService;
 	
 	@Resource(name="userService")	
 	private UserService customerService;
@@ -50,32 +63,95 @@ public class AdminController {
 	@RequestMapping("/admin/complaint")
 	public String ComplaintManage(Complaint complaint,Model model,HttpServletRequest request) {
 		
-		/*User user=userService.get(1, User.class);
-		Shop shop=shopService.get(1, Shop.class);
-		complaint.setComplaintUser(user);
-		complaint.setComplaintedShop(shop);
-		complaintService.create(complaint);
-		
-		Complaint complaintDel=complaintService.get(2, Complaint.class);
-		complaintDel.setComplaintedShop(null);
-		complaintDel.setComplaintUser(null);
-		complaintService.delete(complaintDel);*/
 		List<Complaint> list=adminService.findComplaintByState(0);
 		model.addAttribute("ComplaintList", list);
 		return "../views/admin/complaintHandle";
 		}
+	
+	@RequestMapping("/admin/complaintDetial")
+	public String ComplaintDetial(Model model,long complaintNo){
+		
+		Complaint complaint=adminService.findComplaintByComplaintNo(complaintNo);	    
+		model.addAttribute("ComplaintDetial",complaint);	
+		return "../views/admin/complaintDetial";
+	}
+	@RequestMapping("/admin/{complaintNo}/handleComplaint")
+	public String HandleComplaint(@PathVariable long complaintNo,int userstate,int shopstate ,
+		int handleResult, String rank,int complaint_view){
+		Complaint curcomplaint=adminService.findComplaintByComplaintNo(complaintNo);
+	
+		User user=curcomplaint.getComplaintUser();
+		if(userstate==0||userstate==1||userstate==2){
+		     user.setState(userstate);
+		     userService.update(user);
+		}
+		Shop shop=curcomplaint.getComplaintedShop();
+		if(shopstate==1||shopstate==4||shopstate==3){
+		     shop.setStatus(shopstate);
+		     shopService.update(shop);
+		}		
+		if(rank.equals("1")) {shop.setShopRank(1.0);  shopService.update(shop);}
+		if(rank.equals("2")) {shop.setShopRank(2.0);  shopService.update(shop);}
+		if(rank.equals("3")) {shop.setShopRank(3.0);  shopService.update(shop);}
+		if(rank.equals("4")) {shop.setShopRank(4.0);  shopService.update(shop);}
+		if(rank.equals("5")) {shop.setShopRank(5.0);  shopService.update(shop);}				
+		curcomplaint.setComplaintUser(user);
+		curcomplaint.setComplaintedShop(shop);
+		curcomplaint.setHandleResult(handleResult);
+		curcomplaint.setComplaint_view(complaint_view);
+		curcomplaint.setComplaint_state(1);
+		complaintService.update(curcomplaint);
+		System.out.println(userstate);
+		System.out.println(shopstate);
+		System.out.println(rank);
+		return "redirect:/admin/complaint";
+	}
+	
 	@RequestMapping("/admin/odium")
 	public String OdiumManage(Model model,HttpServletRequest request) {
-		List<Comments> list=adminService.findCommentByState(0);
-		model.addAttribute("CommentsList", list);
-		return "../views/admin/commentsHandle";
+		List<Odium> list=adminService.findOdiumByState(0);
+		model.addAttribute("OdiumList", list);
+		return "../views/admin/odiumHandle";
 		}
 	
 	@RequestMapping("/admin/odiumDetial")
-	public String OdiumDetial(Model model,int commentsId){
-		Comments comment=adminService.findCommentById(commentsId);
-		model.addAttribute("Comments", comment);
-		return "../views/admin/commentsDetial";
+	public String OdiumDetial(Model model,long number){
+
+		Odium odium = null;
+		try {
+			odium = adminService.findOdiumByNo(number);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("OdiumDetial", odium);
+		return "../views/admin/odiumDetial";
+	}
+	@RequestMapping("/admin/{number}/handleOdium")
+	public String HandleOdium(@PathVariable long number,int userstate,int shopstate ,String rank){
+
+		Odium curodium=adminService.findOdiumByNo(number);
+		User user=curodium.getUser();
+		if(userstate==0||userstate==1||userstate==2){
+		     user.setState(userstate);
+		     userService.update(user);
+		}
+		Shop shop=curodium.getShop();
+		if(shopstate==1||shopstate==4||shopstate==3){
+		     shop.setStatus(shopstate);
+		     shopService.update(shop);
+		}		
+		if(rank.equals("1")) {shop.setShopRank(1.0);  shopService.update(shop);}
+		if(rank.equals("2")) {shop.setShopRank(2.0);  shopService.update(shop);}
+		if(rank.equals("3")) {shop.setShopRank(3.0);  shopService.update(shop);}
+		if(rank.equals("4")) {shop.setShopRank(4.0);  shopService.update(shop);}
+		if(rank.equals("5")) {shop.setShopRank(5.0);  shopService.update(shop);}				
+		curodium.setUser(user);
+		curodium.setShop(shop);
+		curodium.setState(1);
+		odiumService.update(curodium);
+		return "redirect:/admin/odium";
 	}
 	
 	@RequestMapping("/admin/customerSearch")
@@ -141,27 +217,21 @@ public class AdminController {
 	public String ShopManage(String name,Model model,HttpServletRequest request){		
 		List<Shop> shoplist=shopService.getAll(Shop.class);
 		model.addAttribute("ShopList", shoplist);
+		ArrayList<String> categories=new ArrayList<String>();
+		categories.add("Food");categories.add("Clothes");categories.add("Tool");
+		System.out.print(categories);
+		model.addAttribute("Categories",categories);
 		return "../views/admin/shopManage";
 	}
-	@RequestMapping("/admin/modifyComplaint_Shop")
-	public String ModifyComplaint_Shop(Model model,long complaintNo){
-		//修改投诉处理状态		
-		if(complaintNo!=0){
-			Complaint complaint=adminService.findComplaintByComplaintNo(complaintNo);
-		    if(complaint!=null) {
-			    complaint.setComplaint_state(1);//0未处理，1已处理
-			    complaint.setComplaint_view(2);//0默认值,1虚假信息，2符合事实 
-			    complaint.setHandleResult(2);//0协商,1买家责任,2卖家责任
-			    complaintService.update(complaint);
-		    }
-		   model.addAttribute("currentshop",complaint.getComplaintedShop());
-		}	
-		return "../views/admin/shopInfo";
-	}
+
 	@RequestMapping("/admin/handleShop")
 	public String HandleShop(Model model,long shopNo){
 		Shop currentshop=storeService.findShopByShopNo(shopNo);
 		model.addAttribute("currentshop",currentshop);
+		ArrayList<String> categories=new ArrayList<String>();
+		categories.add("Food");categories.add("Clothes");categories.add("Tool");
+		System.out.print(categories);
+		model.addAttribute("Categories",categories);
 		return "../views/admin/shopInfo";
 	}
 	@RequestMapping("/admin/{shopNo}/editShop")
@@ -177,6 +247,50 @@ public class AdminController {
 		currentshop.setStatus(shop.getStatus());
 		shopService.update(currentshop);
 		return "redirect:/admin/shopManage";
+	}
+	
+	@RequestMapping("admin/homepage/adver/shop")
+	public @ResponseBody Map<String,ResultType> adverShop(){
+		Map<String,ResultType> map=new HashMap<String,ResultType>();
+		ResultType resultType=new ResultType();
+		List<HomePageShopAds> shopAds=null;
+		try{
+			shopAds=shopService2.findHomePageShopAds();
+		}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("db busy");
+			map.put("result", resultType);
+			return map;
+		}
+		resultType.success().setResult(shopAds);
+		map.put("result", resultType);
+		return map;
+		
+	}
+	
+	@RequestMapping("admin/homepage/adver/product")
+	public @ResponseBody Map<String,ResultType> adverProduct(){
+		Map<String,ResultType> map=new HashMap<String,ResultType>();
+		ResultType resultType=new ResultType();
+		List<HomePageCommodityAds> commodityAds=null;
+		try{
+			commodityAds=shopCommodityService.findHomePageCommodityAds();
+		}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("db busy");
+			map.put("result", resultType);
+			return map;
+		}
+		resultType.success().setResult(commodityAds);
+		map.put("result", resultType);
+		return map;
+	}
+	
+	@RequestMapping("admin/adminHomepage.do")
+	public String adminHomepage(){
+		return "../views/admin/adminHomepage";
 	}
 }
 

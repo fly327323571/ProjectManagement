@@ -33,7 +33,7 @@ public class AuditShopDaoImpl extends HibernateDaoSupport implements AuditShopDa
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Map<String, Object>> getShopInfo() {
-		String hql = "select new map(shop.shopId as shopId,shop.shopName as shopName,shop.shopCategories as shopCategories,shop.status as status,shop.regTime as regTime)from Shop as shop where shop.status=0";
+		String hql = "select new map(shop.shopOwner.userName as userName,shop.shopNo as shopNo,shop.status as status,shop.regTime as regTime)from Shop as shop where shop.status=0";
 		return factory.getCurrentSession().createQuery(hql).list();
 		
 	}
@@ -42,7 +42,7 @@ public class AuditShopDaoImpl extends HibernateDaoSupport implements AuditShopDa
 	 * 同意开店
 	 */
 	public int updateApproveShop(Long id) {
-		String hql = "update Shop as shop set shop.status=1 where shop.shopId=?";
+		String hql = "update Shop as shop set shop.status=1 where shop.shopNo=?";
 		Query query = factory.getCurrentSession().createQuery(hql);
 		query.setParameter(0, id);
 		return query.executeUpdate();
@@ -53,7 +53,7 @@ public class AuditShopDaoImpl extends HibernateDaoSupport implements AuditShopDa
 	 * 不同意开店
 	 */
 	public int updateDisapproveShop(Long id) {
-		String hql = "update Shop as shop set shop.status=2 where shop.shopId=?";
+		String hql = "update Shop as shop set shop.status=2 where shop.shopNo=?";
 		Query query = factory.getCurrentSession().createQuery(hql);
 		query.setParameter(0, id);
 		return query.executeUpdate();
@@ -64,12 +64,45 @@ public class AuditShopDaoImpl extends HibernateDaoSupport implements AuditShopDa
 		
 		return null;
 	}
-
+	
+	/**
+	 * 
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Shop> getAllAuditPersonInfo() {
 		String hql = "from Shop as shop where shop.status=0";
 		return factory.getCurrentSession().createQuery(hql).list();
+	}
+	
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Map<String, Object>> getShopInfoByRegistTime() {
+		String hql = "select new map(shop.shopOwner.userName as userName,shop.shopNo as shopNo,shop.status as status,shop.regTime as regTime)from Shop as shop order by shop.regTime";
+		return factory.getCurrentSession().createQuery(hql).list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Map<String, Object>> getShopInfoByStatus(Integer status) {
+		if (status==-1) {
+			String hql = "select new map(shop.shopOwner.userName as userName,shop.shopNo as shopNo,shop.status as status,shop.regTime as regTime)from Shop as shop";
+			return factory.getCurrentSession().createQuery(hql).list();
+		}
+		String hql = "select new map(shop.shopOwner.userName as userName,shop.shopNo as shopNo,shop.status as status,shop.regTime as regTime)from Shop as shop where shop.status=?";
+		Query query = factory.getCurrentSession().createQuery(hql);
+		query.setParameter(0, status);
+		return query.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Map<String, Object>> shopInfoByReaserch(String userName) {
+		String hql = "select new map(shop.shopOwner.userName as userName,shop.shopNo as shopNo,shop.status as status,shop.regTime as regTime)from Shop as shop where shop.shopOwner.userName=?";
+		Query query = factory.getCurrentSession().createQuery(hql);
+		query.setParameter(0, userName);
+		return query.list();
 	}
 
 }

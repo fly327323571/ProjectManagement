@@ -3,7 +3,7 @@ package cn.xidian.parknshop.beans;
 import javax.persistence.*;
 
 @Entity
-@Table(name="tb_Service")
+@Table(name="tb_service")
 public class AfterSaleService {
 
 	@Id

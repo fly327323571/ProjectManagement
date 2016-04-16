@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.xidian.parknshop.beans.Commodity;
+import cn.xidian.parknshop.beans.HomePageCommodityAds;
 import cn.xidian.parknshop.beans.ResultType;
 import cn.xidian.parknshop.beans.Shop;
 import cn.xidian.parknshop.service.BaseService;
@@ -39,6 +40,9 @@ public class ShopCommodityController {
 	@Resource(name="shopService")
 	private ShopService shopService;
 	
+	@Resource(name="baseService")
+	private BaseService<HomePageCommodityAds> homePageCommodityBaseService;
+	
 	private String logoUrl;
 	
 	private static Logger log = Logger.getLogger(ShopCommodityController.class);
@@ -47,6 +51,13 @@ public class ShopCommodityController {
 	public ModelAndView dashboardIndex(@PathVariable long shopNo,Model model){
 		model.addAttribute("storeId",shopNo);
 		return new ModelAndView("../views/shop/dashboard");
+	}
+	
+	@RequestMapping("shop/{shopNo}/orderHistory.do")
+	public ModelAndView orderHistory(@PathVariable long shopNo,Model model){
+		model.addAttribute("storeId", shopNo);
+		return new ModelAndView("../views/shop/orderHistory");
+		
 	}
 	
 	@RequestMapping("shop/{shopNo}/manageAd/index.do")
@@ -196,7 +207,7 @@ public class ShopCommodityController {
 	
 	
 	@RequestMapping("product/{shopNo}/upload/CommodityImg.do")
-	public @ResponseBody Map<String,ResultType>  uploadLogo(@PathVariable long shopNo,@RequestParam("file") MultipartFile file,
+	public @ResponseBody Map<String,ResultType>  uploadLogo(@PathVariable long shopNo,@RequestParam("myfiles") MultipartFile file,
 			 							HttpSession session){
 		Map<String,ResultType> map=new HashMap<String,ResultType>();
 		String Path=session.getServletContext().getRealPath("/WEB-INF/static/upload/shop/")+shopNo;
@@ -266,6 +277,7 @@ public class ShopCommodityController {
 		preCommodity.setCommodityName(commodity.getCommodityName());
 		preCommodity.setCommodityPrice(commodity.getCommodityPrice());
 		preCommodity.setCommodityCount(commodity.getCommodityCount());
+		preCommodity.setCommodityImg(logoUrl);
 		try{
 			commodityBaseService.update(preCommodity);
 		}
@@ -276,6 +288,55 @@ public class ShopCommodityController {
 			return map;
 		}
 		resultType.success().setResult("Update Ok~");
+		map.put("result", resultType);
+		return map;
+	}
+	
+	@RequestMapping("product/{shopNo}/applyAds/index.do")
+	public ModelAndView applyCommodityAdsIndex(@PathVariable long shopNo,Model model){
+		List<Commodity> commodityList=null;
+		try{
+			commodityList=shopCommodityService.findNotAdvCommodity(shopNo);
+		}
+		catch(Exception e){
+			log.error(e);
+			 
+		}
+		model.addAttribute("storeId", shopNo);
+		model.addAttribute("products", commodityList);
+		return new ModelAndView("../views/shop/ApplyCommodityAdvertisement");
+	}
+	@RequestMapping("product/{productId}/{shopNo}/applyAd")
+	public @ResponseBody Map<String,ResultType> applyCommodityAds(@PathVariable long productId,
+																  @PathVariable long shopNo,
+																  String totalPrice){
+		Map<String,ResultType> map=new HashMap<String,ResultType>();
+		ResultType resultType=new ResultType();
+		HomePageCommodityAds commodityAds=new HomePageCommodityAds();
+		Commodity commodity=null;
+		try{
+			commodity=shopCommodityService.findCommodityByCommNo(productId);}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("db busy");
+			map.put("result", resultType);
+			return map;
+		}
+		commodityAds.setCommodity(commodity);
+		commodityAds.setShop(commodity.getShop());
+		commodityAds.setAd_rate(Double.valueOf(totalPrice.substring(1,totalPrice.length())));
+		commodityAds.setCommodityLink("product/"+commodity.getShop().getShopNo()+"/productDetail/"+commodity.getCommodityNo()+".do");
+		commodityAds.setDays(Integer.valueOf(totalPrice.substring(1,totalPrice.length()))/10);
+		try{
+			homePageCommodityBaseService.create(commodityAds);
+		}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("db busy");
+			map.put("result", resultType);
+			return map;
+		}
+		resultType.success().setResult("yes");
 		map.put("result", resultType);
 		return map;
 	}

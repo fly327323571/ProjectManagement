@@ -1,10 +1,17 @@
 package cn.xidian.parknshop.beans;
 
+import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-@Table(name="tb_Order")
-public class Order{
+@Table(name="tb_order")
+public class Order implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -30,15 +37,20 @@ public class Order{
 	@Column(name="status")
 	private int state=0;
 	
-
+	@Column(name="delivery_status")
+	private int deliveryStatus=0;
+	
 	@Column(name="pay_way")
 	private int payWay=1;
 	
-	@Column(name="post_way")
-	private int postWay=0;
-	
 	@Column(name="order_price",nullable=false)
 	private double orderPrice=0.0;
+	
+	@Temporal(TemporalType.DATE)
+	private Date addTime;
+	
+	@Column(name="toAddr",length=200,nullable=false)
+	private String toAddr;
 
 	public User getBuyer() {
 		return buyer;
@@ -63,14 +75,6 @@ public class Order{
 
 	public void setPayWay(int payWay) {
 		this.payWay = payWay;
-	}
-
-	public int getPostWay() {
-		return postWay;
-	}
-
-	public void setPostWay(int postWay) {
-		this.postWay = postWay;
 	}
 
 	public User getSeller() {
@@ -117,8 +121,28 @@ public class Order{
 		this.shop = shop;
 	}
 
+	public Date getAddTime() {
+		return addTime;
+	}
 
+	public void setAddTime(Date addTime) {
+		this.addTime = addTime;
+	}
 
+	public int getDeliveryStatus() {
+		return deliveryStatus;
+	}
 
+	public void setDeliveryStatus(int deliveryStatus) {
+		this.deliveryStatus = deliveryStatus;
+	}
+
+	public String getToAddr() {
+		return toAddr;
+	}
+
+	public void setToAddr(String toAddr) {
+		this.toAddr = toAddr;
+	}
 
 }

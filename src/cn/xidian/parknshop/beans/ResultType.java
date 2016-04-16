@@ -10,6 +10,8 @@ public class ResultType {
 	
 	Object result;
 	
+	long totalPageCount;
+	
 	public ResultType setCode(Integer code){
 		this.code = code;
 		return this;
@@ -36,6 +38,14 @@ public class ResultType {
 	public ResultType error(){
 		code =-1;
 		return this;
+	}
+	
+	public void setTotalPageCount(long totalPageCount){
+		this.totalPageCount=totalPageCount;
+	}
+	
+	public long getTotalPageCount(){
+		return this.totalPageCount;
 	}
 	
 }

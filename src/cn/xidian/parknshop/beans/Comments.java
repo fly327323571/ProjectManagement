@@ -2,55 +2,57 @@ package cn.xidian.parknshop.beans;
 
 import java.util.Date;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="tb_comment")
+@Table(name = "tb_comment")
 public class Comments {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="Id")
-	private int commentsId;
-	
-	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="username",referencedColumnName="username",insertable=true,updatable=true)
+	@Column(name = "Id")
+	private long commentsId;
+
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinColumn(name = "username", referencedColumnName = "username", insertable = true, updatable = true)
 	private User user;
-	
-	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="shop_no",referencedColumnName="shop_no",insertable=true,updatable=true)
+
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinColumn(name = "shop_no", referencedColumnName = "shop_no", insertable = true, updatable = true)
 	private Shop shop;
-	
-	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JoinColumn(name="commodity_no",referencedColumnName="commodity_no",insertable=true,updatable=true)
+
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@JoinColumn(name = "commodity_no", referencedColumnName = "commodity_no", insertable = true, updatable = true)
 	private Commodity commodity;
-	
-	@Column(name="comment",length=200,nullable=false)
+
+	@Column(name = "comment", length = 200, nullable = false)
 	private String comments;
-	
-	@Column(name="comment_rank")
+
+	@Column(name = "comment_rank")
 	private double rank;
-	
-	@Column(name="comment_isRead",length=2)
-	private int isRead=0;
-	
-	@Temporal(TemporalType.DATE) 
+
+	@Column(name = "comment_isRead", length = 2)
+	private int isRead = 0;
+
+	@Temporal(TemporalType.DATE)
 	private Date commentsTime;
 
-	public int getCommentsId() {
+	public long getCommentsId() {
 		return commentsId;
 	}
 
-	public void setCommentsId(int commentsId) {
+	public void setCommentsId(long commentsId) {
 		this.commentsId = commentsId;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public Shop getShop() {
@@ -77,14 +79,6 @@ public class Comments {
 		this.comments = comments;
 	}
 
-	public Date getCommentsTime() {
-		return commentsTime;
-	}
-
-	public void setCommentsTime(Date commentsTime) {
-		this.commentsTime = commentsTime;
-	}
-
 	public double getRank() {
 		return rank;
 	}
@@ -100,5 +94,20 @@ public class Comments {
 	public void setIsRead(int isRead) {
 		this.isRead = isRead;
 	}
-	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Date getCommentsTime() {
+		return commentsTime;
+	}
+
+	public void setCommentsTime(Date commentsTime) {
+		this.commentsTime = commentsTime;
+	}
 }

@@ -19,4 +19,15 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 		return orderDetailDaoImpl.getDetailInfo(userName, commodityNo);
 	}
 
+	@Override
+	public List<OrderDetail> getDetailByOrderNo(long orderNo) {
+		// TODO Auto-generated method stub
+		return orderDetailDaoImpl.getDetailByOrderNo(orderNo);
+	}
+	
+	public OrderDetail getOrderDetail(long id){
+		
+		return orderDetailDaoImpl.getOrderDetail(id);
+	}
+
 }

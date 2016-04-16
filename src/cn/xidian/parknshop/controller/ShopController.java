@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,9 +27,10 @@ import cn.xidian.parknshop.beans.Shop;
 import cn.xidian.parknshop.beans.ShopLinks;
 import cn.xidian.parknshop.beans.User;
 import cn.xidian.parknshop.service.BaseService;
+import cn.xidian.parknshop.service.ShopCommodityService;
 import cn.xidian.parknshop.service.ShopService;
 import cn.xidian.parknshop.utils.DictionaryUtils;
-import jxl.common.Logger;
+import cn.xidian.parknshop.utils.HomePageAdvHelper;
 
 @Controller
 public class ShopController {
@@ -38,6 +40,9 @@ public class ShopController {
 	
 	@Resource(name="shopService")
 	private ShopService shopService;
+	
+	@Resource(name="shopCommodityService")
+	private ShopCommodityService shopCommodityService;
 	
 	@Resource(name="baseService")
 	private BaseService<ShopLinks> shopLinkBaseService;
@@ -76,41 +81,22 @@ public class ShopController {
 		 String json="["+request.getParameter("info")+"]";
 		 JSONArray jsonArray = JSON.parseArray(json);
 		 ResultType resultType=new ResultType();
+		 ShopLinks shopLink=new ShopLinks();
 		 Map<String,ResultType> map=new HashMap<String,ResultType>();
-		 Shop shop=null;
 		 try{
-			 shop=shopService.findShopByShopNo(shopNo);
-		 }
-		 catch(Exception e){
-			 log.error(e);
-			 resultType.error().setResult("Db busy");
-			 map.put("result", resultType);
-			 return map;
-		 }
 		 for(int i=0;i<jsonArray.size();i++){
 			 JSONObject jsonObject=jsonArray.getJSONObject(i);
-			 ShopLinks shopLink=new ShopLinks();
 			 shopLink.setLinkedShopImg(jsonObject.getString("shopIcon"));
-			 shopLink.setShop(shop);
-			 try{
-				 shopLink.setLinkedShop(shopService.findShopByShopNo(jsonObject.getLong("shopNo")));
+			 shopLink.setShop_no(shopNo);
+			 shopLink.setLinkedShop_no(jsonObject.getLong("linkTo"));
+			 shopLinkBaseService.create(shopLink);
 			 }
-			 catch(Exception e){
-				 log.error(e);
-				 resultType.error().setResult("db busy");
-				 map.put("result", resultType);
-				 return map;
-			 }
-			 try{
-				 shopLinkBaseService.create(shopLink);
-			 }
-			 catch(Exception e){
-				 log.error(e);
-				 resultType.error().setResult("db busy");
-				 map.put("result", resultType);
-				 return map;
-			 }
-				 
+		}
+		 catch(Exception e){
+			 log.error(e);
+			 resultType.error().setResult("db busy");
+			 map.put("result", resultType);
+			 return map;
 		 }
 		 resultType.success().setResult("success");
 		 map.put("result", resultType);
@@ -158,6 +144,7 @@ public class ShopController {
 	
 	@RequestMapping("/shop/link/{shopNo}/showList")
 	public @ResponseBody Map<String,ResultType> showOtherShops(HttpServletRequest request,@PathVariable long shopNo){
+		User user=(User) request.getSession().getAttribute("user");
 		Map<String,String> QueryParamMap=new HashMap<String,String>();
 		String pageIndex=request.getParameter("page[pageIndex]");
 		String pageSize=request.getParameter("page[pageSize]");
@@ -180,7 +167,7 @@ public class ShopController {
 		Map<String,ResultType> map=new HashMap<String,ResultType>();
 		List<Shop> shopList=null;
 		try{
-			shopList=shopService.findOtherShopsBySomeFilter(QueryParamMap,shopNo);
+			shopList=shopService.findOtherShopsBySomeFilter(QueryParamMap,shopNo,user.getUserName());
 
 		}
 		catch(Exception e){
@@ -230,6 +217,11 @@ public class ShopController {
 		}
 		model.addAttribute("categories", categories);
 		return "../views/shop/modifyShopProfile";
+	}
+	
+	@RequestMapping("shop/redirect/index")
+	public ModelAndView redirectShopIndex(){
+		return new ModelAndView("../views/shopOwner/shopOwnerHomepage");
 	}
 	
 	@RequestMapping("/shop/index")
@@ -396,9 +388,51 @@ public class ShopController {
 		return map;
 	}
 	
-	
+	@RequestMapping("shop/{shopNo}/applyAds/index.do")
+	public ModelAndView showApplyAds(@PathVariable long shopNo,Model model){
+		boolean isPublishAd=false;
+		try{
+			isPublishAd=shopService.checkHomePageAd(shopNo);
+		}
+		catch(Exception e){
+			log.error(e);
+			return new ModelAndView("../views/error");
+		}
+		if(!isPublishAd){
+		model.addAttribute("storeId", shopNo);
+		return new ModelAndView("../views/shop/ApplyShopAdvertise");}
+		else{
+			model.addAttribute("storeId", shopNo);
+			return new ModelAndView("../views/shop/showHomePageAdsStatus");
+		}
+	}
 	
 
+	@RequestMapping("store/{shopNo}/showAd")
+	public @ResponseBody Map<String,ResultType> showAd(@PathVariable long shopNo){
+		Map<String,ResultType> map=new HashMap<String,ResultType>();
+		ResultType resultType=new ResultType();
+		List<HomePageAdvHelper> homeShopAds=null;
+		try{
+			homeShopAds=shopService.findCurHomePageAdByShopNo(shopNo);
+		}
+		catch(Exception e){
+			log.error(e);
+			resultType.error().setResult("Db busy");
+			map.put("result", resultType);
+			return map;
+		}
+		resultType.success().setResult(homeShopAds);
+		map.put("result", resultType);
+		return map;
+	}
+	
+	@RequestMapping("store/{shopNo}/renewAd")
+	public ModelAndView renewShop(@PathVariable long shopNo,Model model){
+		model.addAttribute("storeId", shopNo);
+		return new ModelAndView("../views/shop/ApplyShopAdvertise");
+	}
+	
 	public BaseService<Shop> getShopService() {
 		return shopBaseService;
 	}

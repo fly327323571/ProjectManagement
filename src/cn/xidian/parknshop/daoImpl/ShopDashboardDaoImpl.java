@@ -37,7 +37,7 @@ public class ShopDashboardDaoImpl extends HibernateDaoSupport implements ShopDas
 	@Override
 	public double getTotalEarnedCount(long shopNo) {
 		// TODO Auto-generated method stub
-		String sql="select sum(realEarn) from tb_shopearneddetail where shop_no=:shopNo";
+		String sql="select sum(realEarn) from tb_shopEarnedDetail where shop_no=:shopNo";
 		double num =(double) super.getSessionFactory().getCurrentSession().createSQLQuery(sql).setLong("shopNo", shopNo).uniqueResult();
 		return num;
 	}
@@ -45,7 +45,7 @@ public class ShopDashboardDaoImpl extends HibernateDaoSupport implements ShopDas
 	@Override
 	public long getNewOrderCount(long shopNo) {
 		// TODO Auto-generated method stub
-		String sql="select count(Id) as num from tb_order o where o.shop_no=:shopNo and o.status=0";
+		String sql="select count(order_id) as num from tb_order o where o.shop_no=:shopNo and o.status=0";
 		BigInteger num =(BigInteger) super.getSessionFactory().getCurrentSession().createSQLQuery(sql).setLong("shopNo", shopNo).uniqueResult();
 		return num.longValue();
 	}
